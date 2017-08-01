@@ -1,0 +1,90 @@
+//
+//  NA.pch
+//  NewApix_YK
+//
+//  Created by APiX on 2017/7/31.
+//  Copyright © 2017年 APiX. All rights reserved.
+//
+
+#ifndef NA_pch
+#define NA_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+
+#import <SVProgressHUD.h>
+#import <YYModel/YYModel.h>
+#import "NAHTTPSessionManager.h"
+#import "UIView+NAExtension.h"
+#import "NSString+NAExtension.h"
+#import "UIColor+NAExtension.h"
+#import "UIImage+NAExtension.h"
+#import "NACommon.h"
+#import "UMMobClick/MobClick.h"
+
+
+#pragma mark - <不同环境的配置>
+// --------------------- 不同环境的配置 -------------
+#ifndef __OPTIMIZE__
+// 测试环境
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+NSString * const serverAddressAPIX = @"http://123.56.93.103:3000";
+NSString * const jskServerAddressH5 = @"http://192.168.1.194:3222";
+#define SERVER_ADDRESS_APIX @"http://123.56.93.103:3000"
+#define JSK_SERVER_ADDRESS_H5 @"http://192.168.1.194:3222"
+
+#else
+// 现网环境
+#define NSLog(...) {}
+
+NSString * const serverAddressAPIX = @"https://www.wanplus.com";
+NSString * const jskServerAddressH5 = @"https://jishukong.com";
+#define SERVER_ADDRESS_APIX @"https://www.wanplus.com"
+#define JSK_SERVER_ADDRESS_H5 @"https://jishukong.com"
+
+#endif
+
+#pragma mark - <一些常用方法>
+// --------------------- 一些常用方法 -------------
+#define WeakSelf  __weak typeof(self) weakSelf = self;
+#define kKeyWindow [UIApplication sharedApplication].keyWindow
+#define kGetImage(imageName) [UIImage imageNamed:imageName]
+#define kViewBorderRadius(View, Radius, Width, Color)\
+\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
+//获取temp
+#define kPathTemp NSTemporaryDirectory()
+//获取沙盒 Document
+#define kPathDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+//获取沙盒 Cache
+#define kPathCache [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject]
+
+// 公布于外界的程序版本号
+#define VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+// 当前iOS系统的版本
+#define IOSVERSION [[[UIDevice currentDevice] systemVersion] floatValue]
+
+#define kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define kScreenWidth [UIScreen mainScreen].bounds.size.width
+
+
+#pragma mark - <常量>
+// --------------------- 一些常量 -------------
+CGFloat const statusBarH = 20.0;
+CGFloat const naviBarH = 44.0;
+CGFloat const tabBarH = 49.0;
+#define kStatusBarH 20
+#define kNavBarH 44
+#define kTabBarH 49.0
+
+
+
+
+
+#endif /* NA_pch */

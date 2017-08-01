@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  NATabbarController.h
 //  NewApix_YK
 //
 //  Created by APiX on 2017/7/26.
@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface NATabbarController : UITabBarController
 
+@property (nonatomic, assign) BOOL isSwitch;
 
 @end
-
