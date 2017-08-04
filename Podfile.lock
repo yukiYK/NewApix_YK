@@ -1,0 +1,84 @@
+PODS:
+  - AESCrypt (0.0.1)
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - Masonry (1.0.2)
+  - MBProgressHUD (1.0.0)
+  - Meiqia (3.3.4):
+    - Meiqia/MeiqiaSDK (= 3.3.4)
+    - Meiqia/MQChatViewController (= 3.3.4)
+  - Meiqia/MeiqiaSDK (3.3.4)
+  - Meiqia/MQChatViewController (3.3.4):
+    - Meiqia/MeiqiaSDK
+  - OpenShare (0.0.1)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SVProgressHUD (2.1.2)
+  - TKAlert&TKActionSheet (1.1.0)
+  - UMengAnalytics-NO-IDFA (4.1.9)
+  - UMengUShare/Core (6.1.1):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.1.1)
+  - UMengUShare/Social/QQ (6.1.1):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.1.1):
+    - UMengUShare/Core
+  - UMengUShare/Social/WeChat (6.1.1):
+    - UMengUShare/Core
+  - VTMagic (1.2.4):
+    - VTMagic/Core (= 1.2.4)
+  - VTMagic/Core (1.2.4)
+  - WebViewJavascriptBridge (5.0.5)
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - AESCrypt
+  - AFNetworking
+  - Masonry
+  - MBProgressHUD
+  - Meiqia
+  - OpenShare
+  - SDWebImage
+  - SVProgressHUD
+  - TKAlert&TKActionSheet
+  - UMengAnalytics-NO-IDFA
+  - UMengUShare/Social/QQ
+  - UMengUShare/Social/Sina
+  - UMengUShare/Social/WeChat
+  - VTMagic
+  - WebViewJavascriptBridge
+  - YYModel
+
+SPEC CHECKSUMS:
+  AESCrypt: 1d89bf8b0789cf274ab2205ea461adbe9321d5f8
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
+  Meiqia: 5fb3cc44e29176805f479d5767157ded4879604c
+  OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  TKAlert&TKActionSheet: 0b1f8de3e8e7df5cf4585e2ef25c9f1d4ec7472f
+  UMengAnalytics-NO-IDFA: 985292af177111685325c90c321094172b95d2cb
+  UMengUShare: 0a80f54ee06f71f3de7c57764c36339e8bf9b7e7
+  VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
+  WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 31c7858b45c1f170996a1d0cb3d2f261b9a25b17
+
+COCOAPODS: 1.2.0.beta.1
