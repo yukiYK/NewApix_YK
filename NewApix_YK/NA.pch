@@ -20,6 +20,7 @@
 #import "NSString+NAExtension.h"
 #import "UIColor+NAExtension.h"
 #import "UIImage+NAExtension.h"
+#import <UIImageView+WebCache.h>
 #import "NACommon.h"
 #import "UMMobClick/MobClick.h"
 

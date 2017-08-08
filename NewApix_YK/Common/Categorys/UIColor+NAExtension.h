@@ -25,13 +25,12 @@
 //#define kCoinGrayColor [UIColor colorFromString:@"9e9e9e"]
 //#define kCoinYellowColor [UIColor colorFromString:@"d9a75f"]
 //#define kGrayBackgroundColor [UIColor colorFromString:@"f8f8f8"]
-//#define kBlackTextColor [UIColor colorFromString:@"333333"]
 //#define kWPRedColor [UIColor colorFromString:@"ff382e"]
 //#define kWPBlueColor [UIColor colorFromString:@"526cce"]
 //#define kSeparatorViewColor [UIColor colorFromString:@"e0e0e0"]
 
 #define kColorLightBlue  [UIColor colorFromString:@"89abe3"]
-
+#define kBlackTextColor [UIColor colorFromString:@"333333"]
 
 @interface UIColor (NAExtension)
 

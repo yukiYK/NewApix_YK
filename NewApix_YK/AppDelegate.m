@@ -30,31 +30,11 @@
     self.window = window;
     [self.window makeKeyAndVisible];
     
-    // 初始化友盟
-    UMConfigInstance.appKey = kUMAppKey;
-    UMConfigInstance.channelId = kUMChannelID;
-    [MobClick startWithConfigure:UMConfigInstance];
+    // 初始化第三方的工具
+    [self initUMeng];
     
-    // 初始化美洽
-    [MQManager initWithAppkey:kMQAppKey completion:^(NSString *clientId, NSError *error) {
-        if (!error) {
-            NSLog(@"美洽SDK：初始化成功");
-        }
-        else {
-            NSLog(@"美洽SDK：初始化失败 error：%@", error);
-        }
-    }];
+    [self initMeiQia];
     
-    // 初始化友盟分享
-    /* 打开调试日志 */
-    [[UMSocialManager defaultManager] openLog:YES];
-    
-    /* 设置友盟appkey */
-    [[UMSocialManager defaultManager] setUmSocialAppkey:kUMShareAppKey];
-    
-    [self configUSharePlatforms];
-    
-    // 初始化友盟推送
     
     
     return YES;
@@ -111,6 +91,40 @@
 
 
 #pragma mark - <Custom Methods>
+/** 初始化友盟 */
+- (void)initUMeng {
+    // 初始化友盟统计
+    UMConfigInstance.appKey = kUMAppKey;
+    UMConfigInstance.channelId = kUMChannelID;
+    [MobClick startWithConfigure:UMConfigInstance];
+    
+    // 初始化友盟分享
+    /* 打开调试日志 */
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    /* 设置友盟appkey */
+    [[UMSocialManager defaultManager] setUmSocialAppkey:kUMShareAppKey];
+    
+    [self configUSharePlatforms];
+    
+    // 初始化友盟推送
+}
+
+/** 初始化美洽 */
+- (void)initMeiQia {
+    
+    [MQManager initWithAppkey:kMQAppKey completion:^(NSString *clientId, NSError *error) {
+        if (!error) {
+            NSLog(@"美洽SDK：初始化成功");
+        }
+        else {
+            NSLog(@"美洽SDK：初始化失败 error：%@", error);
+        }
+    }];
+    
+}
+
+/** 配置各个分享平台 */
 - (void)configUSharePlatforms {
     
     // 微信
