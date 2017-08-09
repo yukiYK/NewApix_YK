@@ -23,6 +23,7 @@ PODS:
   - Meiqia/MeiqiaSDK (3.3.4)
   - Meiqia/MQChatViewController (3.3.4):
     - Meiqia/MeiqiaSDK
+  - MJRefresh (3.1.12)
   - OpenShare (0.0.1)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - Masonry
   - MBProgressHUD
   - Meiqia
+  - MJRefresh
   - OpenShare
   - SDWebImage
   - SVProgressHUD
@@ -69,6 +71,7 @@ SPEC CHECKSUMS:
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Meiqia: 5fb3cc44e29176805f479d5767157ded4879604c
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
@@ -79,6 +82,6 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 31c7858b45c1f170996a1d0cb3d2f261b9a25b17
+PODFILE CHECKSUM: 901ef670742f09f02276a57ac610612817c70685
 
 COCOAPODS: 1.2.0.beta.1

@@ -10,4 +10,9 @@
 
 @implementation NAMainCardModel
 
+- (CGFloat)cellHeight {
+    
+    return 300;
+}
+
 @end

@@ -7,10 +7,22 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MJRefresh.h>
 
 @interface NACommon : NSObject
 
+/** 初始化单例 */
++ (instancetype)sharedCommon;
+
+/** 获取token */
 + (NSString *)getToken;
+/** 设置token */
 + (void)setToken:(NSString *)token;
+
+
+/** 生成下拉刷新header */
+- (MJRefreshGifHeader *)createMJRefreshGifHeaderWithTarget:(id)target action:(SEL)action;
+/** 生成上拉加载footer */
+- (MJRefreshAutoGifFooter *)createMJRefreshAutoGifFooterWithTarget:(id)target action:(SEL)action;
 
 @end

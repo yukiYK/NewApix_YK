@@ -76,7 +76,7 @@
     CGFloat cardWidth = self.bounds.size.width;
     if (self.cardArray.count <= 0) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, cardWidth, self.bounds.size.height)];
-        imageView.image = [[UIImage imageNamed:@"defaultImage"] cutImageAdaptImageViewSize:imageView.bounds.size];
+        imageView.image = [kGetImage(kImageDefault) cutImageAdaptImageViewSize:imageView.bounds.size];
         [self.scrollView addSubview:imageView];
         self.scrollView.contentSize = self.bounds.size;
     }
@@ -95,9 +95,9 @@
             }
             
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardWidth * i, 0, cardWidth, self.bounds.size.height)];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:cardModel.img] placeholderImage:[[UIImage imageNamed:@"defaultImage"] cutImageAdaptImageViewSize:imageView.bounds.size]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:cardModel.img] placeholderImage:[kGetImage(kImageDefault) cutImageAdaptImageViewSize:imageView.bounds.size]];
             imageView.userInteractionEnabled = YES;
-            imageView.tag = 100 + i;
+            imageView.tag = 100 + i - 1;
             [self.scrollView addSubview:imageView];
             [self.imageViewArray addObject:imageView];
             
@@ -108,17 +108,37 @@
     }
     
     // pageControl
-    UIPageControl *pageControl = [[UIPageControl alloc] init];
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:self.bounds];
     pageControl.currentPageIndicatorTintColor = [UIColor brownColor];
     pageControl.pageIndicatorTintColor = [UIColor grayColor];
+    pageControl.numberOfPages = self.cardArray.count;
+    [pageControl addTarget:self action:@selector(onPageControlClicked:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:pageControl];
     self.pageControl = pageControl;
 }
 
-
+- (void)fixContentOffset {
+    
+    CGFloat scrollWidth = self.bounds.size.width;
+    if (self.scrollView.contentOffset.x > scrollWidth * (self.cardArray.count + 1) * 1.1) {
+        [self.scrollView setContentOffset:CGPointMake(scrollWidth, 0)];
+    }
+    else if (self.scrollView.contentOffset.x < scrollWidth * 0.9) {
+        [self.scrollView setContentOffset:CGPointMake(scrollWidth * self.cardArray.count, 0)];
+    }
+    
+    NSInteger page = round((self.scrollView.contentOffset.x - scrollWidth)/scrollWidth);
+    self.pageControl.currentPage = page;
+}
 
 #pragma mark - <事件>
 - (void)bannerScroll {
+    
+    CGFloat scrollWidth = self.bounds.size.width;
+    [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + scrollWidth, 0) animated:YES];
+//    [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentOffset.x + scrollWidth, 0, scrollWidth, self.scrollView.bounds.size.height) animated:YES];
+    
+    [self fixContentOffset];
     
 }
 
@@ -130,11 +150,19 @@
     }
 }
 
+- (void)onPageControlClicked:(UIPageControl *)pageControl {
+    
+    CGFloat scrollWidth = self.bounds.size.width;
+    [self.scrollView setContentOffset:CGPointMake((pageControl.currentPage + 1) * scrollWidth, 0) animated:YES];
+    
+}
+
 #pragma mark - <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    [self fixContentOffset];
 }
 
 /*

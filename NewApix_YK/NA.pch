@@ -23,25 +23,46 @@
 #import <UIImageView+WebCache.h>
 #import "NACommon.h"
 #import "UMMobClick/MobClick.h"
-
+#import "NAConstant.h"
 
 #pragma mark - <不同环境的配置>
 // --------------------- 不同环境的配置 -------------
-#ifndef __OPTIMIZE__
-// 测试环境
-#define NSLog(...) NSLog(__VA_ARGS__)
-
-#define SERVER_ADDRESS_APIX @"http://123.56.93.103:3000"
-#define SERVER_ADDRESS_H5 @"http://192.168.1.194:3222"
-
-#else
+// 是否是线上
+#define SERVER_ONLINE  0
+#if SERVER_ONLINE
 // 现网环境
 #define NSLog(...) {}
 
 #define SERVER_ADDRESS_APIX @"https://api.meixinlife.com"
 #define SERVER_ADDRESS_H5 @"https://meixinlife.com"
 
+
+#else
+
+// 测试环境
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+#define SERVER_ADDRESS_APIX @"http://123.56.93.103:3000"
+//#define SERVER_ADDRESS_H5 @"http://192.168.1.194:3222"
+#define SERVER_ADDRESS_H5 @"http://112.126.92.173:3222"
+
 #endif
+
+//#ifndef __OPTIMIZE__
+//// 测试环境
+//#define NSLog(...) NSLog(__VA_ARGS__)
+//
+//#define SERVER_ADDRESS_APIX @"http://123.56.93.103:3000"
+//#define SERVER_ADDRESS_H5 @"http://192.168.1.194:3222"
+//
+//#else
+//// 现网环境
+//#define NSLog(...) {}
+//
+//#define SERVER_ADDRESS_APIX @"https://api.meixinlife.com"
+//#define SERVER_ADDRESS_H5 @"https://meixinlife.com"
+//
+//#endif
 
 #pragma mark - <一些常用方法>
 // --------------------- 一些常用方法 -------------
@@ -71,18 +92,6 @@
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 
 
-#pragma mark - <常量>
-// --------------------- 一些常量 -------------
-#define kStatusBarH 20
-#define kNavBarH 44
-#define kTabBarH 49.0
 
-#define kUMAppKey @"5784cbb2e0f55ac55e000978"
-#define kUMChannelID @"App Store"
-#define kMQAppKey @"20b7d9bb2cbd59f895433bbbfd366a3d"
-#define kUMShareAppKey @""
-#define kShareQQAppKey @"1105485759"
-#define kShareWechatAppKey @"wxfa01bd3730538e0c"
-#define kShareWechatAppSecret @""
 
 #endif /* NA_pch */

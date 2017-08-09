@@ -74,6 +74,7 @@
 		4A6381661F3841D5008BC8FD /* NAMainCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainCardModel.m; sourceTree = "<group>"; };
 		4A6381681F384F71008BC8FD /* NABannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NABannerView.h; sourceTree = "<group>"; };
 		4A6381691F384F71008BC8FD /* NABannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABannerView.m; sourceTree = "<group>"; };
+		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
 		4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageController.xib; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 				4AFCA93F1F346B3D00351B04 /* Info.plist */,
 				4AFCA9401F346B3D00351B04 /* main.m */,
 				4AFCA9411F346B3D00351B04 /* NA.pch */,
+				4A7707401F39CC4900CEDDF8 /* NAConstant.h */,
 				4A037D211F2851A600F38AC0 /* Assets.xcassets */,
 				4A037D591F28AF1B00F38AC0 /* Modules */,
 				4AFCA9451F346C3500351B04 /* Common */,

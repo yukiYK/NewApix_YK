@@ -44,4 +44,8 @@
 /**  */
 @property (nonatomic, assign) NSInteger weight;
 
+
+/** model对应的cell高度 */
+@property (nonatomic, assign) CGFloat cellHeight;
+
 @end

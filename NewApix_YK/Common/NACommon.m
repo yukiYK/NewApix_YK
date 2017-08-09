@@ -8,12 +8,57 @@
 
 #import "NACommon.h"
 
-
 /**
  公共类，用来放一些全局方法
  */
-@implementation NACommon
+@interface NACommon ()
 
+/** 上下拉刷新普通状态图片组 */
+@property (nonatomic, strong) NSMutableArray *loadingNormalImages;
+/** 上下拉刷新正在刷新状态图片组 */
+@property (nonatomic, strong) NSMutableArray *loadingRefreshingImages;
+
+@end
+
+
+
+@implementation NACommon
+#pragma mark - <初始化单例对象>
++ (instancetype)sharedCommon {
+    
+    static id instance;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        instance = [[self alloc] init];
+    });
+    
+    return instance;
+}
+
+#pragma mark - <Lazy Load>
+- (NSMutableArray *)loadingNormalImages {
+    if (!_loadingNormalImages) {
+        _loadingNormalImages = [NSMutableArray array];
+        for(int i=1; i<=20; i++) {
+            UIImage *image = kGetImage(([NSString stringWithFormat:@"loading_%d", i]));
+            [_loadingNormalImages addObject:image];
+        }
+    }
+    return _loadingNormalImages;
+}
+- (NSMutableArray *)loadingRefreshingImages {
+    if (!_loadingRefreshingImages) {
+        _loadingRefreshingImages = [NSMutableArray array];
+        // 刷新时出现的gif图 需要循环添加到数组
+        for(int i=1; i<=20; i++) {
+            UIImage *image = kGetImage(([NSString stringWithFormat:@"loading_%d",i]));
+            [_loadingRefreshingImages addObject:image];
+        }
+    }
+    return _loadingRefreshingImages;
+}
+
+#pragma mark - <Token>
 + (NSString *)getToken {
     NSString *token = @"";
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -30,5 +75,30 @@
 + (void)setToken:(NSString *)token {
 }
 
+#pragma mark - <上下拉刷新 - mj_refresh>
+- (MJRefreshGifHeader *)createMJRefreshGifHeaderWithTarget:(id)target action:(SEL)action {
+    
+    MJRefreshGifHeader *gifHeader = [MJRefreshGifHeader headerWithRefreshingTarget:target refreshingAction:action];
+    UIImage *pulingImage = kGetImage(@"loading_begin_20");
+    NSMutableArray *loadingPullingImages = [NSMutableArray arrayWithObjects:pulingImage, nil];
+    [gifHeader setImages:loadingPullingImages forState:MJRefreshStatePulling];
+    [gifHeader setImages:self.loadingNormalImages forState:MJRefreshStateIdle];
+    [gifHeader setImages:self.loadingRefreshingImages forState:MJRefreshStateRefreshing];
+    gifHeader.lastUpdatedTimeLabel.hidden = YES;
+    gifHeader.stateLabel.hidden = YES;
+    return gifHeader;
+}
+
+- (MJRefreshAutoGifFooter *)createMJRefreshAutoGifFooterWithTarget:(id)target action:(SEL)action {
+    
+    MJRefreshAutoGifFooter *gifFooter = [MJRefreshAutoGifFooter footerWithRefreshingTarget:target refreshingAction:action];
+    UIImage *pulingImage = kGetImage(@"loading_begin_20");
+    NSMutableArray *loadingPullingImages = [NSMutableArray arrayWithObjects:pulingImage, nil];
+    [gifFooter setImages:self.loadingNormalImages forState:MJRefreshStateIdle];
+    [gifFooter setImages:loadingPullingImages forState:MJRefreshStatePulling];
+    [gifFooter setImages:self.loadingRefreshingImages forState:MJRefreshStateRefreshing];
+    gifFooter.refreshingTitleHidden = YES;
+    return gifFooter;
+}
 
 @end
