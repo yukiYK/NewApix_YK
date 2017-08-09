@@ -17,10 +17,10 @@
 /**  */
 @property (nonatomic, assign) NSInteger bottom_button_type;
 /** card类型
- *
+ *  3 banner 
  *  4 热卡推荐   5 智能推荐，菠萝贷等等    6 会员文章
  *  7 视频卡列表
- *  8 商品详情   9 商城页面   12攻略  13无息贷款   21新加非会员无息贷款
+ *  8 商品详情   9 商城页面   12攻略  13无息贷款   21新加非会员无息贷款  14-20暂不用
  */
 @property (nonatomic, assign) NSInteger card_type;
 /**  */

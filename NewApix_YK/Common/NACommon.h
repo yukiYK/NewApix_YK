@@ -19,10 +19,12 @@
 /** 设置token */
 + (void)setToken:(NSString *)token;
 
-
 /** 生成下拉刷新header */
 - (MJRefreshGifHeader *)createMJRefreshGifHeaderWithTarget:(id)target action:(SEL)action;
 /** 生成上拉加载footer */
 - (MJRefreshAutoGifFooter *)createMJRefreshAutoGifFooterWithTarget:(id)target action:(SEL)action;
+
+/** 生成无更多数据footer */
+- (UIView *)createNoMoreDataFooterView;
 
 @end

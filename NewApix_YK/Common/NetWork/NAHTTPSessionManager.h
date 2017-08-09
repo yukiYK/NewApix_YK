@@ -8,12 +8,18 @@
 
 #import <AFNetworking/AFNetworking.h>
 
+typedef NS_ENUM(NSInteger, NARequestURLType) {
+    NARequestURLTypeAPIX,
+    NARequestURLTypeH5
+};
+
 typedef void(^ReturnValueBlock)(NSDictionary *returnValue);
 typedef void(^ProgressBlock)(NSProgress *uploadProgress);
-typedef void(^ErrorCodeBlock)(NSString *code, NSString *ret, NSString *msg);
+typedef void(^ErrorCodeBlock)(NSString *code, NSString *msg);
 typedef void(^FailureBlock)(NSError *error);
 typedef void(^ConstructingBodyBlock)(id<AFMultipartFormData> formData);
 typedef void(^NetWorkBlock)(BOOL netConnetState);
+
 
 @interface NAHTTPSessionManager : AFHTTPSessionManager
 
@@ -30,6 +36,18 @@ typedef void(^NetWorkBlock)(BOOL netConnetState);
  @return manager对象
  */
 + (instancetype)sharedManager;
+
+
+/**
+ 拼接url
+
+ @param urlType 请求的类型  api还是h5 等
+ @param pathArray 路径  a/b/c...
+ @return 拼接好的完整urlString
+ */
++ (NSString *)urlWithType:(NARequestURLType)urlType pathArray:(NSArray *)pathArray;
+
+
 
 /**
  封装get请求
@@ -51,13 +69,13 @@ typedef void(^NetWorkBlock)(BOOL netConnetState);
 /**
  封装post请求
 
- @param requestURLString <#requestURLString description#>
- @param parameter <#parameter description#>
- @param bodyBlock <#bodyBlock description#>
- @param progressBlock <#progressBlock description#>
- @param block <#block description#>
- @param errorBlock <#errorBlock description#>
- @param failureBlock <#failureBlock description#>
+ @param requestURLString 请求url
+ @param parameter 参数dict
+ @param bodyBlock 上传文件block
+ @param progressBlock progress
+ @param block 请求成功block，返回数据
+ @param errorBlock 请求失败block，这种是网络请求正常，但返回数据不对
+ @param failureBlock 请求失败block，这种是网络请求就失败了
  */
 - (void)netRequesPOSTWithRequestURL:(NSString *)requestURLString
                           parameter:(NSMutableDictionary *)parameter

@@ -29,6 +29,13 @@
     return [NANoNetworkView viewForNoNet];
 }
 
+- (NAHTTPSessionManager *)netManager {
+    if (!_netManager) {
+        _netManager = [NAHTTPSessionManager sharedManager];
+    }
+    return _netManager;
+}
+
 #pragma mark - <life Cycle>
 - (void)viewDidLoad {
     [super viewDidLoad];

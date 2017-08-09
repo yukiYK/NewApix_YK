@@ -35,6 +35,44 @@
     return instance;
 }
 
+/**
+ 拼接url
+ 
+ @param urlType 请求的类型  api还是h5 等
+ @param pathArray 路径  a/b/c...
+ @return 拼接好的完整urlString
+ */
++ (NSString *)urlWithType:(NARequestURLType)urlType pathArray:(NSArray *)pathArray {
+    
+    NSString *urlString = @"";
+    switch (urlType) {
+        case NARequestURLTypeAPIX:
+            urlString = SERVER_ADDRESS_APIX;
+            break;
+        case NARequestURLTypeH5:
+            urlString = SERVER_ADDRESS_H5;
+            break;
+        default:
+            break;
+    }
+    
+    if (pathArray != nil && pathArray.count > 0) {
+        for (NSString *path in pathArray) {
+            urlString = [urlString stringByAppendingString:[NSString stringWithFormat:@"/%@", path]];
+        }
+    }
+    return urlString;
+}
+
+/**
+ 封装get请求
+ 
+ @param requestURLString 请求url
+ @param parameter 参数dict
+ @param block 请求成功block，返回数据
+ @param errorBlock 请求失败block，这种是网络请求正常，但返回数据不对
+ @param failureBlock 请求失败block，这种是网络请求就失败了
+ */
 - (void)netRequestGETWithRequestURL:(NSString *)requestURLString
                           parameter:(NSMutableDictionary *)parameter
                    returnValueBlock:(ReturnValueBlock)block
@@ -46,21 +84,20 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-            NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
+//            NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
             NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-            NSString *msg = [NSString stringWithFormat:@"%@",responseObject[@"msg"]];
+            NSString *msg = @"请求失败";//[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
             NSDictionary *data = responseObject[@"data"];
             
-            NSLog(@"ret: %@",ret);
             NSLog(@"code: %@",code);
             
-            if ([ret isEqualToString:@"0"] && [code isEqualToString:@"0"]) {
+            if ([code isEqualToString:@"0"]) {
                 
                 block(data);
             }
             else {
                 NSString *message = [NSString stringWithFormat:@"%@", msg];
-                errorBlock(ret, code, message);
+                errorBlock(code, message);
             }
         }
         else {
@@ -74,6 +111,17 @@
     
 }
 
+/**
+ 封装post请求
+ 
+ @param requestURLString 请求url
+ @param parameter 参数dict
+ @param bodyBlock 上传文件block
+ @param progressBlock progress
+ @param block 请求成功block，返回数据
+ @param errorBlock 请求失败block，这种是网络请求正常，但返回数据不对
+ @param failureBlock 请求失败block，这种是网络请求就失败了
+ */
 - (void)netRequesPOSTWithRequestURL:(NSString *)requestURLString
                           parameter:(NSMutableDictionary *)parameter
               constructingBodyBlock:(ConstructingBodyBlock)bodyBlock
@@ -90,21 +138,20 @@
             progressBlock(uploadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
+//                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
                 NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-                NSString *msg = [NSString stringWithFormat:@"%@",responseObject[@"msg"]];
+                NSString *msg = @"请求失败";//[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
                 NSDictionary *data = responseObject[@"data"];
                 
-                NSLog(@"ret: %@",ret);
                 NSLog(@"code: %@",code);
                 
-                if ([ret isEqualToString:@"0"] && [code isEqualToString:@"0"]) {
+                if ([code isEqualToString:@"0"]) {
                     
                     block(data);
                 }
                 else {
                     NSString *message = [NSString stringWithFormat:@"%@", msg];
-                    errorBlock(ret, code, message);
+                    errorBlock(code, message);
                 }
             }
             else {
@@ -121,21 +168,20 @@
             progressBlock(uploadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
+//                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
                 NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-                NSString *msg = [NSString stringWithFormat:@"%@",responseObject[@"msg"]];
+                NSString *msg = @"请求失败"; //[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
                 NSDictionary *data = responseObject[@"data"];
                 
-                NSLog(@"ret: %@",ret);
                 NSLog(@"code: %@",code);
                 
-                if ([ret isEqualToString:@"0"] && [code isEqualToString:@"0"]) {
+                if ([code isEqualToString:@"0"]) {
                     
                     block(data);
                 }
                 else {
                     NSString *message = [NSString stringWithFormat:@"%@", msg];
-                    errorBlock(ret, code, message);
+                    errorBlock(code, message);
                 }
             }
             else {

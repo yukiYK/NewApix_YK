@@ -19,8 +19,11 @@ NSString *const kMainPageCellID = @"mainPageCell";
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (nonatomic, strong) NABannerView *bannerView;
 
+
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *bannerDataArray;
+/** 商品列表页banner */
+@property (nonatomic, strong) NSMutableArray *storeBannerArray;
 
 @end
 
@@ -40,12 +43,21 @@ NSString *const kMainPageCellID = @"mainPageCell";
     return _bannerDataArray;
 }
 
+- (NSMutableArray *)storeBannerArray {
+    if (!_storeBannerArray) {
+        _storeBannerArray = [NSMutableArray array];
+    }
+    return _storeBannerArray;
+}
+
 #pragma mark - <Life Cycle>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.navigationController.navigationBarHidden = YES;
     [self setupTableView];
+    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -66,6 +78,44 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (void)loadData {
     
+    NSMutableArray *pathArray = [NSMutableArray arrayWithObjects:@"api", @"cards", nil];
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    params[@"version"] = @"2.9.2";
+    
+    WeakSelf
+    [self.netManager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPIX pathArray:pathArray]
+                                       parameter:params
+                                returnValueBlock:^(NSDictionary *returnValue) {
+                                    NSLog(@"%@", returnValue);
+                                    
+                                    NSArray *cards = returnValue[@"cards"];
+                                    if (cards && cards.count > 0) {
+                                        [weakSelf.dataArray removeAllObjects];
+                                        [weakSelf.bannerDataArray removeAllObjects];
+                                        [weakSelf.storeBannerArray removeAllObjects];
+                                        
+                                        for (NSDictionary *cardDic in cards) {
+                                            NSNumber *cardType = cardDic[@"card_type"];
+                                            if (![@[@(14), @(15), @(16), @(17), @(18), @(19), @(20)] containsObject:cardType]) {
+                                                if ([cardType isEqualToNumber:@(3)]) {
+                                                }
+                                                else if ([cardType isEqualToNumber:@(10)] || [cardType isEqualToNumber:@(11)]) {
+                                                }
+                                                else {
+                                                }
+                                            }
+                                        }
+                                        
+                                        
+                                    }
+                                }
+                                  errorCodeBlock:^(NSString *code, NSString *msg) {
+                                      
+                                      [SVProgressHUD showErrorWithStatus:msg];
+                                  }
+                                    failureBlock:^(NSError *error) {
+                                        [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
+                                    }];
 }
 
 - (void)loadMoreData {
@@ -95,16 +145,16 @@ NSString *const kMainPageCellID = @"mainPageCell";
     return cardModel.cellHeight;
 }
 
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//    NABannerView *bannerView = [[NABannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)
-//                                                         cardArray:self.bannerDataArray
-//                                                        clickBlock:^(NAMainCardModel *cardModel) {
-//                                                            NSLog(@"点击了banner");
-//                                                        }];
-//    
-//    self.bannerView = bannerView;
-//    return bannerView;
-//}
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    NABannerView *bannerView = [[NABannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)
+                                                         cardArray:self.bannerDataArray
+                                                        clickBlock:^(NAMainCardModel *cardModel) {
+                                                            NSLog(@"点击了banner");
+                                                        }];
+    
+    self.bannerView = bannerView;
+    return bannerView;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     

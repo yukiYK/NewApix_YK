@@ -75,6 +75,7 @@
 + (void)setToken:(NSString *)token {
 }
 
+
 #pragma mark - <上下拉刷新 - mj_refresh>
 - (MJRefreshGifHeader *)createMJRefreshGifHeaderWithTarget:(id)target action:(SEL)action {
     
@@ -99,6 +100,22 @@
     [gifFooter setImages:self.loadingRefreshingImages forState:MJRefreshStateRefreshing];
     gifFooter.refreshingTitleHidden = YES;
     return gifFooter;
+}
+
+/** 生成无更多数据footer */
+- (UIView *)createNoMoreDataFooterView {
+    
+    UIView *footerView = [[UIView alloc] init];
+    footerView.frame = CGRectMake(0, 0, kScreenWidth, 80);
+    UILabel *creditFootLabel = [[UILabel alloc]init];
+    creditFootLabel.textColor = [UIColor colorFromString:@"999999"];
+    creditFootLabel.font = [UIFont systemFontOfSize:10];
+    creditFootLabel.frame = CGRectMake(0, 30, kScreenWidth, 35);
+    creditFootLabel.text = @"已经到底了，别扯了╮(╯▽╰)╭";
+    footerView.backgroundColor = [UIColor colorFromString:@"f2f2f2"];
+    creditFootLabel.textAlignment = NSTextAlignmentCenter;
+    
+    return footerView;
 }
 
 @end
