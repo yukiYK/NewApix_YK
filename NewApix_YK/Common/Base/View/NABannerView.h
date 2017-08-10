@@ -12,6 +12,8 @@ typedef void(^BannerClickedBlock) (NAMainCardModel *cardModel);
 
 @interface NABannerView : UIView
 
+
+
 /**
  初始化方法
 
@@ -24,6 +26,8 @@ typedef void(^BannerClickedBlock) (NAMainCardModel *cardModel);
                     cardArray:(NSArray *)cardArray
                    clickBlock:(BannerClickedBlock)clickBlock;
 
+/** 更新banner数据 */
+- (void)setupWithCardArray:(NSArray *)cardArray;
 
 /** 开始动画 在页面WillAppear的时候调用 */
 - (void)startAnimation;

@@ -58,23 +58,43 @@ NSString *const kMainPageCellID = @"mainPageCell";
     self.navigationController.navigationBarHidden = YES;
     [self setupTableView];
     [self loadData];
+    [self addNotifications];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    
+    [super viewWillAppear:animated];
+    [self.bannerView startAnimation];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    
+    [super viewDidDisappear:animated];
+    [self.bannerView stopAnimation];
 }
 
 #pragma mark - <Private Method>
 - (void)setupTableView {
+    
+    [self.mainTableView registerNib:[UINib nibWithNibName:kMainPageCellName bundle:nil] forCellReuseIdentifier:kMainPageCellID];
+    self.mainTableView.tableHeaderView = [self createHeaderView];
+    
     self.mainTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadData)];
     self.mainTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreData)];
-    [self.mainTableView registerNib:[UINib nibWithNibName:kMainPageCellName bundle:nil] forCellReuseIdentifier:kMainPageCellID];
 }
 
+- (UIView *)createHeaderView {
+    NABannerView *bannerView = [[NABannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)
+                                                         cardArray:self.bannerDataArray
+                                                        clickBlock:^(NAMainCardModel *cardModel) {
+                                                            NSLog(@"点击了banner");
+                                                        }];
+    
+    self.bannerView = bannerView;
+    return bannerView;
+}
+
+- (void)addNotifications {
+    
+}
 
 - (void)loadData {
     
@@ -98,23 +118,29 @@ NSString *const kMainPageCellID = @"mainPageCell";
                                             NSNumber *cardType = cardDic[@"card_type"];
                                             if (![@[@(14), @(15), @(16), @(17), @(18), @(19), @(20)] containsObject:cardType]) {
                                                 if ([cardType isEqualToNumber:@(3)]) {
+                                                    [weakSelf.bannerDataArray addObject:cardDic];
                                                 }
                                                 else if ([cardType isEqualToNumber:@(10)] || [cardType isEqualToNumber:@(11)]) {
+                                                    [weakSelf.storeBannerArray addObject:cardDic];
                                                 }
                                                 else {
+                                                    [weakSelf.dataArray addObject:cardDic];
                                                 }
                                             }
                                         }
-                                        
-                                        
+                                        [weakSelf.mainTableView reloadData];
+                                        [weakSelf.bannerView setupWithCardArray:weakSelf.bannerDataArray];
                                     }
+                                    [weakSelf.mainTableView.mj_header endRefreshing];
                                 }
                                   errorCodeBlock:^(NSString *code, NSString *msg) {
                                       
                                       [SVProgressHUD showErrorWithStatus:msg];
+                                      [weakSelf.mainTableView.mj_header endRefreshing];
                                   }
                                     failureBlock:^(NSError *error) {
                                         [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
+                                        [weakSelf.mainTableView.mj_header endRefreshing];
                                     }];
 }
 
@@ -143,17 +169,6 @@ NSString *const kMainPageCellID = @"mainPageCell";
     
     NAMainCardModel *cardModel = [NAMainCardModel yy_modelWithJSON:self.dataArray[indexPath.row]];
     return cardModel.cellHeight;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NABannerView *bannerView = [[NABannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)
-                                                         cardArray:self.bannerDataArray
-                                                        clickBlock:^(NAMainCardModel *cardModel) {
-                                                            NSLog(@"点击了banner");
-                                                        }];
-    
-    self.bannerView = bannerView;
-    return bannerView;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

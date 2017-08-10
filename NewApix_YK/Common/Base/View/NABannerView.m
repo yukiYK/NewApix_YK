@@ -14,8 +14,6 @@
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) UIPageControl *pageControl;
 
-// 数据源
-@property (nonatomic, strong) NSArray *cardArray;
 @property (nonatomic, copy) BannerClickedBlock clickBlock;
 
 @property (nonatomic, strong) NSTimer *timer;
@@ -23,6 +21,8 @@
 @property (nonatomic, assign) BOOL isAnimate;
 @property (nonatomic, assign) NSInteger currentPage;
 
+// 数据源
+@property (nonatomic, strong) NSArray *cardArray;
 @property (nonatomic, strong) NSMutableArray *imageViewArray;
 
 @end
@@ -41,9 +41,10 @@
                     cardArray:(NSArray *)cardArray
                    clickBlock:(BannerClickedBlock)clickBlock {
     if (self = [super initWithFrame:frame]) {
-        self.cardArray = cardArray.copy;
+        
         self.clickBlock = clickBlock;
         self.currentPage = 1;
+        self.cardArray = cardArray;
         [self setupSubviews];
         
         NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(bannerScroll) userInfo:nil repeats:YES];
@@ -52,7 +53,16 @@
     return self;
 }
 
+- (void)setupWithCardArray:(NSArray *)cardArray {
+    if (!cardArray || cardArray.count < 1) return;
+    
+    self.cardArray = cardArray;
+    [self updateSubviews];
+}
+
 - (void)startAnimation {
+    if (self.timer) return;
+    
     NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(bannerScroll) userInfo:nil repeats:YES];
     self.timer = timer;
 }
@@ -81,40 +91,62 @@
         self.scrollView.contentSize = self.bounds.size;
     }
     else {
-        for (int i=0;i<self.cardArray.count + 2;i++) {
-            
-            NAMainCardModel *cardModel = nil;
-            if (i == 0) {
-                cardModel = self.cardArray.lastObject;
-            }
-            else if (i == self.cardArray.count + 1) {
-                cardModel = self.cardArray.firstObject;
-            }
-            else {
-                cardModel = self.cardArray[i-1];
-            }
-            
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardWidth * i, 0, cardWidth, self.bounds.size.height)];
-            [imageView sd_setImageWithURL:[NSURL URLWithString:cardModel.img] placeholderImage:[kGetImage(kImageDefault) cutImageAdaptImageViewSize:imageView.bounds.size]];
-            imageView.userInteractionEnabled = YES;
-            imageView.tag = 100 + i - 1;
-            [self.scrollView addSubview:imageView];
-            [self.imageViewArray addObject:imageView];
-            
-            UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onImageClicked:)];
-            [imageView addGestureRecognizer:tapGes];
-        }
-        self.scrollView.contentSize = CGSizeMake(cardWidth * (self.cardArray.count + 2), self.bounds.size.height);
+        [self updateSubviews];
     }
     
     // pageControl
-    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:self.bounds];
+    UIPageControl *pageControl = [[UIPageControl alloc] init];
     pageControl.currentPageIndicatorTintColor = [UIColor brownColor];
     pageControl.pageIndicatorTintColor = [UIColor grayColor];
     pageControl.numberOfPages = self.cardArray.count;
     [pageControl addTarget:self action:@selector(onPageControlClicked:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:pageControl];
     self.pageControl = pageControl;
+}
+
+- (void)updateSubviews {
+    // 移除旧subviews
+    for (UIView *view in self.scrollView.subviews) {
+        [view removeFromSuperview];
+    }
+    [self.imageViewArray removeAllObjects];
+    
+    // 添加新subviews
+    CGFloat cardWidth = self.bounds.size.width;
+    for (int i=0;i<self.cardArray.count + 2;i++) {
+        
+        NAMainCardModel *cardModel = nil;
+        if (i == 0) {
+            cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray.lastObject];
+        }
+        else if (i == self.cardArray.count + 1) {
+            cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray.firstObject];
+        }
+        else {
+            cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray[i-1]];
+        }
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(cardWidth * i, 0, cardWidth, self.bounds.size.height)];
+        [imageView sd_setImageWithURL:[NSURL URLWithString:cardModel.img] placeholderImage:[kGetImage(kImageDefault) cutImageAdaptImageViewSize:imageView.bounds.size]];
+        imageView.userInteractionEnabled = YES;
+        imageView.tag = 100 + i - 1;
+        [self.scrollView addSubview:imageView];
+        [self.imageViewArray addObject:imageView];
+        
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onImageClicked:)];
+        [imageView addGestureRecognizer:tapGes];
+    }
+    self.scrollView.contentSize = CGSizeMake(cardWidth * (self.cardArray.count + 2), self.bounds.size.height);
+    
+    // pageControl
+    if (self.cardArray.count <= 1) {
+        self.pageControl.hidden = YES;
+    }
+    else {
+        self.pageControl.numberOfPages = self.cardArray.count;
+        CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:self.pageControl.numberOfPages];
+        self.pageControl.frame = CGRectMake((self.bounds.size.width - pageControlSize.width)/2, self.bounds.size.height - pageControlSize.height, pageControlSize.width, pageControlSize.height);
+    }
 }
 
 - (void)fixContentOffset {
@@ -144,7 +176,7 @@
 
 - (void)onImageClicked:(UIImageView *)imageView {
     NSInteger index = imageView.tag - 100;
-    NAMainCardModel *cardModel = self.cardArray[index];
+    NAMainCardModel *cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray[index]];
     if (self.clickBlock) {
         self.clickBlock(cardModel);
     }

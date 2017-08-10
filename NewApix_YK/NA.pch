@@ -28,10 +28,10 @@
 #pragma mark - <不同环境的配置>
 // --------------------- 不同环境的配置 -------------
 // 是否是线上
-#define SERVER_ONLINE  0
+#define SERVER_ONLINE  1
 #if SERVER_ONLINE
 // 现网环境
-#define NSLog(...) {}
+//#define NSLog(...) {}
 
 #define SERVER_ADDRESS_APIX @"https://api.meixinlife.com"
 #define SERVER_ADDRESS_H5 @"https://meixinlife.com"
@@ -90,7 +90,6 @@
 
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
-
 
 
 

@@ -15,6 +15,13 @@
 static NSString * const kImageDefault = @"defaultImage";
 static NSString * const kImageChevronLeftWhite = @"chevron_left_white";
 
+#pragma mark - <NotificationName>
+static NSString * const kNotificationNetChange = @"kNotificationNetChange";
+//static NSString * const kNotificationNetChange = @"defaultImage";
+//static NSString * const kNotificationNetChange = @"defaultImage";
+//static NSString * const kNotificationNetChange = @"defaultImage";
+//static NSString * const kNotificationNetChange = @"defaultImage";
+
 // 第三方的一些key
 static NSString * const kUMAppKey = @"5784cbb2e0f55ac55e000978";
 static NSString * const kUMChannelID = @"App Store";

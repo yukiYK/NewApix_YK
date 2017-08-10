@@ -84,16 +84,14 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         
         if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//            NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
             NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
             NSString *msg = @"请求失败";//[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
-            NSDictionary *data = responseObject[@"data"];
             
             NSLog(@"code: %@",code);
             
             if ([code isEqualToString:@"0"]) {
                 
-                block(data);
+                block(responseObject);
             }
             else {
                 NSString *message = [NSString stringWithFormat:@"%@", msg];
@@ -138,16 +136,14 @@
             progressBlock(uploadProgress);
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-//                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
                 NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
                 NSString *msg = @"请求失败";//[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
-                NSDictionary *data = responseObject[@"data"];
                 
                 NSLog(@"code: %@",code);
                 
                 if ([code isEqualToString:@"0"]) {
                     
-                    block(data);
+                    block(responseObject);
                 }
                 else {
                     NSString *message = [NSString stringWithFormat:@"%@", msg];
@@ -171,13 +167,12 @@
 //                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
                 NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
                 NSString *msg = @"请求失败"; //[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
-                NSDictionary *data = responseObject[@"data"];
                 
                 NSLog(@"code: %@",code);
                 
                 if ([code isEqualToString:@"0"]) {
                     
-                    block(data);
+                    block(responseObject);
                 }
                 else {
                     NSString *message = [NSString stringWithFormat:@"%@", msg];

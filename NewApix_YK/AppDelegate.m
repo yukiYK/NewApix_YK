@@ -13,6 +13,8 @@
 
 @interface AppDelegate ()
 
+@property (nonatomic, assign) AFNetworkReachabilityStatus netStatus;
+
 @end
 
 @implementation AppDelegate
@@ -35,7 +37,10 @@
     
     [self initMeiQia];
     
-    
+    // 监听网络状态变化
+//    AFNetworkReachabilityManager
+    self.netStatus = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
     return YES;
 }
@@ -134,5 +139,14 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:kShareQQAppKey appSecret:nil redirectURL:SERVER_ADDRESS_H5];
 }
 
+
+/** 监听到网络变化 */
+- (void)reachabilityChanged {
+    AFNetworkReachabilityStatus currentNetStatus = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus;
+    if (self.netStatus == AFNetworkReachabilityStatusNotReachable && currentNetStatus != AFNetworkReachabilityStatusNotReachable) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationNetChange object:nil];
+    }
+    self.netStatus = currentNetStatus;
+}
 
 @end
