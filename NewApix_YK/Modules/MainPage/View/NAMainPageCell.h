@@ -11,6 +11,6 @@
 
 @interface NAMainPageCell : UITableViewCell
 
-@property (nonatomic, strong) NAMainCardModel *cardMadel;
+@property (nonatomic, strong) NAMainCardModel *cardModel;
 
 @end

@@ -17,7 +17,7 @@
 @property (nonatomic, copy) BannerClickedBlock clickBlock;
 
 @property (nonatomic, strong) NSTimer *timer;
-/** 是否已经在自动滚动 */
+/** 是否已经在自动滚动 暂未用 */
 @property (nonatomic, assign) BOOL isAnimate;
 @property (nonatomic, assign) NSInteger currentPage;
 
@@ -53,11 +53,16 @@
     return self;
 }
 
-- (void)setupWithCardArray:(NSArray *)cardArray {
+- (void)setupWithCardArray:(NSArray *)cardArray clickBlock:(BannerClickedBlock)clickBlock {
     if (!cardArray || cardArray.count < 1) return;
     
+    [self stopAnimation];
+    
     self.cardArray = cardArray;
+    self.clickBlock = clickBlock;
     [self updateSubviews];
+    
+    [self startAnimation];
 }
 
 - (void)startAnimation {
@@ -68,6 +73,8 @@
 }
 
 - (void)stopAnimation {
+    if (!self.timer) return;
+    
     [self.timer invalidate];
     self.timer = nil;
 }
@@ -96,10 +103,11 @@
     
     // pageControl
     UIPageControl *pageControl = [[UIPageControl alloc] init];
-    pageControl.currentPageIndicatorTintColor = [UIColor brownColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor whiteColor];
     pageControl.pageIndicatorTintColor = [UIColor grayColor];
     pageControl.numberOfPages = self.cardArray.count;
-    [pageControl addTarget:self action:@selector(onPageControlClicked:) forControlEvents:UIControlEventValueChanged];
+    pageControl.currentPage = 0;
+//    [pageControl addTarget:self action:@selector(onPageControlClicked:) forControlEvents:UIControlEventValueChanged];
     [self addSubview:pageControl];
     self.pageControl = pageControl;
 }
@@ -137,6 +145,7 @@
         [imageView addGestureRecognizer:tapGes];
     }
     self.scrollView.contentSize = CGSizeMake(cardWidth * (self.cardArray.count + 2), self.bounds.size.height);
+    self.scrollView.contentOffset = CGPointMake(cardWidth, 0);
     
     // pageControl
     if (self.cardArray.count <= 1) {
@@ -144,6 +153,7 @@
     }
     else {
         self.pageControl.numberOfPages = self.cardArray.count;
+        self.pageControl.currentPage = 0;
         CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:self.pageControl.numberOfPages];
         self.pageControl.frame = CGRectMake((self.bounds.size.width - pageControlSize.width)/2, self.bounds.size.height - pageControlSize.height, pageControlSize.width, pageControlSize.height);
     }
@@ -152,7 +162,7 @@
 - (void)fixContentOffset {
     
     CGFloat scrollWidth = self.bounds.size.width;
-    if (self.scrollView.contentOffset.x > scrollWidth * (self.cardArray.count + 1) * 1.1) {
+    if (self.scrollView.contentOffset.x > scrollWidth * self.cardArray.count * 1.1) {
         [self.scrollView setContentOffset:CGPointMake(scrollWidth, 0)];
     }
     else if (self.scrollView.contentOffset.x < scrollWidth * 0.9) {
@@ -166,28 +176,30 @@
 #pragma mark - <事件>
 - (void)bannerScroll {
     
+    
     CGFloat scrollWidth = self.bounds.size.width;
     [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + scrollWidth, 0) animated:YES];
 //    [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentOffset.x + scrollWidth, 0, scrollWidth, self.scrollView.bounds.size.height) animated:YES];
     
-    [self fixContentOffset];
-    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_MSEC * 300)), dispatch_get_main_queue(), ^{
+        [self fixContentOffset];
+    });
+     
 }
 
-- (void)onImageClicked:(UIImageView *)imageView {
-    NSInteger index = imageView.tag - 100;
+- (void)onImageClicked:(UITapGestureRecognizer *)tap {
+    NSInteger index = tap.view.tag - 100;
     NAMainCardModel *cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray[index]];
     if (self.clickBlock) {
         self.clickBlock(cardModel);
     }
 }
 
-- (void)onPageControlClicked:(UIPageControl *)pageControl {
-    
-    CGFloat scrollWidth = self.bounds.size.width;
-    [self.scrollView setContentOffset:CGPointMake((pageControl.currentPage + 1) * scrollWidth, 0) animated:YES];
-    
-}
+//- (void)onPageControlClicked:(UIPageControl *)pageControl {
+//    
+//    CGFloat scrollWidth = self.bounds.size.width;
+//    [self.scrollView setContentOffset:CGPointMake((pageControl.currentPage + 1) * scrollWidth, 0) animated:YES];
+//}
 
 #pragma mark - <UIScrollViewDelegate>
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -197,12 +209,5 @@
     [self fixContentOffset];
 }
 
-/*
- // Only override drawRect: if you perform custom drawing.
- // An empty implementation adversely affects performance during animation.
- - (void)drawRect:(CGRect)rect {
- // Drawing code
- }
- */
 
 @end

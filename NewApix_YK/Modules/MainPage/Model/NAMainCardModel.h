@@ -23,7 +23,7 @@
  *  8 商品详情   9 商城页面   12攻略  13无息贷款   21新加非会员无息贷款  14-20暂不用
  */
 @property (nonatomic, assign) NSInteger card_type;
-/**  */
+/** 卡片左上角小图标 */
 @property (nonatomic, copy) NSString *card_type_img;
 /**  */
 @property (nonatomic, copy) NSString *card_type_name;

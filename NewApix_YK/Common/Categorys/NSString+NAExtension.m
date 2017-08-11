@@ -185,4 +185,11 @@
     return returnValue;
 }
 
+- (BOOL)checkEmpty {
+    if (self == nil || [self isEqualToString:@""] || [self isEqualToString:@"<null>"] || [self isEqualToString:@"(null)"] || [self isEqualToString:@"null"] || [self isEqualToString:@"NULL"]) {
+        return YES;
+    }
+    else return NO;
+}
+
 @end

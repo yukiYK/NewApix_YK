@@ -112,8 +112,9 @@
     creditFootLabel.font = [UIFont systemFontOfSize:10];
     creditFootLabel.frame = CGRectMake(0, 30, kScreenWidth, 35);
     creditFootLabel.text = @"已经到底了，别扯了╮(╯▽╰)╭";
-    footerView.backgroundColor = [UIColor colorFromString:@"f2f2f2"];
+    footerView.backgroundColor = [UIColor clearColor];
     creditFootLabel.textAlignment = NSTextAlignmentCenter;
+    [footerView addSubview:creditFootLabel];
     
     return footerView;
 }

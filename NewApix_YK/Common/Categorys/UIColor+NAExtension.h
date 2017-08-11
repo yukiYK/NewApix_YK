@@ -19,9 +19,9 @@
 //
 //#define kLightBlueColor [UIColor colorFromString:@"4285f4"]
 //#define kTextGrayColor [UIColor colorFromString:@"848585"]
-//#define kTextLightGrayColor [UIColor colorFromString:@"cccccc"]
+
 //#define kDeepBlueColor [UIColor colorFromString:@"OD5BDD"]
-//#define kGraySeperatorColor [UIColor colorFromString:@"e7eaee"]
+
 //#define kCoinGrayColor [UIColor colorFromString:@"9e9e9e"]
 //#define kCoinYellowColor [UIColor colorFromString:@"d9a75f"]
 //#define kGrayBackgroundColor [UIColor colorFromString:@"f8f8f8"]
@@ -29,8 +29,10 @@
 //#define kWPBlueColor [UIColor colorFromString:@"526cce"]
 //#define kSeparatorViewColor [UIColor colorFromString:@"e0e0e0"]
 
+#define kColorGraySeperator [UIColor colorFromString:@"f2f2f2"]
 #define kColorLightBlue  [UIColor colorFromString:@"89abe3"]
-#define kBlackTextColor [UIColor colorFromString:@"333333"]
+#define kColorBlackText [UIColor colorFromString:@"333333"]
+#define kColorTextLightGray [UIColor colorFromString:@"999999"]
 
 @interface UIColor (NAExtension)
 

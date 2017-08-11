@@ -34,4 +34,7 @@
  */
 - (BOOL)stringContainsEmoji;
 
+/** 判断string是否为空 */
+- (BOOL)checkEmpty;
+
 @end

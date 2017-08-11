@@ -56,6 +56,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
     // Do any additional setup after loading the view from its nib.
     
     self.navigationController.navigationBarHidden = YES;
+    
     [self setupTableView];
     [self loadData];
     [self addNotifications];
@@ -76,16 +77,20 @@ NSString *const kMainPageCellID = @"mainPageCell";
     
     [self.mainTableView registerNib:[UINib nibWithNibName:kMainPageCellName bundle:nil] forCellReuseIdentifier:kMainPageCellID];
     self.mainTableView.tableHeaderView = [self createHeaderView];
+    self.mainTableView.tableFooterView = [[NACommon sharedCommon] createNoMoreDataFooterView];
     
+    // 上下拉刷新控件
     self.mainTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadData)];
-    self.mainTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreData)];
+//    self.mainTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreData)];
 }
 
 - (UIView *)createHeaderView {
+    WeakSelf
     NABannerView *bannerView = [[NABannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)
                                                          cardArray:self.bannerDataArray
                                                         clickBlock:^(NAMainCardModel *cardModel) {
                                                             NSLog(@"点击了banner");
+                                                            [weakSelf transformControlerWithModel:cardModel];
                                                         }];
     
     self.bannerView = bannerView;
@@ -94,13 +99,18 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (void)addNotifications {
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(netChange) name:kNotificationNetChange object:nil];
+}
+
+- (void)netChange {
+    NSLog(@"现在有网了！");
 }
 
 - (void)loadData {
     
     NSMutableArray *pathArray = [NSMutableArray arrayWithObjects:@"api", @"cards", nil];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"version"] = @"2.9.2";
+    params[@"version"] = @"2.9.5";
     
     WeakSelf
     [self.netManager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPIX pathArray:pathArray]
@@ -129,7 +139,10 @@ NSString *const kMainPageCellID = @"mainPageCell";
                                             }
                                         }
                                         [weakSelf.mainTableView reloadData];
-                                        [weakSelf.bannerView setupWithCardArray:weakSelf.bannerDataArray];
+                                        [weakSelf.bannerView setupWithCardArray:weakSelf.bannerDataArray clickBlock:^(NAMainCardModel *cardModel) {
+                                            NSLog(@"点击了banner");
+                                            [weakSelf transformControlerWithModel:cardModel];
+                                        }];
                                     }
                                     [weakSelf.mainTableView.mj_header endRefreshing];
                                 }
@@ -144,12 +157,62 @@ NSString *const kMainPageCellID = @"mainPageCell";
                                     }];
 }
 
-- (void)loadMoreData {
-}
+// 上拉加载更多
+//- (void)loadMoreData {
+//}
 
-
+/** 根据cardModel进行页面跳转 */
 - (void)transformControlerWithModel:(NAMainCardModel *)model {
     
+    switch (model.card_type) {
+        case 0: {
+            // 第三方web页
+        }
+            break;
+        case 2: {
+            // 攻略模块
+        }
+            break;
+        case 3: {
+            // 头条
+        }
+            break;
+        case 4: {
+            // 社区
+        }
+            break;
+        case 5: {
+            // 信用体检
+        }
+            break;
+        case 6: {
+            // 智能借款
+        }
+            break;
+        case 7: {
+            // 还款助手
+        }
+            break;
+        case 8: {
+            // 信用卡
+        }
+            break;
+        case 9: {
+            // 征信
+        }
+            break;
+        case 10: {
+            // 商城
+        }
+            break;
+        case 11: {
+            // 商品详情
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
@@ -159,8 +222,9 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NAMainPageCell *cell = [tableView dequeueReusableCellWithIdentifier:kMainPageCellID forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     NAMainCardModel *model = [NAMainCardModel yy_modelWithJSON:self.dataArray[indexPath.row]];
-    cell.cardMadel = model;
+    cell.cardModel = model;
     
     return cell;
 }
@@ -172,6 +236,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
     NAMainCardModel *cardModel = [NAMainCardModel yy_modelWithJSON:self.dataArray[indexPath.row]];
     [self transformControlerWithModel:cardModel];
