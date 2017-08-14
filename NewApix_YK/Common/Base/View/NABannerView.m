@@ -169,22 +169,25 @@
         [self.scrollView setContentOffset:CGPointMake(scrollWidth * self.cardArray.count, 0)];
     }
     
+    
     NSInteger page = round((self.scrollView.contentOffset.x - scrollWidth)/scrollWidth);
     self.pageControl.currentPage = page;
+    // 修复可能出现的错位问题
+//    if (round(self.scrollView.contentOffset.x) != scrollWidth * (page + 1)) {
+//        [self.scrollView setContentOffset:CGPointMake(scrollWidth * (page + 1), 0)];
+//    }
 }
 
 #pragma mark - <事件>
 - (void)bannerScroll {
     
-    
     CGFloat scrollWidth = self.bounds.size.width;
-    [self.scrollView setContentOffset:CGPointMake(self.scrollView.contentOffset.x + scrollWidth, 0) animated:YES];
+    [self.scrollView setContentOffset:CGPointMake((self.pageControl.currentPage + 2) * scrollWidth, 0) animated:YES];
 //    [self.scrollView scrollRectToVisible:CGRectMake(self.scrollView.contentOffset.x + scrollWidth, 0, scrollWidth, self.scrollView.bounds.size.height) animated:YES];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_MSEC * 300)), dispatch_get_main_queue(), ^{
         [self fixContentOffset];
     });
-     
 }
 
 - (void)onImageClicked:(UITapGestureRecognizer *)tap {

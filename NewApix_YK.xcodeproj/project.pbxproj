@@ -15,6 +15,8 @@
 		4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381661F3841D5008BC8FD /* NAMainCardModel.m */; };
 		4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381691F384F71008BC8FD /* NABannerView.m */; };
 		4A723D5C1F3C6D49007D38FC /* NAViewControllerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A723D5B1F3C6D49007D38FC /* NAViewControllerCenter.m */; };
+		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
+		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
 		4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */; };
 		4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA461F2F248500A9308F /* NALoginController.m */; };
@@ -77,6 +79,10 @@
 		4A6381691F384F71008BC8FD /* NABannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABannerView.m; sourceTree = "<group>"; };
 		4A723D5A1F3C6D49007D38FC /* NAViewControllerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewControllerCenter.h; sourceTree = "<group>"; };
 		4A723D5B1F3C6D49007D38FC /* NAViewControllerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAViewControllerCenter.m; sourceTree = "<group>"; };
+		4A7315421F3D604B00044FE6 /* NACommonWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommonWebController.h; sourceTree = "<group>"; };
+		4A7315431F3D604B00044FE6 /* NACommonWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommonWebController.m; sourceTree = "<group>"; };
+		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
+		4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+NAExtension.m"; sourceTree = "<group>"; };
 		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
@@ -417,6 +423,8 @@
 			children = (
 				4AFCA94C1F346C3500351B04 /* NABaseViewController.h */,
 				4AFCA94D1F346C3500351B04 /* NABaseViewController.m */,
+				4A7315421F3D604B00044FE6 /* NACommonWebController.h */,
+				4A7315431F3D604B00044FE6 /* NACommonWebController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -426,6 +434,8 @@
 			children = (
 				4AFCA94F1F346C3500351B04 /* NSString+NAExtension.h */,
 				4AFCA9501F346C3500351B04 /* NSString+NAExtension.m */,
+				4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */,
+				4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */,
 				4AFCA9511F346C3500351B04 /* UIColor+NAExtension.h */,
 				4AFCA9521F346C3500351B04 /* UIColor+NAExtension.m */,
 				4AFCA9531F346C3500351B04 /* UIImage+NAExtension.h */,
@@ -648,6 +658,7 @@
 			files = (
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,
+				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
@@ -663,6 +674,7 @@
 				4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */,
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
 				4AFCA9671F346C3500351B04 /* NANavigationController.m in Sources */,
+				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
 				4AFCA9681F346C3500351B04 /* NATabbarController.m in Sources */,

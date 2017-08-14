@@ -14,7 +14,7 @@
 @property (nonatomic, copy) NSString *bottom_button_link;
 /** 底部label */
 @property (nonatomic, copy) NSString *bottom_button_name;
-/**  */
+/**  banner跳转类型 */
 @property (nonatomic, assign) NSInteger bottom_button_type;
 /** card类型
  *  3 banner 

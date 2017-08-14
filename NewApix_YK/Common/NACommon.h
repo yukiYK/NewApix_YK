@@ -14,6 +14,10 @@
 /** 初始化单例 */
 + (instancetype)sharedCommon;
 
+/** 是否是实际用户看到的版本，否则为审核版 */
++ (BOOL)isRealVersion;
++ (void)setRealVersion:(BOOL)real;
+
 /** 获取token */
 + (NSString *)getToken;
 /** 设置token */

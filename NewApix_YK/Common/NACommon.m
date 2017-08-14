@@ -75,6 +75,14 @@
 + (void)setToken:(NSString *)token {
 }
 
+/** 是否是实际用户看到的版本，否则为审核版 */
++ (BOOL)isRealVersion {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:kUserDefaultsOnOff];
+}
++ (void)setRealVersion:(BOOL)real {
+    [[NSUserDefaults standardUserDefaults] setBool:real forKey:kUserDefaultsOnOff];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 #pragma mark - <上下拉刷新 - mj_refresh>
 - (MJRefreshGifHeader *)createMJRefreshGifHeaderWithTarget:(id)target action:(SEL)action {

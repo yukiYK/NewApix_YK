@@ -33,7 +33,7 @@
 // 现网环境
 //#define NSLog(...) {}
 
-#define SERVER_ADDRESS_APIX @"https://api.meixinlife.com"
+#define SERVER_ADDRESS_API @"https://api.meixinlife.com"
 #define SERVER_ADDRESS_H5 @"https://meixinlife.com"
 
 
@@ -42,7 +42,7 @@
 // 测试环境
 #define NSLog(...) NSLog(__VA_ARGS__)
 
-#define SERVER_ADDRESS_APIX @"http://123.56.93.103:3000"
+#define SERVER_ADDRESS_API @"http://123.56.93.103:3000"
 //#define SERVER_ADDRESS_H5 @"http://192.168.1.194:3222"
 #define SERVER_ADDRESS_H5 @"http://112.126.92.173:3222"
 
@@ -52,14 +52,14 @@
 //// 测试环境
 //#define NSLog(...) NSLog(__VA_ARGS__)
 //
-//#define SERVER_ADDRESS_APIX @"http://123.56.93.103:3000"
+//#define SERVER_ADDRESS_API @"http://123.56.93.103:3000"
 //#define SERVER_ADDRESS_H5 @"http://192.168.1.194:3222"
 //
 //#else
 //// 现网环境
 //#define NSLog(...) {}
 //
-//#define SERVER_ADDRESS_APIX @"https://api.meixinlife.com"
+//#define SERVER_ADDRESS_API @"https://api.meixinlife.com"
 //#define SERVER_ADDRESS_H5 @"https://meixinlife.com"
 //
 //#endif

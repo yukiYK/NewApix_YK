@@ -46,8 +46,8 @@
     
     NSString *urlString = @"";
     switch (urlType) {
-        case NARequestURLTypeAPIX:
-            urlString = SERVER_ADDRESS_APIX;
+        case NARequestURLTypeAPI:
+            urlString = SERVER_ADDRESS_API;
             break;
         case NARequestURLTypeH5:
             urlString = SERVER_ADDRESS_H5;
@@ -91,19 +91,19 @@
             
             if ([code isEqualToString:@"0"]) {
                 
-                block(responseObject);
+                if (block) block(responseObject);
             }
             else {
                 NSString *message = [NSString stringWithFormat:@"%@", msg];
-                errorBlock(code, message);
+                if (errorBlock) errorBlock(code, message);
             }
         }
         else {
-            block(responseObject);
+            if (block) block(responseObject);
         }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        failureBlock(error);
+        if (failureBlock) failureBlock(error);
         NSLog(@"%@",error);
     }];
     
@@ -143,18 +143,18 @@
                 
                 if ([code isEqualToString:@"0"]) {
                     
-                    block(responseObject);
+                    if (block) block(responseObject);
                 }
                 else {
                     NSString *message = [NSString stringWithFormat:@"%@", msg];
-                    errorBlock(code, message);
+                    if (errorBlock) errorBlock(code, message);
                 }
             }
             else {
-                block(responseObject);
+                if (block) block(responseObject);
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            failureBlock(error);
+            if (failureBlock) failureBlock(error);
             NSLog(@"%@",error);
         }];
         
@@ -172,19 +172,19 @@
                 
                 if ([code isEqualToString:@"0"]) {
                     
-                    block(responseObject);
+                    if (block) block(responseObject);
                 }
                 else {
                     NSString *message = [NSString stringWithFormat:@"%@", msg];
-                    errorBlock(code, message);
+                    if (errorBlock) errorBlock(code, message);
                 }
             }
             else {
-                block(responseObject);
+                if (block) block(responseObject);
             }
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            failureBlock(error);
+            if (failureBlock) failureBlock(error);
             NSLog(@"%@",error);
         }];
     }

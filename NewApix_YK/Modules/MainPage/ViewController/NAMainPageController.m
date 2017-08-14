@@ -10,6 +10,8 @@
 #import "NAMainCardModel.h"
 #import "NABannerView.h"
 #import "NAMainPageCell.h"
+#import "NAViewControllerCenter.h"
+#import "NSAttributedString+NAExtension.h"
 
 NSString *const kMainPageCellName = @"NAMainPageCell";
 NSString *const kMainPageCellID = @"mainPageCell";
@@ -18,8 +20,13 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 @property (weak, nonatomic) IBOutlet UITableView *mainTableView;
 @property (nonatomic, strong) NABannerView *bannerView;
+/** banner下方的两排按钮 title imageName */
+@property (nonatomic, strong) NSArray *line1BtnTitleArray;
+@property (nonatomic, strong) NSArray *line2BtnTitleArray;
+@property (nonatomic, strong) NSArray *line1BtnImageArray;
+@property (nonatomic, strong) NSArray *line2BtnImageArray;
 
-
+/** 卡片列表data */
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, strong) NSMutableArray *bannerDataArray;
 /** 商品列表页banner */
@@ -29,6 +36,46 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 @implementation NAMainPageController
 #pragma mark - <Lazy Load>
+- (NSArray *)line1BtnTitleArray {
+    if (!_line1BtnTitleArray) {
+        if ([NACommon isRealVersion]) {
+            _line1BtnTitleArray = @[@"我要赚钱", @"9块9秒杀", @"无息贷款"];
+        }
+        else {
+            _line1BtnTitleArray = @[@"我要赚钱", @"美信生活", @"福利技能"];
+        }
+    }
+    return _line1BtnTitleArray;
+}
+- (NSArray *)line1BtnImageArray {
+    if (!_line1BtnImageArray) {
+        if ([NACommon isRealVersion]) {
+            _line1BtnImageArray = @[@"main_page_btn_money", @"main_page_btn_9.9", @"main_page_btn_loan"];
+        }
+        else {
+            _line1BtnImageArray = @[@"main_page_btn_money", @"main_page_btn_money", @"main_page_btn_loan"];
+        }
+    }
+    return _line1BtnImageArray;
+}
+- (NSArray *)line2BtnTitleArray {
+    if (!_line2BtnTitleArray) {
+        if ([NACommon isRealVersion]) {
+            _line2BtnTitleArray = @[@"特价话费", @"视频会员", @"社区快讯", @"我的钱包"];
+        }
+        else {
+            _line2BtnTitleArray = @[@"征信查询", @"银行卡", @"社区快讯", @"我的钱包"];
+        }
+    }
+    return _line2BtnTitleArray;
+}
+- (NSArray *)line2BtnImageArray {
+    if (!_line2BtnImageArray) {
+        _line2BtnImageArray = @[@"main_page_btn_phone", @"main_page_btn_video", @"main_page_btn_article", @"main_page_btn_wallet"];
+    }
+    return _line2BtnImageArray;
+}
+
 - (NSMutableArray *)dataArray {
     if (!_dataArray) {
         _dataArray = [NSMutableArray array];
@@ -55,8 +102,6 @@ NSString *const kMainPageCellID = @"mainPageCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.navigationController.navigationBarHidden = YES;
-    
     [self setupTableView];
     [self loadData];
     [self addNotifications];
@@ -64,6 +109,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = YES;
     [self.bannerView startAnimation];
 }
 
@@ -85,6 +131,9 @@ NSString *const kMainPageCellID = @"mainPageCell";
 }
 
 - (UIView *)createHeaderView {
+    UIView *headerView = [[UIView alloc] init];
+    
+    // banner
     WeakSelf
     NABannerView *bannerView = [[NABannerView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenWidth/2)
                                                          cardArray:self.bannerDataArray
@@ -92,9 +141,53 @@ NSString *const kMainPageCellID = @"mainPageCell";
                                                             NSLog(@"点击了banner");
                                                             [weakSelf transformControlerWithModel:cardModel];
                                                         }];
-    
+    [headerView addSubview:bannerView];
     self.bannerView = bannerView;
-    return bannerView;
+    
+    // 下方两排按钮view
+    CGFloat imageWidth = 36;
+    CGFloat btnHeight = 15 + imageWidth + 30 + 15;
+    
+    UIView *btnBgView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(bannerView.frame) + 8, kScreenWidth, btnHeight * 2 + 1)];
+    btnBgView.backgroundColor = [UIColor whiteColor];
+    [headerView addSubview:btnBgView];
+    headerView.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(btnBgView.frame));
+    
+    // 第一排
+    for (int i=0; i<self.line1BtnTitleArray.count; i++) {
+        
+        NSString *btnTitle = self.line1BtnTitleArray[i];
+        NSString *btnImage = self.line1BtnImageArray[i];
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/self.line1BtnTitleArray.count * i, 0, kScreenWidth/self.line1BtnTitleArray.count, btnHeight)];
+        button.tag = 101 + i;
+        [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(btnImage) imageWH:imageWidth title:btnTitle fontSize:12 titleColor:kColorBlackText spacing:10] forState:UIControlStateNormal];
+        button.titleLabel.numberOfLines = 0;
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [btnBgView addSubview:button];
+    }
+    // 分割线
+    UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, btnHeight, kScreenWidth - 30, 1)];
+    lineView.backgroundColor = [UIColor colorFromString:@"f7f5f5"];
+    [btnBgView addSubview:lineView];
+    
+    // 第二排
+    for (int i=0; i<self.line2BtnTitleArray.count; i++) {
+        
+        NSString *btnTitle = self.line2BtnTitleArray[i];
+        NSString *btnImage = self.line2BtnImageArray[i];
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/self.line2BtnTitleArray.count * i, CGRectGetMaxY(lineView.frame), kScreenWidth/self.line2BtnTitleArray.count, btnHeight)];
+        button.tag = 101 + self.line1BtnTitleArray.count + i;
+        [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(btnImage) imageWH:imageWidth title:btnTitle fontSize:12 titleColor:kColorBlackText spacing:10] forState:UIControlStateNormal];
+        button.titleLabel.numberOfLines = 0;
+        button.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [btnBgView addSubview:button];
+    }
+    
+    return headerView;
 }
 
 - (void)addNotifications {
@@ -110,10 +203,10 @@ NSString *const kMainPageCellID = @"mainPageCell";
     
     NSMutableArray *pathArray = [NSMutableArray arrayWithObjects:@"api", @"cards", nil];
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"version"] = @"2.9.5";
+    params[@"version"] = [NSString stringWithFormat:@"%@", VERSION];
     
     WeakSelf
-    [self.netManager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPIX pathArray:pathArray]
+    [self.netManager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPI pathArray:pathArray]
                                        parameter:params
                                 returnValueBlock:^(NSDictionary *returnValue) {
                                     NSLog(@"%@", returnValue);
@@ -164,49 +257,148 @@ NSString *const kMainPageCellID = @"mainPageCell";
 /** 根据cardModel进行页面跳转 */
 - (void)transformControlerWithModel:(NAMainCardModel *)model {
     
-    switch (model.card_type) {
-        case 0: {
-            // 第三方web页
+    // banner跳转
+    if (model.card_type == 3) {
+        switch (model.bottom_button_type) {
+            case 0: {
+                // 第三方web页
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 2: {
+                // 攻略模块
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 3: {
+                // 头条
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 4: {
+                // 社区
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 5: {
+                // 信用体检
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 6: {
+                // 智能借款
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 7: {
+                // 还款助手
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 8: {
+                // 信用卡
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 9: {
+                // 征信
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 10: {
+                // 商城
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 11: {
+                // 商品详情
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    // 下方卡片跳转
+    else {
+        switch (model.card_type) {
+            case 4: {
+                // 热卡推荐
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 5: {
+                // 智能推荐，第三方贷款 菠萝贷等
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 6: {
+                // 会员文章
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 7: {
+                // 视频卡
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 8: {
+                // 商品详情
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 9: {
+                // 商城页
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 12: {
+                // 攻略
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 13: {
+                // 无息贷款
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+            case 21: {
+                // 新加非会员无息贷款
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+}
+
+#pragma mark - <Event>
+/** banner下方button点击事件 */
+- (void)onMainBtnClicked:(UIButton *)button {
+    switch (button.tag - 100) {
+        case 1: {
         }
             break;
         case 2: {
-            // 攻略模块
         }
             break;
         case 3: {
-            // 头条
         }
             break;
         case 4: {
-            // 社区
         }
             break;
         case 5: {
-            // 信用体检
         }
             break;
         case 6: {
-            // 智能借款
         }
             break;
         case 7: {
-            // 还款助手
-        }
-            break;
-        case 8: {
-            // 信用卡
-        }
-            break;
-        case 9: {
-            // 征信
-        }
-            break;
-        case 10: {
-            // 商城
-        }
-            break;
-        case 11: {
-            // 商品详情
         }
             break;
             

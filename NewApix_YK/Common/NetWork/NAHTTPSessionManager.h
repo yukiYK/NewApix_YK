@@ -9,7 +9,7 @@
 #import <AFNetworking/AFNetworking.h>
 
 typedef NS_ENUM(NSInteger, NARequestURLType) {
-    NARequestURLTypeAPIX,
+    NARequestURLTypeAPI,
     NARequestURLTypeH5
 };
 

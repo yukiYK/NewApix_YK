@@ -32,6 +32,10 @@
     self.window = window;
     [self.window makeKeyAndVisible];
     
+    // 审核开关
+//    [NACommon setRealVersion:YES];
+    [self loadOnOff];
+    
     // 初始化第三方的工具
     [self initUMeng];
     
@@ -127,6 +131,22 @@
         }
     }];
     
+}
+
+/** 审核开关 */
+- (void)loadOnOff {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"name"] = [NSString stringWithFormat:@"version%@", VERSION];
+    param[@"origin"] = @"1";
+    
+    [[NAHTTPSessionManager sharedManager] netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPI pathArray:@[@"api", @"control"]] parameter:param returnValueBlock:^(NSDictionary *returnValue) {
+        if ([returnValue[@"switch"] integerValue] == 1) {
+            [NACommon setRealVersion:YES];
+        }
+        else if ([returnValue[@"switch"] integerValue] == 0) {
+            [NACommon setRealVersion:NO];
+        }
+    } errorCodeBlock:nil failureBlock:nil];
 }
 
 /** 配置各个分享平台 */
