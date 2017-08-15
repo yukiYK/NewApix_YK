@@ -8,7 +8,6 @@ target 'NewApix_YK' do
 
   # Pods for NewApix_YK
 pod 'UMengAnalytics-NO-IDFA'
-pod 'SDWebImage'
 pod 'AFNetworking'
 pod 'AESCrypt'
 pod 'MBProgressHUD'
@@ -18,6 +17,7 @@ pod 'TKAlert&TKActionSheet'
 pod 'WebViewJavascriptBridge'
 pod 'VTMagic'
 pod 'Masonry'
+pod 'SDWebImage/GIF'
 pod 'SVProgressHUD'
 pod 'YYModel'
 pod 'MJRefresh'

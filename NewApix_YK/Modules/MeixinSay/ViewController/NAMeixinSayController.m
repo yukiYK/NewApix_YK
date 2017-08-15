@@ -8,30 +8,146 @@
 
 #import "NAMeixinSayController.h"
 
-@interface NAMeixinSayController ()
+@interface NAMeixinSayController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+
+/** 头部两个button */
+@property (nonatomic, strong) UIButton *leftBtn;
+@property (nonatomic, strong) UIButton *rightBtn;
+
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+@property (nonatomic, strong) UITableView *essenceTableView;
+@property (nonatomic, strong) UITableView *communityTableView;
+
+
+@property (nonatomic, strong) NSMutableArray *essenceDataArray;
+@property (nonatomic, strong) NSMutableArray *communityDataArray;
 
 @end
 
 @implementation NAMeixinSayController
+#pragma mark - <Lazy Load>
+- (NSMutableArray *)essenceDataArray {
+    if (!_essenceDataArray) {
+        _essenceDataArray = [NSMutableArray array];
+    }
+    return _essenceDataArray;
+}
 
+- (NSMutableArray *)communityDataArray {
+    if (!_communityDataArray) {
+        _communityDataArray = [NSMutableArray array];
+    }
+    return _communityDataArray;
+}
+
+
+#pragma mark - <Life Cycle>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setupNavigation {
+    
+    UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kNavBarH)];
+    headView.backgroundColor = [UIColor clearColor];
+    [self.navigationController.navigationBar addSubview:headView];
+    
+    UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth/2 - 60)/2, 0, 60, kNavBarH)];
+    [leftBtn setTitle:@"精选" forState:UIControlStateNormal];
+    [leftBtn.titleLabel setFont:[UIFont systemFontOfSize:17]];
+    [leftBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [leftBtn setTitleColor:[UIColor colorFromString:@"89abec"] forState:UIControlStateSelected];
+    leftBtn.selected = YES;
+    [leftBtn addTarget:self action:@selector(onLeftBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:leftBtn];
+    self.leftBtn = leftBtn;
+    
+    UIButton *rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/2 + (kScreenWidth/2 - 60)/2, 0, 60, kNavBarH)];
+    [rightBtn setTitle:@"社区" forState:UIControlStateNormal];
+    [rightBtn.titleLabel setFont:[UIFont systemFontOfSize:17]];
+    [rightBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [rightBtn setTitleColor:[UIColor colorFromString:@"89abec"] forState:UIControlStateSelected];
+    rightBtn.selected = NO;
+    [rightBtn addTarget:self action:@selector(onRightBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [headView addSubview:rightBtn];
+    self.rightBtn = rightBtn;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)setupSubviews {
+    
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kStatusBarH + kNavBarH, kScreenWidth, kScreenHeight - kStatusBarH - kNavBarH - kTabBarH)];
+    scrollView.pagingEnabled = YES;
+    scrollView.delegate = self;
+    scrollView.contentSize = CGSizeMake(kScreenWidth * 2, scrollView.frame.size.height);
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+    
+    UITableView *essenceTableView = [[UITableView alloc] initWithFrame:self.scrollView.bounds];
+    essenceTableView.delegate = self;
+    essenceTableView.dataSource = self;
+    essenceTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [scrollView addSubview:essenceTableView];
+    self.essenceTableView = essenceTableView;
+    
+    UITableView *communityTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, scrollView.bounds.size.height)];
+    communityTableView.delegate = self;
+    communityTableView.dataSource = self;
+    communityTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [scrollView addSubview:communityTableView];
+    self.communityTableView = communityTableView;
 }
-*/
+
+
+- (void)loadEssenceData {
+    
+}
+
+- (void)loadMoreEssenceData {
+    
+}
+
+- (void)loadCommunityData {
+    
+}
+
+- (void)loadMoreCommunityData {
+    
+}
+
+#pragma mark - <Event>
+- (void)onLeftBtnClicked:(UIButton *)sender {
+    if (sender.selected) return;
+    
+    sender.selected = YES;
+    
+}
+
+- (void)onRightBtnClicked:(UIButton *)sender {
+}
+
+#pragma mark - <UITableViewDelegate, UITableViewDataSource>
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.essenceTableView)
+        return self.essenceDataArray.count;
+    return self.communityDataArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 44;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ()
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+#pragma mark - <UIScrollViewDelegate>
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+}
 
 @end

@@ -12,6 +12,7 @@
 #import "NAMainPageCell.h"
 #import "NAViewControllerCenter.h"
 #import "NSAttributedString+NAExtension.h"
+#import <FLAnimatedImage.h>
 
 NSString *const kMainPageCellName = @"NAMainPageCell";
 NSString *const kMainPageCellID = @"mainPageCell";
@@ -166,6 +167,8 @@ NSString *const kMainPageCellID = @"mainPageCell";
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [btnBgView addSubview:button];
+        
+        FLAnimatedImageView *gifImageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(button.width - 17, 0, 17, 18)];
     }
     // 分割线
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, btnHeight, kScreenWidth - 30, 1)];

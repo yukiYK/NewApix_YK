@@ -24,16 +24,33 @@
     // Override point for customization after application launch.
     
     // 设置根视图
+    // 先设置一个假的根视图，用于请求审核开关
     UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     window.backgroundColor = [UIColor whiteColor];
-    NATabbarController *tabbarC = [[NATabbarController alloc] init];
-    window.rootViewController = tabbarC;
+    UIViewController *vc = [[UIViewController alloc] init];
+    UIImageView *imgView = [[UIImageView alloc] initWithFrame:vc.view.bounds];
+    imgView.image = kGetImage(@"launch_image");
+    [vc.view addSubview:imgView];
+    window.rootViewController = vc;
     
     self.window = window;
     [self.window makeKeyAndVisible];
     
+    // 延时设置真正的根视图
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        window.backgroundColor = [UIColor whiteColor];
+        NATabbarController *tabbarC = [[NATabbarController alloc] init];
+        window.rootViewController = tabbarC;
+        
+        self.window = window;
+        [self.window makeKeyAndVisible];
+    });
+    
+    
     // 审核开关
-//    [NACommon setRealVersion:YES];
+    [NACommon setRealVersion:YES];
     [self loadOnOff];
     
     // 初始化第三方的工具

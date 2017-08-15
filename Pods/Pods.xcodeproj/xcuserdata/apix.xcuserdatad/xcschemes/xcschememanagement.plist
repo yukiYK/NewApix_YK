@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>FLAnimatedImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -77,17 +82,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>04667FC0422C063126AE8BA4DC419144</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>0B539A8417128A83842963F54CBC447F</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>13E87843F06C84DD22D32B1AC21720D9</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,12 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>191666218C787C00400029440B157E79</key>
+		<key>25A6921465A673FF7ADFEE9E0F9DFE67</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2FFB8F92668C7912E9C563C633FDDA2B</key>
+		<key>3E3DAE01B6B8BD492F154C156E73C675</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>47FD6CA7A7C17B117464DCBB5C9090DF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53F8571E2D572C4069860E38654A566A</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,22 +122,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>606AA093AC801F4B87DC843A4AA98A32</key>
+		<key>5CF94449D52733E502999CEF878C1291</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>7097FA9093606F769651DF0519184FD1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>71FEA958F191D0D8D1B507D1C248B282</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>74E28C6F6D87873A193E0874A41070D4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,7 +142,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A0101615CEE2CE811D3E6C7FDF02A84B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>B5E289E0A32AE19BC4BE45CA79E10436</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BE26E016B79C509E3C7442FF81EDFD80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
