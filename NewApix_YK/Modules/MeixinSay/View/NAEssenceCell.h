@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NAEssenceModel.h"
 
 @interface NAEssenceCell : UITableViewCell
+
+@property (nonatomic, strong) NAEssenceModel *model;
 
 @end

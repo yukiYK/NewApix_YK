@@ -9,7 +9,24 @@
 #import <Foundation/Foundation.h>
 #import <MJRefresh.h>
 
+typedef NS_ENUM(NSInteger, NAUserStatus) {
+    NAUserStatusNoLogin,     // 未登录
+    NAUserStatusLoginError,  // 被别人顶掉
+    NAUserStatusNormal,      // 普通用户
+    NAUserStatusOverdue,     // 会员过期
+    NAUserStatusVIP          // 金卡会员用户
+};
+
+typedef void(^LoadCompleteBlock) (NAUserStatus userStatus);
+
 @interface NACommon : NSObject
+
+@property (nonatomic, assign) NAUserStatus userStatus;
+/** 请求用户状态
+ *  注意！！此方法会请求后台获取用户状态，所以并不会即时更新userStatus
+ */
++ (void)loadUserStatusComplete:(LoadCompleteBlock)block;
+
 
 /** 初始化单例 */
 + (instancetype)sharedCommon;
@@ -30,5 +47,6 @@
 
 /** 生成无更多数据footer */
 - (UIView *)createNoMoreDataFooterView;
+
 
 @end

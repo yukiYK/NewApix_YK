@@ -33,6 +33,8 @@
 #define kColorLightBlue  [UIColor colorFromString:@"89abe3"]
 #define kColorBlackText [UIColor colorFromString:@"333333"]
 #define kColorTextLightGray [UIColor colorFromString:@"999999"]
+#define kColorHeaderGray [UIColor colorFromString:@"f4f4f4"]
+
 
 @interface UIColor (NAExtension)
 

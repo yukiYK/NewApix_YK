@@ -7,6 +7,13 @@
 //
 
 #import "NAMeixinSayController.h"
+#import "NAEssenceCell.h"
+#import "NACommunityCell.h"
+
+NSString * const kEssenceCellName = @"NAEssenceCell";
+NSString * const kEssenceCellID = @"essenceCell";
+NSString * const kCommunityCellName = @"NACommunityCell";
+NSString * const kCommunityCellID = @"communityCell";
 
 @interface NAMeixinSayController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 
@@ -88,7 +95,9 @@
     essenceTableView.delegate = self;
     essenceTableView.dataSource = self;
     essenceTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    [essenceTableView registerNib:[UINib nibWithNibName:kEssenceCellName bundle:nil] forCellReuseIdentifier:kEssenceCellID];
+    essenceTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadEssenceData)];
+    essenceTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreEssenceData)];
     [scrollView addSubview:essenceTableView];
     self.essenceTableView = essenceTableView;
     
@@ -96,6 +105,9 @@
     communityTableView.delegate = self;
     communityTableView.dataSource = self;
     communityTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [communityTableView registerNib:[UINib nibWithNibName:kCommunityCellName bundle:nil] forCellReuseIdentifier:kCommunityCellID];
+    communityTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadCommunityData)];
+    communityTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreCommunityData)];
     [scrollView addSubview:communityTableView];
     self.communityTableView = communityTableView;
 }
@@ -140,10 +152,18 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ()
+    if (tableView == self.essenceTableView) {
+        NAEssenceCell *essenceCell = [tableView dequeueReusableCellWithIdentifier:kEssenceCellID forIndexPath:indexPath];
+        return essenceCell;
+    }
+    else {
+        NACommunityCell *communityCell = [tableView dequeueReusableCellWithIdentifier:kCommunityCellID forIndexPath:indexPath];
+        return communityCell;
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 #pragma mark - <UIScrollViewDelegate>

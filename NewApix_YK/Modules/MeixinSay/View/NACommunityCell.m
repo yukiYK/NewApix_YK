@@ -8,6 +8,19 @@
 
 #import "NACommunityCell.h"
 
+@interface NACommunityCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView1;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView2;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView3;
+
+@property (weak, nonatomic) IBOutlet UIImageView *avatarIcon;
+@property (weak, nonatomic) IBOutlet UIButton *numberBtn;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+
+@end
+
 @implementation NACommunityCell
 
 - (void)awakeFromNib {
@@ -15,10 +28,7 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(NACommunityModel *)model {
 }
 
 @end

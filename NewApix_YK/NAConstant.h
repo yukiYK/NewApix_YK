@@ -10,9 +10,9 @@
 #ifndef NAConstant_h
 #define NAConstant_h
 
-#pragma mark - <常量>
+
 // --------------------- 一些常量 -------------
-// 通用imageName
+#pragma mark - <通用imageName>
 static NSString * const kImageDefault = @"defaultImage";
 static NSString * const kImageChevronLeftWhite = @"chevron_left_white";
 
@@ -25,8 +25,11 @@ static NSString * const kNotificationNetChange = @"kNotificationNetChange";
 
 #pragma mark - <UserDefault>
 static NSString * const kUserDefaultsOnOff = @"kUserDefaultsOnOff";
+static NSString * const kUserDefaultsUserStatus = @"kUserDefaultsUserStatus";
+static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";
 
-// 第三方的一些key
+
+#pragma mark - <第三方的一些key>
 static NSString * const kUMAppKey = @"5784cbb2e0f55ac55e000978";
 static NSString * const kUMChannelID = @"App Store";
 static NSString * const kMQAppKey = @"20b7d9bb2cbd59f895433bbbfd366a3d";
@@ -37,11 +40,11 @@ static NSString * const kShareWechatAppSecret = @"";
 
 
 
-
+#pragma mark - <通用数字>
 static CGFloat const kStatusBarH = 20.0;
 static CGFloat const kNavBarH = 44.0;
 static CGFloat const kTabBarH = 49.0;
-
+static CGFloat const kCommonMargin = 15.0;
 
 
 

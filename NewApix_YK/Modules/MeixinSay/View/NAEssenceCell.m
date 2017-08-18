@@ -8,6 +8,17 @@
 
 #import "NAEssenceCell.h"
 
+@interface NAEssenceCell ()
+
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *detailLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *readingAmountLabel;
+
+@property (weak, nonatomic) IBOutlet UIImageView *detailImageView;
+
+@end
+
 @implementation NAEssenceCell
 
 - (void)awakeFromNib {
@@ -15,10 +26,8 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setModel:(NAEssenceModel *)model {
+    
 }
 
 @end

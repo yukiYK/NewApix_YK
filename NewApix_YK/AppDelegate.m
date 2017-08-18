@@ -37,18 +37,6 @@
     [self.window makeKeyAndVisible];
     
     // 延时设置真正的根视图
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        
-        UIWindow *window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-        window.backgroundColor = [UIColor whiteColor];
-        NATabbarController *tabbarC = [[NATabbarController alloc] init];
-        window.rootViewController = tabbarC;
-        
-        self.window = window;
-        [self.window makeKeyAndVisible];
-    });
-    
-    
     // 审核开关
     [NACommon setRealVersion:YES];
     [self loadOnOff];
@@ -153,6 +141,7 @@
 /** 审核开关 */
 - (void)loadOnOff {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    NSLog(@"%@", VERSION);
     param[@"name"] = [NSString stringWithFormat:@"version%@", VERSION];
     param[@"origin"] = @"1";
     
@@ -163,6 +152,13 @@
         else if ([returnValue[@"switch"] integerValue] == 0) {
             [NACommon setRealVersion:NO];
         }
+        // 获取用户状态后设置真正的根视图
+        [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
+            NATabbarController *tabbarC = [[NATabbarController alloc] init];
+            self.window.rootViewController = tabbarC;
+            [self.window makeKeyAndVisible];
+        }];
+        
     } errorCodeBlock:nil failureBlock:nil];
 }
 

@@ -60,19 +60,12 @@
 
 #pragma mark - <Token>
 + (NSString *)getToken {
-    NSString *token = @"";
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"login"]) {
-        token = [defaults objectForKey:@"login"];
-    }
-    else if ([defaults objectForKey:@"register"]) {
-        token = [defaults objectForKey:@"register"];
-    }
-    return token;
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsToken];
 }
 
 
 + (void)setToken:(NSString *)token {
+    [[NSUserDefaults standardUserDefaults] setObject:token forKey:kUserDefaultsToken];
 }
 
 /** 是否是实际用户看到的版本，否则为审核版 */
@@ -125,6 +118,89 @@
     [footerView addSubview:creditFootLabel];
     
     return footerView;
+}
+
+- (NAUserStatus)userStatus {
+    
+    return [[NSUserDefaults standardUserDefaults] integerForKey:kUserDefaultsUserStatus];
+}
+- (void)setUserStatus:(NAUserStatus)userStatus {
+    [[NSUserDefaults standardUserDefaults] setInteger:userStatus forKey:kUserDefaultsUserStatus];
+}
+
++ (void)loadUserStatusComplete:(LoadCompleteBlock)block {
+    
+    NSString *token = [NACommon getToken];
+    if(!token){
+        [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusNoLogin forKey:kUserDefaultsUserStatus];
+        if (block) {
+            block(NAUserStatusNoLogin);
+        }
+        return;
+    }
+    
+    // 从后台获取用户状态
+    NSArray *pathArr = @[@"api", @"vip", @"time"];
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"code"] = @"0";
+    param[@"apix_token"] = token;
+    
+    NAHTTPSessionManager *manager = [NAHTTPSessionManager sharedManager];
+    [manager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPI pathArray:pathArr] parameter:param returnValueBlock:^(NSDictionary *returnValue) {
+        
+        NSLog(@"%@",returnValue);
+        if([returnValue[@"apix_login_code"] intValue] == -1) {
+            
+            [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusLoginError forKey:kUserDefaultsUserStatus];
+            if (block) {
+                block(NAUserStatusLoginError);
+            }
+        }
+        NSDictionary *dict = returnValue;
+        NSNumber *code = dict[@"code"];
+        
+        if([code isEqualToNumber:@(0)]) {
+            
+            NSNumber *num = dict[@"data"][0][@"status"];
+            //0是会员  2会员过期
+            //-1 非会员
+            if([num isEqualToNumber:@(2)]) {
+                // 会员已到期"
+                [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusOverdue forKey:kUserDefaultsUserStatus];
+                if (block) {
+                    block(NAUserStatusOverdue);
+                }
+            }else{
+                // V会员
+                [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusVIP forKey:kUserDefaultsUserStatus];
+                if (block) {
+                    block(NAUserStatusVIP);
+                }
+            }
+        }else if ([code isEqualToNumber:@(-1)]) {
+            // 暂未开通V会员";
+            [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusNormal forKey:kUserDefaultsUserStatus];
+            if (block) {
+                block(NAUserStatusNormal);
+            }
+        }
+        else {
+            [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusNormal forKey:kUserDefaultsUserStatus];
+            if (block) {
+                block(NAUserStatusNormal);
+            }
+        }
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusNormal forKey:kUserDefaultsUserStatus];
+        if (block) {
+            block(NAUserStatusNormal);
+        }
+    } failureBlock:^(NSError *error) {
+        [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusNormal forKey:kUserDefaultsUserStatus];
+        if (block) {
+            block(NAUserStatusNormal);
+        }
+    }];
 }
 
 @end

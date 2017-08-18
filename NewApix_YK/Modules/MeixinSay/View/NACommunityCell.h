@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NACommunityModel.h"
 
 @interface NACommunityCell : UITableViewCell
+
+@property (nonatomic, strong) NACommunityModel *model;
 
 @end
