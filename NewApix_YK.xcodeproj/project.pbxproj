@@ -48,6 +48,8 @@
 		4AFCA9671F346C3500351B04 /* NANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95A1F346C3500351B04 /* NANavigationController.m */; };
 		4AFCA9681F346C3500351B04 /* NATabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95C1F346C3500351B04 /* NATabbarController.m */; };
 		4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95F1F346C3500351B04 /* NAHTTPSessionManager.m */; };
+		4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */; };
+		4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */; };
 		AD1A4A1E9100EDF0E93DECC4 /* libPods-NewApix_YK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */; };
 /* End PBXBuildFile section */
 
@@ -149,6 +151,10 @@
 		4AFCA95C1F346C3500351B04 /* NATabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATabbarController.m; sourceTree = "<group>"; };
 		4AFCA95E1F346C3500351B04 /* NAHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAHTTPSessionManager.h; sourceTree = "<group>"; };
 		4AFCA95F1F346C3500351B04 /* NAHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAHTTPSessionManager.m; sourceTree = "<group>"; };
+		4AFF28D61F4AC70700964EBC /* NAMineOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineOrderModel.h; sourceTree = "<group>"; };
+		4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineOrderModel.m; sourceTree = "<group>"; };
+		4AFF28D91F4AC8C000964EBC /* NAUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAUserInfoModel.h; sourceTree = "<group>"; };
+		4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAUserInfoModel.m; sourceTree = "<group>"; };
 		74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewApix_YK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -378,6 +384,10 @@
 		4A037D6A1F28B1ED00F38AC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4AFF28D61F4AC70700964EBC /* NAMineOrderModel.h */,
+				4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */,
+				4AFF28D91F4AC8C000964EBC /* NAUserInfoModel.h */,
+				4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -703,6 +713,7 @@
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,
 				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
+				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
 				4AF392841F46E67F00EF7A3B /* NAMineCell.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
@@ -721,6 +732,7 @@
 				4AFCA9651F346C3500351B04 /* UIView+NAExtension.m in Sources */,
 				4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */,
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
+				4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */,
 				4AFCA9671F346C3500351B04 /* NANavigationController.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,

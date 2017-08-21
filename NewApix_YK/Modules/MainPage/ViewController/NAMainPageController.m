@@ -162,7 +162,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
         
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/self.line1BtnTitleArray.count * i, 0, kScreenWidth/self.line1BtnTitleArray.count, btnHeight)];
         button.tag = 101 + i;
-        [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(btnImage) imageWH:imageWidth title:btnTitle fontSize:12 titleColor:kColorBlackText spacing:10] forState:UIControlStateNormal];
+        [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(btnImage) imageWH:imageWidth title:btnTitle fontSize:12 titleColor:kColorTextBlack spacing:10] forState:UIControlStateNormal];
         button.titleLabel.numberOfLines = 0;
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
@@ -183,7 +183,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
         
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth/self.line2BtnTitleArray.count * i, CGRectGetMaxY(lineView.frame), kScreenWidth/self.line2BtnTitleArray.count, btnHeight)];
         button.tag = 101 + self.line1BtnTitleArray.count + i;
-        [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(btnImage) imageWH:imageWidth title:btnTitle fontSize:12 titleColor:kColorBlackText spacing:10] forState:UIControlStateNormal];
+        [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(btnImage) imageWH:imageWidth title:btnTitle fontSize:12 titleColor:kColorTextBlack spacing:10] forState:UIControlStateNormal];
         button.titleLabel.numberOfLines = 0;
         button.titleLabel.textAlignment = NSTextAlignmentCenter;
         [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];

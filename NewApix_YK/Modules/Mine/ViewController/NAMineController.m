@@ -10,6 +10,8 @@
 
 @interface NAMineController ()
 
+@property (nonatomic, strong) UITableView *tableView;
+
 @end
 
 @implementation NAMineController
@@ -17,6 +19,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.title = @"会员中心";
+    [self setupTableView];
+}
+
+
+
+
+
+
+- (void)setupTableView {
+    
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavBarH - kStatusBarH - kTabBarH) style:UITableViewStylePlain];
+    [self.view addSubview:tableView];
 }
 
 - (void)didReceiveMemoryWarning {

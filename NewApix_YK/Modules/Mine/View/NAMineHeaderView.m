@@ -7,25 +7,33 @@
 //
 
 #import "NAMineHeaderView.h"
+#import "NSAttributedString+NAExtension.h"
 
 CGFloat const kTopViewHeight = 78.0;
 CGFloat const kTopViewHeightV = 218.0;
 CGFloat const kBottomViewHeight = 89.0;
 CGFloat const kAvatarWidth = 48.0;
 CGFloat const kVipIconWidth = 15.0;
+CGFloat const kBtnHeight = 44.0;
+#define kBtnWidth kScreenWidth/4
+CGFloat const kRedPointWidth = 13;
 
 @interface NAMineHeaderView ()
 
 @property (nonatomic, strong) UIImageView *avatarImageView;
 @property (nonatomic, strong) UIImageView *vipIcon;
+@property (nonatomic, strong) UIImageView *vipCardImageView;
 @property (nonatomic, strong) UILabel *nickLabel;
 @property (nonatomic, strong) UILabel *checkLabel;
 @property (nonatomic, strong) UILabel *vipDateLabel;
 
-@property (nonatomic, strong) UILabel *redPoint1;
-@property (nonatomic, strong) UILabel *redPoint2;
-@property (nonatomic, strong) UILabel *redPoint3;
-@property (nonatomic, strong) UILabel *redPoint4;
+@property (nonatomic, strong) UIButton *redPoint1;
+@property (nonatomic, strong) UIButton *redPoint2;
+@property (nonatomic, strong) UIButton *redPoint3;
+@property (nonatomic, strong) UIButton *redPoint4;
+
+@property (nonatomic, assign) NAUserStatus userStatus;
+@property (nonatomic, copy) OrderBtnsActionBlock actionBlock;
 
 @end
 
@@ -39,6 +47,7 @@ CGFloat const kVipIconWidth = 15.0;
 }
 
 - (void)setupSubviewsWithUserStatus:(NAUserStatus)userStatus {
+    _userStatus = userStatus;
     
     CGFloat topH = userStatus == NAUserStatusVIP ? kTopViewHeightV : kTopViewHeight;
     UIView *topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, topH)];
@@ -70,7 +79,20 @@ CGFloat const kVipIconWidth = 15.0;
     [topView addSubview:checkLabel];
     self.checkLabel = checkLabel;
     
+    UILabel *vipDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(nickLabel.x, vipIcon.y, kScreenWidth - nickLabel.x - kCommonMargin, kVipIconWidth)];
+    vipDateLabel.textColor = kColorTextYellow;
+    vipDateLabel.font = [UIFont systemFontOfSize:12];
+    [topView addSubview:vipDateLabel];
+    self.vipDateLabel = vipDateLabel;
     
+    if (userStatus == NAUserStatusVIP) {
+        UIImageView *vipCardImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kCommonMargin, kTopViewHeight + 5, kScreenWidth - kCommonMargin * 2, kTopViewHeightV - kTopViewHeight)];
+        [topView addSubview:vipCardImageView];
+        self.vipCardImageView = vipCardImageView;
+    }
+    
+    
+    // 审核版本隐藏订单相关内容
     if ([NACommon isRealVersion]) {
         UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), kScreenWidth, kCommonMargin)];
         centerView.backgroundColor = kColorHeaderGray;
@@ -78,6 +100,87 @@ CGFloat const kVipIconWidth = 15.0;
         
         UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(centerView.frame), kScreenWidth, kBottomViewHeight)];
         [self addSubview:bottomView];
+        
+        NSArray *titleArr = @[@"进行中", @"成功", @"退款", @"我的订单"];
+        NSArray *imageArr = @[@"mine_loan_ing", @"mine_loan_succeed", @"mine_loan_back", @"mine_loan_order"];
+        for (int i=0; i<4; i++) {
+            UIButton *button = [self buttonWithTitle:titleArr[i] image:imageArr[i] tag:100 + i];
+            [bottomView addSubview:button];
+        }
+    }
+}
+
+- (UIButton *)buttonWithTitle:(NSString *)title image:(NSString *)imageName tag:(NSInteger)tag {
+    
+    NSInteger index = tag - 100;
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kBtnWidth * index, kCommonMargin, kBtnWidth, kBtnHeight)];
+    //设置图文混排的按钮
+    [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(imageName) imageWH:24 title:title fontSize:12 titleColor:[UIColor blackColor] spacing:12] forState:UIControlStateNormal];
+    //按钮上的文字换行
+    button.titleLabel.numberOfLines = 0;
+    //按钮上的文字居中
+    button.titleLabel.textAlignment = NSTextAlignmentCenter;
+    //按钮自适应大小
+//    [button sizeToFit];
+    //添加点击事件
+    [button addTarget:self action:@selector(onBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    button.tag = tag;
+    
+    UIButton *redPoint = [[UIButton alloc] initWithFrame:CGRectMake(kBtnWidth/2 + 12, 22, kRedPointWidth, kRedPointWidth)];
+    [redPoint setBackgroundImage:kGetImage(@"badge") forState:UIControlStateNormal];
+    [redPoint setTitle:@"12" forState:UIControlStateNormal];
+    [redPoint.titleLabel setFont:[UIFont systemFontOfSize:9]];
+    redPoint.contentHorizontalAlignment=UIControlContentHorizontalAlignmentCenter;
+    [redPoint setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button addSubview:redPoint];
+    [self setValue:redPoint forKey:[NSString stringWithFormat:@"redPoint%ld",index + 1]];
+    
+    return button;
+}
+
+- (void)setUserInfo:(NAUserInfoModel *)userInfo {
+    _userInfo = userInfo;
+    
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar]];
+    self.nickLabel.text = userInfo.nick_name;
+    
+    self.checkLabel.text = [userInfo.id_number checkEmpty]?@"未认证":@"已认证";
+}
+
+- (void)setOrderModel:(NAMineOrderModel *)orderModel actionBlock:(OrderBtnsActionBlock)actionBlock {
+    if (![NACommon isRealVersion]) return;
+    
+    [self.redPoint1 setTitle:orderModel.transactions forState:UIControlStateNormal];
+    [self.redPoint2 setTitle:orderModel.success forState:UIControlStateNormal];
+    [self.redPoint3 setTitle:orderModel.refound forState:UIControlStateNormal];
+    [self.redPoint4 setTitle:orderModel.paid forState:UIControlStateNormal];
+    
+    self.actionBlock = actionBlock;
+}
+
+- (void)setIsVip:(BOOL)isVip endDate:(NSString *)endDate vipCardUrl:(NSString *)vipCardUrl {
+    if (![NACommon isRealVersion]) return;
+    
+    if (isVip) {
+        self.vipIcon.image = kGetImage(@"mine_icon_vip");
+        
+        self.vipDateLabel.hidden = NO;
+        self.vipDateLabel.text = [NSString stringWithFormat:@"会员有效期至%@", endDate];
+        
+        self.vipCardImageView.hidden = NO;
+        [self.vipCardImageView sd_setImageWithURL:[NSURL URLWithString:vipCardUrl] placeholderImage:[kGetImage(kImageDefault) cutImageAdaptImageViewSize:self.vipCardImageView.bounds.size]];
+    }
+    else {
+        self.vipIcon.image = kGetImage(@"mine_icon_novip");
+        self.vipDateLabel.hidden = YES;
+        self.vipCardImageView.hidden = YES;
+    }
+}
+
+#pragma mark - <Events>
+- (void)onBtnClicked:(UIButton *)button {
+    if (self.actionBlock) {
+        self.actionBlock(button.tag);
     }
 }
 
