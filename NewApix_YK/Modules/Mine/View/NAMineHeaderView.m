@@ -64,18 +64,20 @@ CGFloat const kRedPointWidth = 13;
     [topView addSubview:vipIcon];
     self.vipIcon = vipIcon;
     
-    UILabel *nickLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 20, (kAvatarWidth - 18)/2, 150, 18)];
+    UILabel *nickLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) + 20, (kAvatarWidth - 18)/2, 50, 18)];
     nickLabel.font = [UIFont systemFontOfSize:14];
     nickLabel.text = @"昵称";
     [topView addSubview:nickLabel];
     self.nickLabel = nickLabel;
     
-    UILabel *checkLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nickLabel.frame) + 8, nickLabel.frame.origin.y, 100, 18)];
+    UILabel *checkLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nickLabel.frame) + 8, nickLabel.frame.origin.y, 80, 18)];
     checkLabel.layer.masksToBounds = YES;
     checkLabel.layer.cornerRadius = 10;
     checkLabel.layer.borderWidth = 1;
     checkLabel.layer.borderColor = kColorLightBlue.CGColor;
     checkLabel.textColor = kColorLightBlue;
+    checkLabel.text = @"未认证";
+    checkLabel.font = [UIFont systemFontOfSize:15];
     [topView addSubview:checkLabel];
     self.checkLabel = checkLabel;
     
@@ -94,7 +96,7 @@ CGFloat const kRedPointWidth = 13;
     
     // 审核版本隐藏订单相关内容
     if ([NACommon isRealVersion]) {
-        UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), kScreenWidth, kCommonMargin)];
+        UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), kScreenWidth, 8)];
         centerView.backgroundColor = kColorHeaderGray;
         [self addSubview:centerView];
         
@@ -107,6 +109,13 @@ CGFloat const kRedPointWidth = 13;
             UIButton *button = [self buttonWithTitle:titleArr[i] image:imageArr[i] tag:100 + i];
             [bottomView addSubview:button];
         }
+        
+        UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(kBtnWidth * 3 - 2.5, 0, 5, bottomView.height)];
+        
+        self.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(bottomView.frame));
+    }
+    else {
+        self.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(topView.frame));
     }
 }
 
@@ -126,7 +135,7 @@ CGFloat const kRedPointWidth = 13;
     [button addTarget:self action:@selector(onBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     button.tag = tag;
     
-    UIButton *redPoint = [[UIButton alloc] initWithFrame:CGRectMake(kBtnWidth/2 + 12, 22, kRedPointWidth, kRedPointWidth)];
+    UIButton *redPoint = [[UIButton alloc] initWithFrame:CGRectMake(kBtnWidth/2 + 10, -kRedPointWidth/2, kRedPointWidth, kRedPointWidth)];
     [redPoint setBackgroundImage:kGetImage(@"badge") forState:UIControlStateNormal];
     [redPoint setTitle:@"12" forState:UIControlStateNormal];
     [redPoint.titleLabel setFont:[UIFont systemFontOfSize:9]];
@@ -143,8 +152,11 @@ CGFloat const kRedPointWidth = 13;
     
     [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar]];
     self.nickLabel.text = userInfo.nick_name;
+    [self.nickLabel sizeToFit];
     
     self.checkLabel.text = [userInfo.id_number checkEmpty]?@"未认证":@"已认证";
+    [self.checkLabel sizeToFit];
+    self.checkLabel.frame = CGRectMake(CGRectGetMaxX(_nickLabel.frame) + 8, _nickLabel.frame.origin.y, self.checkLabel.width + 10, self.checkLabel.height);
 }
 
 - (void)setOrderModel:(NAMineOrderModel *)orderModel actionBlock:(OrderBtnsActionBlock)actionBlock {

@@ -24,10 +24,16 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+- (void)setModel:(NAMineModel *)model {
+    _model = model;
+    
+    self.titleLabel.text = model.title;
+    self.iconImageView.image = kGetImage(model.icon);
+    self.rightLabel.text = model.detail;
+}
 
-    // Configure the view for the selected state
+- (void)setDetailTextColor:(UIColor *)color {
+    self.rightLabel.textColor = color;
 }
 
 @end

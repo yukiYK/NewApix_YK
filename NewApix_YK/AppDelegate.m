@@ -140,12 +140,10 @@
 
 /** 审核开关 */
 - (void)loadOnOff {
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    NSLog(@"%@", VERSION);
-    param[@"name"] = [NSString stringWithFormat:@"version%@", VERSION];
-    param[@"origin"] = @"1";
     
-    [[NAHTTPSessionManager sharedManager] netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPI pathArray:@[@"api", @"control"]] parameter:param returnValueBlock:^(NSDictionary *returnValue) {
+    NAAPIModel *model = [NAURLCenter onOrOffConfigWithName:[NSString stringWithFormat:@"version%@", VERSION] origin:@"1"];
+    
+    [[NAHTTPSessionManager sharedManager] netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         if ([returnValue[@"switch"] integerValue] == 1) {
             [NACommon setRealVersion:YES];
         }
@@ -158,8 +156,11 @@
             self.window.rootViewController = tabbarC;
             [self.window makeKeyAndVisible];
         }];
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
         
-    } errorCodeBlock:nil failureBlock:nil];
+    } failureBlock:^(NSError *error) {
+        
+    }];
 }
 
 /** 配置各个分享平台 */

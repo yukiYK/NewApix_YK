@@ -24,9 +24,12 @@ static NSString * const kNotificationNetChange = @"kNotificationNetChange";
 //static NSString * const kNotificationNetChange = @"defaultImage";
 
 #pragma mark - <UserDefault>
-static NSString * const kUserDefaultsOnOff = @"kUserDefaultsOnOff";
-static NSString * const kUserDefaultsUserStatus = @"kUserDefaultsUserStatus";
-static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";
+static NSString * const kUserDefaultsOnOff = @"kUserDefaultsOnOff";      // 审核开关
+static NSString * const kUserDefaultsUserStatus = @"kUserDefaultsUserStatus"; // 用户状态
+static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";       // token
+static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵称
+static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
+static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber";   // 身份证号
 
 
 #pragma mark - <第三方的一些key>

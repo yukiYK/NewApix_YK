@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NAMineModel.h"
 
 @interface NAMineCell : UITableViewCell
+
+@property (nonatomic, strong) NAMineModel *model;
+
+- (void)setDetailTextColor:(UIColor *)color;
 
 @end

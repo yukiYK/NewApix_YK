@@ -14,13 +14,19 @@
 		4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6381621F38414D008BC8FD /* NAMainPageCell.xib */; };
 		4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381661F3841D5008BC8FD /* NAMainCardModel.m */; };
 		4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381691F384F71008BC8FD /* NABannerView.m */; };
-		4A723D5C1F3C6D49007D38FC /* NAViewControllerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A723D5B1F3C6D49007D38FC /* NAViewControllerCenter.m */; };
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
 		4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */; };
 		4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */; };
 		4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18CC1F41ADBC00B5459A /* NACommunityCell.m */; };
 		4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18CD1F41ADBC00B5459A /* NACommunityCell.xib */; };
+		4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED951F4C083300055CF1 /* NAMineModel.m */; };
+		4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */; };
+		4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9E1F4C16DD00055CF1 /* NAURLCenter.m */; };
+		4AAEEDA71F4C272D00055CF1 /* NANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDA21F4C272D00055CF1 /* NANavigationController.m */; };
+		4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDA41F4C272D00055CF1 /* NATabbarController.m */; };
+		4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDA61F4C272D00055CF1 /* NAViewControllerCenter.m */; };
+		4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
 		4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */; };
 		4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA461F2F248500A9308F /* NALoginController.m */; };
@@ -45,8 +51,6 @@
 		4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA9541F346C3500351B04 /* UIImage+NAExtension.m */; };
 		4AFCA9651F346C3500351B04 /* UIView+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA9561F346C3500351B04 /* UIView+NAExtension.m */; };
 		4AFCA9661F346C3500351B04 /* NACommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA9581F346C3500351B04 /* NACommon.m */; };
-		4AFCA9671F346C3500351B04 /* NANavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95A1F346C3500351B04 /* NANavigationController.m */; };
-		4AFCA9681F346C3500351B04 /* NATabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95C1F346C3500351B04 /* NATabbarController.m */; };
 		4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95F1F346C3500351B04 /* NAHTTPSessionManager.m */; };
 		4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */; };
 		4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */; };
@@ -88,8 +92,6 @@
 		4A6381661F3841D5008BC8FD /* NAMainCardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainCardModel.m; sourceTree = "<group>"; };
 		4A6381681F384F71008BC8FD /* NABannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NABannerView.h; sourceTree = "<group>"; };
 		4A6381691F384F71008BC8FD /* NABannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABannerView.m; sourceTree = "<group>"; };
-		4A723D5A1F3C6D49007D38FC /* NAViewControllerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewControllerCenter.h; sourceTree = "<group>"; };
-		4A723D5B1F3C6D49007D38FC /* NAViewControllerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAViewControllerCenter.m; sourceTree = "<group>"; };
 		4A7315421F3D604B00044FE6 /* NACommonWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommonWebController.h; sourceTree = "<group>"; };
 		4A7315431F3D604B00044FE6 /* NACommonWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommonWebController.m; sourceTree = "<group>"; };
 		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
@@ -101,6 +103,20 @@
 		4A8F18CB1F41ADBC00B5459A /* NACommunityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommunityCell.h; sourceTree = "<group>"; };
 		4A8F18CC1F41ADBC00B5459A /* NACommunityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommunityCell.m; sourceTree = "<group>"; };
 		4A8F18CD1F41ADBC00B5459A /* NACommunityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NACommunityCell.xib; sourceTree = "<group>"; };
+		4AAEED941F4C083300055CF1 /* NAMineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineModel.h; sourceTree = "<group>"; };
+		4AAEED951F4C083300055CF1 /* NAMineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineModel.m; sourceTree = "<group>"; };
+		4AAEED9A1F4C15AF00055CF1 /* NAAPIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAPIModel.h; sourceTree = "<group>"; };
+		4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAPIModel.m; sourceTree = "<group>"; };
+		4AAEED9D1F4C16DD00055CF1 /* NAURLCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAURLCenter.h; sourceTree = "<group>"; };
+		4AAEED9E1F4C16DD00055CF1 /* NAURLCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAURLCenter.m; sourceTree = "<group>"; };
+		4AAEEDA11F4C272D00055CF1 /* NANavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANavigationController.h; sourceTree = "<group>"; };
+		4AAEEDA21F4C272D00055CF1 /* NANavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANavigationController.m; sourceTree = "<group>"; };
+		4AAEEDA31F4C272D00055CF1 /* NATabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATabbarController.h; sourceTree = "<group>"; };
+		4AAEEDA41F4C272D00055CF1 /* NATabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATabbarController.m; sourceTree = "<group>"; };
+		4AAEEDA51F4C272D00055CF1 /* NAViewControllerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAViewControllerCenter.h; sourceTree = "<group>"; };
+		4AAEEDA61F4C272D00055CF1 /* NAViewControllerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAViewControllerCenter.m; sourceTree = "<group>"; };
+		4AAEEDAB1F4C277100055CF1 /* NAUserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAUserTool.h; sourceTree = "<group>"; };
+		4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAUserTool.m; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
 		4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageController.xib; sourceTree = "<group>"; };
@@ -145,10 +161,6 @@
 		4AFCA9561F346C3500351B04 /* UIView+NAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+NAExtension.m"; sourceTree = "<group>"; };
 		4AFCA9571F346C3500351B04 /* NACommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommon.h; sourceTree = "<group>"; };
 		4AFCA9581F346C3500351B04 /* NACommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommon.m; sourceTree = "<group>"; };
-		4AFCA9591F346C3500351B04 /* NANavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANavigationController.h; sourceTree = "<group>"; };
-		4AFCA95A1F346C3500351B04 /* NANavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANavigationController.m; sourceTree = "<group>"; };
-		4AFCA95B1F346C3500351B04 /* NATabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NATabbarController.h; sourceTree = "<group>"; };
-		4AFCA95C1F346C3500351B04 /* NATabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NATabbarController.m; sourceTree = "<group>"; };
 		4AFCA95E1F346C3500351B04 /* NAHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAHTTPSessionManager.h; sourceTree = "<group>"; };
 		4AFCA95F1F346C3500351B04 /* NAHTTPSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAHTTPSessionManager.m; sourceTree = "<group>"; };
 		4AFF28D61F4AC70700964EBC /* NAMineOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineOrderModel.h; sourceTree = "<group>"; };
@@ -226,6 +238,7 @@
 				4A037D211F2851A600F38AC0 /* Assets.xcassets */,
 				4A037D591F28AF1B00F38AC0 /* Modules */,
 				4AFCA9451F346C3500351B04 /* Common */,
+				4AAEEDAF1F4C306F00055CF1 /* Lib */,
 			);
 			path = NewApix_YK;
 			sourceTree = "<group>";
@@ -388,6 +401,8 @@
 				4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */,
 				4AFF28D91F4AC8C000964EBC /* NAUserInfoModel.h */,
 				4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */,
+				4AAEED941F4C083300055CF1 /* NAMineModel.h */,
+				4AAEED951F4C083300055CF1 /* NAMineModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,6 +428,35 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		4AAEEDA01F4C272D00055CF1 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AAEEDA11F4C272D00055CF1 /* NANavigationController.h */,
+				4AAEEDA21F4C272D00055CF1 /* NANavigationController.m */,
+				4AAEEDA31F4C272D00055CF1 /* NATabbarController.h */,
+				4AAEEDA41F4C272D00055CF1 /* NATabbarController.m */,
+				4AAEEDA51F4C272D00055CF1 /* NAViewControllerCenter.h */,
+				4AAEEDA61F4C272D00055CF1 /* NAViewControllerCenter.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AAEEDAA1F4C275900055CF1 /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+				4AAEEDAB1F4C277100055CF1 /* NAUserTool.h */,
+				4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */,
+			);
+			path = Tool;
+			sourceTree = "<group>";
+		};
+		4AAEEDAF1F4C306F00055CF1 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
 		4AC6CA3F1F2F23BB00A9308F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,16 +470,12 @@
 		4AFCA9451F346C3500351B04 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				4AAEEDAA1F4C275900055CF1 /* Tool */,
+				4AAEEDA01F4C272D00055CF1 /* Controller */,
 				4AFCA9461F346C3500351B04 /* Base */,
 				4AFCA94E1F346C3500351B04 /* Categorys */,
 				4AFCA9571F346C3500351B04 /* NACommon.h */,
 				4AFCA9581F346C3500351B04 /* NACommon.m */,
-				4AFCA9591F346C3500351B04 /* NANavigationController.h */,
-				4AFCA95A1F346C3500351B04 /* NANavigationController.m */,
-				4AFCA95B1F346C3500351B04 /* NATabbarController.h */,
-				4AFCA95C1F346C3500351B04 /* NATabbarController.m */,
-				4A723D5A1F3C6D49007D38FC /* NAViewControllerCenter.h */,
-				4A723D5B1F3C6D49007D38FC /* NAViewControllerCenter.m */,
 				4AFCA95D1F346C3500351B04 /* NetWork */,
 			);
 			path = Common;
@@ -502,6 +542,10 @@
 			children = (
 				4AFCA95E1F346C3500351B04 /* NAHTTPSessionManager.h */,
 				4AFCA95F1F346C3500351B04 /* NAHTTPSessionManager.m */,
+				4AAEED9D1F4C16DD00055CF1 /* NAURLCenter.h */,
+				4AAEED9E1F4C16DD00055CF1 /* NAURLCenter.m */,
+				4AAEED9A1F4C15AF00055CF1 /* NAAPIModel.h */,
+				4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */,
 			);
 			path = NetWork;
 			sourceTree = "<group>";
@@ -709,9 +753,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,
 				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
+				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
@@ -719,6 +765,7 @@
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
 				4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */,
 				4AF392781F46D41200EF7A3B /* NAEssenceModel.m in Sources */,
+				4AAEEDA71F4C272D00055CF1 /* NANavigationController.m in Sources */,
 				4AFCA9661F346C3500351B04 /* NACommon.m in Sources */,
 				4AF3927B1F46D44500EF7A3B /* NACommunityModel.m in Sources */,
 				4AFCA9611F346C3500351B04 /* NABaseViewController.m in Sources */,
@@ -726,18 +773,19 @@
 				4AFCA9631F346C3500351B04 /* UIColor+NAExtension.m in Sources */,
 				4AC6CA521F2F24B800A9308F /* NAMeixinSayController.m in Sources */,
 				4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */,
+				4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */,
 				4AFCA9441F346B3D00351B04 /* main.m in Sources */,
 				4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */,
-				4A723D5C1F3C6D49007D38FC /* NAViewControllerCenter.m in Sources */,
 				4AFCA9651F346C3500351B04 /* UIView+NAExtension.m in Sources */,
 				4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */,
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
+				4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */,
 				4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */,
-				4AFCA9671F346C3500351B04 /* NANavigationController.m in Sources */,
+				4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
+				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
-				4AFCA9681F346C3500351B04 /* NATabbarController.m in Sources */,
 				4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */,
 				4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */,
 				4AF392881F46E69600EF7A3B /* NAMineHeaderView.m in Sources */,

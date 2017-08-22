@@ -140,14 +140,10 @@
     }
     
     // 从后台获取用户状态
-    NSArray *pathArr = @[@"api", @"vip", @"time"];
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"code"] = @"0";
-    param[@"apix_token"] = token;
+    NAAPIModel *model = [NAURLCenter mineVipInfoConfigWithToken:token];
     
     NAHTTPSessionManager *manager = [NAHTTPSessionManager sharedManager];
-    [manager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPI pathArray:pathArr] parameter:param returnValueBlock:^(NSDictionary *returnValue) {
-        
+    [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@",returnValue);
         if([returnValue[@"apix_login_code"] intValue] == -1) {
             

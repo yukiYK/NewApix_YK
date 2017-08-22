@@ -204,53 +204,46 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (void)loadData {
     
-    NSMutableArray *pathArray = [NSMutableArray arrayWithObjects:@"api", @"cards", nil];
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    params[@"version"] = [NSString stringWithFormat:@"%@", VERSION];
+    NAAPIModel *model = [NAURLCenter mainPageCardConfigWithVersion:[NSString stringWithFormat:@"%@", VERSION]];
     
     WeakSelf
-    [self.netManager netRequestGETWithRequestURL:[NAHTTPSessionManager urlWithType:NARequestURLTypeAPI pathArray:pathArray]
-                                       parameter:params
-                                returnValueBlock:^(NSDictionary *returnValue) {
-                                    NSLog(@"%@", returnValue);
-                                    
-                                    NSArray *cards = returnValue[@"cards"];
-                                    if (cards && cards.count > 0) {
-                                        [weakSelf.dataArray removeAllObjects];
-                                        [weakSelf.bannerDataArray removeAllObjects];
-                                        [weakSelf.storeBannerArray removeAllObjects];
-                                        
-                                        for (NSDictionary *cardDic in cards) {
-                                            NSNumber *cardType = cardDic[@"card_type"];
-                                            if (![@[@(14), @(15), @(16), @(17), @(18), @(19), @(20)] containsObject:cardType]) {
-                                                if ([cardType isEqualToNumber:@(3)]) {
-                                                    [weakSelf.bannerDataArray addObject:cardDic];
-                                                }
-                                                else if ([cardType isEqualToNumber:@(10)] || [cardType isEqualToNumber:@(11)]) {
-                                                    [weakSelf.storeBannerArray addObject:cardDic];
-                                                }
-                                                else {
-                                                    [weakSelf.dataArray addObject:cardDic];
-                                                }
-                                            }
-                                        }
-                                        [weakSelf.mainTableView reloadData];
-                                        [weakSelf.bannerView setupWithCardArray:weakSelf.bannerDataArray clickBlock:^(NAMainCardModel *cardModel) {
-                                            NSLog(@"点击了banner");
-                                            [weakSelf transformControlerWithModel:cardModel];
-                                        }];
-                                    }
-                                    [weakSelf.mainTableView.mj_header endRefreshing];
-                                }
-                                  errorCodeBlock:^(NSString *code, NSString *msg) {
-                                      
-                                      [SVProgressHUD showErrorWithStatus:msg];
-                                      [weakSelf.mainTableView.mj_header endRefreshing];
-                                  }
-                                    failureBlock:^(NSError *error) {
-                                        [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
-                                        [weakSelf.mainTableView.mj_header endRefreshing];
-                                    }];
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        NSArray *cards = returnValue[@"cards"];
+        if (cards && cards.count > 0) {
+            [weakSelf.dataArray removeAllObjects];
+            [weakSelf.bannerDataArray removeAllObjects];
+            [weakSelf.storeBannerArray removeAllObjects];
+            
+            for (NSDictionary *cardDic in cards) {
+                NSNumber *cardType = cardDic[@"card_type"];
+                if (![@[@(14), @(15), @(16), @(17), @(18), @(19), @(20)] containsObject:cardType]) {
+                    if ([cardType isEqualToNumber:@(3)]) {
+                        [weakSelf.bannerDataArray addObject:cardDic];
+                    }
+                    else if ([cardType isEqualToNumber:@(10)] || [cardType isEqualToNumber:@(11)]) {
+                        [weakSelf.storeBannerArray addObject:cardDic];
+                    }
+                    else {
+                        [weakSelf.dataArray addObject:cardDic];
+                    }
+                }
+            }
+            [weakSelf.mainTableView reloadData];
+            [weakSelf.bannerView setupWithCardArray:weakSelf.bannerDataArray clickBlock:^(NAMainCardModel *cardModel) {
+                NSLog(@"点击了banner");
+                [weakSelf transformControlerWithModel:cardModel];
+            }];
+        }
+        [weakSelf.mainTableView.mj_header endRefreshing];
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:msg];
+        [weakSelf.mainTableView.mj_header endRefreshing];
+    } failureBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
+        [weakSelf.mainTableView.mj_header endRefreshing];
+    }];
 }
 
 // 上拉加载更多

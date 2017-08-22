@@ -19,27 +19,35 @@ typedef NS_ENUM(NSInteger, NAUserStatus) {
 
 typedef void(^LoadCompleteBlock) (NAUserStatus userStatus);
 
-@interface NACommon : NSObject
 
-@property (nonatomic, assign) NAUserStatus userStatus;
-/** 请求用户状态
- *  注意！！此方法会请求后台获取用户状态，所以并不会即时更新userStatus
+/**
+ 杂货类，可以获取各种神奇的东西 = =！
  */
-+ (void)loadUserStatusComplete:(LoadCompleteBlock)block;
-
+@interface NACommon : NSObject
 
 /** 初始化单例 */
 + (instancetype)sharedCommon;
 
+#pragma mark - <UserStatus>
+@property (nonatomic, assign) NAUserStatus userStatus;
+/** 请求用户状态
+ *  注意！！此方法会请求后台获取用户状态，
+ *  所以并不会即时更新userStatus, 请在block回调中获取最新userStatus
+ */
++ (void)loadUserStatusComplete:(LoadCompleteBlock)block;
+
+#pragma mark - <审核版本>
 /** 是否是实际用户看到的版本，否则为审核版 */
 + (BOOL)isRealVersion;
 + (void)setRealVersion:(BOOL)real;
 
+#pragma mark - <Token>
 /** 获取token */
 + (NSString *)getToken;
 /** 设置token */
 + (void)setToken:(NSString *)token;
 
+#pragma mark - <上下拉刷新View>
 /** 生成下拉刷新header */
 - (MJRefreshGifHeader *)createMJRefreshGifHeaderWithTarget:(id)target action:(SEL)action;
 /** 生成上拉加载footer */
