@@ -111,6 +111,8 @@ CGFloat const kRedPointWidth = 13;
         }
         
         UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(kBtnWidth * 3 - 2.5, 0, 5, bottomView.height)];
+        verticalLine.image = kGetImage(@"mine_vertical_line");
+        [bottomView addSubview:verticalLine];
         
         self.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(bottomView.frame));
     }

@@ -18,8 +18,8 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUF-im-SEZ">
-                        <rect key="frame" x="54" y="43" width="316" height="1"/>
-                        <color key="backgroundColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="54" y="43" width="266" height="1"/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="rko-gu-Q94"/>
                         </constraints>
@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--------" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCF-wj-wG3">
-                        <rect key="frame" x="262.5" y="15" width="45.5" height="14.5"/>
+                        <rect key="frame" x="236.5" y="15" width="45.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -43,24 +43,54 @@
                             <constraint firstAttribute="height" constant="24" id="Zgl-vM-UW5"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55f-wl-QLl">
+                        <rect key="frame" x="290" y="19" width="6" height="6"/>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="6" id="C53-hf-yvU"/>
+                            <constraint firstAttribute="width" constant="6" id="wkF-yc-bBg"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_next" translatesAutoresizingMaskIntoConstraints="NO" id="NYc-nb-d3Q">
+                        <rect key="frame" x="304" y="15" width="8" height="13"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="8" id="A5B-Jp-B7q"/>
+                            <constraint firstAttribute="height" constant="13" id="w5F-t7-hnF"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="6iA-WR-F3r" firstAttribute="leading" secondItem="V4T-uI-Rdr" secondAttribute="trailing" constant="15" id="4MX-oD-9r3"/>
                     <constraint firstItem="V4T-uI-Rdr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="5Sa-ji-ZIp"/>
                     <constraint firstItem="IUF-im-SEZ" firstAttribute="leading" secondItem="6iA-WR-F3r" secondAttribute="leading" id="A6K-fX-gYi"/>
+                    <constraint firstItem="NYc-nb-d3Q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IH0-ZO-if4"/>
                     <constraint firstAttribute="bottom" secondItem="IUF-im-SEZ" secondAttribute="bottom" id="KGm-1h-Pbt"/>
-                    <constraint firstAttribute="trailing" secondItem="eCF-wj-wG3" secondAttribute="trailing" constant="12" id="Tjt-11-NbA"/>
+                    <constraint firstItem="NYc-nb-d3Q" firstAttribute="leading" secondItem="55f-wl-QLl" secondAttribute="trailing" constant="8" id="LdB-Ck-vCz"/>
                     <constraint firstItem="6iA-WR-F3r" firstAttribute="centerY" secondItem="V4T-uI-Rdr" secondAttribute="centerY" id="iWC-6d-MbO"/>
+                    <constraint firstItem="55f-wl-QLl" firstAttribute="leading" secondItem="eCF-wj-wG3" secondAttribute="trailing" constant="8" id="n11-CC-7nV"/>
                     <constraint firstItem="V4T-uI-Rdr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qzr-JQ-8qA"/>
-                    <constraint firstAttribute="trailing" secondItem="IUF-im-SEZ" secondAttribute="trailing" constant="-50" id="vJ9-CA-K5d"/>
+                    <constraint firstAttribute="trailing" secondItem="IUF-im-SEZ" secondAttribute="trailing" id="vJ9-CA-K5d"/>
                     <constraint firstItem="eCF-wj-wG3" firstAttribute="centerY" secondItem="V4T-uI-Rdr" secondAttribute="centerY" id="wcp-90-1Il"/>
+                    <constraint firstItem="55f-wl-QLl" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="xjX-wY-OB4"/>
+                    <constraint firstAttribute="trailing" secondItem="NYc-nb-d3Q" secondAttribute="trailing" constant="8" id="xxn-Ki-ieV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="iconImageView" destination="V4T-uI-Rdr" id="2ay-lB-PfI"/>
+                <outlet property="nextImgView" destination="NYc-nb-d3Q" id="sQv-o1-qoN"/>
+                <outlet property="redPointView" destination="55f-wl-QLl" id="kkE-PX-rBY"/>
                 <outlet property="rightLabel" destination="eCF-wj-wG3" id="Ve5-Qy-V69"/>
                 <outlet property="titleLabel" destination="6iA-WR-F3r" id="vEP-Kd-CZc"/>
             </connections>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="mine_next" width="7" height="12"/>
+    </resources>
 </document>

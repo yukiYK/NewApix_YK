@@ -175,7 +175,6 @@ NSString * const kMineCell = @"mineCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NAMineCell *cell = [tableView dequeueReusableCellWithIdentifier:kMineCell forIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     NAMineModel *model = self.array[indexPath.section][indexPath.row];
     [cell setModel:model];
     return cell;
