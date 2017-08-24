@@ -58,7 +58,7 @@
 
 #pragma mark - <Private Methods>
 - (void)setupNavi {
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(kImageChevronLeftWhite) style:UIBarButtonItemStylePlain target:self action:@selector(backBtnClicked:)];
+    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(kImageBackBlack) style:UIBarButtonItemStylePlain target:self action:@selector(backBtnClicked:)];
     [self.navigationItem setLeftBarButtonItem:leftItem];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];

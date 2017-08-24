@@ -8,7 +8,25 @@
 
 #import "NARegisterController.h"
 
-@interface NARegisterController ()
+@interface NARegisterController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
+
+@property (weak, nonatomic) IBOutlet UITextField *smsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *imageSmsTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
+@property (weak, nonatomic) IBOutlet UIImageView *phoneImgView;
+@property (weak, nonatomic) IBOutlet UIImageView *smsImgView;
+@property (weak, nonatomic) IBOutlet UIImageView *imgSmsImgView;
+@property (weak, nonatomic) IBOutlet UIImageView *passwordImgView;
+
+@property (weak, nonatomic) IBOutlet UIImageView *bigImgSmsImgView;
+
+@property (weak, nonatomic) IBOutlet UIButton *getSmsBtn;
+@property (weak, nonatomic) IBOutlet UIButton *agreeBtn;
+@property (weak, nonatomic) IBOutlet UIButton *passwordVisibleBtn;
+@property (weak, nonatomic) IBOutlet UIButton *registerBtn;
+
 
 @end
 
@@ -19,19 +37,35 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)onPasswordVisibleClicked:(id)sender {
 }
-*/
+- (IBAction)onGetSmsClicked:(id)sender {
+}
+- (IBAction)onUserProtocolClicked:(id)sender {
+}
+- (IBAction)onAgreeClicked:(id)sender {
+}
+
+- (IBAction)onRegisterBtnClicked:(id)sender {
+}
+
+#pragma mark - <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
 
 @end

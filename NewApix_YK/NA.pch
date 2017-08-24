@@ -24,6 +24,8 @@
 #import "NACommon.h"
 #import "UMMobClick/MobClick.h"
 #import "NAConstant.h"
+#import "NAKeyChain.h"
+#import "NAViewControllerCenter.h"
 
 #pragma mark - <不同环境的配置>
 // --------------------- 不同环境的配置 -------------

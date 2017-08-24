@@ -258,57 +258,57 @@ NSString *const kMainPageCellID = @"mainPageCell";
         switch (model.bottom_button_type) {
             case 0: {
                 // 第三方web页
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 2: {
                 // 攻略模块
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 3: {
                 // 头条
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 4: {
                 // 社区
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 5: {
                 // 信用体检
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 6: {
                 // 智能借款
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 7: {
                 // 还款助手
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 8: {
                 // 信用卡
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 9: {
                 // 征信
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 10: {
                 // 商城
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 11: {
                 // 商品详情
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
                 
@@ -321,47 +321,47 @@ NSString *const kMainPageCellID = @"mainPageCell";
         switch (model.card_type) {
             case 4: {
                 // 热卡推荐
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 5: {
                 // 智能推荐，第三方贷款 菠萝贷等
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 6: {
                 // 会员文章
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 7: {
                 // 视频卡
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 8: {
                 // 商品详情
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 9: {
                 // 商城页
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 12: {
                 // 攻略
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 13: {
                 // 无息贷款
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
             case 21: {
                 // 新加非会员无息贷款
-                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformType:NATransformTypePush needLogin:YES];
+                [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter commonWebControllerWithCardModel:model isShowShareBtn:YES] tranformStyle:NATransformStylePush needLogin:YES];
             }
                 break;
                 

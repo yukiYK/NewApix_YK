@@ -14,19 +14,19 @@
 // 跳转方法
 + (void)transformViewController:(UIViewController *)fromVC
                toViewController:(UIViewController *)toVC
-                   tranformType:(NATransformType)type
+                  tranformStyle:(NATransformStyle)transformStyle
                       needLogin:(BOOL)needLogin {
     
     if (needLogin && ![NACommon getToken]) {
         [fromVC.navigationController pushViewController:[self loginController] animated:YES];
     }
     else {
-        switch (type) {
-            case NATransformTypePush: {
+        switch (transformStyle) {
+            case NATransformStylePush: {
                 [fromVC.navigationController pushViewController:toVC animated:YES];
             }
                 break;
-            case NATransformTypePresent: {
+            case NATransformStylePresent: {
                 [fromVC presentViewController:toVC animated:YES completion:nil];
             }
                 break;
@@ -39,12 +39,12 @@
 
 // 登录页
 + (NALoginController *)loginController {
-    return [[NALoginController alloc] init];
+    return [[NALoginController alloc] initWithNibName:@"NALoginController" bundle:nil];
 }
 
 // 注册页
 + (NARegisterController *)registerController {
-    return [[NARegisterController alloc] init];
+    return [[NARegisterController alloc] initWithNibName:@"NARegisterController" bundle:nil];
 }
 
 

@@ -10,6 +10,19 @@
 
 @implementation NAUserTool
 
++ (NSString *)getNick {
+    return @"";
+}
+
++ (NSString *)getAvatar {
+    return @"";
+}
+
++ (NSString *)getIdNumber {
+    return @"";
+}
+
+/** 清除跟用户相关的userDefaults */
 + (void)removeAllUserDefaults {
     
 }

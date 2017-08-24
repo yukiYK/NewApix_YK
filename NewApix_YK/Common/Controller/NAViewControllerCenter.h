@@ -11,9 +11,9 @@
 #import "NARegisterController.h"
 #import "NACommonWebController.h"
 
-typedef NS_ENUM(NSInteger, NATransformType) {
-    NATransformTypePush,
-    NATransformTypePresent
+typedef NS_ENUM(NSInteger, NATransformStyle) {
+    NATransformStylePush,
+    NATransformStylePresent
 };
 
 /**
@@ -28,12 +28,12 @@ typedef NS_ENUM(NSInteger, NATransformType) {
 
  @param fromVC fromViewController
  @param toVC toViewController
- @param type 跳转方式：push present
+ @param transformStyle 跳转方式：push present
  @param needLogin 是否需要登录
  */
 + (void)transformViewController:(UIViewController *)fromVC
                toViewController:(UIViewController *)toVC
-                   tranformType:(NATransformType)type
+                   tranformStyle:(NATransformStyle)transformStyle
                       needLogin:(BOOL)needLogin;
 
 /**

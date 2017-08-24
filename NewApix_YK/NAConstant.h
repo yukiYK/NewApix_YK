@@ -14,7 +14,8 @@
 // --------------------- 一些常量 -------------
 #pragma mark - <通用imageName>
 static NSString * const kImageDefault = @"defaultImage";
-static NSString * const kImageChevronLeftWhite = @"chevron_left_white";
+static NSString * const kImageBackWhite = @"back_white";
+static NSString * const kImageBackBlack = @"back_black";
 
 #pragma mark - <NotificationName>
 static NSString * const kNotificationNetChange = @"kNotificationNetChange";
@@ -30,6 +31,13 @@ static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";       // tok
 static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵称
 static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
 static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber";   // 身份证号
+static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";   // 账号/手机号
+
+
+#pragma mark - <KeyChain>
+static NSString * const kKeyChain = @"com.heige.meixinlife";   // 应用程序keyChain的Key
+// 下面是具体保存到keyChain的每个key
+static NSString * const kKeyChainPassword = @"kKeyChainPassword";  // 密码
 
 
 #pragma mark - <第三方的一些key>

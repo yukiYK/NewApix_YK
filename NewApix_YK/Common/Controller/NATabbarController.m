@@ -26,6 +26,7 @@
     // Do any additional setup after loading the view.
     
     self.token = [NACommon getToken];
+    self.delegate = self;
     
     [self addChildViewControllers];
 }
@@ -64,7 +65,7 @@
 }
 
 // 警告框vc
-- (void)alertViewClick{
+- (void)alertViewClick {
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"啊哦~金卡会员才能使用此权限呢~" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"再看看" style:UIAlertActionStyleCancel handler:nil];
@@ -83,11 +84,11 @@
     [self presentViewController:alert animated:true completion:nil];
 }
 
-#pragma mark - <>
+#pragma mark - <UITabBarControllerDelegate>
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     if (![NACommon getToken] && viewController == self.viewControllers[2]) {
         UINavigationController *vc = self.selectedViewController;
-        NALoginController *loginVC = [[NALoginController alloc] initWithNibName:@"NALoginController" bundle:nil];
+        NALoginController *loginVC = [NAViewControllerCenter loginController];
         [vc pushViewController:loginVC animated:YES];
         return NO;
     }
@@ -100,7 +101,7 @@
         if (![NACommon getToken]) {
             
             UINavigationController *vc = self.selectedViewController;
-            NALoginController *loginVC = [[NALoginController alloc] initWithNibName:@"NALoginController" bundle:nil];
+            NALoginController *loginVC = [NAViewControllerCenter loginController];
             [vc pushViewController:loginVC animated:YES];
         }
         else {
@@ -111,19 +112,5 @@
     return YES;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -35,6 +35,7 @@
 		4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA4C1F2F249C00A9308F /* NARegisterController.xib */; };
 		4AC6CA521F2F24B800A9308F /* NAMeixinSayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA501F2F24B800A9308F /* NAMeixinSayController.m */; };
 		4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA551F2F24C800A9308F /* NAMineController.m */; };
+		4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */; };
 		4AF392781F46D41200EF7A3B /* NAEssenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF392771F46D41200EF7A3B /* NAEssenceModel.m */; };
 		4AF3927B1F46D44500EF7A3B /* NACommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3927A1F46D44500EF7A3B /* NACommunityModel.m */; };
 		4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3927D1F46D52200EF7A3B /* NAAdvertisementCell.m */; };
@@ -130,6 +131,8 @@
 		4AC6CA501F2F24B800A9308F /* NAMeixinSayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMeixinSayController.m; sourceTree = "<group>"; };
 		4AC6CA541F2F24C800A9308F /* NAMineController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineController.h; sourceTree = "<group>"; };
 		4AC6CA551F2F24C800A9308F /* NAMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineController.m; sourceTree = "<group>"; };
+		4ACF3CF41F4EBCC80030945B /* NAKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAKeyChain.h; sourceTree = "<group>"; };
+		4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAKeyChain.m; sourceTree = "<group>"; };
 		4AF392761F46D41200EF7A3B /* NAEssenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAEssenceModel.h; sourceTree = "<group>"; };
 		4AF392771F46D41200EF7A3B /* NAEssenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAEssenceModel.m; sourceTree = "<group>"; };
 		4AF392791F46D44500EF7A3B /* NACommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommunityModel.h; sourceTree = "<group>"; };
@@ -453,6 +456,8 @@
 		4AAEEDAF1F4C306F00055CF1 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				4ACF3CF41F4EBCC80030945B /* NAKeyChain.h */,
+				4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -761,6 +766,7 @@
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
+				4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */,
 				4AF392841F46E67F00EF7A3B /* NAMineCell.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
 				4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */,
