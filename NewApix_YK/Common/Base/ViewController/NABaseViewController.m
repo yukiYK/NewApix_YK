@@ -8,7 +8,7 @@
 
 #import "NABaseViewController.h"
 
-@interface NABaseViewController ()
+@interface NABaseViewController () <UIGestureRecognizerDelegate>
 
 @end
 
@@ -56,6 +56,11 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+}
+
 #pragma mark - <Private Methods>
 - (void)setupNavi {
     UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithImage:kGetImage(kImageBackBlack) style:UIBarButtonItemStylePlain target:self action:@selector(backBtnClicked:)];
@@ -63,7 +68,7 @@
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 44)];
     titleLabel.text = @"";
-    titleLabel.textColor = [UIColor colorWithWhite:1.0 alpha:1.0];
+    titleLabel.textColor = [UIColor blackColor];
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.navigationItem setTitleView:titleLabel];
     
@@ -95,6 +100,15 @@
     [UIView animateWithDuration:.2 animations:^{
         [self.tabBarController.tabBar setFrame:CGRectMake(0, [UIScreen mainScreen].bounds.size.height, [UIScreen mainScreen].bounds.size.width, kTabBarH)];
     }];
+}
+
+#pragma mark - <UIGestureRecognizerDelegate>
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+    return YES;
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
 }
 
 @end

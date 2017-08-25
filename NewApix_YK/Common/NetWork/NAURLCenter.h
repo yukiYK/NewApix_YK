@@ -31,7 +31,15 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 /** 审核开关接口 */
 + (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin;
 
-// --------------------------------首页----------------------------
+// --------------------------------登录 注册-------------------------
+/** 登录接口 */
++ (NAAPIModel *)loginConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password;
+/** 注册接口 */
++ (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password;
+/** 用户信用分数接口 */
++ (NAAPIModel *)trustScoreConfigWithToken:(NSString *)token;
+
+// --------------------------------首页------------------------------
 /** 首页卡片接口 */
 + (NAAPIModel *)mainPageCardConfigWithVersion:(NSString *)version;
 

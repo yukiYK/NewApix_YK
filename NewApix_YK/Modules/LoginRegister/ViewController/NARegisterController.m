@@ -8,7 +8,7 @@
 
 #import "NARegisterController.h"
 
-@interface NARegisterController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
+@interface NARegisterController () <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneTextField;
 
@@ -35,37 +35,73 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self setupNavigationBar];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+#pragma mark - <Private Method>
+- (void)setupNavigationBar {
+    
+    UIButton *right = [UIButton buttonWithType:UIButtonTypeCustom];
+    right.frame = CGRectMake(0, 0, 50, 50);
+    right.titleLabel.font = [UIFont systemFontOfSize:15];
+    [right addTarget:self action:@selector(onRegisterBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [right setTitle:@"注册" forState:UIControlStateNormal];
+    [right setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    UIBarButtonItem *rightBut = [[UIBarButtonItem alloc]initWithCustomView:right];
+    self.navigationItem.rightBarButtonItem = rightBut;
+    
+    self.customTitleLabel.text = @"登录";
+    
+    self.hidesBottomBarWhenPushed=YES;
+    
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
+#pragma mark - <Events>
 - (IBAction)onPasswordVisibleClicked:(id)sender {
 }
+
 - (IBAction)onGetSmsClicked:(id)sender {
 }
+
 - (IBAction)onUserProtocolClicked:(id)sender {
 }
+
 - (IBAction)onAgreeClicked:(id)sender {
 }
 
 - (IBAction)onRegisterBtnClicked:(id)sender {
 }
 
-#pragma mark - <UIGestureRecognizerDelegate>
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return YES;
+#pragma mark - <UITextFieldDelegate>
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == self.phoneTextField) {
+        self.phoneImgView.image = kGetImage(@"login_user");
+    }
+    else if (textField == self.passwordTextField) {
+        self.passwordImgView.image = kGetImage(@"login_password");
+    }
+    else if (textField == self.smsTextField) {
+        self.passwordImgView.image = kGetImage(@"login_sms");
+    }
+    else if (textField == self.imageSmsTextField) {
+        self.passwordImgView.image = kGetImage(@"login_imgSms");
+    }
 }
 
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.phoneTextField) {
+        self.phoneImgView.image = kGetImage(@"login_user_gray");
+    }
+    else if (textField == self.passwordTextField) {
+        self.passwordImgView.image = kGetImage(@"login_password_gray");
+    }
+    else if (textField == self.smsTextField) {
+        self.passwordImgView.image = kGetImage(@"login_sms_gray");
+    }
+    else if (textField == self.imageSmsTextField) {
+        self.passwordImgView.image = kGetImage(@"login_imgSms_gray");
+    }
 }
 
 @end

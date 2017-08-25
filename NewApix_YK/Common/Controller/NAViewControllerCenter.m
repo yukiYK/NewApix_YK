@@ -8,7 +8,10 @@
 
 #import "NAViewControllerCenter.h"
 #import "NALoginController.h"
-
+#import "NARegisterController.h"
+#import "NACommonWebController.h"
+#import "NAForgetPasswordController.h"
+#import "NAPhoneLoginController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -38,18 +41,24 @@
 }
 
 // 登录页
-+ (NALoginController *)loginController {
++ (UIViewController *)loginController {
     return [[NALoginController alloc] initWithNibName:@"NALoginController" bundle:nil];
 }
-
 // 注册页
-+ (NARegisterController *)registerController {
++ (UIViewController *)registerController {
     return [[NARegisterController alloc] initWithNibName:@"NARegisterController" bundle:nil];
 }
-
+// 忘记密码页
++ (UIViewController *)forgetPasswordController {
+    return [[NAForgetPasswordController alloc] initWithNibName:@"NAForgetPasswordController" bundle:nil];
+}
+// 手机登录页
++ (UIViewController *)phoneLoginController {
+    return [[NAPhoneLoginController alloc] initWithNibName:@"NAPhoneLoginController" bundle:nil];
+}
 
 // 第三方贷款web页 等等
-+ (NACommonWebController *)commonWebControllerWithCardModel:(NAMainCardModel *)cardModel isShowShareBtn:(BOOL)isShowShareBtn {
++ (UIViewController *)commonWebControllerWithCardModel:(NAMainCardModel *)cardModel isShowShareBtn:(BOOL)isShowShareBtn {
     
     NACommonWebController *commonWebVC = [[NACommonWebController alloc] init];
     if (cardModel) {

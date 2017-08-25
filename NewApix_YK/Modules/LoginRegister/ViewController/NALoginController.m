@@ -7,6 +7,8 @@
 //
 
 #import "NALoginController.h"
+#import "NATabbarController.h"
+#import <AESCrypt.h>
 
 @interface NALoginController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
@@ -33,10 +35,6 @@
     [self setupSubviews];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-}
 
 #pragma mark - <Private Method>
 - (void)setupNavigationBar {
@@ -50,25 +48,10 @@
     UIBarButtonItem *rightBut = [[UIBarButtonItem alloc]initWithCustomView:right];
     self.navigationItem.rightBarButtonItem = rightBut;
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 60, 20)];
-    titleLabel.text = @"登录";
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.textColor = [UIColor blackColor];
-    titleLabel.font = [UIFont systemFontOfSize:17];
-    [self.navigationItem setTitleView:titleLabel];
+    self.customTitleLabel.text = @"登录";
     
     self.hidesBottomBarWhenPushed=YES;
     
-    
-    UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
-    [left setFrame:CGRectMake(-20, 0, 35, 35)];
-    [left addTarget:self action:@selector(onBackBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [left setImage:kGetImage(kImageBackBlack) forState:UIControlStateNormal];
-    [left setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    //修改方法
-    UIBarButtonItem *leftBut = [[UIBarButtonItem alloc]initWithCustomView:left];
-    self.navigationItem.leftBarButtonItem = leftBut;
 }
 - (void)setupSubviews {
     [self.phoneTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -77,7 +60,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     self.phoneTextField.text = [defaults objectForKey:kUserDefaultsIdNumber];
     self.passwordTextField.text = [NAKeyChain loadKeyChainWithKey:kKeyChainPassword];
-    
     
     [self checkLoginEnable];
 }
@@ -101,6 +83,59 @@
 #pragma mark - <Network>
 - (void)requestForLogin {
     
+    [SVProgressHUD show];
+    NSString *password = [AESCrypt encrypt:self.passwordTextField.text password:kAESKey];
+    NAAPIModel *model = [NAURLCenter loginConfigWithPhone:self.phoneTextField.text password:password];
+    
+    NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    manager.requestSerializer = [AFJSONRequestSerializer serializer];
+    [manager.requestSerializer setValue:[defaults objectForKey:@"deviceid"] forHTTPHeaderField:@"deviceid"];
+    [manager.requestSerializer setValue:[defaults objectForKey:@"systemversion"] forHTTPHeaderField:@"systemversion"];
+    [manager.requestSerializer setValue:[defaults objectForKey:@"equipmenttype"] forHTTPHeaderField:@"equipmenttype"];
+    
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        NSDictionary *dataDic = [returnValue objectForKey:@"data"];
+        NSString *token = [dataDic objectForKey:@"token"];
+        NSString *uniqueId = [dataDic objectForKey:@"unique_id"];
+        [NACommon setToken:token];
+        [[NSUserDefaults standardUserDefaults] setObject:uniqueId forKey:kUserDefaultUniqueId];
+        
+        // 重新获取用户状态
+        [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
+            // 获取用户信用分数
+            [self requestForTrustScore];
+        }];
+        
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        [SVProgressHUD showErrorWithStatus:@"您输入的账号或密码有误"];
+    } failureBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
+    }];
+}
+
+- (void)requestForTrustScore {
+    NAAPIModel *model = [NAURLCenter trustScoreConfigWithToken:[NACommon getToken]];
+    
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        [[NSUserDefaults standardUserDefaults] setObject:returnValue[@"score"] forKey:kUserDefaultTrustScore];
+        // 重新设置根视图
+        NATabbarController *tabbarC = [[NATabbarController alloc] init];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].keyWindow.rootViewController = tabbarC;
+        });
+        
+        [SVProgressHUD dismiss];
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        [SVProgressHUD dismiss];
+    } failureBlock:^(NSError *error) {
+        [SVProgressHUD dismiss];
+    }];
 }
 
 #pragma mark - <Events>
@@ -114,9 +149,11 @@
 }
 
 - (IBAction)onForgetPasswordClicked:(id)sender {
+    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter forgetPasswordController] tranformStyle:NATransformStylePush needLogin:NO];
 }
 
 - (IBAction)onPhoneLoginClicked:(id)sender {
+    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter phoneLoginController] tranformStyle:NATransformStylePush needLogin:NO];
 }
 
 - (IBAction)onPasswordVisibleClicked:(id)sender {
@@ -125,29 +162,31 @@
     self.passwordTextField.secureTextEntry = !self.passwordTextField.secureTextEntry;
 }
 
-
 - (IBAction)onLoginBtnClicked:(id)sender {
-    
+    [self requestForTrustScore];
 }
 
 - (void)textFieldValueChanged:(UITextField *)textField {
     [self checkLoginEnable];
 }
+
 #pragma mark - <UITextFieldDelegate>
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (textField == self.phoneTextField) {
-        self.phoneImgView.image = kGetImage(@"");
-        
+        self.phoneImgView.image = kGetImage(@"login_user");
+    }
+    else if (textField == self.passwordTextField) {
+        self.passwordImgView.image = kGetImage(@"login_password");
     }
 }
 
-#pragma mark - <UIGestureRecognizerDelegate>
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-    return YES;
-}
-
-- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
-    return YES;
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.phoneTextField) {
+        self.phoneImgView.image = kGetImage(@"login_user_gray");
+    }
+    else if (textField == self.passwordTextField) {
+        self.passwordImgView.image = kGetImage(@"login_password_gray");
+    }
 }
 
 @end

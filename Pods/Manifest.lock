@@ -16,6 +16,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FLAnimatedImage (1.0.12)
+  - IQKeyboardManager (4.0.11)
   - Masonry (1.0.2)
   - MBProgressHUD (1.0.0)
   - Meiqia (3.3.4):
@@ -51,6 +52,7 @@ PODS:
 DEPENDENCIES:
   - AESCrypt
   - AFNetworking
+  - IQKeyboardManager
   - Masonry
   - MBProgressHUD
   - Meiqia
@@ -71,6 +73,7 @@ SPEC CHECKSUMS:
   AESCrypt: 1d89bf8b0789cf274ab2205ea461adbe9321d5f8
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   Meiqia: 5fb3cc44e29176805f479d5767157ded4879604c
@@ -85,6 +88,6 @@ SPEC CHECKSUMS:
   WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: af478636fa57ea9f893fd272157d067187c8b0d5
+PODFILE CHECKSUM: 25f75708836093404989f4c173df52cb2658d264
 
 COCOAPODS: 1.2.0.beta.1

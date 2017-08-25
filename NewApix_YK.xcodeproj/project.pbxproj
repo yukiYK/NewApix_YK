@@ -10,6 +10,11 @@
 		4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A037D211F2851A600F38AC0 /* Assets.xcassets */; };
 		4A037D301F2851A600F38AC0 /* NewApix_YKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A037D2F1F2851A600F38AC0 /* NewApix_YKTests.m */; };
 		4A037D3B1F2851A600F38AC0 /* NewApix_YKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A037D3A1F2851A600F38AC0 /* NewApix_YKUITests.m */; };
+		4A2837B81F501B28001B065C /* NANewMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2837B71F501B28001B065C /* NANewMainPageController.m */; };
+		4A2837BC1F502120001B065C /* NAForgetPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2837BA1F502120001B065C /* NAForgetPasswordController.m */; };
+		4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837BB1F502120001B065C /* NAForgetPasswordController.xib */; };
+		4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */; };
+		4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */; };
 		4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381611F38414D008BC8FD /* NAMainPageCell.m */; };
 		4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6381621F38414D008BC8FD /* NAMainPageCell.xib */; };
 		4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381661F3841D5008BC8FD /* NAMainCardModel.m */; };
@@ -86,6 +91,14 @@
 		4A037D361F2851A600F38AC0 /* NewApix_YKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewApix_YKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A037D3A1F2851A600F38AC0 /* NewApix_YKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewApix_YKUITests.m; sourceTree = "<group>"; };
 		4A037D3C1F2851A600F38AC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A2837B61F501B28001B065C /* NANewMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NANewMainPageController.h; sourceTree = "<group>"; };
+		4A2837B71F501B28001B065C /* NANewMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NANewMainPageController.m; sourceTree = "<group>"; };
+		4A2837B91F502120001B065C /* NAForgetPasswordController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAForgetPasswordController.h; sourceTree = "<group>"; };
+		4A2837BA1F502120001B065C /* NAForgetPasswordController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAForgetPasswordController.m; sourceTree = "<group>"; };
+		4A2837BB1F502120001B065C /* NAForgetPasswordController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAForgetPasswordController.xib; sourceTree = "<group>"; };
+		4A2837BE1F502B47001B065C /* NAPhoneLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPhoneLoginController.h; sourceTree = "<group>"; };
+		4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPhoneLoginController.m; sourceTree = "<group>"; };
+		4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPhoneLoginController.xib; sourceTree = "<group>"; };
 		4A6381601F38414D008BC8FD /* NAMainPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageCell.h; sourceTree = "<group>"; };
 		4A6381611F38414D008BC8FD /* NAMainPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageCell.m; sourceTree = "<group>"; };
 		4A6381621F38414D008BC8FD /* NAMainPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageCell.xib; sourceTree = "<group>"; };
@@ -308,6 +321,12 @@
 				4AC6CA4A1F2F249C00A9308F /* NARegisterController.h */,
 				4AC6CA4B1F2F249C00A9308F /* NARegisterController.m */,
 				4AC6CA4C1F2F249C00A9308F /* NARegisterController.xib */,
+				4A2837B91F502120001B065C /* NAForgetPasswordController.h */,
+				4A2837BA1F502120001B065C /* NAForgetPasswordController.m */,
+				4A2837BB1F502120001B065C /* NAForgetPasswordController.xib */,
+				4A2837BE1F502B47001B065C /* NAPhoneLoginController.h */,
+				4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */,
+				4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -468,6 +487,8 @@
 				4AC6CA401F2F23D500A9308F /* NAMainPageController.h */,
 				4AC6CA411F2F23D500A9308F /* NAMainPageController.m */,
 				4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */,
+				4A2837B61F501B28001B065C /* NANewMainPageController.h */,
+				4A2837B71F501B28001B065C /* NANewMainPageController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -677,12 +698,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */,
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
 				4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */,
 				4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */,
 				4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */,
 				4AC6CA491F2F248500A9308F /* NALoginController.xib in Resources */,
+				4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */,
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
 				4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */,
@@ -759,6 +782,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
+				4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */,
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,
 				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
@@ -776,6 +800,7 @@
 				4AF3927B1F46D44500EF7A3B /* NACommunityModel.m in Sources */,
 				4AFCA9611F346C3500351B04 /* NABaseViewController.m in Sources */,
 				4AFCA9621F346C3500351B04 /* NSString+NAExtension.m in Sources */,
+				4A2837BC1F502120001B065C /* NAForgetPasswordController.m in Sources */,
 				4AFCA9631F346C3500351B04 /* UIColor+NAExtension.m in Sources */,
 				4AC6CA521F2F24B800A9308F /* NAMeixinSayController.m in Sources */,
 				4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */,
@@ -787,6 +812,7 @@
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
 				4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */,
 				4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */,
+				4A2837B81F501B28001B065C /* NANewMainPageController.m in Sources */,
 				4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,

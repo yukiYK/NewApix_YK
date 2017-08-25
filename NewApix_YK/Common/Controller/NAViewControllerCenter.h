@@ -7,9 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "NALoginController.h"
-#import "NARegisterController.h"
-#import "NACommonWebController.h"
+#import "NAMainCardModel.h"
+
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -41,14 +40,30 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 
  @return NALoginController
  */
-+ (NALoginController *)loginController;
++ (UIViewController *)loginController;
 
 /**
  注册页
  
  @return NALoginController
  */
-+ (NARegisterController *)registerController;
++ (UIViewController *)registerController;
+
+
+/**
+ 忘记密码页
+
+ @return NAForgetPasswordController
+ */
++ (UIViewController *)forgetPasswordController;
+
+
+/**
+ 手机登录页
+
+ @return NAPhoneLoginController
+ */
++ (UIViewController *)phoneLoginController;
 
 /**
  第三方贷款web页 等等
@@ -57,6 +72,6 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  @param isShowShareBtn 是否显示右上角分享按钮
  @return NACommonWebController
  */
-+ (NACommonWebController *)commonWebControllerWithCardModel:(NAMainCardModel *)cardModel isShowShareBtn:(BOOL)isShowShareBtn;
++ (UIViewController *)commonWebControllerWithCardModel:(NAMainCardModel *)cardModel isShowShareBtn:(BOOL)isShowShareBtn;
 
 @end

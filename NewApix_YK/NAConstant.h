@@ -12,6 +12,8 @@
 
 
 // --------------------- 一些常量 -------------
+// 对密码进行AES加密的key
+static NSString * const kAESKey = @"WEfs12SEWQte3DSq23ttga/sdfw=Vrlp";
 #pragma mark - <通用imageName>
 static NSString * const kImageDefault = @"defaultImage";
 static NSString * const kImageBackWhite = @"back_white";
@@ -32,7 +34,8 @@ static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵
 static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
 static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber";   // 身份证号
 static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";   // 账号/手机号
-
+static NSString * const kUserDefaultUniqueId = @"kUserDefaultUniqueId";  //unique_id
+static NSString * const kUserDefaultTrustScore = @"kUserDefaultTrustScore";  // 信用分数
 
 #pragma mark - <KeyChain>
 static NSString * const kKeyChain = @"com.heige.meixinlife";   // 应用程序keyChain的Key

@@ -19,6 +19,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>IQKeyboardManager.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MBProgressHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -82,12 +87,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>04667FC0422C063126AE8BA4DC419144</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
+		<key>081AC1F2F68A11C97642CC56E50C415C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -97,17 +102,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>25A6921465A673FF7ADFEE9E0F9DFE67</key>
+		<key>363BC2E0F39D0F8949C0A80B70411AB8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3E3DAE01B6B8BD492F154C156E73C675</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>47FD6CA7A7C17B117464DCBB5C9090DF</key>
+		<key>3C418D1A2BA7624349AFAE930D979437</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +122,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5CF94449D52733E502999CEF878C1291</key>
+		<key>7097FA9093606F769651DF0519184FD1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7097FA9093606F769651DF0519184FD1</key>
+		<key>8BB4BF10346DACEFC9CACFDD6F3CE999</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>904F4F27FD314010A3812EB2A9306183</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,17 +147,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A0101615CEE2CE811D3E6C7FDF02A84B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>B5E289E0A32AE19BC4BE45CA79E10436</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BE26E016B79C509E3C7442FF81EDFD80</key>
+		<key>BB77E5EC299080FBD39E581B93323CA3</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D944CC55A7155C2B52380989BC9CB2D4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DF562040C5282A5B6BBB922B0A639E4A</key>
 		<dict>
 			<key>primary</key>
 			<true/>

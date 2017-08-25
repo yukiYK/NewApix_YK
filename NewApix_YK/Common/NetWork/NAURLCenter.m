@@ -40,78 +40,84 @@
     return urlString;
 }
 
-/** 审核开关接口 */
-+ (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin {
++ (NAAPIModel *)apiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param {
     NAAPIModel *model = [[NAAPIModel alloc] init];
-    model.requestType = NAHTTPRequestTypeGet;
-    model.pathArr = [NSArray arrayWithObjects:@"api", @"control", nil];
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"name"] = name;
-    param[@"origin"] = origin;
+    model.requestType = type;
+    model.pathArr = pathArr;
     model.param = param;
     
     return model;
+}
+
+/** 审核开关接口 */
++ (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin {
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"name"] = name;
+    param[@"origin"] = origin;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"control"] param:param];
+}
+
+/** 登录接口 */
++ (NAAPIModel *)loginConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"origin"] = @"0";
+    param[@"phone_number"] = phoneNumber;
+    param[@"passwd"] = password;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"users", @"login"] param:param];
+}
+
+/** 注册接口 */
++ (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"origin"] = @"0";
+    param[@"phone_number"] = phoneNumber;
+    param[@"passwd"] = password;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"users", @"register"] param:param];
+}
+
+/** 用户信用分数接口 */
++ (NAAPIModel *)trustScoreConfigWithToken:(NSString *)token {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = token;
+    param[@"channel"] = @"appios";
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"trust_score"] param:param];
 }
 
 /** 首页卡片接口 */
 + (NAAPIModel *)mainPageCardConfigWithVersion:(NSString *)version {
-    NAAPIModel *model = [[NAAPIModel alloc] init];
-    model.requestType = NAHTTPRequestTypeGet;
-    model.pathArr = [NSArray arrayWithObjects:@"api", @"cards", nil];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"version"] = version;
-    model.param = param;
-    
-    return model;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"cards"] param:param];
 }
 
 /** 用户基本信息接口 昵称 头像等 */
 + (NAAPIModel *)mineUserInfoConfigWithToken:(NSString *)token {
-    NAAPIModel *model = [[NAAPIModel alloc] init];
-    model.requestType = NAHTTPRequestTypeGet;
-    model.pathArr = [NSArray arrayWithObjects:@"api", @"user_infos", @"show", nil];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = token;
-    model.param = param;
-    
-    return model;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"show"] param:param];
 }
 
 /** 用户vip信息接口 */
 + (NAAPIModel *)mineVipInfoConfigWithToken:(NSString *)token {
-    NAAPIModel *model = [[NAAPIModel alloc] init];
-    model.requestType = NAHTTPRequestTypeGet;
-    model.pathArr = [NSArray arrayWithObjects:@"api", @"vip", @"time", nil];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = token;
     param[@"code"] = @"0";
-    model.param = param;
-    
-    return model;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"time"] param:param];
 }
 
 /** 用户订单信息接口 */
 + (NAAPIModel *)mineOrderInfoConfigWithToken:(NSString *)token {
-    NAAPIModel *model = [[NAAPIModel alloc] init];
-    model.requestType = NAHTTPRequestTypeGet;
-    model.pathArr = [NSArray arrayWithObjects:@"api", @"product", @"transactions", nil];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = token;
-    model.param = param;
-    
-    return model;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"transactions"] param:param];
 }
 
 /** 用户贷款记录接口 */
 + (NAAPIModel *)mineLoanListConfigWithToken:(NSString *)token {
-    NAAPIModel *model = [[NAAPIModel alloc] init];
-    model.requestType = NAHTTPRequestTypeGet;
-    model.pathArr = [NSArray arrayWithObjects:@"api", @"meixin", @"loan", @"list", nil];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = token;
-    model.param = param;
-    
-    return model;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"meixin", @"loan", @"list"] param:param];
 }
 
 @end

@@ -110,8 +110,13 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.navigationController.navigationBarHidden = YES;
     [self.bannerView startAnimation];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -369,7 +374,6 @@ NSString *const kMainPageCellID = @"mainPageCell";
                 break;
         }
     }
-    
 }
 
 #pragma mark - <Event>
