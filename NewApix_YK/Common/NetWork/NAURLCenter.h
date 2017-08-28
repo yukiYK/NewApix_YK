@@ -35,9 +35,19 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 /** 登录接口 */
 + (NAAPIModel *)loginConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password;
 /** 注册接口 */
-+ (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password;
++ (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber
+                               password:(NSString *)password
+                                    sms:(NSString *)sms
+                                 imgSms:(NSString *)imgSms
+                              imgSmsKey:(NSString *)imgSmsKey;
 /** 用户信用分数接口 */
 + (NAAPIModel *)trustScoreConfigWithToken:(NSString *)token;
+/** 获取验证码接口 */
++ (NAAPIModel *)getSmsConfigWithPhoneNumber:(NSString *)phoneNumber;
+/** 获取图片验证码接口 */
++ (NAAPIModel *)getImgSmsConfig;
+/** 重置密码接口 */
++ (NAAPIModel *)resetPasswordConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password sms:(NSString *)sms;
 
 // --------------------------------首页------------------------------
 /** 首页卡片接口 */

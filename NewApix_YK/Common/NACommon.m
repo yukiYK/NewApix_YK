@@ -63,7 +63,6 @@
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsToken];
 }
 
-
 + (void)setToken:(NSString *)token {
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:kUserDefaultsToken];
 }

@@ -161,7 +161,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <state key="normal" title="获取验证码">
-                        <color key="titleColor" red="0.46666666666666667" green="0.59607843137254901" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.53725490196078429" green="0.6705882352941176" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="onGetSmsClicked:" destination="-1" eventType="touchUpInside" id="Tky-up-EKc"/>
@@ -169,6 +169,7 @@
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Orf-q6-4Is">
                     <rect key="frame" x="263" y="301.5" width="77" height="39"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="39" id="bax-tf-zaY"/>
                         <constraint firstAttribute="width" constant="77" id="w3u-fZ-YkS"/>

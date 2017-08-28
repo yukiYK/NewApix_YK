@@ -75,10 +75,6 @@
         [self.loginBtn setBackgroundImage:kGetImage(@"login_btn_gray") forState:UIControlStateNormal];
     }
 }
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [self.phoneTextField resignFirstResponder];
-    [self.passwordTextField resignFirstResponder];
-}
 
 #pragma mark - <Network>
 - (void)requestForLogin {
@@ -187,6 +183,10 @@
     else if (textField == self.passwordTextField) {
         self.passwordImgView.image = kGetImage(@"login_password_gray");
     }
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.phoneTextField resignFirstResponder];
+    [self.passwordTextField resignFirstResponder];
 }
 
 @end

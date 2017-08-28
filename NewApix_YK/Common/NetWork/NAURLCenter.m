@@ -58,6 +58,7 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"control"] param:param];
 }
 
+#pragma mark - <Login Register>
 /** 登录接口 */
 + (NAAPIModel *)loginConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -68,11 +69,15 @@
 }
 
 /** 注册接口 */
-+ (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password {
++ (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password sms:(NSString *)sms imgSms:(NSString *)imgSms imgSmsKey:(NSString *)imgSmsKey {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"origin"] = @"0";
+    param[@"origin"] = @"2";
     param[@"phone_number"] = phoneNumber;
     param[@"passwd"] = password;
+    param[@"sms_code"] = sms;
+    param[@"captcha"] = imgSms;
+    param[@"captcha_key"] = imgSmsKey;
+    param[@"location"] = [NAUserTool getLocation];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"users", @"register"] param:param];
 }
 
@@ -84,6 +89,31 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"trust_score"] param:param];
 }
 
+/** 获取验证码接口 */
++ (NAAPIModel *)getSmsConfigWithPhoneNumber:(NSString *)phoneNumber {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"phone_number"] = phoneNumber;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"users", @"register", @"first_send"] param:param];
+}
+
+/** 获取图片验证码接口 */
++ (NAAPIModel *)getImgSmsConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"id"] = @"";
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"simple_captcha"] param:param];
+}
+
+/** 重置密码接口 */
++ (NAAPIModel *)resetPasswordConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password sms:(NSString *)sms{
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"origin"] = @"0";
+    param[@"phone"] = phoneNumber;
+    param[@"passwd"] = password;
+    param[@"sms_code"] = sms;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"reset_passwd"] param:param];
+}
+
+#pragma mark - <MainPage>
 /** 首页卡片接口 */
 + (NAAPIModel *)mainPageCardConfigWithVersion:(NSString *)version {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -91,6 +121,7 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"cards"] param:param];
 }
 
+#pragma mark - <User>
 /** 用户基本信息接口 昵称 头像等 */
 + (NAAPIModel *)mineUserInfoConfigWithToken:(NSString *)token {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];

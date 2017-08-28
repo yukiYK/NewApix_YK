@@ -8,7 +8,7 @@
 
 #import "NAPhoneLoginController.h"
 
-@interface NAPhoneLoginController ()
+@interface NAPhoneLoginController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *phoneImgView;
 @property (weak, nonatomic) IBOutlet UIImageView *smsImgView;
@@ -33,6 +33,27 @@
 - (IBAction)onLoginBtnClicked:(id)sender {
 }
 
+#pragma mark - <UITextFieldDelegate>
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (textField == self.phoneTextField) {
+        self.phoneImgView.image = kGetImage(@"login_user");
+    }
+    else if (textField == self.smsTextField) {
+        self.smsImgView.image = kGetImage(@"login_sms");
+    }
+}
 
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    if (textField == self.phoneTextField) {
+        self.phoneImgView.image = kGetImage(@"login_user_gray");
+    }
+    else if (textField == self.smsTextField) {
+        self.smsImgView.image = kGetImage(@"login_sms_gray");
+    }
+}
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.phoneTextField resignFirstResponder];
+    [self.smsTextField resignFirstResponder];
+}
 
 @end

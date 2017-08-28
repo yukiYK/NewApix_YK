@@ -27,15 +27,16 @@ static NSString * const kNotificationNetChange = @"kNotificationNetChange";
 //static NSString * const kNotificationNetChange = @"defaultImage";
 
 #pragma mark - <UserDefault>
-static NSString * const kUserDefaultsOnOff = @"kUserDefaultsOnOff";      // 审核开关
+static NSString * const kUserDefaultsOnOff = @"kUserDefaultsOnOff";       // 审核开关
 static NSString * const kUserDefaultsUserStatus = @"kUserDefaultsUserStatus"; // 用户状态
 static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";       // token
 static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵称
 static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
-static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber";   // 身份证号
-static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";   // 账号/手机号
-static NSString * const kUserDefaultUniqueId = @"kUserDefaultUniqueId";  //unique_id
-static NSString * const kUserDefaultTrustScore = @"kUserDefaultTrustScore";  // 信用分数
+static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber"; // 身份证号
+static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 账号/手机号
+static NSString * const kUserDefaultUniqueId = @"kUserDefaultUniqueId";   //unique_id
+static NSString * const kUserDefaultTrustScore = @"kUserDefaultTrustScore";// 信用分数
+static NSString * const kUserDefaultLocation = @"kUserDefaultLocation";    // 位置
 
 #pragma mark - <KeyChain>
 static NSString * const kKeyChain = @"com.heige.meixinlife";   // 应用程序keyChain的Key

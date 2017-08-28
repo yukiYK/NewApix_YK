@@ -88,8 +88,7 @@
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     if (![NACommon getToken] && viewController == self.viewControllers[2]) {
         UINavigationController *vc = self.selectedViewController;
-        NALoginController *loginVC = [NAViewControllerCenter loginController];
-        [vc pushViewController:loginVC animated:YES];
+        [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
         return NO;
     }
     else if (![NACommon isRealVersion]) {
@@ -101,8 +100,7 @@
         if (![NACommon getToken]) {
             
             UINavigationController *vc = self.selectedViewController;
-            NALoginController *loginVC = [NAViewControllerCenter loginController];
-            [vc pushViewController:loginVC animated:YES];
+            [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
         }
         else {
             [self alertViewClick];
