@@ -10,6 +10,7 @@
 #import "NATabbarController.h"
 #import <MeiQiaSDK/MQManager.h>
 #import <UMSocialCore/UMSocialCore.h>
+#import "sys/utsname.h"
 
 @interface AppDelegate ()
 
@@ -43,8 +44,11 @@
     
     // 初始化第三方的工具
     [self initUMeng];
-    
     [self initMeiQia];
+    [self setupSVProgressHUD];
+    
+    // 获取uuid
+    [self setupDeviceInfo];
     
     // 监听网络状态变化
 //    AFNetworkReachabilityManager
@@ -135,7 +139,6 @@
             NSLog(@"美洽SDK：初始化失败 error：%@", error);
         }
     }];
-    
 }
 
 /** 审核开关 */
@@ -171,6 +174,59 @@
     
     // QQ
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:kShareQQAppKey appSecret:nil redirectURL:SERVER_ADDRESS_H5];
+}
+
+- (void)setupSVProgressHUD {
+    [SVProgressHUD setMinimumDismissTimeInterval:1.0];
+    [SVProgressHUD setDefaultMaskType:SVProgressHUDMaskTypeNone];
+    [SVProgressHUD setDefaultStyle:SVProgressHUDStyleCustom];
+    [SVProgressHUD setBackgroundColor:[UIColor colorWithRed:57.0/255.0 green:57.0/255.0 blue:57.0/255.0 alpha:.9]];
+    [SVProgressHUD setForegroundColor:[UIColor colorWithRed:251.0/255.0 green:251.0/255.0 blue:251.0/255.0 alpha:1.0]];
+}
+
+- (void)setupDeviceInfo {
+    NSString *uuid;
+    if (![NAKeyChain loadKeyChainWithKey:kKeyChainUuid]) {
+        uuid = [[NSUUID UUID] UUIDString];
+        [NAKeyChain saveKeyChainValue:uuid key:kKeyChainUuid];
+    }else{
+        uuid = [NAKeyChain loadKeyChainWithKey:kKeyChainUuid];
+    }
+    [NAUserTool saveDeviceId:uuid];
+    NSString *systemDesc = [NSString stringWithFormat:@"%@%@",[UIDevice currentDevice].systemName,[UIDevice currentDevice].systemVersion];
+    [NAUserTool saveSystemVersion:systemDesc];
+    NSString *equipmentType = [self deviceString];
+    [NAUserTool saveEquipmentType:equipmentType];
+}
+
+//查看当前机型
+- (NSString*)deviceString
+{
+    // 需要#import "sys/utsname.h"
+    struct utsname systemInfo;
+    uname(&systemInfo);
+    NSString *deviceString = [NSString stringWithCString:systemInfo.machine encoding:NSUTF8StringEncoding];
+    
+    if ([deviceString isEqualToString:@"iPhone1,1"])    return @"iPhone 1G";
+    if ([deviceString isEqualToString:@"iPhone1,2"])    return @"iPhone 3G";
+    if ([deviceString isEqualToString:@"iPhone2,1"])    return @"iPhone 3GS";
+    if ([deviceString isEqualToString:@"iPhone3,1"])    return @"iPhone 4";
+    if ([deviceString isEqualToString:@"iPhone4,1"])    return @"iPhone 4S";
+    if ([deviceString isEqualToString:@"iPhone3,2"])    return @"Verizon iPhone 4";
+    if ([deviceString isEqualToString:@"i386"])         return @"Simulator";
+    if ([deviceString isEqualToString:@"x86_64"])       return @"Simulator";
+    if ([deviceString isEqualToString:@"iPhone5,1"]||[deviceString isEqualToString:@"iPhone5,2"])    return @"iPhone 5";
+    if ([deviceString isEqualToString:@"iPhone5,3"]||[deviceString isEqualToString:@"iPhone5,4"])    return @"iPhone 5C";
+    if ([deviceString hasPrefix:@"iPhone6"])    return @"iPhone 5S";
+    if ([deviceString isEqualToString:@"iPhone7,1"])    return @"iPhone 6 Plus";
+    if ([deviceString isEqualToString:@"iPhone7,2"])    return @"iPhone 6";
+    if ([deviceString isEqualToString:@"iPhone8,1"])    return @"iPhone 6s";
+    if ([deviceString isEqualToString:@"iPhone8,2"])    return @"iPhone 6s Plus";
+    if ([deviceString isEqualToString:@"iPhone9,1"])    return @"iPhone 7";
+    if ([deviceString isEqualToString:@"iPhone9,3"])    return @"iPhone 7";
+    if ([deviceString isEqualToString:@"iPhone9,2"])    return @"iPhone 7 Plus";
+    if ([deviceString isEqualToString:@"iPhone9,4"])    return @"iPhone 7 Plus";
+    return deviceString;
 }
 
 

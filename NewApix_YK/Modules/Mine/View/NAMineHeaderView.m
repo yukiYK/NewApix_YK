@@ -54,6 +54,7 @@ CGFloat const kRedPointWidth = 13;
     [self addSubview:topView];
     
     UIImageView *avatarImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kCommonMargin, kCommonMargin, kAvatarWidth, kAvatarWidth)];
+    avatarImageView.image = kGetImage(kImageAvatarDefault);
     avatarImageView.layer.cornerRadius = 3;
     avatarImageView.layer.masksToBounds = YES;
     [topView addSubview:avatarImageView];

@@ -16,6 +16,7 @@
 static NSString * const kAESKey = @"WEfs12SEWQte3DSq23ttga/sdfw=Vrlp";
 #pragma mark - <通用imageName>
 static NSString * const kImageDefault = @"defaultImage";
+static NSString * const kImageAvatarDefault = @"avatar_default";
 static NSString * const kImageBackWhite = @"back_white";
 static NSString * const kImageBackBlack = @"back_black";
 
@@ -32,17 +33,22 @@ static NSString * const kUserDefaultsUserStatus = @"kUserDefaultsUserStatus"; //
 static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";       // token
 static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵称
 static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
+static NSString * const kUserDefaultsIdName = @"kUserDefaultsIdName";     // 真实姓名
 static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber"; // 身份证号
-static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 账号/手机号
-static NSString * const kUserDefaultUniqueId = @"kUserDefaultUniqueId";   //unique_id
-static NSString * const kUserDefaultTrustScore = @"kUserDefaultTrustScore";// 信用分数
-static NSString * const kUserDefaultLocation = @"kUserDefaultLocation";    // 位置
+static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 用户手机号
+static NSString * const kUserDefaultsLoginPhone = @"kUserDefaultsLoginPhone"; // 登录页保存的账号
+static NSString * const kUserDefaultsUniqueId = @"kUserDefaultsUniqueId";   //unique_id
+static NSString * const kUserDefaultsTrustScore = @"kUserDefaultsTrustScore";// 信用分数
+static NSString * const kUserDefaultsLocation = @"kUserDefaultsLocation";    // 位置
+static NSString * const kUserDefaultsDeviceId = @"kUserDefaultsDeviceId";    // deviceID
+static NSString * const kUserDefaultsSystemVersion = @"kUserDefaultsSystemVersion";    // 系统版本
+static NSString * const kUserDefaultsEquipmentType = @"kUserDefaultsEquipmentType";    // 设备类型
 
 #pragma mark - <KeyChain>
 static NSString * const kKeyChain = @"com.heige.meixinlife";   // 应用程序keyChain的Key
 // 下面是具体保存到keyChain的每个key
 static NSString * const kKeyChainPassword = @"kKeyChainPassword";  // 密码
-
+static NSString * const kKeyChainUuid = @"kKeyChainUuid";    // uuid
 
 #pragma mark - <第三方的一些key>
 static NSString * const kUMAppKey = @"5784cbb2e0f55ac55e000978";

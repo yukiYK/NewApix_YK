@@ -9,7 +9,7 @@
 #import "NAKeyChain.h"
 #import <Security/Security.h>
 
-static NSString * const kDicKey = @"com.heige.dicKey";
+#define kDicKey [NSBundle mainBundle].bundleIdentifier
 
 @implementation NAKeyChain
 

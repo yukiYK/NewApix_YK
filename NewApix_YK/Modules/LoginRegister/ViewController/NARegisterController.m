@@ -41,6 +41,7 @@
     
     [self setupNavigationBar];
     [self addTextFieldTarget];
+    [self requestForImgSms];
 }
 
 #pragma mark - <Private Method>
@@ -103,7 +104,7 @@
 
 #pragma mark - <NetRequest>
 - (void)requestForGetSms {
-    NAAPIModel *model = [NAURLCenter getSmsConfigWithPhoneNumber:self.phoneTextField.text];
+    NAAPIModel *model = [NAURLCenter getSmsConfigForRegisterWithPhoneNumber:self.phoneTextField.text];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
@@ -126,24 +127,20 @@
 
 - (void)requestForImgSms {
     NAAPIModel *model = [NAURLCenter getImgSmsConfig];
-    
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeAPI pathArray:model.pathArr];
     WeakSelf
-    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
-        NSLog(@"%@", returnValue);
+    [self.netManager GET:urlStr parameters:model.param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSDictionary *returnValue = responseObject;
         NSString *imgUrl = [NSString stringWithFormat:@"%@%@", SERVER_ADDRESS_API, returnValue[@"url"]];
         [weakSelf.bigImgSmsImgView sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
         
         weakSelf.imgSmsKey = [NSString stringWithFormat:@"%@", returnValue[@"key"]];
-        
-    } errorCodeBlock:^(NSString *code, NSString *msg) {
-        
-    } failureBlock:^(NSError *error) {
-        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
     }];
 }
 
 - (void)requestForRegister {
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"注册中..."];
     NSString *password = [AESCrypt encrypt:self.passwordTextField.text password:kAESKey];
     NAAPIModel *model = [NAURLCenter registerConfigWithPhone:self.phoneTextField.text
                                                     password:password
@@ -160,7 +157,7 @@
         NSString *token = [dataDic objectForKey:@"token"];
         NSString *uniqueId = [dataDic objectForKey:@"unique_id"];
         [NACommon setToken:token];
-        [[NSUserDefaults standardUserDefaults] setObject:uniqueId forKey:kUserDefaultUniqueId];
+        [NACommon setUniqueId:uniqueId];
         
         // 重新获取用户状态
         [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
@@ -187,7 +184,7 @@
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
-        [[NSUserDefaults standardUserDefaults] setObject:returnValue[@"score"] forKey:kUserDefaultTrustScore];
+        [NAUserTool saveTrustSocre:returnValue[@"score"]];
         // 重新设置根视图
         NATabbarController *tabbarC = [[NATabbarController alloc] init];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
@@ -258,10 +255,10 @@
         self.passwordImgView.image = kGetImage(@"login_password");
     }
     else if (textField == self.smsTextField) {
-        self.smsImgView.image = kGetImage(@"login_sms");
+        self.smsImgView.image = kGetImage(@"register_sms");
     }
     else if (textField == self.imageSmsTextField) {
-        self.imgSmsImgView.image = kGetImage(@"login_imgSms");
+        self.imgSmsImgView.image = kGetImage(@"register_imgSms");
     }
 }
 
@@ -273,10 +270,10 @@
         self.passwordImgView.image = kGetImage(@"login_password_gray");
     }
     else if (textField == self.smsTextField) {
-        self.smsImgView.image = kGetImage(@"login_sms_gray");
+        self.smsImgView.image = kGetImage(@"register_sms_gray");
     }
     else if (textField == self.imageSmsTextField) {
-        self.imgSmsImgView.image = kGetImage(@"login_imgSms_gray");
+        self.imgSmsImgView.image = kGetImage(@"register_imgSms_gray");
     }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

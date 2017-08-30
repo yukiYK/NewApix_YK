@@ -79,16 +79,15 @@
 #pragma mark - <Network>
 - (void)requestForLogin {
     
-    [SVProgressHUD show];
+    [SVProgressHUD showWithStatus:@"登录中..."];
     NSString *password = [AESCrypt encrypt:self.passwordTextField.text password:kAESKey];
     NAAPIModel *model = [NAURLCenter loginConfigWithPhone:self.phoneTextField.text password:password];
     
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"deviceid"] forHTTPHeaderField:@"deviceid"];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"systemversion"] forHTTPHeaderField:@"systemversion"];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"equipmenttype"] forHTTPHeaderField:@"equipmenttype"];
+    [manager.requestSerializer setValue:[NAUserTool getDeviceId] forHTTPHeaderField:@"deviceid"];
+    [manager.requestSerializer setValue:[NAUserTool getSystemVersion] forHTTPHeaderField:@"systemversion"];
+    [manager.requestSerializer setValue:[NAUserTool getEquipmentType] forHTTPHeaderField:@"equipmenttype"];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
@@ -96,9 +95,9 @@
         
         NSDictionary *dataDic = [returnValue objectForKey:@"data"];
         NSString *token = [dataDic objectForKey:@"token"];
-        NSString *uniqueId = [dataDic objectForKey:@"unique_id"];
+        NSString *uniqueId = [AESCrypt decrypt:[dataDic objectForKey:@"unique_id"] password:kAESKey];
         [NACommon setToken:token];
-        [[NSUserDefaults standardUserDefaults] setObject:uniqueId forKey:kUserDefaultUniqueId];
+        [NACommon setUniqueId:uniqueId];
         
         // 重新获取用户状态
         [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
@@ -119,7 +118,7 @@
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
-        [[NSUserDefaults standardUserDefaults] setObject:returnValue[@"score"] forKey:kUserDefaultTrustScore];
+        [NAUserTool saveTrustSocre:returnValue[@"score"]];
         // 重新设置根视图
         NATabbarController *tabbarC = [[NATabbarController alloc] init];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
@@ -159,7 +158,7 @@
 }
 
 - (IBAction)onLoginBtnClicked:(id)sender {
-    [self requestForTrustScore];
+    [self requestForLogin];
 }
 
 - (void)textFieldValueChanged:(UITextField *)textField {

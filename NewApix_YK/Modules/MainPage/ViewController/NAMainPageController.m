@@ -102,6 +102,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.navigationBarHidden = YES;
     
     [self setupTableView];
     [self loadData];
@@ -173,7 +174,15 @@ NSString *const kMainPageCellID = @"mainPageCell";
         [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [btnBgView addSubview:button];
         
-        FLAnimatedImageView *gifImageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(button.width - 17, 0, 17, 18)];
+        if (i == 0) {
+            NSURL *url = [[NSBundle mainBundle] URLForResource:@"new" withExtension:@"gif"];
+            
+            FLAnimatedImageView *gifImageView = [[FLAnimatedImageView alloc] initWithFrame:CGRectMake(button.width/2 + 10, 10, 20, 20)];
+            FLAnimatedImage *gifImage = [FLAnimatedImage animatedImageWithGIFData:[NSData dataWithContentsOfURL:url]];
+            [gifImageView setAnimatedImage:gifImage];
+            [button addSubview:gifImageView];
+        }
+        
     }
     // 分割线
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(15, btnHeight, kScreenWidth - 30, 1)];

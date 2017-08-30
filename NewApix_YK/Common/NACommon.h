@@ -46,6 +46,10 @@ typedef void(^LoadCompleteBlock) (NAUserStatus userStatus);
 + (NSString *)getToken;
 /** 设置token */
 + (void)setToken:(NSString *)token;
+/** 获取uniqueid */
++ (NSString *)getUniqueId;
+/** 设置uniqueid */
++ (void)setUniqueId:(NSString *)uniqueId;
 
 #pragma mark - <上下拉刷新View>
 /** 生成下拉刷新header */

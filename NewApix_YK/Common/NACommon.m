@@ -67,6 +67,14 @@
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:kUserDefaultsToken];
 }
 
++ (NSString *)getUniqueId {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsUniqueId];
+}
+
++ (void)setUniqueId:(NSString *)uniqueId {
+    [[NSUserDefaults standardUserDefaults] setObject:uniqueId forKey:kUserDefaultsUniqueId];
+}
+
 /** 是否是实际用户看到的版本，否则为审核版 */
 + (BOOL)isRealVersion {
     return [[NSUserDefaults standardUserDefaults] boolForKey:kUserDefaultsOnOff];

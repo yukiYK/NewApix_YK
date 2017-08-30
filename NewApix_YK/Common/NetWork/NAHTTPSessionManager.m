@@ -13,7 +13,7 @@
 + (instancetype)manager {
     NAHTTPSessionManager *manager = [super manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/plain",@"text/html", nil];
-    //@"application/json"
+//    @"application/json"
     manager.requestSerializer.timeoutInterval = 15;
     manager.requestSerializer.cachePolicy = NSURLRequestReturnCacheDataElseLoad;
     manager.requestSerializer.HTTPShouldHandleCookies = NO;
@@ -61,22 +61,29 @@
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-                NSString *msg = @"请求失败";//[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
-                
-                NSLog(@"code: %@",code);
-                
-                if ([code isEqualToString:@"0"]) {
-                    
+                if (!apiModel.rightCode) {
                     if (block) block(responseObject);
                 }
                 else {
-                    NSString *message = [NSString stringWithFormat:@"%@", msg];
-                    if (errorBlock) errorBlock(code, message);
+                    NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+                    NSLog(@"code: %@",code);
+                    
+                    if ([code isEqualToString:apiModel.rightCode]) {
+                        
+                        if (block) block(responseObject);
+                    }
+                    else {
+                        NSString *msg = [NSString stringWithFormat:@"%@",responseObject[@"msg"]];
+                        if (!msg) {
+                            msg = @"请求失败";
+                        }
+                        if (errorBlock) errorBlock(code, msg);
+                    }
                 }
             }
             else {
-                if (block) block(responseObject);
+                NSLog(@"返回数据格式不对");
+                if (block) block(nil);
             }
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -91,23 +98,30 @@
             }
         } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             if ([responseObject isKindOfClass:[NSDictionary class]]) {
-                //                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
-                NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
-                NSString *msg = @"请求失败"; //[NSString stringWithFormat:@"%@",responseObject[@"msg"]];
                 
-                NSLog(@"code: %@",code);
-                
-                if ([code isEqualToString:@"0"]) {
-                    
+                if (!apiModel.rightCode) {
                     if (block) block(responseObject);
                 }
                 else {
-                    NSString *message = [NSString stringWithFormat:@"%@", msg];
-                    if (errorBlock) errorBlock(code, message);
+                    //                NSString *ret = [NSString stringWithFormat:@"%@",responseObject[@"ret"]];
+                    NSString *code = [NSString stringWithFormat:@"%@",responseObject[@"code"]];
+                    NSLog(@"code: %@",code);
+                    
+                    if ([code isEqualToString:apiModel.rightCode]) {
+                        
+                        if (block) block(responseObject);
+                    }
+                    else {
+                        NSString *msg = [NSString stringWithFormat:@"%@",responseObject[@"msg"]];
+                        if (!msg) {
+                            msg = @"请求失败";
+                        }
+                        if (errorBlock) errorBlock(code, msg);
+                    }
                 }
             }
             else {
-                if (block) block(responseObject);
+                if (block) block(nil);
             }
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -205,7 +219,7 @@
                 }
             }
             else {
-                if (block) block(responseObject);
+                if (block) block(nil);
             }
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
             if (failureBlock) failureBlock(error);
@@ -236,7 +250,7 @@
                 }
             }
             else {
-                if (block) block(responseObject);
+                if (block) block(nil);
             }
             
         } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

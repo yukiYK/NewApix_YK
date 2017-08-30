@@ -38,8 +38,7 @@
 
 #pragma mark - <Private Method>
 - (void)setupNavigationBar {
-    
-    self.customTitleLabel.text = @"登录";
+    self.customTitleLabel.text = @"忘记密码";
 }
 
 - (void)addTextFieldTarget {
@@ -99,11 +98,10 @@
     NAAPIModel *model = [NAURLCenter resetPasswordConfigWithPhone:self.phoneTextField.text password:password sms:self.smsTextField.text];
     
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"deviceid"] forHTTPHeaderField:@"deviceid"];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"systemversion"] forHTTPHeaderField:@"systemversion"];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"equipmenttype"] forHTTPHeaderField:@"equipmenttype"];
+    [manager.requestSerializer setValue:[NAUserTool getDeviceId] forHTTPHeaderField:@"deviceid"];
+    [manager.requestSerializer setValue:[NAUserTool getSystemVersion] forHTTPHeaderField:@"systemversion"];
+    [manager.requestSerializer setValue:[NAUserTool getEquipmentType] forHTTPHeaderField:@"equipmenttype"];
     
     WeakSelf
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
@@ -127,7 +125,7 @@
 }
 
 - (void)requestForGetSms {
-    NAAPIModel *model = [NAURLCenter getSmsConfigWithPhoneNumber:self.phoneTextField.text];
+    NAAPIModel *model = [NAURLCenter getSmsConfigForResetPasswordWithPhoneNumber:self.phoneTextField.text];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
@@ -136,12 +134,7 @@
         [weakSelf startSmsTime];
         [SVProgressHUD showWithStatus:@"验证码已发送"];
     } errorCodeBlock:^(NSString *code, NSString *msg) {
-        if ([code isEqualToString:@"-3"]) {
-            [SVProgressHUD showErrorWithStatus:@"该手机号已经注册过了"];
-        }
-        else {
-            [SVProgressHUD showErrorWithStatus:@"获取验证码失败"];
-        }
+        [SVProgressHUD showErrorWithStatus:@"获取验证码失败"];
         
     } failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
@@ -193,7 +186,7 @@
         self.passwordImgView.image = kGetImage(@"login_password");
     }
     else if (textField == self.smsTextField) {
-        self.smsImgView.image = kGetImage(@"login_sms");
+        self.smsImgView.image = kGetImage(@"register_sms");
     }
 }
 
@@ -205,7 +198,7 @@
         self.passwordImgView.image = kGetImage(@"login_password_gray");
     }
     else if (textField == self.smsTextField) {
-        self.smsImgView.image = kGetImage(@"login_sms_gray");
+        self.smsImgView.image = kGetImage(@"register_sms_gray");
     }
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {

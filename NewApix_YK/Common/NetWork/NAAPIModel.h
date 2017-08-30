@@ -19,4 +19,7 @@ typedef NS_ENUM(NSInteger, NAHTTPRequestType) {
 @property (nonatomic, strong) NSArray *pathArr;
 @property (nonatomic, strong) NSMutableDictionary *param;
 
+/** 正确的code 如果无需检验code，则为nil */
+@property (nonatomic, copy) NSString *rightCode;
+
 @end

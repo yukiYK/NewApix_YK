@@ -16,6 +16,7 @@ NSString * const kMineCell = @"mineCell";
 @interface NAMineController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NAMineHeaderView *mineHeaderView;
 
 @property (nonatomic, strong) NSArray *array;
 
@@ -75,7 +76,8 @@ NSString * const kMineCell = @"mineCell";
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    tableView.tableHeaderView = [[NAMineHeaderView alloc] initWithUserStatus:[NACommon sharedCommon].userStatus];
+    self.mineHeaderView = [[NAMineHeaderView alloc] initWithUserStatus:[NACommon sharedCommon].userStatus];
+    tableView.tableHeaderView = self.mineHeaderView;
     [self.view addSubview:tableView];
     self.tableView = tableView;
 }
@@ -84,16 +86,26 @@ NSString * const kMineCell = @"mineCell";
     
     NAAPIModel *model = [NAURLCenter mineUserInfoConfigWithToken:[NACommon getToken]];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"deviceid"] forHTTPHeaderField:@"deviceid"];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"systemversion"] forHTTPHeaderField:@"systemversion"];
-    [manager.requestSerializer setValue:[defaults objectForKey:@"equipmenttype"] forHTTPHeaderField:@"equipmenttype"];
+    [manager.requestSerializer setValue:[NAUserTool getDeviceId] forHTTPHeaderField:@"deviceid"];
+    [manager.requestSerializer setValue:[NAUserTool getSystemVersion] forHTTPHeaderField:@"systemversion"];
+    [manager.requestSerializer setValue:[NAUserTool getEquipmentType] forHTTPHeaderField:@"equipmenttype"];
     
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
+        if ([returnValue[@"code"] integerValue] == -1) {
+        }
+        else if ([returnValue[@"apix_login_code"] integerValue] == -1) {
+            [NAUserTool removeAllUserDefaults];
+            [SVProgressHUD showErrorWithStatus:@"您的账号已在别处登录，请重新登录"];
+//            [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter loginController] tranformStyle:NATransformStylePush needLogin:NO];
+        }
+        else {
+            NAUserInfoModel *model = [NAUserInfoModel yy_modelWithJSON:returnValue[@"data"]];
+            self.mineHeaderView.userInfo = model;
+        }
         
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         

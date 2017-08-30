@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 // --------------------------------登录 注册-------------------------
 /** 登录接口 */
 + (NAAPIModel *)loginConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password;
+/** 手机登录接口 */
++ (NAAPIModel *)phoneLoginConfigWithPhone:(NSString *)phoneNumber sms:(NSString *)sms;
 /** 注册接口 */
 + (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber
                                password:(NSString *)password
@@ -42,8 +44,12 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
                               imgSmsKey:(NSString *)imgSmsKey;
 /** 用户信用分数接口 */
 + (NAAPIModel *)trustScoreConfigWithToken:(NSString *)token;
-/** 获取验证码接口 */
-+ (NAAPIModel *)getSmsConfigWithPhoneNumber:(NSString *)phoneNumber;
+/** 获取验证码接口-注册 */
++ (NAAPIModel *)getSmsConfigForRegisterWithPhoneNumber:(NSString *)phoneNumber;
+/** 获取验证码接口-修改密码 */
++ (NAAPIModel *)getSmsConfigForResetPasswordWithPhoneNumber:(NSString *)phoneNumber;
+/** 获取验证码接口-手机登录 */
++ (NAAPIModel *)getSmsConfigForPhoneLoginWithPhoneNumber:(NSString *)phoneNumber;
 /** 获取图片验证码接口 */
 + (NAAPIModel *)getImgSmsConfig;
 /** 重置密码接口 */
