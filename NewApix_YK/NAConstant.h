@@ -14,6 +14,9 @@
 // --------------------- 一些常量 -------------
 // 对密码进行AES加密的key
 static NSString * const kAESKey = @"WEfs12SEWQte3DSq23ttga/sdfw=Vrlp";
+// 内购商品
+static NSString * const kProductVipMonth = @"com.heige.meixinlife23";
+static NSString * const kProductVipLifelong = @"com.heige.meixinlife24";
 #pragma mark - <通用imageName>
 static NSString * const kImageDefault = @"defaultImage";
 static NSString * const kImageAvatarDefault = @"avatar_default";

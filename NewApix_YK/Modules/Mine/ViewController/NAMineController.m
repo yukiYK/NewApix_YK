@@ -27,12 +27,11 @@ NSString * const kMineCell = @"mineCell";
 - (NSArray *)array {
     if (!_array) {
         NAMineModel *model1 = [[NAMineModel alloc] initWithTitle:@"美信会员" icon:@"mine_vip" detail:@""];
-        NAMineModel *model2 = [[NAMineModel alloc] initWithTitle:@"钱包" icon:@"mine_wallet" detail:@""];
-        NAMineModel *model3 = [[NAMineModel alloc] initWithTitle:@"收货地址" icon:@"mine_address" detail:@""];
+        NAMineModel *model3 = [[NAMineModel alloc] initWithTitle:@"礼品中心" icon:@"mine_address" detail:@""];
         NAMineModel *model4 = [[NAMineModel alloc] initWithTitle:@"贷款记录" icon:@"mine_loan_record" detail:@""];
-        NAMineModel *model5 = [[NAMineModel alloc] initWithTitle:@"推荐贷款" icon:@"mine_ commend" detail:@""];
+        NAMineModel *model5 = [[NAMineModel alloc] initWithTitle:@"钱包" icon:@"mine_wallet" detail:@""];
         NAMineModel *model6 = [[NAMineModel alloc] initWithTitle:@"用户反馈" icon:@"mine_message" detail:@""];
-        _array = [NSArray arrayWithObjects:@[model1, model2, model3], @[model4, model5, model6], nil];
+        _array = [NSArray arrayWithObjects:@[model1, model3], @[model4, model5, model6], nil];
     }
     return _array;
 }
@@ -194,6 +193,24 @@ NSString * const kMineCell = @"mineCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击跳转");
+    
+    NAMineModel *model = self.array[indexPath.section][indexPath.row];
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter loginController] tranformStyle:NATransformStylePush needLogin:NO];
+        }
+        else if (indexPath.row == 1) {
+        }
+    }
+    else {
+        if (indexPath.row == 0) {
+        }
+        else if (indexPath.row == 1) {
+        }
+        else if (indexPath.row == 2) {
+        }
+    }
 }
 
 @end

@@ -16,6 +16,7 @@
 		4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837BB1F502120001B065C /* NAForgetPasswordController.xib */; };
 		4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */; };
 		4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */; };
+		4A61C45B1F597258008C7B15 /* NAVIPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A61C45A1F597258008C7B15 /* NAVIPController.m */; };
 		4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381611F38414D008BC8FD /* NAMainPageCell.m */; };
 		4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A6381621F38414D008BC8FD /* NAMainPageCell.xib */; };
 		4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381661F3841D5008BC8FD /* NAMainCardModel.m */; };
@@ -101,6 +102,8 @@
 		4A2837BE1F502B47001B065C /* NAPhoneLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPhoneLoginController.h; sourceTree = "<group>"; };
 		4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPhoneLoginController.m; sourceTree = "<group>"; };
 		4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPhoneLoginController.xib; sourceTree = "<group>"; };
+		4A61C4591F597258008C7B15 /* NAVIPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAVIPController.h; sourceTree = "<group>"; };
+		4A61C45A1F597258008C7B15 /* NAVIPController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAVIPController.m; sourceTree = "<group>"; };
 		4A6381601F38414D008BC8FD /* NAMainPageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageCell.h; sourceTree = "<group>"; };
 		4A6381611F38414D008BC8FD /* NAMainPageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageCell.m; sourceTree = "<group>"; };
 		4A6381621F38414D008BC8FD /* NAMainPageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageCell.xib; sourceTree = "<group>"; };
@@ -457,6 +460,8 @@
 			children = (
 				4AC6CA541F2F24C800A9308F /* NAMineController.h */,
 				4AC6CA551F2F24C800A9308F /* NAMineController.m */,
+				4A61C4591F597258008C7B15 /* NAVIPController.h */,
+				4A61C45A1F597258008C7B15 /* NAVIPController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -798,6 +803,7 @@
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,
 				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
+				4A61C45B1F597258008C7B15 /* NAVIPController.m in Sources */,
 				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,

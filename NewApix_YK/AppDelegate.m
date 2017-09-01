@@ -151,7 +151,7 @@
             [NACommon setRealVersion:YES];
         }
         else if ([returnValue[@"switch"] integerValue] == 0) {
-            [NACommon setRealVersion:NO];
+            [NACommon setRealVersion:YES];
         }
         // 获取用户状态后设置真正的根视图
         [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
