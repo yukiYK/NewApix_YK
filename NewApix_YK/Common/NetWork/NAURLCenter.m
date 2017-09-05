@@ -40,6 +40,21 @@
     return urlString;
 }
 
++ (NSString *)parameterStringWithParam:(NSDictionary *)param {
+    if (!param) return @"";
+    if (param.count <= 0) return @"";
+    
+    NSString *parmaeterStr = @"";
+    NSArray *allKeys = param.allKeys;
+    for (int i=0; i<allKeys.count; i++) {
+        NSString *key = allKeys[i];
+        NSString *formatStr = [NSString stringWithFormat:@"%@=%@&", key, param[key]];
+        if (i == allKeys.count - 1) formatStr = [NSString stringWithFormat:@"%@=%@", key, param[key]];
+        parmaeterStr = [parmaeterStr stringByAppendingString:formatStr];
+    }
+    return parmaeterStr;
+}
+
 + (NAAPIModel *)apiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param rightCode:(NSString *)rightCode {
     NAAPIModel *model = [[NAAPIModel alloc] init];
     model.requestType = type;
@@ -49,6 +64,9 @@
     return model;
 }
 
+
+
+#pragma mark - <--------------------所有的API接口------------------->
 /** 审核开关接口 */
 + (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin {
     
@@ -173,6 +191,25 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = token;
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"meixin", @"loan", @"list"] param:param rightCode:@"0"];
+}
+
+
+
+#pragma mark - <---------------------所有的H5--------------------->
++ (NSString *)vipH5URLWithToken:(NSString *)token {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = token;
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"", @""]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
++ (NSString *)vipiOSH5UrlWithToken:(NSString *)token {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = token;
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"", @""]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
 @end

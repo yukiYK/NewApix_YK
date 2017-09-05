@@ -127,15 +127,17 @@
 
 - (void)requestForImgSms {
     NAAPIModel *model = [NAURLCenter getImgSmsConfig];
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeAPI pathArray:model.pathArr];
     WeakSelf
-    [self.netManager GET:urlStr parameters:model.param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *returnValue = responseObject;
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        
         NSString *imgUrl = [NSString stringWithFormat:@"%@%@", SERVER_ADDRESS_API, returnValue[@"url"]];
         [weakSelf.bigImgSmsImgView sd_setImageWithURL:[NSURL URLWithString:imgUrl]];
         
         weakSelf.imgSmsKey = [NSString stringWithFormat:@"%@", returnValue[@"key"]];
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        
+    } failureBlock:^(NSError *error) {
+        
     }];
 }
 

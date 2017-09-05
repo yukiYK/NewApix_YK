@@ -21,9 +21,22 @@
 
 @property (nonatomic, strong) SKProductsRequest *productRequest;
 
+@property (nonatomic, strong) UIActivityIndicatorView *activitiyView;
+
+@property (nonatomic, copy) NSString *img_id;
+
 @end
 
 @implementation NAVIPController
+- (UIActivityIndicatorView *)activitiyView {
+    if (!_activitiyView) {
+        _activitiyView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+        _activitiyView.center = self.view.center;
+        [self.view addSubview:_activitiyView];
+    }
+    return _activitiyView;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -47,6 +60,21 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.title = @"美信会员";
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    
+    
+    UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
+    [left setFrame:CGRectMake(-20, 0, 35, 35)];
+    [left addTarget:self action:@selector(onBackClicked) forControlEvents:UIControlEventTouchUpInside];
+    [left setImage:[UIImage imageNamed:@"backbtn"] forState:UIControlStateNormal];
+    [left setTitle:@"" forState:UIControlStateNormal];
+    [left setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    //修改方法
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
+    [view addSubview:left];
+    UIBarButtonItem *leftBut = [[UIBarButtonItem alloc]initWithCustomView:view];
+    self.navigationItem.leftBarButtonItem = leftBut;
     
     UIImage * image = [UIImage imageNamed:@"vipXY"];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
@@ -93,22 +121,27 @@
 
 
 #pragma mark - <Events>
+- (void)onBackClicked {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 //点击协议按钮
 - (void)rightBarItemClick:(UIBarButtonItem *)item {
+    NSLog(@"点击了右上的按钮");
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [[UIView alloc]init];
     UIScrollView *descripView = [[UIScrollView alloc]init];
     self.scoreBackView = view;
     [window addSubview:self.scoreBackView];
-    self.scoreBackView.frame = CGRectMake(kScreenWidth * 0.4, kScreenHeight * 0.4, kScreenWidth*0.2,kScreenHeight*0.2 );
+    self.scoreBackView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*0.4, [UIScreen mainScreen].bounds.size.height*0.4, kScreenWidth*0.2,kScreenHeight*0.2 );
     UILabel *titleLabel = [[UILabel alloc]init];
     titleLabel.frame = CGRectMake(0, 8, self.scoreBackView.bounds.size.width, 30);
     view.backgroundColor = [UIColor whiteColor];
     titleLabel.text = @"美信生活付费会员卡用户协议";
     titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.scoreBackView addSubview:titleLabel];
-    descripView.frame = CGRectMake(kScreenWidth * 0.4, kScreenHeight * 0.4, kScreenWidth * 0.2,kScreenHeight * 0.2 );
+    descripView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*0.4, [UIScreen mainScreen].bounds.size.height*0.4, [UIScreen mainScreen].bounds.size.width*0.2,[UIScreen mainScreen].bounds.size.height*0.2 );
     
     UIImageView *scoreDescbV = [[UIImageView alloc] init];
     [descripView addSubview:scoreDescbV];
@@ -117,11 +150,18 @@
     
     [UIView animateWithDuration:0.3 animations:^{
         self.myBlackView.alpha = 0.7;
-        self.scoreBackView.frame = CGRectMake(kScreenWidth * 0.1, kScreenHeight * 0.15, kScreenWidth*0.8,kScreenHeight*0.65 );
+        self.scoreBackView.frame = CGRectMake([UIScreen mainScreen].bounds.size.width*0.1, [UIScreen mainScreen].bounds.size.height*0.15, kScreenWidth*0.8,kScreenHeight*0.65 );
         descripView.frame = CGRectMake(view.bounds.size.width *0.1, CGRectGetMaxY(titleLabel.frame)+5, view.bounds.size.width *0.8,view.bounds.size.height-60 );
         titleLabel.frame = CGRectMake(0, 8, self.scoreBackView.bounds.size.width, 30);
         
     } completion:^(BOOL finished) {
+        //        descripView.contentSize = CGSizeMake(view.bounds.size.width *0.8,view.bounds.size.width *13+20);
+        //        descripView.showsHorizontalScrollIndicator = FALSE;
+        //        descripView.showsVerticalScrollIndicator = FALSE;
+        //        UIImage *ScoreDescb = [UIImage imageNamed:@"vipXYD"];
+        //        UIImageView *ScoreDescbV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, view.bounds.size.width *0.8, view.bounds.size.width *13)];
+        //        ScoreDescbV.image = ScoreDescb;
+        //        [descripView addSubview:ScoreDescbV];
         [scoreDescbV sd_setImageWithURL:[NSURL URLWithString:@"https://meixinlife.com/webapp/images/community/vip-agreement-1.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             CGFloat height = (image.size.height/image.size.width) * view.bounds.size.width * 0.8;
@@ -158,10 +198,10 @@
     }];
 }
 
-- (void)buyVip {
+- (void)buyVipWithProductId:(NSString *)productId {
     
     if ([SKPaymentQueue canMakePayments]) {
-        NSSet *nsSet = [NSSet setWithObjects:kProductVipMonth, nil];
+        NSSet *nsSet = [NSSet setWithObjects:productId, nil];
         self.productRequest = [[SKProductsRequest alloc] initWithProductIdentifiers:nsSet];
         self.productRequest.delegate = self;
         [self.productRequest start];
@@ -169,22 +209,47 @@
     else {
         NSLog(@"不允许内购付费");
     }
-    [SVProgressHUD showWithStatus:@"加载中。。。"];
+    [self.activitiyView startAnimating];
 }
 
 #pragma mark - <NetRequest>
 - (void)requestForVerify:(NSString *)dataStr {
-    NSLog(@"%@", dataStr);
-    NSString *urlStr = [NSString stringWithFormat:@""];
+    NSString *urlStr = [NSString stringWithFormat:@"%@/api/vip/ios/add", SERVER_ADDRESS_API];
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"data"] = dataStr;
+    param[@"receipt"] = dataStr;
+    param[@"is_sandbox"] = @(SERVER_ONLINE?0:1);
+    param[@"img_id"] = self.img_id;
+    param[@"apix_token"] = [NACommon getToken];
     
-    [[AFHTTPSessionManager manager] POST:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
+    
+    [manager POST:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@", responseObject);
-        
+        NSDictionary *dic = responseObject;
+        NSString *code = [NSString stringWithFormat:@"%@", dic[@"code"]];
+        if ([code isEqualToString:@"0"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"会员购买成功,快去享受主宰自己人生吧~" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancelAction];
+        }
+        else if ([code isEqualToString:@"-1"]) {
+            
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"数据异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancelAction];
+        }
+        else if ([code isEqualToString:@"-2"]) {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"套餐异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+            [alert addAction:cancelAction];
+        }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"网络错误");
+        NSLog(@"网络错误error=%@",error);
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"套餐异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
     }];
 }
 
@@ -209,7 +274,7 @@
 
 // 请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error {
-    [SVProgressHUD dismiss];
+    [self.activitiyView stopAnimating];
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"购买失败" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
@@ -235,8 +300,13 @@
             case SKPaymentTransactionStateRestored:
                 NSLog(@"已经购买过商品");
                 break;
-            case SKPaymentTransactionStateFailed:
+            case SKPaymentTransactionStateFailed: {
                 NSLog(@"交易失败");
+                [self.activitiyView stopAnimating];
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"购买失败" message:nil preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+                [alert addAction:cancelAction];
+            }
                 break;
                 
             default:
@@ -247,16 +317,45 @@
 
 - (void)paymentCompleteTransaction:(SKPaymentTransaction *)transactions {
     
-    [SVProgressHUD dismiss];
+    [self.activitiyView stopAnimating];
     NSString *productId = transactions.payment.productIdentifier;
     if ([productId length] > 0) {
         NSData *receiptData = [NSData dataWithContentsOfURL:[[NSBundle mainBundle] appStoreReceiptURL]];
-        NSString *base64 = [receiptData base64EncodedStringWithOptions:NSDataBase64EncodingEndLineWithLineFeed];
+        //        NSLog(@"receiptData = %@",receiptData);
+        //        NSString *dataStr = [[NSString alloc] initWithData:receiptData encoding:NSUTF8StringEncoding];
+        //        NSLog(@"dataStr = %@", dataStr);
+        //        NSData *data = [dataStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *base64 = [receiptData base64EncodedStringWithOptions:0];
         [self requestForVerify:base64];
     }
     else {
         NSLog(@"无订单");
     }
+}
+
+- (NSString *)URLDecodedString:(NSString *)str {
+    
+    [@"123" stringByRemovingPercentEncoding];
+//    CFURLCreateStringByReplacingPercentEscapes
+    NSString *decodedString=(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapes(NULL, (__bridge CFStringRef)str, CFSTR(""));
+    
+    return decodedString;
+}
+
+- (NSDictionary *)dictionaryWithJsonString:(NSString *)jsonStr {
+    if (!jsonStr) return nil;
+    
+    NSString *string = [self URLDecodedString:jsonStr];
+    
+    string = [string substringFromIndex:7];
+    NSLog(@"%@", string);
+    NSData *jsonData = [string dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers error:&err];
+    if (err) {
+        return nil;
+    }
+    return dic;
 }
 
 
@@ -266,38 +365,41 @@
     NSString *urlStr = request.URL.absoluteString;
     NSLog(@"%@", urlStr);
     
-    
-    if ([urlStr containsString:@"mapi.alipay.com"]) {
-        if (![NACommon isRealVersion]) {
+    if ([urlStr hasPrefix:@"iospay:"]) {
+        NSDictionary *dic = [self dictionaryWithJsonString:urlStr];
+        NSLog(@"%@", dic);
+        NSString *img_id = [NSString stringWithFormat:@"%@", dic[@"img_id"]];
+        NSString *ios_id = [NSString stringWithFormat:@"%@", dic[@"ios_id"]];
+        self.img_id = img_id;
+        
+        [self buyVipWithProductId:ios_id];
+        return NO;
+    }
+    else if ([urlStr containsString:@"mapi.alipay.com"]) {
+        
+        if ([urlStr hasPrefix:@"alipays://"] || [urlStr hasPrefix:@"alipay://"]) {
             
-            if ([urlStr hasPrefix:@"alipays://"] || [urlStr hasPrefix:@"alipay://"]) {
+            
+            // NOTE: 跳转支付宝App
+            BOOL bSucc = [[UIApplication sharedApplication]openURL:request.URL];
+            
+            // NOTE: 如果跳转失败，则跳转itune下载支付宝App
+            if (!bSucc) {
                 
-                
-                // NOTE: 跳转支付宝App
-                BOOL bSucc = [[UIApplication sharedApplication]openURL:request.URL];
-                
-                // NOTE: 如果跳转失败，则跳转itune下载支付宝App
-                if (!bSucc) {
-                    
-                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"未检测到支付宝客户端，请安装后重试。" preferredStyle:UIAlertControllerStyleAlert];
-                    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-                    UIAlertAction *goAction = [UIAlertAction actionWithTitle:@"立即安装" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                        NSString* urlStr = @"https://itunes.apple.com/cn/app/zhi-fu-bao-qian-bao-yu-e-bao/id333206289?mt=8";
-                        NSURL *downloadUrl = [NSURL URLWithString:urlStr];
-                        [[UIApplication sharedApplication]openURL:downloadUrl];
-                    }];
-                    [alert addAction:cancelAction];
-                    [alert addAction:goAction];
-                    [self presentViewController:alert animated:YES completion:nil];
-                }
-                return NO;
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"未检测到支付宝客户端，请安装后重试。" preferredStyle:UIAlertControllerStyleAlert];
+                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                UIAlertAction *goAction = [UIAlertAction actionWithTitle:@"立即安装" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                    NSString* urlStr = @"https://itunes.apple.com/cn/app/zhi-fu-bao-qian-bao-yu-e-bao/id333206289?mt=8";
+                    NSURL *downloadUrl = [NSURL URLWithString:urlStr];
+                    [[UIApplication sharedApplication]openURL:downloadUrl];
+                }];
+                [alert addAction:cancelAction];
+                [alert addAction:goAction];
+                [self presentViewController:alert animated:YES completion:nil];
             }
-            return YES;
-        }
-        else {
-            [self buyVip];
             return NO;
         }
+        return YES;
     }
     
     return YES;

@@ -27,7 +27,7 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NSString *)urlWithType:(NARequestURLType)urlType pathArray:(NSArray *)pathArray;
 
 
-#pragma mark - <项目中的所有接口>
+#pragma mark - <---------------------所有的API--------------------->
 /** 审核开关接口 */
 + (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin;
 
@@ -71,5 +71,11 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 
 /** 用户贷款记录接口 */
 + (NAAPIModel *)mineLoanListConfigWithToken:(NSString *)token;
+
+
+#pragma mark - <---------------------所有的H5--------------------->
++ (NSString *)vipH5URLWithToken:(NSString *)token;
+
++ (NSString *)vipiOSH5UrlWithToken:(NSString *)token;
 
 @end
