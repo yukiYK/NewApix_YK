@@ -1,16 +1,16 @@
 //
-//  NAVIPController.m
+//  NAMeixinVIPController.m
 //  NewApix_YK
 //
-//  Created by APiX on 2017/9/1.
+//  Created by APiX on 2017/9/6.
 //  Copyright © 2017年 APiX. All rights reserved.
 //
 
-#import "NAVIPController.h"
+#import "NAMeixinVIPController.h"
 #import <StoreKit/StoreKit.h>
 #import "Masonry.h"
 
-@interface NAVIPController () <UIWebViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
+@interface NAMeixinVIPController () <UIWebViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @property (nonatomic, strong) UIWebView *webView;
 //会员协议
@@ -27,7 +27,7 @@
 
 @end
 
-@implementation NAVIPController
+@implementation NAMeixinVIPController
 - (UIActivityIndicatorView *)activitiyView {
     if (!_activitiyView) {
         _activitiyView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -85,10 +85,10 @@
 - (void)setupWebView {
     
     if ([NACommon isRealVersion]) {
-        self.nvgUrl = [NSString stringWithFormat:@"%@/webapp/strategy/vipBuy_ios?token=%@",SERVER_ADDRESS_H5,[NACommon getToken]];
+        self.nvgUrl = [NAURLCenter vipiOSH5UrlWithToken:[NACommon getToken]];
     }
     else {
-        self.nvgUrl = [NSString stringWithFormat:@"%@/webapp/strategy/vipBuy?token=%@&type=1&device=app&source=my",SERVER_ADDRESS_H5,[NACommon getToken]];
+        self.nvgUrl = [NAURLCenter vipH5URLWithToken:[NACommon getToken]];
     }
     self.nvgUrl = [self.nvgUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSURL *url = [NSURL URLWithString:self.nvgUrl];
@@ -336,7 +336,7 @@
 - (NSString *)URLDecodedString:(NSString *)str {
     
     [@"123" stringByRemovingPercentEncoding];
-//    CFURLCreateStringByReplacingPercentEscapes
+    //    CFURLCreateStringByReplacingPercentEscapes
     NSString *decodedString=(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapes(NULL, (__bridge CFStringRef)str, CFSTR(""));
     
     return decodedString;

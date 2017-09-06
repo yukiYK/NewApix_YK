@@ -155,6 +155,7 @@
         if([returnValue[@"apix_login_code"] intValue] == -1) {
             
             [[NSUserDefaults standardUserDefaults] setInteger:NAUserStatusLoginError forKey:kUserDefaultsUserStatus];
+            [[NSUserDefaults standardUserDefaults] removeObjectForKey:kUserDefaultsToken];
             if (block) {
                 block(NAUserStatusLoginError);
             }

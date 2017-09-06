@@ -62,20 +62,20 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 // ---------------------------------会员中心----------------------------
 /** 用户基本信息接口 昵称 头像等 */
 + (NAAPIModel *)mineUserInfoConfigWithToken:(NSString *)token;
-
 /** 用户vip信息接口 */
 + (NAAPIModel *)mineVipInfoConfigWithToken:(NSString *)token;
-
 /** 用户订单信息接口 */
 + (NAAPIModel *)mineOrderInfoConfigWithToken:(NSString *)token;
-
 /** 用户贷款记录接口 */
 + (NAAPIModel *)mineLoanListConfigWithToken:(NSString *)token;
 
 
 #pragma mark - <---------------------所有的H5--------------------->
+/** 使用支付宝支付的美信会员页 */
 + (NSString *)vipH5URLWithToken:(NSString *)token;
-
+/* 使用apple内购的美信会员页 */
 + (NSString *)vipiOSH5UrlWithToken:(NSString *)token;
+/* 信用体检页 */
++ (NSString *)creditReportH5UrlWithToken:(NSString *)token;
 
 @end

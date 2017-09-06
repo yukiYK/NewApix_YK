@@ -196,18 +196,32 @@
 
 
 #pragma mark - <---------------------所有的H5--------------------->
+/** 使用支付宝支付的美信会员页 */
 + (NSString *)vipH5URLWithToken:(NSString *)token {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = token;
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"", @""]];
+    param[@"type"] = @"1";
+    param[@"device"] = @"app";
+    param[@"source"] = @"my";
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
+/* 使用apple内购的美信会员页 */
 + (NSString *)vipiOSH5UrlWithToken:(NSString *)token {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = token;
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"", @""]];
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy_ios"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
+/* 信用体检页 */
++ (NSString *)creditReportH5UrlWithToken:(NSString *)token {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = token;
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"creditexam"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
