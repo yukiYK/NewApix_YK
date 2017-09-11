@@ -12,6 +12,11 @@
 #import "NACommonWebController.h"
 #import "NAForgetPasswordController.h"
 #import "NAPhoneLoginController.h"
+#import "NAMeixinVIPController.h"
+#import "NAPresentCenterController.h"
+#import "NAPresentSuccessController.h"
+#import "NAAddressController.h"
+#import "NACreditReportController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -55,6 +60,53 @@
 // 手机登录页
 + (UIViewController *)phoneLoginController {
     return [[NAPhoneLoginController alloc] initWithNibName:@"NAPhoneLoginController" bundle:nil];
+}
+
+/**
+ 美信会员页
+ 
+ @return NAMeixinVIPController
+ */
++ (UIViewController *)meixinVIPControllerWithIsFromGiftCenter:(BOOL)isFromGiftCenter {
+    NAMeixinVIPController *vipC = [[NAMeixinVIPController alloc] init];
+    vipC.isFromGiftCenter = isFromGiftCenter;
+    return vipC;
+}
+
+/**
+ 礼品中心页
+ 
+ @return NAPresentCenterController
+ */
++ (UIViewController *)presentCenterController {
+    return [[NAPresentCenterController alloc] initWithNibName:@"NAPresentCenterController" bundle:nil];
+}
+
+/**
+ 礼品领取成功页
+ 
+ @return NAPresentSuccessController
+ */
++ (UIViewController *)presentSuccessController {
+    return [[NAPresentSuccessController alloc] initWithNibName:@"NAPresentSuccessController" bundle:nil];
+}
+
+/**
+ 用户地址页
+ 
+ @return NAAddressController;
+ */
++ (UIViewController *)addressController {
+    return [[NAAddressController alloc] initWithNibName:@"NAAddressController" bundle:nil];
+}
+
+/**
+ 信用体检页
+ 
+ @return NACreditReportController
+ */
++ (UIViewController *)creditReportController {
+    return [[NACreditReportController alloc] init];
 }
 
 // 第三方贷款web页 等等

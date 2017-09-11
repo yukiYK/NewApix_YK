@@ -83,7 +83,7 @@ NSString * const kMineCell = @"mineCell";
 
 - (void)loadUserInfo {
     
-    NAAPIModel *model = [NAURLCenter mineUserInfoConfigWithToken:[NACommon getToken]];
+    NAAPIModel *model = [NAURLCenter mineUserInfoConfig];
     
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
@@ -114,7 +114,7 @@ NSString * const kMineCell = @"mineCell";
 }
 
 - (void)loadVipInfo {
-    NAAPIModel *model = [NAURLCenter mineVipInfoConfigWithToken:[NACommon getToken]];
+    NAAPIModel *model = [NAURLCenter mineVipInfoConfig];
     
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
@@ -129,7 +129,7 @@ NSString * const kMineCell = @"mineCell";
 
 - (void)loadOrderInfo {
     
-    NAAPIModel *model = [NAURLCenter mineOrderInfoConfigWithToken:[NACommon getToken]];
+    NAAPIModel *model = [NAURLCenter mineOrderInfoConfig];
     
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
@@ -143,7 +143,7 @@ NSString * const kMineCell = @"mineCell";
 }
 
 - (void)loadLoanList {
-    NAAPIModel *model = [NAURLCenter mineLoanListConfigWithToken:[NACommon getToken]];
+    NAAPIModel *model = [NAURLCenter mineLoanListConfig];
     
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);

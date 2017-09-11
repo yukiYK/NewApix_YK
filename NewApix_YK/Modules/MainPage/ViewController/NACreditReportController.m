@@ -76,7 +76,7 @@
     tipsImageView.frame = CGRectMake(kScreenWidth - 20 - 80, 54, 80, 22);
     [self.view addSubview:tipsImageView];
     
-    self.urlStr = [NAURLCenter creditReportH5UrlWithToken:[NACommon getToken]];
+    self.urlStr = [NAURLCenter creditReportH5Url];
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]]];
 }
 
@@ -164,18 +164,18 @@
     if (![NACommon getToken]) {
         return;
     }else{
-        NSDictionary *dict = @{
-                               @"apix_token":[NACommon getToken]
-                               };
-        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-        NSString *httpStr = [NSString stringWithFormat:@"%@/api/share/user",APIXHOST];
-        
-        [manager GET:httpStr parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            NSLog(@"%@",responseObject);
-            //code =0 成功  、 -1 失败，已转发过一次
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            NSLog(@"%@",error);
-        }];
+//        NSDictionary *dict = @{
+//                               @"apix_token":[NACommon getToken]
+//                               };
+//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+//        NSString *httpStr = [NSString stringWithFormat:@"%@/api/share/user",APIXHOST];
+//        
+//        [manager GET:httpStr parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//            NSLog(@"%@",responseObject);
+//            //code =0 成功  、 -1 失败，已转发过一次
+//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//            NSLog(@"%@",error);
+//        }];
     }
 }
 

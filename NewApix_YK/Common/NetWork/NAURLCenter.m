@@ -110,9 +110,9 @@
 }
 
 /** 用户信用分数接口 */
-+ (NAAPIModel *)trustScoreConfigWithToken:(NSString *)token {
++ (NAAPIModel *)trustScoreConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"apix_token"] = token;
+    param[@"apix_token"] = [NACommon getToken];
     param[@"channel"] = @"appios";
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"trust_score"] param:param rightCode:nil];
 }
@@ -165,62 +165,97 @@
 
 #pragma mark - <User>
 /** 用户基本信息接口 昵称 头像等 */
-+ (NAAPIModel *)mineUserInfoConfigWithToken:(NSString *)token {
++ (NAAPIModel *)mineUserInfoConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"apix_token"] = token;
+    param[@"apix_token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"show"] param:param rightCode:nil];
 }
 
 /** 用户vip信息接口 */
-+ (NAAPIModel *)mineVipInfoConfigWithToken:(NSString *)token {
++ (NAAPIModel *)mineVipInfoConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"apix_token"] = token;
+    param[@"apix_token"] = [NACommon getToken];
     param[@"code"] = @"0";
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"time"] param:param rightCode:@"0"];
 }
 
 /** 用户订单信息接口 */
-+ (NAAPIModel *)mineOrderInfoConfigWithToken:(NSString *)token {
++ (NAAPIModel *)mineOrderInfoConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"apix_token"] = token;
+    param[@"apix_token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"transactions"] param:param rightCode:@"0"];
 }
 
 /** 用户贷款记录接口 */
-+ (NAAPIModel *)mineLoanListConfigWithToken:(NSString *)token {
++ (NAAPIModel *)mineLoanListConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"apix_token"] = token;
+    param[@"apix_token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"meixin", @"loan", @"list"] param:param rightCode:@"0"];
 }
 
+/** 用户地址接口 */
++ (NAAPIModel *)userAddressConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"address"] param:param rightCode:@"0"];
+}
 
+/** 会员礼品接口 */
++ (NAAPIModel *)vipPresentConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"gift"] param:param rightCode:@"1"];
+}
+
+/** 领取礼品接口 */
++ (NAAPIModel *)receivePresentConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"gift", @"add"] param:param rightCode:@"2"];
+}
+
+/** 礼品中心背景图接口 */
++ (NAAPIModel *)presentCenterBgConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"gift", @"bg"] param:param rightCode:@"2"];
+}
+
+/** 分享成功接口 */
++ (NAAPIModel *)shareSuccessConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"share", @"user"] param:param rightCode:@"0"];
+}
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */
-+ (NSString *)vipH5URLWithToken:(NSString *)token {
++ (NSString *)vipH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"token"] = token;
+    param[@"token"] = [NACommon getToken];
     param[@"type"] = @"1";
     param[@"device"] = @"app";
-    param[@"source"] = @"my";
+    if (isFromGiftCenter) param[@"source"] = @"giftcenter";
+    else param[@"source"] = @"my";
     NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
 /* 使用apple内购的美信会员页 */
-+ (NSString *)vipiOSH5UrlWithToken:(NSString *)token {
++ (NSString *)vipiOSH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"token"] = token;
+    param[@"token"] = [NACommon getToken];
+    if (isFromGiftCenter) param[@"source"] = @"giftcenter";
     NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy_ios"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
 /* 信用体检页 */
-+ (NSString *)creditReportH5UrlWithToken:(NSString *)token {
++ (NSString *)creditReportH5Url {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"token"] = token;
+    param[@"token"] = [NACommon getToken];
     NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"creditexam"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];

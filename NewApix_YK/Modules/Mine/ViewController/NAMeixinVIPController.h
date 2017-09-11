@@ -10,4 +10,6 @@
 
 @interface NAMeixinVIPController : NABaseViewController
 
+@property (nonatomic, assign) BOOL isFromGiftCenter;
+
 @end

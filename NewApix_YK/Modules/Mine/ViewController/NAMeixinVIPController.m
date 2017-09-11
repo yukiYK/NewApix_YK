@@ -85,10 +85,10 @@
 - (void)setupWebView {
     
     if ([NACommon isRealVersion]) {
-        self.nvgUrl = [NAURLCenter vipiOSH5UrlWithToken:[NACommon getToken]];
+        self.nvgUrl = [NAURLCenter vipiOSH5Url];
     }
     else {
-        self.nvgUrl = [NAURLCenter vipH5URLWithToken:[NACommon getToken]];
+        self.nvgUrl = [NAURLCenter vipH5Url];
     }
     self.nvgUrl = [self.nvgUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSURL *url = [NSURL URLWithString:self.nvgUrl];
@@ -155,13 +155,6 @@
         titleLabel.frame = CGRectMake(0, 8, self.scoreBackView.bounds.size.width, 30);
         
     } completion:^(BOOL finished) {
-        //        descripView.contentSize = CGSizeMake(view.bounds.size.width *0.8,view.bounds.size.width *13+20);
-        //        descripView.showsHorizontalScrollIndicator = FALSE;
-        //        descripView.showsVerticalScrollIndicator = FALSE;
-        //        UIImage *ScoreDescb = [UIImage imageNamed:@"vipXYD"];
-        //        UIImageView *ScoreDescbV = [[UIImageView alloc]initWithFrame:CGRectMake(0, 20, view.bounds.size.width *0.8, view.bounds.size.width *13)];
-        //        ScoreDescbV.image = ScoreDescb;
-        //        [descripView addSubview:ScoreDescbV];
         [scoreDescbV sd_setImageWithURL:[NSURL URLWithString:@"https://meixinlife.com/webapp/images/community/vip-agreement-1.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             CGFloat height = (image.size.height/image.size.width) * view.bounds.size.width * 0.8;
@@ -375,31 +368,26 @@
         [self buyVipWithProductId:ios_id];
         return NO;
     }
-    else if ([urlStr containsString:@"mapi.alipay.com"]) {
+    else if ([urlStr hasPrefix:@"alipays://"] || [urlStr hasPrefix:@"alipay://"]) {
         
-        if ([urlStr hasPrefix:@"alipays://"] || [urlStr hasPrefix:@"alipay://"]) {
+        // NOTE: 跳转支付宝App
+        BOOL bSucc = [[UIApplication sharedApplication]openURL:request.URL];
+        
+        // NOTE: 如果跳转失败，则跳转itune下载支付宝App
+        if (!bSucc) {
             
-            
-            // NOTE: 跳转支付宝App
-            BOOL bSucc = [[UIApplication sharedApplication]openURL:request.URL];
-            
-            // NOTE: 如果跳转失败，则跳转itune下载支付宝App
-            if (!bSucc) {
-                
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"未检测到支付宝客户端，请安装后重试。" preferredStyle:UIAlertControllerStyleAlert];
-                UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-                UIAlertAction *goAction = [UIAlertAction actionWithTitle:@"立即安装" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                    NSString* urlStr = @"https://itunes.apple.com/cn/app/zhi-fu-bao-qian-bao-yu-e-bao/id333206289?mt=8";
-                    NSURL *downloadUrl = [NSURL URLWithString:urlStr];
-                    [[UIApplication sharedApplication]openURL:downloadUrl];
-                }];
-                [alert addAction:cancelAction];
-                [alert addAction:goAction];
-                [self presentViewController:alert animated:YES completion:nil];
-            }
-            return NO;
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"未检测到支付宝客户端，请安装后重试。" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+            UIAlertAction *goAction = [UIAlertAction actionWithTitle:@"立即安装" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                NSString* urlStr = @"https://itunes.apple.com/cn/app/zhi-fu-bao-qian-bao-yu-e-bao/id333206289?mt=8";
+                NSURL *downloadUrl = [NSURL URLWithString:urlStr];
+                [[UIApplication sharedApplication]openURL:downloadUrl];
+            }];
+            [alert addAction:cancelAction];
+            [alert addAction:goAction];
+            [self presentViewController:alert animated:YES completion:nil];
         }
-        return YES;
+        return NO;
     }
     
     return YES;

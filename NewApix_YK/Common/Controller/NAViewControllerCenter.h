@@ -35,6 +35,8 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
                    tranformStyle:(NATransformStyle)transformStyle
                       needLogin:(BOOL)needLogin;
 
+
+#pragma mark - <各个页面>
 /**
  登录页
 
@@ -64,6 +66,43 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  @return NAPhoneLoginController
  */
 + (UIViewController *)phoneLoginController;
+
+
+/**
+ 美信会员页
+
+ @return NAMeixinVIPController
+ */
++ (UIViewController *)meixinVIPControllerWithIsFromGiftCenter:(BOOL)isFromGiftCenter;
+
+/**
+ 礼品中心页
+
+ @return NAPresentCenterController
+ */
++ (UIViewController *)presentCenterController;
+
+/**
+ 礼品领取成功页
+
+ @return NAPresentSuccessController
+ */
++ (UIViewController *)presentSuccessController;
+
+/**
+ 用户地址页
+
+ @return NAAddressController;
+ */
++ (UIViewController *)addressController;
+
+/**
+ 信用体检页
+
+ @return NACreditReportController
+ */
++ (UIViewController *)creditReportController;
+
 
 /**
  第三方贷款web页 等等

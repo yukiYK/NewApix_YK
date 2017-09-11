@@ -43,7 +43,7 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
                                  imgSms:(NSString *)imgSms
                               imgSmsKey:(NSString *)imgSmsKey;
 /** 用户信用分数接口 */
-+ (NAAPIModel *)trustScoreConfigWithToken:(NSString *)token;
++ (NAAPIModel *)trustScoreConfig;
 /** 获取验证码接口-注册 */
 + (NAAPIModel *)getSmsConfigForRegisterWithPhoneNumber:(NSString *)phoneNumber;
 /** 获取验证码接口-修改密码 */
@@ -61,21 +61,30 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 
 // ---------------------------------会员中心----------------------------
 /** 用户基本信息接口 昵称 头像等 */
-+ (NAAPIModel *)mineUserInfoConfigWithToken:(NSString *)token;
++ (NAAPIModel *)mineUserInfoConfig;
 /** 用户vip信息接口 */
-+ (NAAPIModel *)mineVipInfoConfigWithToken:(NSString *)token;
++ (NAAPIModel *)mineVipInfoConfig;
 /** 用户订单信息接口 */
-+ (NAAPIModel *)mineOrderInfoConfigWithToken:(NSString *)token;
++ (NAAPIModel *)mineOrderInfoConfig;
 /** 用户贷款记录接口 */
-+ (NAAPIModel *)mineLoanListConfigWithToken:(NSString *)token;
-
++ (NAAPIModel *)mineLoanListConfig;
+/** 用户地址接口 */
++ (NAAPIModel *)userAddressConfig;
+/** 会员礼品接口 */
++ (NAAPIModel *)vipPresentConfig;
+/** 领取礼品接口 */
++ (NAAPIModel *)receivePresentConfig;
+/** 礼品中心背景图接口 */
++ (NAAPIModel *)presentCenterBgConfig;
+/** 分享成功接口 */
++ (NAAPIModel *)shareSuccessConfig;
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */
-+ (NSString *)vipH5URLWithToken:(NSString *)token;
++ (NSString *)vipH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter;
 /* 使用apple内购的美信会员页 */
-+ (NSString *)vipiOSH5UrlWithToken:(NSString *)token;
++ (NSString *)vipiOSH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter;
 /* 信用体检页 */
-+ (NSString *)creditReportH5UrlWithToken:(NSString *)token;
++ (NSString *)creditReportH5Url;
 
 @end
