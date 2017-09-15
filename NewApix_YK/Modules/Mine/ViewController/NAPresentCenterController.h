@@ -10,4 +10,6 @@
 
 @interface NAPresentCenterController : NABaseViewController
 
+@property (nonatomic, assign) BOOL isVipForever;
+
 @end

@@ -194,7 +194,7 @@ NSString * const kMineCell = @"mineCell";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击跳转");
     
-    NAMineModel *model = self.array[indexPath.section][indexPath.row];
+//    NAMineModel *model = self.array[indexPath.section][indexPath.row];
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {

@@ -78,8 +78,10 @@
  
  @return NAPresentCenterController
  */
-+ (UIViewController *)presentCenterController {
-    return [[NAPresentCenterController alloc] initWithNibName:@"NAPresentCenterController" bundle:nil];
++ (UIViewController *)presentCenterControllerWithIsVipForever:(BOOL)isVipForever {
+    NAPresentCenterController *presentCenterC = [[NAPresentCenterController alloc] initWithNibName:@"NAPresentCenterController" bundle:nil];
+    presentCenterC.isVipForever = isVipForever;
+    return presentCenterC;
 }
 
 /**

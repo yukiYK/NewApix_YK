@@ -34,7 +34,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self setupNavigation];
     [self setupInfoView];
     [self requestForBgImage];
 }
@@ -42,8 +41,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-    self.navigationController.navigationBar.translucent = YES;
+    [self setupNavigation];
     [self requestForAddress];
 }
 
@@ -54,7 +52,8 @@
 #pragma mark - <Private Method>
 - (void)setupNavigation {
     self.navigationController.navigationBarHidden = NO;
-    
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+    self.navigationController.navigationBar.translucent = YES;
     
     UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
     [left setFrame:CGRectMake(0, 0, 20, 30)];

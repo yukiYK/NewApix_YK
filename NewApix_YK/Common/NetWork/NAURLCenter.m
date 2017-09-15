@@ -228,6 +228,25 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"share", @"user"] param:param rightCode:@"0"];
 }
 
+
+
+/**
+ 苹果内购VIP会员后 后台验证接口
+ 
+ @param receipt 内购的收据信息
+ @param isSandBox 是否是测试
+ @param imageId VIP会员页的imageId
+ @return 内购会员后验证接口的NAAPIModel
+ */
++ (NAAPIModel *)buyVipVerifyConfigWithReceipt:(NSString *)receipt isSandBox:(BOOL)isSandBox imageId:(NSString *)imageId {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"receipt"] = receipt;
+    param[@"is_sandbox"] = @(isSandBox?1:0);
+    param[@"img_id"] = imageId;
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"ios", @"add"] param:param rightCode:@"0"];
+}
+
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */
 + (NSString *)vipH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter {

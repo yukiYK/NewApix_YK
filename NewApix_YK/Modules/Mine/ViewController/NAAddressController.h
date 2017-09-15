@@ -7,7 +7,12 @@
 //
 
 #import "NABaseViewController.h"
+#import "NAAddressModel.h"
+
+typedef void (^ChangeAddressCompleteBlock) (NAAddressModel *model);
 
 @interface NAAddressController : NABaseViewController
+
+@property (nonatomic, copy) ChangeAddressCompleteBlock cmpleteBlock;
 
 @end

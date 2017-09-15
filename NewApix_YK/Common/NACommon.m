@@ -147,7 +147,7 @@
     }
     
     // 从后台获取用户状态
-    NAAPIModel *model = [NAURLCenter mineVipInfoConfigWithToken:token];
+    NAAPIModel *model = [NAURLCenter mineVipInfoConfig];
     
     NAHTTPSessionManager *manager = [NAHTTPSessionManager sharedManager];
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

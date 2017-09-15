@@ -9,8 +9,9 @@
 #import "NAMeixinVIPController.h"
 #import <StoreKit/StoreKit.h>
 #import "Masonry.h"
+#import "NATabbarController.h"
 
-@interface NAMeixinVIPController () <UIWebViewDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
+@interface NAMeixinVIPController () <UIWebViewDelegate, UIGestureRecognizerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>
 
 @property (nonatomic, strong) UIWebView *webView;
 //会员协议
@@ -41,11 +42,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setupNavigationBar];
     [self setupWebView];
     
     // 开启内购检测
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupNavigationBar];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -60,6 +65,7 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.title = @"美信会员";
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
     
@@ -85,10 +91,10 @@
 - (void)setupWebView {
     
     if ([NACommon isRealVersion]) {
-        self.nvgUrl = [NAURLCenter vipiOSH5Url];
+        self.nvgUrl = [NAURLCenter vipiOSH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
     }
     else {
-        self.nvgUrl = [NAURLCenter vipH5Url];
+        self.nvgUrl = [NAURLCenter vipH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
     }
     self.nvgUrl = [self.nvgUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSURL *url = [NSURL URLWithString:self.nvgUrl];
@@ -207,42 +213,36 @@
 
 #pragma mark - <NetRequest>
 - (void)requestForVerify:(NSString *)dataStr {
-    NSString *urlStr = [NSString stringWithFormat:@"%@/api/vip/ios/add", SERVER_ADDRESS_API];
-    NSMutableDictionary *param = [NSMutableDictionary dictionary];
-    param[@"receipt"] = dataStr;
-    param[@"is_sandbox"] = @(SERVER_ONLINE?0:1);
-    param[@"img_id"] = self.img_id;
-    param[@"apix_token"] = [NACommon getToken];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
-    
-    [manager POST:urlStr parameters:param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"%@", responseObject);
-        NSDictionary *dic = responseObject;
-        NSString *code = [NSString stringWithFormat:@"%@", dic[@"code"]];
-        if ([code isEqualToString:@"0"]) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"会员购买成功,快去享受主宰自己人生吧~" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:cancelAction];
-        }
-        else if ([code isEqualToString:@"-1"]) {
+    NAAPIModel *model = [NAURLCenter buyVipVerifyConfigWithReceipt:dataStr isSandBox:!SERVER_ONLINE imageId:self.img_id];
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"会员购买成功,快去享受主宰自己人生吧~" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
+        [alert addAction:cancelAction];
+        [weakSelf presentViewController:alert animated:YES completion:nil];
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        if ([code isEqualToString:@"-1"]) {
             
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"数据异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:cancelAction];
+            [weakSelf presentViewController:alert animated:YES completion:nil];
         }
         else if ([code isEqualToString:@"-2"]) {
             UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"套餐异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
             [alert addAction:cancelAction];
+            [weakSelf presentViewController:alert animated:YES completion:nil];
         }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failureBlock:^(NSError *error) {
         NSLog(@"网络错误error=%@",error);
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"套餐异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
         [alert addAction:cancelAction];
+        [weakSelf presentViewController:alert animated:YES completion:nil];
     }];
 }
 
@@ -328,7 +328,7 @@
 
 - (NSString *)URLDecodedString:(NSString *)str {
     
-    [@"123" stringByRemovingPercentEncoding];
+//    [@"123" stringByRemovingPercentEncoding];
     //    CFURLCreateStringByReplacingPercentEscapes
     NSString *decodedString=(__bridge_transfer NSString *)CFURLCreateStringByReplacingPercentEscapes(NULL, (__bridge CFStringRef)str, CFSTR(""));
     
@@ -389,7 +389,18 @@
         }
         return NO;
     }
-    
+    else if ([urlStr hasPrefix:@"payfinish"]) {
+        if ([NACommon sharedCommon].userStatus != NAUserStatusVIP) {
+            [[NACommon sharedCommon] setUserStatus:NAUserStatusVIP];
+            NATabbarController *apixTabVC = [[NATabbarController alloc] init];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+                [UIApplication sharedApplication].keyWindow.rootViewController = apixTabVC;
+            });
+        }
+        else {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
     return YES;
 }
 

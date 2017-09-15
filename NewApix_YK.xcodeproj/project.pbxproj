@@ -37,6 +37,7 @@
 		4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */; };
 		4AA684ED1F6680220041BB2D /* NAAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA684EB1F6680220041BB2D /* NAAddressController.m */; };
 		4AA684EE1F6680220041BB2D /* NAAddressController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684EC1F6680220041BB2D /* NAAddressController.xib */; };
+		4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */; };
 		4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED951F4C083300055CF1 /* NAMineModel.m */; };
 		4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */; };
 		4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9E1F4C16DD00055CF1 /* NAURLCenter.m */; };
@@ -149,6 +150,8 @@
 		4AA684EA1F6680220041BB2D /* NAAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAddressController.h; sourceTree = "<group>"; };
 		4AA684EB1F6680220041BB2D /* NAAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAddressController.m; sourceTree = "<group>"; };
 		4AA684EC1F6680220041BB2D /* NAAddressController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAAddressController.xib; sourceTree = "<group>"; };
+		4AA9AF1D1F6B83CC0061AD1F /* NAPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPickerView.h; sourceTree = "<group>"; };
+		4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPickerView.m; sourceTree = "<group>"; };
 		4AAEED941F4C083300055CF1 /* NAMineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineModel.h; sourceTree = "<group>"; };
 		4AAEED951F4C083300055CF1 /* NAMineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineModel.m; sourceTree = "<group>"; };
 		4AAEED9A1F4C15AF00055CF1 /* NAAPIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAPIModel.h; sourceTree = "<group>"; };
@@ -587,6 +590,8 @@
 				4AFCA94A1F346C3500351B04 /* NANoNetworkView.m */,
 				4A6381681F384F71008BC8FD /* NABannerView.h */,
 				4A6381691F384F71008BC8FD /* NABannerView.m */,
+				4AA9AF1D1F6B83CC0061AD1F /* NAPickerView.h */,
+				4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -846,6 +851,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
+				4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */,
 				4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */,
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,

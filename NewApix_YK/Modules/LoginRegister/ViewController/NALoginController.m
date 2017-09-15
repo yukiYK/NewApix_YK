@@ -113,7 +113,7 @@
 }
 
 - (void)requestForTrustScore {
-    NAAPIModel *model = [NAURLCenter trustScoreConfigWithToken:[NACommon getToken]];
+    NAAPIModel *model = [NAURLCenter trustScoreConfig];
     
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);

@@ -80,7 +80,7 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 
  @return NAPresentCenterController
  */
-+ (UIViewController *)presentCenterController;
++ (UIViewController *)presentCenterControllerWithIsVipForever:(BOOL)isVipForever;
 
 /**
  礼品领取成功页

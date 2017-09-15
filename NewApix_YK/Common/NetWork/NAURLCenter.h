@@ -36,7 +36,16 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)loginConfigWithPhone:(NSString *)phoneNumber password:(NSString *)password;
 /** 手机登录接口 */
 + (NAAPIModel *)phoneLoginConfigWithPhone:(NSString *)phoneNumber sms:(NSString *)sms;
-/** 注册接口 */
+/**
+ 注册接口
+
+ @param phoneNumber 手机号
+ @param password 密码 加密后的
+ @param sms 验证码
+ @param imgSms 图片验证码
+ @param imgSmsKey 图片验证码的key
+ @return 注册接口的NAAPIModel
+ */
 + (NAAPIModel *)registerConfigWithPhone:(NSString *)phoneNumber
                                password:(NSString *)password
                                     sms:(NSString *)sms
@@ -78,6 +87,15 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)presentCenterBgConfig;
 /** 分享成功接口 */
 + (NAAPIModel *)shareSuccessConfig;
+/**
+ 苹果内购VIP会员后 后台验证接口
+
+ @param receipt 内购的收据信息
+ @param isSandBox 是否是测试
+ @param imageId VIP会员页的imageId
+ @return 内购会员后验证接口的NAAPIModel
+ */
++ (NAAPIModel *)buyVipVerifyConfigWithReceipt:(NSString *)receipt isSandBox:(BOOL)isSandBox imageId:(NSString *)imageId;
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */
