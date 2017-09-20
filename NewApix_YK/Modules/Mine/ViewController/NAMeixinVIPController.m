@@ -64,24 +64,11 @@
 - (void)setupNavigationBar {
     
     self.navigationController.navigationBarHidden = NO;
-    self.title = @"美信会员";
+    self.customTitleLabel.text = @"美信会员";
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
-    
-    UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
-    [left setFrame:CGRectMake(-20, 0, 35, 35)];
-    [left addTarget:self action:@selector(onBackClicked) forControlEvents:UIControlEventTouchUpInside];
-    [left setImage:[UIImage imageNamed:@"backbtn"] forState:UIControlStateNormal];
-    [left setTitle:@"" forState:UIControlStateNormal];
-    [left setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    
-    //修改方法
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 35, 35)];
-    [view addSubview:left];
-    UIBarButtonItem *leftBut = [[UIBarButtonItem alloc]initWithCustomView:view];
-    self.navigationItem.leftBarButtonItem = leftBut;
-    
+    // vip协议
     UIImage * image = [UIImage imageNamed:@"vipXY"];
     image = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     UIBarButtonItem * rightBarItem = [[UIBarButtonItem alloc]initWithImage:image style:UIBarButtonItemStyleDone target:self action:@selector(rightBarItemClick:)];
@@ -127,9 +114,6 @@
 
 
 #pragma mark - <Events>
-- (void)onBackClicked {
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 //点击协议按钮
 - (void)rightBarItemClick:(UIBarButtonItem *)item {
