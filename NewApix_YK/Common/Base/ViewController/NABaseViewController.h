@@ -12,7 +12,7 @@
 @interface NABaseViewController : UIViewController
 
 @property (nonatomic, strong) UIActivityIndicatorView *activityView;
-/**  <#comment#> */
+/** 网络请求manager */
 @property (nonatomic, strong) NAHTTPSessionManager *netManager;
 
 @property (nonatomic, strong) NANoNetworkView *noNetworkView;

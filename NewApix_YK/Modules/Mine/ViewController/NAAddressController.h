@@ -13,6 +13,6 @@ typedef void (^ChangeAddressCompleteBlock) (NAAddressModel *model);
 
 @interface NAAddressController : NABaseViewController
 
-@property (nonatomic, copy) ChangeAddressCompleteBlock cmpleteBlock;
+@property (nonatomic, copy) ChangeAddressCompleteBlock completeBlock;
 
 @end

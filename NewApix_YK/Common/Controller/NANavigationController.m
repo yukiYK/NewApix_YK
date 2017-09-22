@@ -21,11 +21,12 @@
 
 + (void)load{
     [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                                           NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor colorFromString:@"333333"]
+                                                           NSFontAttributeName:[UIFont systemFontOfSize:18],NSForegroundColorAttributeName:[UIColor blackColor]
                                                            }];
-    [[UINavigationBar appearance]setTintColor:[UIColor colorFromString:@"333333"]];
+    [[UINavigationBar appearance] setTintColor:[UIColor blackColor]];
     //[[UINavigationBar appearance]setBarTintColor:[UIColor colorWithRed:0xF7/255.0 green:0x77/255.0 blue:0x6a/255.0 alpha:1]];
-    [[UINavigationBar appearance]setBarTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [[UINavigationBar appearance] setShadowImage:[UIImage imageWithColor:[UIColor colorFromString:@"f2f2f2"]]];
     
 }
 

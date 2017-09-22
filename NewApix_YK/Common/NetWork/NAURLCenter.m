@@ -200,6 +200,26 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"address"] param:param rightCode:@"0"];
 }
 
+/** 更新地址接口 */
++ (NAAPIModel *)updateAddressConfigWithReceiver:(NSString *)receiver
+                                  receiverPhone:(NSString *)receiverPhone
+                                       province:(NSString *)province
+                                           city:(NSString *)city
+                                       district:(NSString *)district
+                                        address:(NSString *)address
+                                             id:(NSString *)addressId {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"receiver"] = receiver;
+    param[@"receiver_phone"] = receiverPhone;
+    param[@"province"] = province;
+    param[@"city"] = city;
+    param[@"district"] = district;
+    param[@"address"] = address;
+    if (addressId) param[@"id"] = addressId;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"address", @"new"] param:param rightCode:@"0"];
+}
+
 /** 会员礼品接口 */
 + (NAAPIModel *)vipPresentConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];

@@ -20,6 +20,9 @@ NSString * const kMineCell = @"mineCell";
 
 @property (nonatomic, strong) NSArray *array;
 
+
+@property (nonatomic, assign) BOOL isVipForever;
+
 @end
 
 @implementation NAMineController
@@ -59,13 +62,11 @@ NSString * const kMineCell = @"mineCell";
 #pragma mark - <Private Method>
 - (void)setupNavigationBar {
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 20)];
-    titleLabel.text = @"会员中心";
+    self.customTitleLabel.text = @"会员中心";
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingBtnClicked)];
     
     [self.navigationItem setRightBarButtonItem:buttonItem];
-    [self.navigationItem setTitleView:titleLabel];
 }
 
 - (void)setupTableView {
@@ -193,18 +194,29 @@ NSString * const kMineCell = @"mineCell";
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"点击跳转");
-    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 //    NAMineModel *model = self.array[indexPath.section][indexPath.row];
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter loginController] tranformStyle:NATransformStylePush needLogin:NO];
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter meixinVIPControllerWithIsFromGiftCenter:NO]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
         }
         else if (indexPath.row == 1) {
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter presentCenterControllerWithIsVipForever:self.isVipForever]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:YES];
         }
     }
     else {
         if (indexPath.row == 0) {
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter addressController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:YES];
         }
         else if (indexPath.row == 1) {
         }

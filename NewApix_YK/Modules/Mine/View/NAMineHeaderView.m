@@ -79,6 +79,7 @@ CGFloat const kRedPointWidth = 13;
     checkLabel.textColor = kColorLightBlue;
     checkLabel.text = @"未认证";
     checkLabel.font = [UIFont systemFontOfSize:15];
+    checkLabel.textAlignment = NSTextAlignmentCenter;
     [topView addSubview:checkLabel];
     self.checkLabel = checkLabel;
     

@@ -68,7 +68,7 @@ static CGFloat const kAnimationDuration = 0.3;
                 NSArray *itemArr = [NSArray arrayWithArray:self.dataArr];
                 for (int i=0;i<self.nextKeyArr.count;i++) {
                     NSString *nextKey = self.nextKeyArr[i];
-                    NSArray *nextArr = itemArr[0][nextKey];
+                    NSArray *nextArr = [NSArray arrayWithArray:itemArr[0][nextKey]];
                     [_rowArray addObject:@(nextArr.count)];
                     itemArr = nextArr;
                 }
@@ -101,7 +101,7 @@ static CGFloat const kAnimationDuration = 0.3;
                 for (int i=0;i<self.nextKeyArr.count;i++) {
                     NSString *resultKey = self.resultKeyArr[i+1];
                     NSString *nextKey = self.nextKeyArr[i];
-                    NSArray *nextArr = itemArr[0][nextKey];
+                    NSArray *nextArr = [NSArray arrayWithArray:itemArr[0][nextKey]];
                     [_resultArr addObject:nextArr[0][resultKey]];
                     itemArr = nextArr;
                 }
@@ -165,9 +165,14 @@ static CGFloat const kAnimationDuration = 0.3;
 - (void)setResultKeyArr:(NSArray *)resultKeyArr nextKeyArr:(NSArray *)nextKeyArr {
     self.resultKeyArr = [NSArray arrayWithArray:resultKeyArr];
     self.nextKeyArr = [NSArray arrayWithArray:nextKeyArr];
-    if (self.resultKeyArr.count != self.nextKeyArr.count - 1) return;
+    if (self.resultKeyArr.count != self.nextKeyArr.count + 1) return;
     
     if (self.style == NAPickerViewStyleLinkageColumn) [self addSubview:self.mainView];
+    [self.pickerView reloadAllComponents];
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self dismiss];
 }
 
 - (void)show {
@@ -229,7 +234,6 @@ static CGFloat const kAnimationDuration = 0.3;
     return [self.rowArray[component] integerValue];
 }
 
-
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
     NSString *title = @"";
     switch (self.style) {
@@ -249,7 +253,7 @@ static CGFloat const kAnimationDuration = 0.3;
                     NSString *resultKey = self.resultKeyArr[i+1];
                     NSInteger lastSelected = [pickerView selectedRowInComponent:i];
                     NSString *nextKey = self.nextKeyArr[i];
-                    NSArray *nextArr = itemArr[lastSelected][nextKey];
+                    NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
                     title = nextArr[row][resultKey];
                     itemArr = nextArr;
                 }
@@ -262,6 +266,36 @@ static CGFloat const kAnimationDuration = 0.3;
     return title;
 }
 
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    NSInteger components = 0;
+    switch (self.style) {
+        case NAPickerViewStyleSingleColumn:
+            components = 1;
+            break;
+        case NAPickerViewStyleMultipleColumn:
+            components = self.dataArr.count;
+            break;
+        case NAPickerViewStyleLinkageColumn:
+            components = self.resultKeyArr.count;
+            break;
+        default:
+            break;
+    }
+    return self.frame.size.width / components;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *pickerLabel = (UILabel *)view;
+    if (!pickerView) {
+        pickerLabel = [[UILabel alloc] init];
+        pickerLabel.adjustsFontSizeToFitWidth = YES;
+        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
+        [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setFont:[UIFont systemFontOfSize:14]];
+    }
+    pickerLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
+    return pickerLabel;
+}
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSString *selectItem = [self pickerView:pickerView titleForRow:row forComponent:component];
