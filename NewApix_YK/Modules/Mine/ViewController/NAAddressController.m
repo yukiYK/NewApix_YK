@@ -133,9 +133,13 @@
 - (void)pickerViewCompleteWithResult:(NSArray *)resultArr {
     NSString *addressStr = @"";
     for (int i=0;i<resultArr.count;i++) {
-        [addressStr stringByAppendingString:[NSString stringWithFormat:@"%@ ", resultArr[i]]];
+        if (i != resultArr.count - 1) {
+            addressStr = [addressStr stringByAppendingString:[NSString stringWithFormat:@"%@、", resultArr[i]]];
+        }
+        else {
+            addressStr = [addressStr stringByAppendingString:[NSString stringWithFormat:@"%@", resultArr[i]]];
+        }
     }
-    [addressStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     self.addressTextField.text = addressStr;
     
     if (resultArr.count < 3) return;
@@ -166,7 +170,7 @@
     // 滑动tableView
     CGRect keyboardFrame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     
-    CGFloat height = 64 + CGRectGetMaxY(self.editingTextField.frame) + 8;
+    CGFloat height = kTopViewH + CGRectGetMaxY(self.editingTextField.frame) + 8;
     if (height > kScreenHeight - keyboardFrame.size.height) {
         CGFloat offsetY = height - (kScreenHeight - keyboardFrame.size.height);
         [self.bgScrollView setContentOffset:CGPointMake(0, offsetY) animated:YES];

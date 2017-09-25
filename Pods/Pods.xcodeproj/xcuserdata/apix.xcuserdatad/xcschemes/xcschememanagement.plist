@@ -64,21 +64,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TKAlert&amp;TKActionSheet.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>VTMagic.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>WebViewJavascriptBridge.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>YYModel.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -86,87 +71,6 @@
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict>
-		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>081AC1F2F68A11C97642CC56E50C415C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>145AEF5D389AC7C8D13D48D764A6426D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>363BC2E0F39D0F8949C0A80B70411AB8</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3C418D1A2BA7624349AFAE930D979437</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>53F8571E2D572C4069860E38654A566A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>586F2DFA9BDCC6675C2546793A69E5CC</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7097FA9093606F769651DF0519184FD1</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>8BB4BF10346DACEFC9CACFDD6F3CE999</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>904F4F27FD314010A3812EB2A9306183</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9DC8D9E02903E93BD0B2FEC9D846EA20</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>9E033EDB5EC0819481B0546434FA577B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B5E289E0A32AE19BC4BE45CA79E10436</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BB77E5EC299080FBD39E581B93323CA3</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D944CC55A7155C2B52380989BC9CB2D4</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>DF562040C5282A5B6BBB922B0A639E4A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 </dict>
 </plist>

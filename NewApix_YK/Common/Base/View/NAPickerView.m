@@ -65,12 +65,13 @@ static CGFloat const kAnimationDuration = 0.3;
                 break;
             case NAPickerViewStyleLinkageColumn: {
                 [_rowArray addObject:@(self.dataArr.count)];
-                NSArray *itemArr = [NSArray arrayWithArray:self.dataArr];
+                NSMutableArray *itemArr = [NSMutableArray arrayWithArray:self.dataArr];
                 for (int i=0;i<self.nextKeyArr.count;i++) {
                     NSString *nextKey = self.nextKeyArr[i];
                     NSArray *nextArr = [NSArray arrayWithArray:itemArr[0][nextKey]];
                     [_rowArray addObject:@(nextArr.count)];
-                    itemArr = nextArr;
+                    [itemArr removeAllObjects];
+                    [itemArr addObjectsFromArray:nextArr];
                 }
             }
                 break;
@@ -97,13 +98,14 @@ static CGFloat const kAnimationDuration = 0.3;
                 break;
             case NAPickerViewStyleLinkageColumn: {
                 [_resultArr addObject:self.dataArr[0][self.resultKeyArr[0]]];
-                NSArray *itemArr = [NSArray arrayWithArray:self.dataArr];
+                NSMutableArray *itemArr = [NSMutableArray arrayWithArray:self.dataArr];
                 for (int i=0;i<self.nextKeyArr.count;i++) {
                     NSString *resultKey = self.resultKeyArr[i+1];
                     NSString *nextKey = self.nextKeyArr[i];
                     NSArray *nextArr = [NSArray arrayWithArray:itemArr[0][nextKey]];
                     [_resultArr addObject:nextArr[0][resultKey]];
-                    itemArr = nextArr;
+                    [itemArr removeAllObjects];
+                    [itemArr addObjectsFromArray:nextArr];
                 }
             }
                 break;
@@ -126,18 +128,19 @@ static CGFloat const kAnimationDuration = 0.3;
         UIButton *confirmButton = [[UIButton alloc] initWithFrame:CGRectMake(kScreenWidth - kButtonWidth - 8, 0, kButtonWidth, kTopViewHeight)];
         [confirmButton setTitle:@"确定" forState:UIControlStateNormal];
         [confirmButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [confirmButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [confirmButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [confirmButton addTarget:self action:@selector(onConfirmButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [topView addSubview:confirmButton];
         
         UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(8, 0, kButtonWidth, kTopViewHeight)];
         [cancelButton setTitle:@"取消" forState:UIControlStateNormal];
         [cancelButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-        [cancelButton.titleLabel setFont:[UIFont systemFontOfSize:13]];
+        [cancelButton.titleLabel setFont:[UIFont systemFontOfSize:14]];
         [cancelButton addTarget:self action:@selector(onCancelButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [topView addSubview:cancelButton];
         
         UIPickerView *pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), kScreenWidth, 200)];
+        pickerView.backgroundColor = [UIColor whiteColor];
         pickerView.dataSource = self;
         pickerView.delegate = self;
         [_mainView addSubview:pickerView];
@@ -248,15 +251,17 @@ static CGFloat const kAnimationDuration = 0.3;
                 title = self.dataArr[row][self.resultKeyArr[0]];
             }
             else {
-                NSArray *itemArr = [NSArray arrayWithArray:self.dataArr];
+                NSMutableArray *itemArr = [NSMutableArray arrayWithArray:self.dataArr];
                 for (int i=0;i<component;i++) {
-                    NSString *resultKey = self.resultKeyArr[i+1];
                     NSInteger lastSelected = [pickerView selectedRowInComponent:i];
                     NSString *nextKey = self.nextKeyArr[i];
                     NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
-                    title = nextArr[row][resultKey];
-                    itemArr = nextArr;
+                    [itemArr removeAllObjects];
+                    [itemArr addObjectsFromArray:nextArr];
                 }
+                NSString *resultKey = self.resultKeyArr[component];
+                NSInteger row1 = row>itemArr.count-1?0:row;
+                title = itemArr[row1][resultKey];
             }
         }
             break;
@@ -286,11 +291,12 @@ static CGFloat const kAnimationDuration = 0.3;
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     UILabel *pickerLabel = (UILabel *)view;
-    if (!pickerView) {
+    if (!pickerLabel) {
         pickerLabel = [[UILabel alloc] init];
         pickerLabel.adjustsFontSizeToFitWidth = YES;
         [pickerLabel setTextAlignment:NSTextAlignmentCenter];
         [pickerLabel setBackgroundColor:[UIColor clearColor]];
+        [pickerLabel setTextColor:[UIColor blackColor]];
         [pickerLabel setFont:[UIFont systemFontOfSize:14]];
     }
     pickerLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
@@ -300,8 +306,35 @@ static CGFloat const kAnimationDuration = 0.3;
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
     NSString *selectItem = [self pickerView:pickerView titleForRow:row forComponent:component];
     [self.resultArr replaceObjectAtIndex:component withObject:selectItem];
-    if (component < self.resultKeyArr.count - 1 && self.style == NAPickerViewStyleLinkageColumn)
-        [pickerView reloadComponent:component+1];
+    
+    // 如果选中的是最后一列，无需联动
+    if (self.style != NAPickerViewStyleLinkageColumn || component >= self.resultKeyArr.count - 1)
+        return;
+    
+    // 否则联动后面所有的列
+    NSMutableArray *itemArr = [NSMutableArray arrayWithArray:self.dataArr];
+    for (int i=0;i<self.nextKeyArr.count;i++) {
+        NSInteger lastSelected = i<=component?[pickerView selectedRowInComponent:i]:0;
+        NSString *nextKey = self.nextKeyArr[i];
+        NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
+        if (i>=component) {
+            // 更新后面所有列的rowCount
+            [self.rowArray replaceObjectAtIndex:i+1 withObject:@(nextArr.count)];
+            
+            // 同时更新resultArr的后面列
+            NSString *resultKey = self.resultKeyArr[i+1];
+            NSString *result = nextArr[0][resultKey];
+            [self.resultArr replaceObjectAtIndex:i+1 withObject:result];
+        }
+        [itemArr removeAllObjects];
+        [itemArr addObjectsFromArray:nextArr];
+    }
+    
+    // 重置后面所有列选中第一项
+    for (int i=(int)component+1;i<self.resultKeyArr.count;i++) {
+        [pickerView selectRow:0 inComponent:i animated:NO];
+    }
+    [pickerView reloadAllComponents];
 }
 
 @end

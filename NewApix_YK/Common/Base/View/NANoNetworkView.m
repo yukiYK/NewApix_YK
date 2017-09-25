@@ -21,7 +21,7 @@ static NSString *const tipsText = @"点击空白刷新";
 
 + (NANoNetworkView *)viewForNoNet {
     
-    NANoNetworkView *view = [[NANoNetworkView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
+    NANoNetworkView *view = [[NANoNetworkView alloc] initWithFrame:CGRectMake(0, kTopViewH, kScreenWidth, kScreenHeight-kTopViewH)];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,view.bounds.size.height/2 - 30 , kScreenWidth, 30)];
     label.textAlignment = NSTextAlignmentCenter;
@@ -44,7 +44,7 @@ static NSString *const tipsText = @"点击空白刷新";
 
 + (NANoNetworkView *)viewForNoData {
     
-    NANoNetworkView *view = [[NANoNetworkView alloc] initWithFrame:CGRectMake(0, 64, kScreenWidth, kScreenHeight-64)];
+    NANoNetworkView *view = [[NANoNetworkView alloc] initWithFrame:CGRectMake(0, kTopViewH, kScreenWidth, kScreenHeight-kTopViewH)];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0,view.bounds.size.height/2 - 30 , kScreenWidth, 30)];
     label.textAlignment = NSTextAlignmentCenter;

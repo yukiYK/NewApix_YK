@@ -15,6 +15,7 @@
 
 #import <SVProgressHUD.h>
 #import <YYModel/YYModel.h>
+#import <IQKeyboardManager.h>
 #import "NAHTTPSessionManager.h"
 #import "UIView+NAExtension.h"
 #import "NSString+NAExtension.h"
@@ -72,6 +73,9 @@
 #define WeakSelf  __weak typeof(self) weakSelf = self;
 #define kKeyWindow [UIApplication sharedApplication].keyWindow
 #define kStatusBarH [UIApplication sharedApplication].statusBarFrame.size.height
+#define kTopViewH  (kStatusBarH + kNavBarH)
+#define kTabBarH ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49)
+
 #define kGetImage(imageName) [UIImage imageNamed:imageName]
 #define kViewBorderRadius(View, Radius, Width, Color)\
 \

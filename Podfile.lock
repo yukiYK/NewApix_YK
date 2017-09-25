@@ -32,7 +32,6 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SVProgressHUD (2.1.2)
-  - TKAlert&TKActionSheet (1.1.0)
   - UMengAnalytics-NO-IDFA (4.1.9)
   - UMengUShare/Core (6.1.1):
     - UMengUShare/Network
@@ -43,10 +42,6 @@ PODS:
     - UMengUShare/Core
   - UMengUShare/Social/WeChat (6.1.1):
     - UMengUShare/Core
-  - VTMagic (1.2.4):
-    - VTMagic/Core (= 1.2.4)
-  - VTMagic/Core (1.2.4)
-  - WebViewJavascriptBridge (5.0.5)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -60,13 +55,10 @@ DEPENDENCIES:
   - OpenShare
   - SDWebImage/GIF
   - SVProgressHUD
-  - TKAlert&TKActionSheet
   - UMengAnalytics-NO-IDFA
   - UMengUShare/Social/QQ
   - UMengUShare/Social/Sina
   - UMengUShare/Social/WeChat
-  - VTMagic
-  - WebViewJavascriptBridge
   - YYModel
 
 SPEC CHECKSUMS:
@@ -81,13 +73,10 @@ SPEC CHECKSUMS:
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  TKAlert&TKActionSheet: 0b1f8de3e8e7df5cf4585e2ef25c9f1d4ec7472f
   UMengAnalytics-NO-IDFA: 985292af177111685325c90c321094172b95d2cb
   UMengUShare: 0a80f54ee06f71f3de7c57764c36339e8bf9b7e7
-  VTMagic: b49e5f456dbcbfd9a3588ba92417233a105bc193
-  WebViewJavascriptBridge: a4d502315f1b8d9a51cd6a9174147ed567ec3bc5
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 25f75708836093404989f4c173df52cb2658d264
+PODFILE CHECKSUM: 7d2cce2b6302d424d4e803b20956d5a643051057
 
 COCOAPODS: 1.2.0.beta.1

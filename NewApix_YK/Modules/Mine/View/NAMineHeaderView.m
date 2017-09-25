@@ -60,7 +60,7 @@ CGFloat const kRedPointWidth = 13;
     [topView addSubview:avatarImageView];
     self.avatarImageView = avatarImageView;
     
-    UIImageView *vipIcon = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) - kVipIconWidth, CGRectGetMaxY(avatarImageView.frame) - kVipIconWidth, kVipIconWidth, kVipIconWidth)];
+    UIImageView *vipIcon = [[UIImageView alloc] initWithFrame:CGRectMake(CGRectGetMaxX(avatarImageView.frame) - kVipIconWidth/2, CGRectGetMaxY(avatarImageView.frame) - kVipIconWidth/2, kVipIconWidth, kVipIconWidth)];
     vipIcon.image = kGetImage(@"mine_icon_novip");
     [topView addSubview:vipIcon];
     self.vipIcon = vipIcon;
@@ -82,6 +82,8 @@ CGFloat const kRedPointWidth = 13;
     checkLabel.textAlignment = NSTextAlignmentCenter;
     [topView addSubview:checkLabel];
     self.checkLabel = checkLabel;
+    [self.checkLabel sizeToFit];
+    self.checkLabel.frame = CGRectMake(CGRectGetMaxX(_nickLabel.frame) + 8, _nickLabel.frame.origin.y, self.checkLabel.width + 10, self.checkLabel.height);
     
     UILabel *vipDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(nickLabel.x, vipIcon.y, kScreenWidth - nickLabel.x - kCommonMargin, kVipIconWidth)];
     vipDateLabel.textColor = kColorTextYellow;
@@ -154,8 +156,8 @@ CGFloat const kRedPointWidth = 13;
 - (void)setUserInfo:(NAUserInfoModel *)userInfo {
     _userInfo = userInfo;
     
-    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar]];
-    self.nickLabel.text = userInfo.nick_name;
+    [self.avatarImageView sd_setImageWithURL:[NSURL URLWithString:userInfo.avatar] placeholderImage:kGetImage(kImageAvatarDefault)];
+    self.nickLabel.text = userInfo.nick_name.length>0?userInfo.nick_name:@"昵称";
     [self.nickLabel sizeToFit];
     
     self.checkLabel.text = [userInfo.id_number checkEmpty]?@"未认证":@"已认证";

@@ -55,6 +55,12 @@
     self.netStatus = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged) name:AFNetworkingReachabilityDidChangeNotification object:nil];
     
+    // 设置IQKeyboardManager
+    [self setupIQKeyboardManager];
+    // iOS11适配
+    if (@available(iOS 11.0, *)) {
+        [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
+    }
     return YES;
 }
 
@@ -229,6 +235,12 @@
     return deviceString;
 }
 
+- (void)setupIQKeyboardManager {
+    [IQKeyboardManager sharedManager].enable = YES;
+    [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
+    [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
+    [[IQKeyboardManager sharedManager] setToolbarDoneBarButtonItemText:@"确定"];
+}
 
 /** 监听到网络变化 */
 - (void)reachabilityChanged {

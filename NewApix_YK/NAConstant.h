@@ -65,9 +65,7 @@ static NSString * const kShareWechatAppSecret = @"";
 
 
 #pragma mark - <通用数字>
-
 static CGFloat const kNavBarH = 44.0;
-static CGFloat const kTabBarH = 49.0;
 static CGFloat const kCommonMargin = 15.0;
 
 

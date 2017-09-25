@@ -1,1 +1,0 @@
-../../../TKAlert&TKActionSheet/Pod/Classes/TKAlert/TKAlertManager.h
