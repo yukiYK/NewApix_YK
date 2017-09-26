@@ -57,21 +57,40 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
     self.customTitleLabel.text = @"收货地址";
-//    [self setupSubviews];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    [self requestForAddress];
 }
 
+#pragma mark - <Private Method>
 // 更新UI
 - (void)resetSubviewsWith:(NAAddressModel *)model {
     self.nameTextField.text = model.receiver;
     self.phoneTextField.text = model.receiver_phone;
-    self.addressTextField.text = [NSString stringWithFormat:@"%@%@%@", model.province, model.city, model.district];
+    self.addressTextField.text = [NSString stringWithFormat:@"%@、%@、%@", model.province, model.city, model.district];
     self.detailAddressTextField.text = model.address;
-    self.saveButton.enabled = YES;
+    [self checkForEnable];
     
     self.addressModel = model;
+}
+
+- (void)hideKeyBoard {
+    [self.nameTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
+    [self.detailAddressTextField resignFirstResponder];
+}
+
+- (void)checkForEnable {
+    if (self.phoneTextField.text.length > 0 && self.nameTextField.text.length > 0 && self.addressTextField.text.length > 0 && self.detailAddressTextField.text.length > 0) {
+        self.saveButton.enabled = YES;
+        [self.saveButton setBackgroundColor:[UIColor colorFromString:@"89ABE3"]];
+    }
+    else {
+        self.saveButton.enabled = NO;
+        [self.saveButton setBackgroundColor:[UIColor colorFromString:@"C4C4C4"]];
+    }
 }
 
 #pragma mark - <Net Request>
@@ -89,7 +108,6 @@
             NAAddressModel *model = [NAAddressModel yy_modelWithJSON:addressArr[0]];
             [weakSelf resetSubviewsWith:model];
         }
-        
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         
     } failureBlock:^(NSError *error) {
@@ -101,32 +119,29 @@
     self.addressModel.receiver = self.nameTextField.text;
     self.addressModel.receiver_phone = self.phoneTextField.text;
     self.addressModel.address = self.detailAddressTextField.text;
-    NAAPIModel *model = [NAURLCenter updateAddressConfigWithReceiver:self.addressModel.receiver
-                                                       receiverPhone:self.addressModel.receiver_phone
-                                                            province:self.addressModel.province
-                                                                city:self.addressModel.city
-                                                            district:self.addressModel.district
-                                                             address:self.addressModel.address
-                                                                  id:self.addressModel.id];
+    NAAPIModel *model = [NAURLCenter updateAddressConfigWithAddressModel:self.addressModel];
     
+    WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
-        if (self.completeBlock) self.completeBlock(self.addressModel);
+        if (weakSelf.completeBlock) weakSelf.completeBlock(weakSelf.addressModel);
+        [weakSelf.navigationController popViewControllerAnimated:YES];
     } errorCodeBlock:^(NSString *code, NSString *msg) {
-        
+        [SVProgressHUD showErrorWithStatus:@"保存失败"];
     } failureBlock:^(NSError *error) {
-        
+        [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
     }];
 }
 
 #pragma mark - <Events>
 - (IBAction)showPickerView:(id)sender {
+    [self hideKeyBoard];
     [self.pickerView show];
 }
 
 - (IBAction)onSaveButtonClicked:(id)sender {
-    
+    [self requestForChangeAddress];
 }
 
 #pragma mark - <NAPickerViewDelegate>
@@ -146,6 +161,8 @@
     self.addressModel.province = resultArr[0];
     self.addressModel.city = resultArr[1];
     self.addressModel.district = resultArr[2];
+    
+    [self checkForEnable];
 }
 
 - (void)pickerViewCancel {
@@ -157,10 +174,13 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    if (textField.text.length <= 0) self.saveButton.enabled = NO;
+    if (textField.text.length <= 0) {
+        self.saveButton.enabled = NO;
+        [self.saveButton setBackgroundColor:[UIColor colorFromString:@"C4C4C4"]];
+        return;
+    }
     
-    if (self.phoneTextField.text.length > 0 && self.nameTextField.text.length > 0 && self.addressTextField.text.length > 0 && self.detailAddressTextField.text.length > 0)
-        self.saveButton.enabled = YES;
+    [self checkForEnable];
 }
 
 #pragma mark - <Notification>

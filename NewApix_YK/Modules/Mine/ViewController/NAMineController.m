@@ -45,23 +45,24 @@ NSString * const kMineCell = @"mineCell";
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = kColorHeaderGray;
     
-    [self setupNavigationBar];
+    
     [self setupTableView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    [self setupNavigationBar];
     
     [self loadUserInfo];
     [self loadVipInfo];
     [self loadOrderInfo];
 }
 
-
-
 #pragma mark - <Private Method>
 - (void)setupNavigationBar {
-    
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.navigationController.navigationBar.translucent = NO;
+    [self hideBackBtn];
     self.customTitleLabel.text = @"会员中心";
     
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStylePlain target:self action:@selector(onSettingBtnClicked)];
@@ -71,7 +72,7 @@ NSString * const kMineCell = @"mineCell";
 
 - (void)setupTableView {
     
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavBarH + kStatusBarH, kScreenWidth, kScreenHeight - kNavBarH - kStatusBarH - kTabBarH) style:UITableViewStylePlain];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight - kNavBarH - kStatusBarH - kTabBarH) style:UITableViewStylePlain];
     [tableView registerNib:[UINib nibWithNibName:@"NAMineCell" bundle:nil] forCellReuseIdentifier:kMineCell];
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -159,6 +160,7 @@ NSString * const kMineCell = @"mineCell";
 
 #pragma mark - <Events>
 - (void)onSettingBtnClicked {
+    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter settingsController] tranformStyle:NATransformStylePush needLogin:NO];
 }
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>

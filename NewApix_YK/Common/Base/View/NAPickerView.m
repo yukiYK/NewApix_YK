@@ -28,7 +28,7 @@ static CGFloat const kAnimationDuration = 0.3;
 @property (nonatomic, strong) NSArray *nextKeyArr;
 @property (nonatomic, assign) NAPickerViewStyle style;
 
-
+/** 保存每一列的rowCount */
 @property (nonatomic, strong) NSMutableArray *rowArray;
 /** 输出结果数组 */
 @property (nonatomic, strong) NSMutableArray *resultArr;
@@ -255,6 +255,7 @@ static CGFloat const kAnimationDuration = 0.3;
                 for (int i=0;i<component;i++) {
                     NSInteger lastSelected = [pickerView selectedRowInComponent:i];
                     NSString *nextKey = self.nextKeyArr[i];
+                    if (lastSelected>itemArr.count-1) lastSelected = itemArr.count-1;
                     NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
                     [itemArr removeAllObjects];
                     [itemArr addObjectsFromArray:nextArr];
@@ -294,10 +295,10 @@ static CGFloat const kAnimationDuration = 0.3;
     if (!pickerLabel) {
         pickerLabel = [[UILabel alloc] init];
         pickerLabel.adjustsFontSizeToFitWidth = YES;
-        [pickerLabel setTextAlignment:NSTextAlignmentCenter];
-        [pickerLabel setBackgroundColor:[UIColor clearColor]];
-        [pickerLabel setTextColor:[UIColor blackColor]];
-        [pickerLabel setFont:[UIFont systemFontOfSize:14]];
+        pickerLabel.textAlignment = NSTextAlignmentCenter;
+        pickerLabel.textColor = [UIColor blackColor];
+        pickerLabel.backgroundColor = [UIColor clearColor];
+        pickerLabel.font = [UIFont systemFontOfSize:14];
     }
     pickerLabel.text = [self pickerView:pickerView titleForRow:row forComponent:component];
     return pickerLabel;
@@ -316,11 +317,12 @@ static CGFloat const kAnimationDuration = 0.3;
     for (int i=0;i<self.nextKeyArr.count;i++) {
         NSInteger lastSelected = i<=component?[pickerView selectedRowInComponent:i]:0;
         NSString *nextKey = self.nextKeyArr[i];
+        if (lastSelected>itemArr.count-1) lastSelected = itemArr.count-1;
         NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
         if (i>=component) {
             // 更新后面所有列的rowCount
             [self.rowArray replaceObjectAtIndex:i+1 withObject:@(nextArr.count)];
-            
+
             // 同时更新resultArr的后面列
             NSString *resultKey = self.resultKeyArr[i+1];
             NSString *result = nextArr[0][resultKey];

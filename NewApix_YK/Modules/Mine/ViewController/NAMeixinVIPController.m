@@ -65,7 +65,7 @@
     
     self.navigationController.navigationBarHidden = NO;
     self.customTitleLabel.text = @"美信会员";
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+//    self.navigationController.interactivePopGestureRecognizer.delegate = self;
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
     // vip协议

@@ -17,6 +17,7 @@
 #import "NAPresentSuccessController.h"
 #import "NAAddressController.h"
 #import "NACreditReportController.h"
+#import "NASettingsController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -109,6 +110,15 @@
  */
 + (UIViewController *)creditReportController {
     return [[NACreditReportController alloc] init];
+}
+
+/**
+ 个人设置页
+ 
+ @return NASettingsController
+ */
++ (UIViewController *)settingsController {
+    return [[NASettingsController alloc] init];
 }
 
 // 第三方贷款web页 等等

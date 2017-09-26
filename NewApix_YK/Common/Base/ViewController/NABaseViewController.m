@@ -80,6 +80,10 @@
 }
 
 #pragma mark <Public Methods>
+- (void)hideBackBtn {
+    [self.navigationItem setLeftBarButtonItem:nil];
+}
+
 - (void)removeReloadViewFromSuperView:(UIView *)superView {
     for (id view in superView.subviews) {
         if ([view isKindOfClass:[NANoNetworkView class]]) {

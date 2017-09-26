@@ -201,22 +201,16 @@
 }
 
 /** 更新地址接口 */
-+ (NAAPIModel *)updateAddressConfigWithReceiver:(NSString *)receiver
-                                  receiverPhone:(NSString *)receiverPhone
-                                       province:(NSString *)province
-                                           city:(NSString *)city
-                                       district:(NSString *)district
-                                        address:(NSString *)address
-                                             id:(NSString *)addressId {
++ (NAAPIModel *)updateAddressConfigWithAddressModel:(NAAddressModel *)addressModel {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = [NACommon getToken];
-    param[@"receiver"] = receiver;
-    param[@"receiver_phone"] = receiverPhone;
-    param[@"province"] = province;
-    param[@"city"] = city;
-    param[@"district"] = district;
-    param[@"address"] = address;
-    if (addressId) param[@"id"] = addressId;
+    param[@"receiver"] = addressModel.receiver;
+    param[@"receiver_phone"] = addressModel.receiver_phone;
+    param[@"province"] = addressModel.province;
+    param[@"city"] = addressModel.city;
+    param[@"district"] = addressModel.district;
+    param[@"address"] = addressModel.address;
+    if (addressModel.id) param[@"id"] = addressModel.id;
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"address", @"new"] param:param rightCode:@"0"];
 }
 

@@ -105,6 +105,13 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 
 
 /**
+ 个人设置页
+
+ @return NASettingsController
+ */
++ (UIViewController *)settingsController;
+
+/**
  第三方贷款web页 等等
 
  @param cardModel 数据model，如果没有传nil

@@ -11,6 +11,7 @@
 #import <Masonry.h>
 #import "NAPresentSuccessController.h"
 #import "NAMeixinVIPController.h"
+#import "UINavigationController+NAStatusBar.h"
 
 @interface NAPresentCenterController ()
 
@@ -45,6 +46,12 @@
     [self requestForAddress];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor colorFromString:@"f2f2f2"]]];
+}
+
 - (UIStatusBarStyle)preferredStatusBarStyle {
     return UIStatusBarStyleLightContent;
 }
@@ -54,27 +61,19 @@
     self.navigationController.navigationBarHidden = NO;
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     self.navigationController.navigationBar.translucent = YES;
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
+    
+    self.customTitleLabel.text = @"礼品中心";
+    self.customTitleLabel.textColor = [UIColor whiteColor];
     
     UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
     [left setFrame:CGRectMake(0, 0, 20, 30)];
     [left addTarget:self action:@selector(onBackClicked) forControlEvents:UIControlEventTouchUpInside];
-    [left setImage:[UIImage imageNamed:@"btn_white_navi_back"] forState:UIControlStateNormal];
-    [left setTitle:@"" forState:UIControlStateNormal];
+    [left setImage:kGetImage(kImageBackWhite) forState:UIControlStateNormal];
     [left setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     UIBarButtonItem *leftBut = [[UIBarButtonItem alloc]initWithCustomView:left];
     self.navigationItem.leftBarButtonItem = leftBut;
-    
-    //修改方法
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 20)];
-    titleLabel.font = [UIFont systemFontOfSize:17];
-    titleLabel.textColor = [UIColor whiteColor];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.text = @"礼品中心";
-    [self.navigationItem setTitleView:titleLabel];
-    
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
-    [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
 }
 
 - (void)setupInfoView {

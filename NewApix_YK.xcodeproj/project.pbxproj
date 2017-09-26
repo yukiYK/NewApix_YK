@@ -27,6 +27,8 @@
 		4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381691F384F71008BC8FD /* NABannerView.m */; };
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
+		4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */; };
+		4A7F952E1F7A61D3003D7FB6 /* NASettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */; };
 		4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */; };
 		4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */; };
 		4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18CC1F41ADBC00B5459A /* NACommunityCell.m */; };
@@ -135,6 +137,10 @@
 		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
 		4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+NAExtension.m"; sourceTree = "<group>"; };
 		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
+		4A7F95291F7A5123003D7FB6 /* UINavigationController+NAStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NAStatusBar.h"; sourceTree = "<group>"; };
+		4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NAStatusBar.m"; sourceTree = "<group>"; };
+		4A7F952C1F7A61D3003D7FB6 /* NASettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NASettingsController.h; sourceTree = "<group>"; };
+		4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NASettingsController.m; sourceTree = "<group>"; };
 		4A8F18C61F41AD7800B5459A /* NAEssenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAEssenceCell.h; sourceTree = "<group>"; };
 		4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAEssenceCell.m; sourceTree = "<group>"; };
 		4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAEssenceCell.xib; sourceTree = "<group>"; };
@@ -495,6 +501,8 @@
 			children = (
 				4AC6CA541F2F24C800A9308F /* NAMineController.h */,
 				4AC6CA551F2F24C800A9308F /* NAMineController.m */,
+				4A7F952C1F7A61D3003D7FB6 /* NASettingsController.h */,
+				4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */,
 				4AA684EA1F6680220041BB2D /* NAAddressController.h */,
 				4AA684EB1F6680220041BB2D /* NAAddressController.m */,
 				4AA684EC1F6680220041BB2D /* NAAddressController.xib */,
@@ -627,6 +635,8 @@
 				4A59ACEA1F5FDD1300F3172B /* UIView+NAScreenshot.m */,
 				4A59ACEC1F5FDD4A00F3172B /* UIScrollView+NAScreenshot.h */,
 				4A59ACED1F5FDD4A00F3172B /* UIScrollView+NAScreenshot.m */,
+				4A7F95291F7A5123003D7FB6 /* UINavigationController+NAStatusBar.h */,
+				4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */,
 			);
 			path = Categorys;
 			sourceTree = "<group>";
@@ -854,6 +864,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */,
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
 				4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */,
 				4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */,
@@ -863,6 +874,7 @@
 				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4AA684E41F66732A0041BB2D /* NAAddressModel.m in Sources */,
+				4A7F952E1F7A61D3003D7FB6 /* NASettingsController.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
 				4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */,

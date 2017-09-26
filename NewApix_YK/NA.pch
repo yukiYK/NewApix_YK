@@ -71,6 +71,7 @@
 #pragma mark - <一些常用方法>
 // --------------------- 一些常用方法 -------------
 #define WeakSelf  __weak typeof(self) weakSelf = self;
+#define StrongSelf typeof(weakSelf) __strong strongSelf = weakSelf;
 #define kKeyWindow [UIApplication sharedApplication].keyWindow
 #define kStatusBarH [UIApplication sharedApplication].statusBarFrame.size.height
 #define kTopViewH  (kStatusBarH + kNavBarH)

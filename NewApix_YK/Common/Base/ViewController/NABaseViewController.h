@@ -19,6 +19,8 @@
 
 @property (nonatomic, weak) UILabel *customTitleLabel;
 
+- (void)hideBackBtn;
+
 - (void)removeReloadViewFromSuperView:(UIView *)superView;
 
 - (void)showTabbar;

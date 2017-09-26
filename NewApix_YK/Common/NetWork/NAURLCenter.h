@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NAAPIModel.h"
+#import "NAAddressModel.h"
 
 typedef NS_ENUM(NSInteger, NARequestURLType) {
     NARequestURLTypeAPI,
@@ -80,13 +81,7 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 /** 用户地址接口 */
 + (NAAPIModel *)userAddressConfig;
 /** 更新地址接口 */
-+ (NAAPIModel *)updateAddressConfigWithReceiver:(NSString *)receiver
-                                  receiverPhone:(NSString *)receiverPhone
-                                       province:(NSString *)province
-                                           city:(NSString *)city
-                                       district:(NSString *)district
-                                        address:(NSString *)address
-                                             id:(NSString *)addressId;
++ (NAAPIModel *)updateAddressConfigWithAddressModel:(NAAddressModel *)addressModel;
 /** 会员礼品接口 */
 + (NAAPIModel *)vipPresentConfig;
 /** 领取礼品接口 */
