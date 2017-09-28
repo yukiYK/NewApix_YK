@@ -32,7 +32,10 @@ typedef void(^NetWorkBlock)(BOOL netConnetState);
  @return manager对象
  */
 + (instancetype)sharedManager;
-
+/**
+ 为post请求更改配置
+ */
+- (void)setRequestSerializerForPost;
 
 
 /**

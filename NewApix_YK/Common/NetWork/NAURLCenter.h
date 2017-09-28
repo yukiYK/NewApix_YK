@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NAAPIModel.h"
 #import "NAAddressModel.h"
+#import "NAUserInfoModel.h"
 
 typedef NS_ENUM(NSInteger, NARequestURLType) {
     NARequestURLTypeAPI,
@@ -90,6 +91,10 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)presentCenterBgConfig;
 /** 分享成功接口 */
 + (NAAPIModel *)shareSuccessConfig;
+/** 用户认证状态接口 */
++ (NAAPIModel *)authenticationConfig;
+/** 保存个人信息接口 */
++ (NAAPIModel *)updateUserInfoConfigWithModel:(NAUserInfoModel *)model;
 /**
  苹果内购VIP会员后 后台验证接口
 

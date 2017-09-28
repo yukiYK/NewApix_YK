@@ -60,6 +60,7 @@
     model.requestType = type;
     model.pathArr = pathArr;
     model.param = param;
+    model.rightCode = rightCode;
     
     return model;
 }
@@ -242,7 +243,24 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"share", @"user"] param:param rightCode:@"0"];
 }
 
+/** 用户认证状态接口 */
++ (NAAPIModel *)authenticationConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_credit", @"step"] param:param rightCode:@"0"];
+}
 
+/** 保存个人信息接口 */
++ (NAAPIModel *)updateUserInfoConfigWithModel:(NAUserInfoModel *)model {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"nick_name"] = model.nick_name;
+    param[@"occupation"] = model.profession;
+    param[@"education"] = model.education;
+    param[@"marry_info"] = model.marry_info;
+    param[@"qq"] = model.qq;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"user_infos", @"create"] param:param rightCode:nil];
+}
 
 /**
  苹果内购VIP会员后 后台验证接口

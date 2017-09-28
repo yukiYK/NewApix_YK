@@ -128,7 +128,6 @@
 }
 
 - (NAUserStatus)userStatus {
-    
     return [[NSUserDefaults standardUserDefaults] integerForKey:kUserDefaultsUserStatus];
 }
 - (void)setUserStatus:(NAUserStatus)userStatus {

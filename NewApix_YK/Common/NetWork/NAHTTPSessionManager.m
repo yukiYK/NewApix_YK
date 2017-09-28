@@ -35,6 +35,16 @@
     return instance;
 }
 
+/**
+ 为post请求更改配置
+ */
+- (void)setRequestSerializerForPost {
+    self.requestSerializer = [AFJSONRequestSerializer serializer];
+    [self.requestSerializer setValue:[NAUserTool getDeviceId] forHTTPHeaderField:@"deviceid"];
+    [self.requestSerializer setValue:[NAUserTool getSystemVersion] forHTTPHeaderField:@"systemversion"];
+    [self.requestSerializer setValue:[NAUserTool getEquipmentType] forHTTPHeaderField:@"equipmenttype"];
+}
+
 
 /**
  封装网络请求

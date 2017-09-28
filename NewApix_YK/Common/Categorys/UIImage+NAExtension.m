@@ -66,4 +66,18 @@
     return image;
 }
 
+/** 压缩图片 */
+- (UIImage *)imageCompresstoMaxFileSize:(NSInteger)maxFileSize {
+    CGFloat compression = 0.9f;
+    CGFloat maxCompression = 0.1f;
+    NSData *imageData = UIImageJPEGRepresentation(self, compression);
+    while ([imageData length] > maxFileSize && compression > maxCompression) {
+        compression -= 0.1;
+        imageData = UIImageJPEGRepresentation(self, compression);
+    }
+    
+    UIImage *compressedImage = [UIImage imageWithData:imageData];
+    return compressedImage;
+}
+
 @end

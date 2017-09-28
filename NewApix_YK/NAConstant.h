@@ -10,6 +10,14 @@
 #ifndef NAConstant_h
 #define NAConstant_h
 
+/** 认证状态 */
+typedef NS_ENUM(NSInteger, NAAuthenticationState) {
+    NAAuthenticationStateNot = 0,     // 未认证
+    NAAuthenticationStateAlready,     // 已认证
+    NAAuthenticationStateOverdue,     // 已过期
+    NAAuthenticationStateCanUpdate,   // 可更新
+    NAAuthenticationStateAlreadyUpdate// 已更新
+};
 
 // --------------------- 一些常量 -------------
 // 对密码进行AES加密的key
@@ -46,6 +54,31 @@ static NSString * const kUserDefaultsLocation = @"kUserDefaultsLocation";    // 
 static NSString * const kUserDefaultsDeviceId = @"kUserDefaultsDeviceId";    // deviceID
 static NSString * const kUserDefaultsSystemVersion = @"kUserDefaultsSystemVersion";    // 系统版本
 static NSString * const kUserDefaultsEquipmentType = @"kUserDefaultsEquipmentType";    // 设备类型
+// --------------------------------------各种认证状态-----------------------------------------------
+/** 身份认证 */
+static NSString * const kUserDefaultsAuthenticationIDCard = @"kUserDefaultsAuthenticationIDCard";
+/** 京东认证 */
+static NSString * const kUserDefaultsAuthenticationJD = @"kUserDefaultsAuthenticationJD";
+/** 淘宝认证 */
+static NSString * const kUserDefaultsAuthenticationTB = @"kUserDefaultsAuthenticationTB";
+/** 通讯录 */
+static NSString * const kUserDefaultsAuthenticationAddressBook = @"kUserDefaultsAuthenticationAddressBook";
+/** 运营商 */
+static NSString * const kUserDefaultsAuthenticationService = @"kUserDefaultsAuthenticationService";
+/** 借贷历史 */
+static NSString * const kUserDefaultsAuthenticationLoan = @"kUserDefaultsAuthenticationLoan";
+/** 基本信息 */
+static NSString * const kUserDefaultsAuthenticationInfo = @"kUserDefaultsAuthenticationInfo";
+/** 公积金 */
+static NSString * const kUserDefaultsAuthenticationHouse = @"kUserDefaultsAuthenticationHouse";
+/** 学信网 */
+static NSString * const kUserDefaultsAuthenticationSchool = @"kUserDefaultsAuthenticationSchool";
+/** 央行征信 */
+static NSString * const kUserDefaultsAuthenticationCentralBank = @"kUserDefaultsAuthenticationCentralBank";
+/** 芝麻认证 */
+static NSString * const kUserDefaultsAuthenticationSesame = @"kUserDefaultsAuthenticationSesame";
+/** 芝麻信用 */
+static NSString * const kUserDefaultsAuthenticationSesameCredit = @"kUserDefaultsAuthenticationSesameCredit";
 
 #pragma mark - <KeyChain>
 static NSString * const kKeyChain = @"com.heige.meixinlife";   // 应用程序keyChain的Key

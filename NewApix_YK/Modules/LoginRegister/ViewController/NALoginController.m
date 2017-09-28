@@ -84,10 +84,7 @@
     NAAPIModel *model = [NAURLCenter loginConfigWithPhone:self.phoneTextField.text password:password];
     
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:[NAUserTool getDeviceId] forHTTPHeaderField:@"deviceid"];
-    [manager.requestSerializer setValue:[NAUserTool getSystemVersion] forHTTPHeaderField:@"systemversion"];
-    [manager.requestSerializer setValue:[NAUserTool getEquipmentType] forHTTPHeaderField:@"equipmenttype"];
+    [manager setRequestSerializerForPost];
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

@@ -12,7 +12,7 @@
 
 /** 地址 */
 @property (nonatomic, copy) NSString *address;
-/** 头像 */
+/** 头像地址 */
 @property (nonatomic, copy) NSString *avatar;
 /** 学历 */
 @property (nonatomic, copy) NSString *education;

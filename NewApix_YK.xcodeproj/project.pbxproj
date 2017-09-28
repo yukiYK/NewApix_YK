@@ -27,6 +27,7 @@
 		4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381691F384F71008BC8FD /* NABannerView.m */; };
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
+		4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */; };
 		4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */; };
 		4A7F952E1F7A61D3003D7FB6 /* NASettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */; };
 		4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */; };
@@ -136,6 +137,8 @@
 		4A7315431F3D604B00044FE6 /* NACommonWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommonWebController.m; sourceTree = "<group>"; };
 		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
 		4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+NAExtension.m"; sourceTree = "<group>"; };
+		4A7580BC1F7B91D5008EAA5C /* NAAuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationModel.h; sourceTree = "<group>"; };
+		4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationModel.m; sourceTree = "<group>"; };
 		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
 		4A7F95291F7A5123003D7FB6 /* UINavigationController+NAStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NAStatusBar.h"; sourceTree = "<group>"; };
 		4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NAStatusBar.m"; sourceTree = "<group>"; };
@@ -590,6 +593,8 @@
 		4AFCA9471F346C3500351B04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4A7580BC1F7B91D5008EAA5C /* NAAuthenticationModel.h */,
+				4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -910,6 +915,7 @@
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AA684ED1F6680220041BB2D /* NAAddressController.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
+				4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
 				4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */,

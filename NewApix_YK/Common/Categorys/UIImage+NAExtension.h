@@ -19,4 +19,7 @@
 /** 上下拼接两张图片 */
 - (UIImage *)stitchBottomImage:(UIImage *)bottomImage;
 
+/** 压缩图片 */
+- (UIImage *)imageCompresstoMaxFileSize:(NSInteger)maxFileSize;
+
 @end
