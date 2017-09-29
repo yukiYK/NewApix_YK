@@ -103,13 +103,32 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)creditReportController;
 
-
 /**
  个人设置页
 
+ @param model 个人信息model
+ @param isVipForever 是否是终身会员
  @return NASettingsController
  */
-+ (UIViewController *)settingsController;
++ (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model isVipForever:(BOOL)isVipForever;
+
+/**
+ 修改手机号页
+
+ @return NAChangePhoneController
+ */
++ (UIViewController *)changePhoneController;
+
+/** 设置新手机号页 */
++ (UIViewController *)newPhoneController;
+
+/**
+ 修改密码页
+
+ @return NAChangePasswordController
+ */
++ (UIViewController *)changePasswordController;
+
 
 /**
  第三方贷款web页 等等

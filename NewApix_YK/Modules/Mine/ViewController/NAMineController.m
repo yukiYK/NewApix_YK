@@ -17,11 +17,14 @@ NSString * const kMineCell = @"mineCell";
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NAMineHeaderView *mineHeaderView;
-
+// tableView数据array
 @property (nonatomic, strong) NSArray *array;
-
-
+// 用户信息
+@property (nonatomic, strong) NAUserInfoModel *userModel;
+// 是否是永久会员
 @property (nonatomic, assign) BOOL isVipForever;
+// 贷款记录数据
+@property (nonatomic, strong) NSArray *loanArray;
 
 @end
 
@@ -102,6 +105,7 @@ NSString * const kMineCell = @"mineCell";
         }
         else {
             NAUserInfoModel *model = [NAUserInfoModel yy_modelWithJSON:returnValue[@"data"]];
+            self.userModel = model;
             self.mineHeaderView.userInfo = model;
         }
         
@@ -115,6 +119,7 @@ NSString * const kMineCell = @"mineCell";
 - (void)loadVipInfo {
     NAAPIModel *model = [NAURLCenter mineVipInfoConfig];
     
+    WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
@@ -130,6 +135,7 @@ NSString * const kMineCell = @"mineCell";
     
     NAAPIModel *model = [NAURLCenter mineOrderInfoConfig];
     
+    WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
@@ -157,7 +163,11 @@ NSString * const kMineCell = @"mineCell";
 
 #pragma mark - <Events>
 - (void)onSettingBtnClicked {
-    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter settingsController] tranformStyle:NATransformStylePush needLogin:NO];
+    UIViewController *settingsVC = [NAViewControllerCenter settingsControllerWithModel:self.userModel isVipForever:self.isVipForever];
+    [NAViewControllerCenter transformViewController:self
+                                   toViewController:settingsVC
+                                      tranformStyle:NATransformStylePush
+                                          needLogin:YES];
 }
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>

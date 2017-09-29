@@ -18,6 +18,9 @@
 #import "NAAddressController.h"
 #import "NACreditReportController.h"
 #import "NASettingsController.h"
+#import "NAChangePhoneController.h"
+#import "NAChangePasswordController.h"
+#import "NANewPhoneController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -115,10 +118,38 @@
 /**
  个人设置页
  
+ @param model 个人信息model
+ @param isVipForever 是否是终身会员
  @return NASettingsController
  */
-+ (UIViewController *)settingsController {
-    return [[NASettingsController alloc] init];
++ (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model isVipForever:(BOOL)isVipForever {
+    NASettingsController *settingsVC = [[NASettingsController alloc] init];
+    settingsVC.isVipForever = isVipForever;
+    if (model) settingsVC.userInfoModel = model;
+    return settingsVC;
+}
+
+/**
+ 修改手机号页
+ 
+ @return NAChangePhoneController
+ */
++ (UIViewController *)changePhoneController {
+    return [[NAChangePhoneController alloc] init];
+}
+
+/** 设置新手机号页 */
++ (UIViewController *)newPhoneController {
+    return [[NANewPhoneController alloc] init];
+}
+
+/**
+ 修改密码页
+ 
+ @return NAChangePasswordController
+ */
++ (UIViewController *)changePasswordController {
+    return [[NAChangePasswordController alloc] init];
 }
 
 // 第三方贷款web页 等等

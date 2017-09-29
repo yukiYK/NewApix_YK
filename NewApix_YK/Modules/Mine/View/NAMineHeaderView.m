@@ -71,19 +71,19 @@ CGFloat const kRedPointWidth = 13;
     [topView addSubview:nickLabel];
     self.nickLabel = nickLabel;
     
-    UILabel *checkLabel = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(nickLabel.frame) + 8, nickLabel.frame.origin.y, 80, 18)];
+    UILabel *checkLabel = [[UILabel alloc] init];
     checkLabel.layer.masksToBounds = YES;
-    checkLabel.layer.cornerRadius = 10;
+    checkLabel.layer.cornerRadius = 9;
     checkLabel.layer.borderWidth = 1;
     checkLabel.layer.borderColor = kColorLightBlue.CGColor;
     checkLabel.textColor = kColorLightBlue;
     checkLabel.text = @"未认证";
-    checkLabel.font = [UIFont systemFontOfSize:15];
+    checkLabel.font = [UIFont systemFontOfSize:11];
     checkLabel.textAlignment = NSTextAlignmentCenter;
     [topView addSubview:checkLabel];
     self.checkLabel = checkLabel;
     [self.checkLabel sizeToFit];
-    self.checkLabel.frame = CGRectMake(CGRectGetMaxX(_nickLabel.frame) + 8, _nickLabel.frame.origin.y, self.checkLabel.width + 10, self.checkLabel.height);
+    self.checkLabel.frame = CGRectMake(CGRectGetMaxX(_nickLabel.frame) + 8, _nickLabel.frame.origin.y, self.checkLabel.width + 10, 18);
     
     UILabel *vipDateLabel = [[UILabel alloc] initWithFrame:CGRectMake(nickLabel.x, vipIcon.y, kScreenWidth - nickLabel.x - kCommonMargin, kVipIconWidth)];
     vipDateLabel.textColor = kColorTextYellow;
@@ -97,38 +97,32 @@ CGFloat const kRedPointWidth = 13;
         self.vipCardImageView = vipCardImageView;
     }
     
+    // 订单信息
+    UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), kScreenWidth, 8)];
+    centerView.backgroundColor = kColorHeaderGray;
+    [self addSubview:centerView];
     
-    // 审核版本隐藏订单相关内容
-    if ([NACommon isRealVersion]) {
-        UIView *centerView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(topView.frame), kScreenWidth, 8)];
-        centerView.backgroundColor = kColorHeaderGray;
-        [self addSubview:centerView];
-        
-        UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(centerView.frame), kScreenWidth, kBottomViewHeight)];
-        [self addSubview:bottomView];
-        
-        NSArray *titleArr = @[@"进行中", @"成功", @"退款", @"我的订单"];
-        NSArray *imageArr = @[@"mine_loan_ing", @"mine_loan_succeed", @"mine_loan_back", @"mine_loan_order"];
-        for (int i=0; i<4; i++) {
-            UIButton *button = [self buttonWithTitle:titleArr[i] image:imageArr[i] tag:100 + i];
-            [bottomView addSubview:button];
-        }
-        
-        UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(kBtnWidth * 3 - 2.5, 0, 5, bottomView.height)];
-        verticalLine.image = kGetImage(@"mine_vertical_line");
-        [bottomView addSubview:verticalLine];
-        
-        self.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(bottomView.frame));
+    UIView *bottomView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(centerView.frame), kScreenWidth, kBottomViewHeight)];
+    [self addSubview:bottomView];
+    
+    NSArray *titleArr = @[@"进行中", @"成功", @"退款", @"我的订单"];
+    NSArray *imageArr = @[@"mine_loan_ing", @"mine_loan_succeed", @"mine_loan_back", @"mine_loan_order"];
+    for (int i=0; i<4; i++) {
+        UIButton *button = [self buttonWithTitle:titleArr[i] image:imageArr[i] tag:100 + i];
+        [bottomView addSubview:button];
     }
-    else {
-        self.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(topView.frame));
-    }
+    
+    UIImageView *verticalLine = [[UIImageView alloc] initWithFrame:CGRectMake(kBtnWidth * 3 - 2.5, 0, 5, bottomView.height)];
+    verticalLine.image = kGetImage(@"mine_vertical_line");
+    [bottomView addSubview:verticalLine];
+    
+    self.frame = CGRectMake(0, 0, kScreenWidth, CGRectGetMaxY(bottomView.frame));
 }
 
 - (UIButton *)buttonWithTitle:(NSString *)title image:(NSString *)imageName tag:(NSInteger)tag {
     
     NSInteger index = tag - 100;
-    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kBtnWidth * index, kCommonMargin, kBtnWidth, kBtnHeight)];
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(kBtnWidth * index, kCommonMargin + 10, kBtnWidth, kBtnHeight)];
     //设置图文混排的按钮
     [button setAttributedTitle:[NSAttributedString attributedStringWithImage:kGetImage(imageName) imageWH:24 title:title fontSize:12 titleColor:[UIColor blackColor] spacing:12] forState:UIControlStateNormal];
     //按钮上的文字换行
@@ -162,7 +156,7 @@ CGFloat const kRedPointWidth = 13;
     
     self.checkLabel.text = [userInfo.id_number checkEmpty]?@"未认证":@"已认证";
     [self.checkLabel sizeToFit];
-    self.checkLabel.frame = CGRectMake(CGRectGetMaxX(_nickLabel.frame) + 8, _nickLabel.frame.origin.y, self.checkLabel.width + 10, self.checkLabel.height);
+    self.checkLabel.frame = CGRectMake(CGRectGetMaxX(_nickLabel.frame) + 8, _checkLabel.y, _checkLabel.width + 10, 18);
 }
 
 - (void)setOrderModel:(NAMineOrderModel *)orderModel actionBlock:(OrderBtnsActionBlock)actionBlock {

@@ -15,17 +15,18 @@
 @property (nonatomic, strong) UIImageView *avatarImgView;
 @property (nonatomic, strong) UITableView *tableView;
 
+// 一些固定数据
 @property (nonatomic, strong) NSArray *dataArray2;
 @property (nonatomic, strong) NSArray *jobsArray;
 @property (nonatomic, strong) NSArray *masterArray;
 @property (nonatomic, strong) NSArray *marriageArray;
 
-
+// 个人设置的数据
+@property (nonatomic, strong) NSData *avatarData;
 @property (nonatomic, assign) BOOL isAddressExist;
 @property (nonatomic, assign) BOOL isIdCardAuthentication;
 @property (nonatomic, copy) NSString *idCardNumber;
 @property (nonatomic, copy) NSString *bankCardNumber;
-@property (nonatomic, copy) NSString *dasd;
 
 @end
 
@@ -137,19 +138,20 @@
 }
 
 - (UIView *)tableFooterView {
-    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 44)];
-    footerView.backgroundColor = [UIColor whiteColor];
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 54)];
+    footerView.backgroundColor = [UIColor clearColor];
     
     UIButton *button = [[UIButton alloc] init];
     [button setTitle:@"退出登录" forState:UIControlStateNormal];
     [button setTitleColor:kColorTextBlack forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor whiteColor]];
     [button.titleLabel setFont:[UIFont systemFontOfSize:14]];
     [button addTarget:self action:@selector(onExitBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [footerView addSubview:button];
     [button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(footerView.mas_left);
         make.right.equalTo(footerView.mas_right);
-        make.top.equalTo(footerView.mas_top);
+        make.top.equalTo(footerView.mas_top).offset(10);
         make.bottom.equalTo(footerView.mas_bottom);
     }];
     
@@ -160,6 +162,22 @@
     cell.textLabel.text = title;
     cell.detailTextLabel.text = detailTitle;
     if (showRightArrow) cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+}
+
+- (void)showChangeNickAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"请输入您的昵称" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"昵称";
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UITextField *nickTF = alert.textFields.firstObject;
+        self.userInfoModel.nick_name = nickTF.text;
+        [self.tableView reloadData];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 // 解析认证状态
@@ -283,9 +301,7 @@
 }
 
 - (void)requestForUpdateUserInfo {
-    // 图片data
-    UIImage *avatar = [self.avatarImgView.image imageCompresstoMaxFileSize:1024 * 1024 * 2];
-    NSData *imageData = UIImageJPEGRepresentation(avatar, 1.0);
+    
     // 图片名
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval timeInterval = [date timeIntervalSince1970] * 1000;
@@ -300,8 +316,8 @@
     
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
     [manager netRequesPOSTWithRequestURL:urlStr parameter:model.param constructingBodyBlock:^(id<AFMultipartFormData> formData) {
-        if (imageData)
-            [formData appendPartWithFileData:imageData name:@"avatar" fileName:fileName mimeType:@"image/png"];
+        if (self.avatarData)
+            [formData appendPartWithFileData:self.avatarData name:@"avatar" fileName:fileName mimeType:@"image/png"];
     } progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         [SVProgressHUD showSuccessWithStatus:@"保存成功"];
@@ -340,21 +356,17 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             [self setTableViewCell:cell withTitle:@"账号" detailTitle:self.userInfoModel.phone_number showRightArrow:NO];
-        }
-        else if (indexPath.row == 1) {
+        } else if (indexPath.row == 1) {
             [self setTableViewCell:cell withTitle:@"昵称" detailTitle:self.userInfoModel.nick_name showRightArrow:YES];
-        }
-        else if (indexPath.row == 2) {
+        } else if (indexPath.row == 2) {
             [self setTableViewCell:cell withTitle:@"实名认证" detailTitle:@"" showRightArrow:YES];
             if (!self.isIdCardAuthentication) {
                 cell.detailTextLabel.text = @"点击完成身份认证";
                 cell.detailTextLabel.textColor = kColorLightBlue;
             }
-        }
-        else if (indexPath.row == 3) {
+        } else if (indexPath.row == 3) {
             [self setTableViewCell:cell withTitle:@"银行卡管理" detailTitle:@"" showRightArrow:YES];
-        }
-        else if (indexPath.row == 4) {
+        } else if (indexPath.row == 4) {
             [self setTableViewCell:cell withTitle:@"收货地址" detailTitle:@"" showRightArrow:YES];
             if (!self.isAddressExist && self.isVipForever) {
                 
@@ -366,8 +378,7 @@
                 cell.detailTextLabel.text = @"请填写会员礼包派送地址";
             }
         }
-    }
-    else if (indexPath.section == 1) {
+    } else if (indexPath.section == 1) {
         NSString *title = self.dataArray2[indexPath.row];
         [self setTableViewCell:cell withTitle:title detailTitle:@"" showRightArrow:YES];
     }
@@ -384,13 +395,48 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    if (indexPath.section == 0) {
+        if (indexPath.row == 1) {
+            [self showChangeNickAlert];
+        } else if (indexPath.row == 2) {
+            
+        } else if (indexPath.row == 3) {
+            
+        } else if (indexPath.row == 4) {
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter addressController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:YES];
+        }
+    }
+    else if (indexPath.section == 1) {
+        if (indexPath.row == 0) {
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter changePhoneController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
+        } else if (indexPath.row == 1) {
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter changePasswordController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
+        } else if (indexPath.row == 2) {
+            
+        } else if (indexPath.row == 3) {
+            
+        }
+    }
 }
 
 #pragma mark - <UIImagePickerControllerDelegate>
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image =info[@"UIImagePickerControllerEditedImage"];
     self.avatarImgView.image = image;
+    // 图片data
+    UIImage *avatar = [image imageCompresstoMaxFileSize:1024 * 1024 * 2];
+    self.avatarData = UIImageJPEGRepresentation(avatar, 1.0);
     
     [picker dismissViewControllerAnimated:YES completion:nil];
 }

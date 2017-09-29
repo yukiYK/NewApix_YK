@@ -95,6 +95,13 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)authenticationConfig;
 /** 保存个人信息接口 */
 + (NAAPIModel *)updateUserInfoConfigWithModel:(NAUserInfoModel *)model;
+/** 验证旧手机号接口 */
++ (NAAPIModel *)checkOldPhoneConfigWithSmsCode:(NSString *)smsCode;
+/** 设置新手机号接口 */
++ (NAAPIModel *)setNewPhoneConfigWithPhone:(NSString *)phone smsCode:(NSString *)smsCode;
+/** 退出登录接口 */
++ (NAAPIModel *)logoutConfig;
+
 /**
  苹果内购VIP会员后 后台验证接口
 

@@ -28,19 +28,25 @@
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
 		4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */; };
+		4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850511F7E3618000C2AD5 /* NAAddressModel.m */; };
+		4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850531F7E3723000C2AD5 /* NAAddressController.m */; };
+		4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850521F7E3723000C2AD5 /* NASettingsController.m */; };
+		4A78505A1F7E3785000C2AD5 /* NAAddressController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850551F7E3724000C2AD5 /* NAAddressController.xib */; };
+		4A78505E1F7E3FC3000C2AD5 /* NAChangePasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A78505C1F7E3FC3000C2AD5 /* NAChangePasswordController.m */; };
+		4A78505F1F7E3FC3000C2AD5 /* NAChangePasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A78505D1F7E3FC3000C2AD5 /* NAChangePasswordController.xib */; };
+		4A7850631F7E4017000C2AD5 /* NAChangePhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850611F7E4017000C2AD5 /* NAChangePhoneController.m */; };
+		4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850621F7E4017000C2AD5 /* NAChangePhoneController.xib */; };
+		4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */; };
+		4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */; };
 		4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */; };
-		4A7F952E1F7A61D3003D7FB6 /* NASettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */; };
 		4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */; };
 		4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */; };
 		4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18CC1F41ADBC00B5459A /* NACommunityCell.m */; };
 		4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18CD1F41ADBC00B5459A /* NACommunityCell.xib */; };
 		4AA684DD1F6671DD0041BB2D /* NAPresentCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA684DB1F6671DD0041BB2D /* NAPresentCenterController.m */; };
 		4AA684DE1F6671DD0041BB2D /* NAPresentCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684DC1F6671DD0041BB2D /* NAPresentCenterController.xib */; };
-		4AA684E41F66732A0041BB2D /* NAAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA684E31F66732A0041BB2D /* NAAddressModel.m */; };
 		4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA684E61F667C540041BB2D /* NAPresentSuccessController.m */; };
 		4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */; };
-		4AA684ED1F6680220041BB2D /* NAAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA684EB1F6680220041BB2D /* NAAddressController.m */; };
-		4AA684EE1F6680220041BB2D /* NAAddressController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684EC1F6680220041BB2D /* NAAddressController.xib */; };
 		4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */; };
 		4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED951F4C083300055CF1 /* NAMineModel.m */; };
 		4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */; };
@@ -140,10 +146,24 @@
 		4A7580BC1F7B91D5008EAA5C /* NAAuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationModel.h; sourceTree = "<group>"; };
 		4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationModel.m; sourceTree = "<group>"; };
 		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
+		4A7850501F7E3618000C2AD5 /* NAAddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAddressModel.h; sourceTree = "<group>"; };
+		4A7850511F7E3618000C2AD5 /* NAAddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAddressModel.m; sourceTree = "<group>"; };
+		4A7850521F7E3723000C2AD5 /* NASettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NASettingsController.m; sourceTree = "<group>"; };
+		4A7850531F7E3723000C2AD5 /* NAAddressController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAddressController.m; sourceTree = "<group>"; };
+		4A7850541F7E3723000C2AD5 /* NAAddressController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAddressController.h; sourceTree = "<group>"; };
+		4A7850551F7E3724000C2AD5 /* NAAddressController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAddressController.xib; sourceTree = "<group>"; };
+		4A7850561F7E3724000C2AD5 /* NASettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NASettingsController.h; sourceTree = "<group>"; };
+		4A78505B1F7E3FC3000C2AD5 /* NAChangePasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAChangePasswordController.h; sourceTree = "<group>"; };
+		4A78505C1F7E3FC3000C2AD5 /* NAChangePasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAChangePasswordController.m; sourceTree = "<group>"; };
+		4A78505D1F7E3FC3000C2AD5 /* NAChangePasswordController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAChangePasswordController.xib; sourceTree = "<group>"; };
+		4A7850601F7E4017000C2AD5 /* NAChangePhoneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAChangePhoneController.h; sourceTree = "<group>"; };
+		4A7850611F7E4017000C2AD5 /* NAChangePhoneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAChangePhoneController.m; sourceTree = "<group>"; };
+		4A7850621F7E4017000C2AD5 /* NAChangePhoneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAChangePhoneController.xib; sourceTree = "<group>"; };
+		4A7850651F7E4FB5000C2AD5 /* NANewPhoneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NANewPhoneController.h; sourceTree = "<group>"; };
+		4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NANewPhoneController.m; sourceTree = "<group>"; };
+		4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NANewPhoneController.xib; sourceTree = "<group>"; };
 		4A7F95291F7A5123003D7FB6 /* UINavigationController+NAStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NAStatusBar.h"; sourceTree = "<group>"; };
 		4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NAStatusBar.m"; sourceTree = "<group>"; };
-		4A7F952C1F7A61D3003D7FB6 /* NASettingsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NASettingsController.h; sourceTree = "<group>"; };
-		4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NASettingsController.m; sourceTree = "<group>"; };
 		4A8F18C61F41AD7800B5459A /* NAEssenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAEssenceCell.h; sourceTree = "<group>"; };
 		4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAEssenceCell.m; sourceTree = "<group>"; };
 		4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAEssenceCell.xib; sourceTree = "<group>"; };
@@ -153,14 +173,9 @@
 		4AA684DA1F6671DD0041BB2D /* NAPresentCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPresentCenterController.h; sourceTree = "<group>"; };
 		4AA684DB1F6671DD0041BB2D /* NAPresentCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPresentCenterController.m; sourceTree = "<group>"; };
 		4AA684DC1F6671DD0041BB2D /* NAPresentCenterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPresentCenterController.xib; sourceTree = "<group>"; };
-		4AA684E21F66732A0041BB2D /* NAAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAddressModel.h; sourceTree = "<group>"; };
-		4AA684E31F66732A0041BB2D /* NAAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAddressModel.m; sourceTree = "<group>"; };
 		4AA684E51F667C540041BB2D /* NAPresentSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPresentSuccessController.h; sourceTree = "<group>"; };
 		4AA684E61F667C540041BB2D /* NAPresentSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPresentSuccessController.m; sourceTree = "<group>"; };
 		4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPresentSuccessController.xib; sourceTree = "<group>"; };
-		4AA684EA1F6680220041BB2D /* NAAddressController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAddressController.h; sourceTree = "<group>"; };
-		4AA684EB1F6680220041BB2D /* NAAddressController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAAddressController.m; sourceTree = "<group>"; };
-		4AA684EC1F6680220041BB2D /* NAAddressController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAAddressController.xib; sourceTree = "<group>"; };
 		4AA9AF1D1F6B83CC0061AD1F /* NAPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPickerView.h; sourceTree = "<group>"; };
 		4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPickerView.m; sourceTree = "<group>"; };
 		4AAEED941F4C083300055CF1 /* NAMineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineModel.h; sourceTree = "<group>"; };
@@ -336,6 +351,7 @@
 		4A037D591F28AF1B00F38AC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4A7850471F7E358F000C2AD5 /* Settings */,
 				4A037D5D1F28B1ED00F38AC0 /* LoginRegister */,
 				4A037D611F28B1ED00F38AC0 /* MainPage */,
 				4A037D651F28B1ED00F38AC0 /* MeixinSay */,
@@ -481,8 +497,6 @@
 				4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */,
 				4AAEED941F4C083300055CF1 /* NAMineModel.h */,
 				4AAEED951F4C083300055CF1 /* NAMineModel.m */,
-				4AA684E21F66732A0041BB2D /* NAAddressModel.h */,
-				4AA684E31F66732A0041BB2D /* NAAddressModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -504,11 +518,6 @@
 			children = (
 				4AC6CA541F2F24C800A9308F /* NAMineController.h */,
 				4AC6CA551F2F24C800A9308F /* NAMineController.m */,
-				4A7F952C1F7A61D3003D7FB6 /* NASettingsController.h */,
-				4A7F952D1F7A61D3003D7FB6 /* NASettingsController.m */,
-				4AA684EA1F6680220041BB2D /* NAAddressController.h */,
-				4AA684EB1F6680220041BB2D /* NAAddressController.m */,
-				4AA684EC1F6680220041BB2D /* NAAddressController.xib */,
 				4A59ACE61F5FD67F00F3172B /* NAMeixinVIPController.h */,
 				4A59ACE71F5FD67F00F3172B /* NAMeixinVIPController.m */,
 				4AA684DA1F6671DD0041BB2D /* NAPresentCenterController.h */,
@@ -517,6 +526,53 @@
 				4AA684E51F667C540041BB2D /* NAPresentSuccessController.h */,
 				4AA684E61F667C540041BB2D /* NAPresentSuccessController.m */,
 				4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4A7850471F7E358F000C2AD5 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				4A7850481F7E358F000C2AD5 /* Model */,
+				4A7850491F7E358F000C2AD5 /* View */,
+				4A78504A1F7E358F000C2AD5 /* ViewController */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		4A7850481F7E358F000C2AD5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A7850501F7E3618000C2AD5 /* NAAddressModel.h */,
+				4A7850511F7E3618000C2AD5 /* NAAddressModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4A7850491F7E358F000C2AD5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A78504A1F7E358F000C2AD5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A7850541F7E3723000C2AD5 /* NAAddressController.h */,
+				4A7850531F7E3723000C2AD5 /* NAAddressController.m */,
+				4A7850551F7E3724000C2AD5 /* NAAddressController.xib */,
+				4A7850561F7E3724000C2AD5 /* NASettingsController.h */,
+				4A7850521F7E3723000C2AD5 /* NASettingsController.m */,
+				4A78505B1F7E3FC3000C2AD5 /* NAChangePasswordController.h */,
+				4A78505C1F7E3FC3000C2AD5 /* NAChangePasswordController.m */,
+				4A78505D1F7E3FC3000C2AD5 /* NAChangePasswordController.xib */,
+				4A7850601F7E4017000C2AD5 /* NAChangePhoneController.h */,
+				4A7850611F7E4017000C2AD5 /* NAChangePhoneController.m */,
+				4A7850621F7E4017000C2AD5 /* NAChangePhoneController.xib */,
+				4A7850651F7E4FB5000C2AD5 /* NANewPhoneController.h */,
+				4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */,
+				4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -734,7 +790,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = NA;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = APiX;
 				TargetAttributes = {
 					4A037D111F2851A600F38AC0 = {
@@ -781,8 +837,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A78505A1F7E3785000C2AD5 /* NAAddressController.xib in Resources */,
 				4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */,
 				4A052F801F7113B8003EE147 /* areaArray.plist in Resources */,
+				4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */,
+				4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */,
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
 				4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */,
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
@@ -795,7 +854,7 @@
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
 				4A014D9B1F5579E6005D273E /* new.gif in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
-				4AA684EE1F6680220041BB2D /* NAAddressController.xib in Resources */,
+				4A78505F1F7E3FC3000C2AD5 /* NAChangePasswordController.xib in Resources */,
 				4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -869,8 +928,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */,
+				4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */,
+				4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */,
 				4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */,
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
+				4A7850631F7E4017000C2AD5 /* NAChangePhoneController.m in Sources */,
 				4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */,
 				4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */,
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
@@ -878,13 +941,12 @@
 				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
 				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
-				4AA684E41F66732A0041BB2D /* NAAddressModel.m in Sources */,
-				4A7F952E1F7A61D3003D7FB6 /* NASettingsController.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
 				4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */,
 				4AF392841F46E67F00EF7A3B /* NAMineCell.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
+				4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */,
 				4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */,
 				4AF392781F46D41200EF7A3B /* NAEssenceModel.m in Sources */,
 				4AAEEDA71F4C272D00055CF1 /* NANavigationController.m in Sources */,
@@ -910,10 +972,10 @@
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
 				4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */,
 				4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */,
+				4A78505E1F7E3FC3000C2AD5 /* NAChangePasswordController.m in Sources */,
 				4A2837B81F501B28001B065C /* NANewMainPageController.m in Sources */,
 				4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
-				4AA684ED1F6680220041BB2D /* NAAddressController.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
@@ -966,7 +1028,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -974,7 +1038,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1014,7 +1082,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1022,7 +1092,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

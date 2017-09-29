@@ -262,6 +262,30 @@
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"user_infos", @"create"] param:param rightCode:nil];
 }
 
+/** 验证旧手机号接口 */
++ (NAAPIModel *)checkOldPhoneConfigWithSmsCode:(NSString *)smsCode {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"sms_code"] = smsCode;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"user_infos", @"sendSmsCode"] param:param rightCode:@"0"];
+}
+/** 设置新手机号接口 */
++ (NAAPIModel *)setNewPhoneConfigWithPhone:(NSString *)phone smsCode:(NSString *)smsCode {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"sms_code"] = smsCode;
+    param[@"new_number"] = phone;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"user_infos", @"change_number"] param:param rightCode:@"0"];
+}
+
+/** 退出登录接口 */
++ (NAAPIModel *)logoutConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"users", @"logout"] param:param rightCode:nil];
+}
+
+
 /**
  苹果内购VIP会员后 后台验证接口
  
