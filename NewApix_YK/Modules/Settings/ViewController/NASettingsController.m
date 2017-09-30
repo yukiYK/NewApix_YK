@@ -425,7 +425,10 @@
         } else if (indexPath.row == 2) {
             
         } else if (indexPath.row == 3) {
-            
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter aboutUsController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
         }
     }
 }

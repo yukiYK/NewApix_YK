@@ -129,6 +129,12 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)changePasswordController;
 
+/**
+ 关于我们页
+ 
+ @return NAAboutUsController
+ */
++ (UIViewController *)aboutUsController;
 
 /**
  第三方贷款web页 等等

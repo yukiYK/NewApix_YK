@@ -7,6 +7,7 @@
 //
 
 #import "NANewPhoneController.h"
+#import "NATabbarController.h"
 
 @interface NANewPhoneController () <UITextFieldDelegate>
 
@@ -21,7 +22,7 @@
 @end
 
 @implementation NANewPhoneController
-
+#pragma mark - <Life Cycle>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
@@ -31,13 +32,13 @@
     [self.phoneTextField addTarget:self action:@selector(textFieldDidValueChanged:) forControlEvents:UIControlEventEditingChanged];
 }
 
+#pragma mark - <Private Method>
 - (BOOL)isPhoneNumber:(NSString *)phoneNumber {
     NSString *phone = @"^1[3-9]\\d{9}$";
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phone];
     
     return [predicate evaluateWithObject:phoneNumber];
 }
-
 
 - (void)startSmsTime {
     __block int timeout = 59; //倒计时时间
@@ -118,7 +119,13 @@
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
     [manager setRequestSerializerForPost];
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
         
+        [NAUserTool removeAllUserDefaults];
+        NATabbarController *apixTabVC = [[NATabbarController alloc] init];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].keyWindow.rootViewController = apixTabVC;
+        });
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         
     } failureBlock:^(NSError *error) {
@@ -139,7 +146,6 @@
 - (IBAction)onSubmitBtnClicked:(id)sender {
     [self requestSetNewPhone];
 }
-
 
 -(void)textFieldDidValueChanged:(UITextField *)textField {
     if (self.phoneTextField.text.length > 0 && self.smsTextField.text.length > 0) {

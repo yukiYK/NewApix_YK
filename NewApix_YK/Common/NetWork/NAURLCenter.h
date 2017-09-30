@@ -101,6 +101,8 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)setNewPhoneConfigWithPhone:(NSString *)phone smsCode:(NSString *)smsCode;
 /** 退出登录接口 */
 + (NAAPIModel *)logoutConfig;
+/** 修改密码接口 */
++ (NAAPIModel *)changePasswordConfigWithPwd:(NSString *)password oldpwd:(NSString *)oldPassword;
 
 /**
  苹果内购VIP会员后 后台验证接口

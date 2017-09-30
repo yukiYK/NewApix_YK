@@ -285,6 +285,15 @@
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"users", @"logout"] param:param rightCode:nil];
 }
 
+/** 修改密码接口 */
++ (NAAPIModel *)changePasswordConfigWithPwd:(NSString *)password oldpwd:(NSString *)oldPassword {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"origin"] = @"0";
+    param[@"passwd"] = oldPassword;
+    param[@"new_passwd"] = password;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"user_infos", @"change_passwd"] param:param rightCode:@"0"];
+}
 
 /**
  苹果内购VIP会员后 后台验证接口

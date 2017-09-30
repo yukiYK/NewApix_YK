@@ -79,8 +79,7 @@
     
     if ([NACommon isRealVersion]) {
         self.nvgUrl = [NAURLCenter vipiOSH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
-    }
-    else {
+    } else {
         self.nvgUrl = [NAURLCenter vipH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
     }
     self.nvgUrl = [self.nvgUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
@@ -108,16 +107,14 @@
     [window addSubview:blackView];
     self.myBlackView = blackView;
     self.myBlackView.userInteractionEnabled = YES;
-    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickBtn)];
+    UITapGestureRecognizer *singleTap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissBlackView)];
     [self.myBlackView addGestureRecognizer:singleTap1];
 }
 
 
 #pragma mark - <Events>
-
 //点击协议按钮
 - (void)rightBarItemClick:(UIBarButtonItem *)item {
-    NSLog(@"点击了右上的按钮");
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     UIView *view = [[UIView alloc]init];
@@ -154,22 +151,19 @@
             descripView.contentSize = CGSizeMake(view.bounds.size.width *0.8,CGRectGetMaxY(scoreDescbV2.frame) + 20);
         }];
         
-        
         [scoreDescbV2 sd_setImageWithURL:[NSURL URLWithString:@"https://meixinlife.com/webapp/images/community/vip-agreement-2.jpg"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
             
             CGFloat height = (image.size.height/image.size.width) * view.bounds.size.width * 0.8;
             scoreDescbV2.frame = CGRectMake(scoreDescbV2.frame.origin.x, scoreDescbV2.frame.origin.y, view.bounds.size.width *0.8, height);
             scoreDescbV2.image = image;
             descripView.contentSize = CGSizeMake(view.bounds.size.width *0.8,CGRectGetMaxY(scoreDescbV2.frame) + 20);
-            
         }];
         [self.scoreBackView addSubview:descripView];
-        
     }];
 }
 
 //罩层点击事件
--(void)clickBtn {
+-(void)dismissBlackView {
     [UIView animateWithDuration:1 animations:^{
         self.myBlackView.alpha = 0;
         self.scoreBackView.alpha = 0;
@@ -199,34 +193,19 @@
 - (void)requestForVerify:(NSString *)dataStr {
     
     NAAPIModel *model = [NAURLCenter buyVipVerifyConfigWithReceipt:dataStr isSandBox:!SERVER_ONLINE imageId:self.img_id];
-    WeakSelf
+    
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
-        
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"会员购买成功,快去享受主宰自己人生吧~" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancelAction];
-        [weakSelf presentViewController:alert animated:YES completion:nil];
+        [SVProgressHUD showErrorWithStatus:@"会员购买成功,快去享受主宰自己人生吧~"];
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         if ([code isEqualToString:@"-1"]) {
-            
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"数据异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:cancelAction];
-            [weakSelf presentViewController:alert animated:YES completion:nil];
-        }
-        else if ([code isEqualToString:@"-2"]) {
-            UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"套餐异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
-            UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
-            [alert addAction:cancelAction];
-            [weakSelf presentViewController:alert animated:YES completion:nil];
+            [SVProgressHUD showErrorWithStatus:@"套餐异常，请联系客服处理"];
+        } else if ([code isEqualToString:@"-2"]) {
+            [SVProgressHUD showErrorWithStatus:@"套餐异常，请联系客服处理"];
         }
     } failureBlock:^(NSError *error) {
         NSLog(@"网络错误error=%@",error);
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"套餐异常，请联系客服处理" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"好的" style:UIAlertActionStyleCancel handler:nil];
-        [alert addAction:cancelAction];
-        [weakSelf presentViewController:alert animated:YES completion:nil];
+        [SVProgressHUD showErrorWithStatus:@"套餐异常，请联系客服处理"];
     }];
 }
 

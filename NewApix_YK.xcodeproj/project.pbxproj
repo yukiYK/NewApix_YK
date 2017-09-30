@@ -55,6 +55,8 @@
 		4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDA41F4C272D00055CF1 /* NATabbarController.m */; };
 		4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDA61F4C272D00055CF1 /* NAViewControllerCenter.m */; };
 		4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */; };
+		4AB108111F7F9DEA00F02864 /* NAAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */; };
+		4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
 		4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */; };
 		4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA461F2F248500A9308F /* NALoginController.m */; };
@@ -192,6 +194,9 @@
 		4AAEEDA61F4C272D00055CF1 /* NAViewControllerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAViewControllerCenter.m; sourceTree = "<group>"; };
 		4AAEEDAB1F4C277100055CF1 /* NAUserTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAUserTool.h; sourceTree = "<group>"; };
 		4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAUserTool.m; sourceTree = "<group>"; };
+		4AB1080E1F7F9DEA00F02864 /* NAAboutUsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAboutUsController.h; sourceTree = "<group>"; };
+		4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAboutUsController.m; sourceTree = "<group>"; };
+		4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAboutUsController.xib; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
 		4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageController.xib; sourceTree = "<group>"; };
@@ -573,6 +578,9 @@
 				4A7850651F7E4FB5000C2AD5 /* NANewPhoneController.h */,
 				4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */,
 				4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */,
+				4AB1080E1F7F9DEA00F02864 /* NAAboutUsController.h */,
+				4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */,
+				4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -855,6 +863,7 @@
 				4A014D9B1F5579E6005D273E /* new.gif in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
 				4A78505F1F7E3FC3000C2AD5 /* NAChangePasswordController.xib in Resources */,
+				4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */,
 				4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -934,6 +943,7 @@
 				4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */,
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
 				4A7850631F7E4017000C2AD5 /* NAChangePhoneController.m in Sources */,
+				4AB108111F7F9DEA00F02864 /* NAAboutUsController.m in Sources */,
 				4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */,
 				4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */,
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,

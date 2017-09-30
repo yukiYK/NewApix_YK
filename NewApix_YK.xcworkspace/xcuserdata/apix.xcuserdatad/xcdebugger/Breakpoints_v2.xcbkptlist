@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewApix_YK/Common/NetWork/NAURLCenter.m"
-            timestampString = "528371929.367392"
+            timestampString = "528461543.086216"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "274"
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewApix_YK/Modules/Settings/ViewController/NANewPhoneController.m"
-            timestampString = "528375723.32208"
+            timestampString = "528461543.08638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "-requestForLogout"
             landmarkType = "7">
          </BreakpointContent>
