@@ -423,7 +423,10 @@
                                               tranformStyle:NATransformStylePush
                                                   needLogin:NO];
         } else if (indexPath.row == 2) {
-            
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter commonQuestionsController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
         } else if (indexPath.row == 3) {
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter aboutUsController]

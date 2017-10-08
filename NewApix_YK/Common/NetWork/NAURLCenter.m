@@ -345,4 +345,10 @@
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
+/* 常见问题页 */
++ (NSString *)commonQuestionsH5Url {
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"commonquestion"]];
+    return urlStr;
+}
+
 @end

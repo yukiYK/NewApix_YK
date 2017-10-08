@@ -22,6 +22,7 @@
 #import "NAChangePasswordController.h"
 #import "NANewPhoneController.h"
 #import "NAAboutUsController.h"
+#import "NACommonQuestionsController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -161,6 +162,16 @@
  */
 + (UIViewController *)aboutUsController {
     return [[NAAboutUsController alloc] init];
+}
+
+
+/**
+常见问题页
+
+ @return NACommonQuestionsController
+ */
++ (UIViewController *)commonQuestionsController {
+    return [[NACommonQuestionsController alloc] init];
 }
 
 // 第三方贷款web页 等等

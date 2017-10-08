@@ -85,6 +85,7 @@
 		4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFCA95F1F346C3500351B04 /* NAHTTPSessionManager.m */; };
 		4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */; };
 		4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */; };
+		5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659670C1F861FFA007B686E /* NACommonQuestionsController.m */; };
 		AD1A4A1E9100EDF0E93DECC4 /* libPods-NewApix_YK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */; };
 /* End PBXBuildFile section */
 
@@ -249,6 +250,8 @@
 		4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineOrderModel.m; sourceTree = "<group>"; };
 		4AFF28D91F4AC8C000964EBC /* NAUserInfoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAUserInfoModel.h; sourceTree = "<group>"; };
 		4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAUserInfoModel.m; sourceTree = "<group>"; };
+		5659670B1F861FFA007B686E /* NACommonQuestionsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NACommonQuestionsController.h; sourceTree = "<group>"; };
+		5659670C1F861FFA007B686E /* NACommonQuestionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NACommonQuestionsController.m; sourceTree = "<group>"; };
 		74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewApix_YK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -581,6 +584,8 @@
 				4AB1080E1F7F9DEA00F02864 /* NAAboutUsController.h */,
 				4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */,
 				4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */,
+				5659670B1F861FFA007B686E /* NACommonQuestionsController.h */,
+				5659670C1F861FFA007B686E /* NACommonQuestionsController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -985,6 +990,7 @@
 				4A78505E1F7E3FC3000C2AD5 /* NAChangePasswordController.m in Sources */,
 				4A2837B81F501B28001B065C /* NANewMainPageController.m in Sources */,
 				4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */,
+				5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */,

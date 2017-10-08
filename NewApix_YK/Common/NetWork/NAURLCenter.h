@@ -121,5 +121,7 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NSString *)vipiOSH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter;
 /* 信用体检页 */
 + (NSString *)creditReportH5Url;
+/* 常见问题页 */
++ (NSString *)commonQuestionsH5Url;
 
 @end

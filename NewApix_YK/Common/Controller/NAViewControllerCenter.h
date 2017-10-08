@@ -137,6 +137,13 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 + (UIViewController *)aboutUsController;
 
 /**
+ 常见问题页
+ 
+ @return NACommonQuestionsController
+ */
++ (UIViewController *)commonQuestionsController;
+
+/**
  第三方贷款web页 等等
 
  @param cardModel 数据model，如果没有传nil
