@@ -295,6 +295,21 @@
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"user_infos", @"change_passwd"] param:param rightCode:@"0"];
 }
 
+/** 银行卡管理接口 */
++ (NAAPIModel *)bankCardsConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"banks", @"show"] param:param rightCode:nil];
+}
+
+/** 删除银行卡接口 */
++ (NAAPIModel *)deleteBankCardConfigWithCardId:(NSString *)cardId {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"id"] = cardId;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"banks", @"detail"] param:param rightCode:nil];
+}
+
 /**
  苹果内购VIP会员后 后台验证接口
  

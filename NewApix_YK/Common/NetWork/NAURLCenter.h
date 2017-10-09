@@ -103,6 +103,10 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)logoutConfig;
 /** 修改密码接口 */
 + (NAAPIModel *)changePasswordConfigWithPwd:(NSString *)password oldpwd:(NSString *)oldPassword;
+/** 银行卡管理接口 */
++ (NAAPIModel *)bankCardsConfig;
+/** 删除银行卡接口 */
++ (NAAPIModel *)deleteBankCardConfigWithCardId:(NSString *)cardId;
 
 /**
  苹果内购VIP会员后 后台验证接口

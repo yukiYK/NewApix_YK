@@ -398,13 +398,16 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 0) {
-        if (indexPath.row == 1) {
+        if (indexPath.row == 1) {    // 昵称
             [self showChangeNickAlert];
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 2) { // 实名认证
             
-        } else if (indexPath.row == 3) {
-            
-        } else if (indexPath.row == 4) {
+        } else if (indexPath.row == 3) { // 银行卡管理
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter bankCardsController]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
+        } else if (indexPath.row == 4) {  // 收货地址
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter addressController]
                                               tranformStyle:NATransformStylePush
@@ -412,22 +415,22 @@
         }
     }
     else if (indexPath.section == 1) {
-        if (indexPath.row == 0) {
+        if (indexPath.row == 0) {  // 修改手机号
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter changePhoneController]
                                               tranformStyle:NATransformStylePush
                                                   needLogin:NO];
-        } else if (indexPath.row == 1) {
+        } else if (indexPath.row == 1) {  // 修改登录密码
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter changePasswordController]
                                               tranformStyle:NATransformStylePush
                                                   needLogin:NO];
-        } else if (indexPath.row == 2) {
+        } else if (indexPath.row == 2) {  // 常见问题
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter commonQuestionsController]
                                               tranformStyle:NATransformStylePush
                                                   needLogin:NO];
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 3) {  // 关于我们
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter aboutUsController]
                                               tranformStyle:NATransformStylePush

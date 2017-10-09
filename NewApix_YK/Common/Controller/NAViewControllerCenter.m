@@ -23,6 +23,7 @@
 #import "NANewPhoneController.h"
 #import "NAAboutUsController.h"
 #import "NACommonQuestionsController.h"
+#import "NABankCardsController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -154,7 +155,6 @@
     return [[NAChangePasswordController alloc] init];
 }
 
-
 /**
  关于我们页
 
@@ -164,7 +164,6 @@
     return [[NAAboutUsController alloc] init];
 }
 
-
 /**
 常见问题页
 
@@ -172,6 +171,15 @@
  */
 + (UIViewController *)commonQuestionsController {
     return [[NACommonQuestionsController alloc] init];
+}
+
+/**
+ 银行卡管理页
+
+ @return NABankCardsController
+ */
++ (UIViewController *)bankCardsController {
+    return [[NABankCardsController alloc] init];
 }
 
 // 第三方贷款web页 等等
