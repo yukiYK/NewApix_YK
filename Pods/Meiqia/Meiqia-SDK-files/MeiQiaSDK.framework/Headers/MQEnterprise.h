@@ -14,7 +14,15 @@
 ///客服邀请评价显示的文案
 @property (nonatomic, copy) NSString *evaluationPromtText;
 
-@property (nonatomic, assign) BOOL showSwitch;
+@property (nonatomic, assign) bool showSwitch;
+
+@property (nonatomic, assign) BOOL isScheduleAfterClientSendMessage;
+
+@property (nonatomic, copy) NSString *avatar;
+
+@property (nonatomic, copy) NSString *public_nickname;
+
+@property (nonatomic, copy) NSString *enterpriseIntro;
 
 @property (nonatomic, copy) NSString *intro;
 

@@ -15,7 +15,6 @@
 
 #import <SVProgressHUD.h>
 #import <YYModel/YYModel.h>
-#import <IQKeyboardManager.h>
 #import "NAHTTPSessionManager.h"
 #import "UIView+NAExtension.h"
 #import "NSString+NAExtension.h"

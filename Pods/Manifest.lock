@@ -16,32 +16,41 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - FLAnimatedImage (1.0.12)
-  - IQKeyboardManager (4.0.11)
-  - Masonry (1.0.2)
+  - IQKeyboardManager (5.0.3)
+  - Masonry (1.1.0)
   - MBProgressHUD (1.0.0)
-  - Meiqia (3.3.4):
-    - Meiqia/MeiqiaSDK (= 3.3.4)
-    - Meiqia/MQChatViewController (= 3.3.4)
-  - Meiqia/MeiqiaSDK (3.3.4)
-  - Meiqia/MQChatViewController (3.3.4):
+  - Meiqia (3.4.2):
+    - Meiqia/MeiqiaSDK (= 3.4.2)
+    - Meiqia/MQChatViewController (= 3.4.2)
+  - Meiqia/MeiqiaSDK (3.4.2)
+  - Meiqia/MQChatViewController (3.4.2):
     - Meiqia/MeiqiaSDK
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.14)
   - OpenShare (0.0.1)
-  - SDWebImage/Core (4.1.0)
-  - SDWebImage/GIF (4.1.0):
+  - SDWebImage/Core (4.1.2)
+  - SDWebImage/GIF (4.1.2):
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
-  - SVProgressHUD (2.1.2)
-  - UMengAnalytics-NO-IDFA (4.1.9)
-  - UMengUShare/Core (6.1.1):
+  - SVProgressHUD (2.2.1)
+  - UMengAnalytics-NO-IDFA (4.2.5)
+  - UMengUShare/Core (6.4.5):
     - UMengUShare/Network
-  - UMengUShare/Network (6.1.1)
-  - UMengUShare/Social/QQ (6.1.1):
+  - UMengUShare/Network (6.4.5)
+  - UMengUShare/Social/QQ (6.4.5):
     - UMengUShare/Core
-  - UMengUShare/Social/Sina (6.1.1):
+    - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedQQ (6.4.5):
     - UMengUShare/Core
-  - UMengUShare/Social/WeChat (6.1.1):
+  - UMengUShare/Social/ReducedSina (6.4.5):
     - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.5):
+    - UMengUShare/Core
+  - UMengUShare/Social/Sina (6.4.5):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/WeChat (6.4.5):
+    - UMengUShare/Core
+    - UMengUShare/Social/ReducedWeChat
   - YYModel (1.0.4)
 
 DEPENDENCIES:
@@ -65,18 +74,18 @@ SPEC CHECKSUMS:
   AESCrypt: 1d89bf8b0789cf274ab2205ea461adbe9321d5f8
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
-  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  IQKeyboardManager: dc5b18b47e5170e4d150bb86dbee8c8a2fc48997
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  Meiqia: 5fb3cc44e29176805f479d5767157ded4879604c
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  Meiqia: 788120975536c4cfb84315d830344516420242b2
+  MJRefresh: 6642e35b3227a5447b9fd5e17c552c90196c9859
   OpenShare: a560580dbb729d5c0c3cc1ee84cd6aa4a07e94c6
-  SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  UMengAnalytics-NO-IDFA: 985292af177111685325c90c321094172b95d2cb
-  UMengUShare: 0a80f54ee06f71f3de7c57764c36339e8bf9b7e7
+  SDWebImage: cb6f9f266a9977741efcbc21e618e8be3734c774
+  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  UMengUShare: a5711c54e640b04e3048e931d2b88d50f9cfa55c
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 7d2cce2b6302d424d4e803b20956d5a643051057
+PODFILE CHECKSUM: a38139a4d6439c766a1b0864b00331e06b5ef673
 
 COCOAPODS: 1.2.0.beta.1

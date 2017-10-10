@@ -51,6 +51,8 @@
 		4AA684DE1F6671DD0041BB2D /* NAPresentCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684DC1F6671DD0041BB2D /* NAPresentCenterController.xib */; };
 		4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA684E61F667C540041BB2D /* NAPresentSuccessController.m */; };
 		4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */; };
+		4AA8ADB51F8CADCA00B27223 /* NAAddCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8ADB31F8CADCA00B27223 /* NAAddCardController.m */; };
+		4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8ADB41F8CADCA00B27223 /* NAAddCardController.xib */; };
 		4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */; };
 		4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED951F4C083300055CF1 /* NAMineModel.m */; };
 		4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */; };
@@ -190,6 +192,9 @@
 		4AA684E51F667C540041BB2D /* NAPresentSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPresentSuccessController.h; sourceTree = "<group>"; };
 		4AA684E61F667C540041BB2D /* NAPresentSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPresentSuccessController.m; sourceTree = "<group>"; };
 		4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPresentSuccessController.xib; sourceTree = "<group>"; };
+		4AA8ADB21F8CADCA00B27223 /* NAAddCardController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAddCardController.h; sourceTree = "<group>"; };
+		4AA8ADB31F8CADCA00B27223 /* NAAddCardController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAddCardController.m; sourceTree = "<group>"; };
+		4AA8ADB41F8CADCA00B27223 /* NAAddCardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAddCardController.xib; sourceTree = "<group>"; };
 		4AA9AF1D1F6B83CC0061AD1F /* NAPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPickerView.h; sourceTree = "<group>"; };
 		4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPickerView.m; sourceTree = "<group>"; };
 		4AAEED941F4C083300055CF1 /* NAMineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineModel.h; sourceTree = "<group>"; };
@@ -604,6 +609,9 @@
 				5659670C1F861FFA007B686E /* NACommonQuestionsController.m */,
 				4A0959971F8B5988008164B6 /* NABankCardsController.h */,
 				4A0959981F8B5988008164B6 /* NABankCardsController.m */,
+				4AA8ADB21F8CADCA00B27223 /* NAAddCardController.h */,
+				4AA8ADB31F8CADCA00B27223 /* NAAddCardController.m */,
+				4AA8ADB41F8CADCA00B27223 /* NAAddCardController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -874,6 +882,7 @@
 				4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */,
 				4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */,
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
+				4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */,
 				4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */,
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
 				4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */,
@@ -1019,6 +1028,7 @@
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
 				4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */,
+				4AA8ADB51F8CADCA00B27223 /* NAAddCardController.m in Sources */,
 				4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */,
 				4AF392881F46E69600EF7A3B /* NAMineHeaderView.m in Sources */,
 			);

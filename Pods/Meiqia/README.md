@@ -89,7 +89,7 @@ framework中的文件 | 说明
 在 Podfile 中加入：
 
 ```
-pod 'Meiqia', '~> 3.3.4'
+pod 'Meiqia', '~> 3.3.9'
 ```
 
 接着安装美洽 pod 即可：
@@ -148,34 +148,6 @@ return YES;
 MQChatViewManager *chatViewManager = [[MQChatViewManager alloc] init];
 [chatViewManager pushMQChatViewControllerInViewController:self];
 ```
-
-### info.plist设置
-
-美洽的图片、语音等静态资源放在了 AWS S3 上，但 `s3.amazonaws.com` 使用了 SHA1 证书，不满足 iOS 9 的 [ATS ( App Transport Security )](https://developer.apple.com/library/prerelease/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) 要求。
-
-所以为了能让聊天界面正确显示图片和语音，开发者需要在 App 的 info.plist 中增加如下设置 (右键点击`info.plist` -> `Open As` -> `Source Code`):
-
-```xml
-<key>NSAppTransportSecurity</key>
-<dict>
-<key>NSExceptionDomains</key>
-<dict>
-<key>s3.cn-north-1.amazonaws.com.cn</key>
-<dict>
-<key>NSExceptionRequiresForwardSecrecy</key>
-<false/>
-</dict>
-</dict>
-</dict>
-```
-添加完成后，info.plist显示效果如图：
-
-![info.plist配置](https://s3.cn-north-1.amazonaws.com.cn/pics.meiqia.bucket/f4564c89cef713c1)
-
-关于 S3 证书问题，可参考 stackoverflow 上面的一个 [讨论](http://stackoverflow.com/questions/32500655/ios-9-app-download-from-amazon-s3-ssl-error-tls-1-2-support)。
-
-至此，你已经为你的 APP 添加美洽提供的客服服务。而美洽 SDK 还提供其他强大的功能，可以帮助提高服务效率，提升用户使用体验。接下来为你详细介绍如何使用其他功能。
-
 
 # 名词解释
 
@@ -673,8 +645,6 @@ MQAgent *agent = [MQManager getCurrentAgent];
 
 当前仅支持一种推送方案，即美洽服务端发送消息至开发者的服务端，开发者再推送消息到 App，可见 [SDK 工作流程](#SDK-工作流程) 。
 
-未来美洽 iOS SDK 将会支持直接推送消息给 App，即开发者可上传 App 的推送证书至美洽，美洽将推送消息至苹果 APNS 服务器。目前正在紧张开发中。
-
 ### 设置接收推送的服务器地址
 
 推送消息将会发送至开发者的服务器。
@@ -896,6 +866,39 @@ VoiceConvert |  N/A | AMR 和 WAV 语音格式的互转；没找到出处，哪�
 [AGEmojiKeyboard](https://github.com/ayushgoel/AGEmojiKeyboard)|0.2.0|表情键盘，布局进行自定义，源码可以在工程中查看；
 
 # 更新日志
+
+**v3.4.2 2017 年 9月 8 日**
+
+- iOS 11适配 输入框底部预留字国际化处理
+- 修复bug
+- 添加 连接断掉时,发送信息时主动重连
+
+**v3.3.9 2017 年 6 月 20 日**
+* 修复使用私有API导致苹果审核被拒问题
+* 添加iPhone5SE来源信息
+* 添加无消息访客过滤
+
+**v3.3.8 2017 年 4 月 10 日**
+* 修复如果在对话没有结束，连接正常的情况下，重新指定客服或者客服组没有效果的问题
+
+**v3.3.7 2017 年 4 月 7 日**
+* 修复当对话结束时，如果有自动邀请评价，并且没有设置结束对话语的时候，会导致结束失败。
+
+**v3.3.6 2017 年 3 月 3 日**
+* 替换下来刷新组件。
+* 修复当对话结束邀请客服评价没有生效。
+
+**v3.3.5 2017 年 1 月 20 日**
+* 优化错误处理
+* 移除发送预发送消息时，必须客服已经成功分配的限制
+* 移除可能引起开发者工程对象名冲突的变量命名
+* 按时间获取 n 条消息时，当服务器未返回正确数量消息的时候，不再显示为到达末页
+* 修复批量获取消息的时候，日期 cell 显示错误的问题
+* 修复评价按钮没有按照设置隐藏
+
+**v3.3.4.1 2016 年 12 月 13 日**
+
+* 移除 ATS 配置检查
 
 **v3.3.4 2016 年 12 月 7 日**
 

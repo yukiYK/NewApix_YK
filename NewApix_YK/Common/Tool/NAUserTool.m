@@ -31,6 +31,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:avatar forKey:kUserDefaultsAvatar];
 }
 
++ (NSString *)getIdName {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsIdName];
+}
++ (void)saveIdName:(NSString *)idName {
+    [[NSUserDefaults standardUserDefaults] setObject:idName forKey:kUserDefaultsIdName];
+}
+
 + (NSString *)getIdNumber {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsIdNumber];
 }

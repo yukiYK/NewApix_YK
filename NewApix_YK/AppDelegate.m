@@ -10,6 +10,7 @@
 #import "NATabbarController.h"
 #import <MeiQiaSDK/MQManager.h>
 #import <UMSocialCore/UMSocialCore.h>
+#import <IQKeyboardManager/IQKeyboardManager.h>
 #import "sys/utsname.h"
 
 @interface AppDelegate ()
@@ -20,7 +21,7 @@
 
 @implementation AppDelegate
 
-#pragma mark - <Application Methods>
+#pragma mark - <Application Life Cycle>
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -239,7 +240,7 @@
     [IQKeyboardManager sharedManager].enable = YES;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     [IQKeyboardManager sharedManager].enableAutoToolbar = YES;
-    [[IQKeyboardManager sharedManager] setToolbarDoneBarButtonItemText:@"确定"];
+//    [[IQKeyboardManager sharedManager] setToolbarDoneBarButtonItemText:@"确定"];
 }
 
 /** 监听到网络变化 */

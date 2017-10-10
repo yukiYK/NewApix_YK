@@ -152,7 +152,7 @@
  * @param ;
  */
 - (void)setClientOnlineWithCustomizedId:(NSString *)customizedId
-                                success:(void (^)(BOOL completion, NSString *agentName, NSString *agentType, NSArray *receivedMessages))success
+                                success:(void (^)(BOOL completion, NSString *agentName, NSString *agentType, NSArray *receivedMessages, NSError *error))success
                  receiveMessageDelegate:(id<MQServiceToViewInterfaceDelegate>)receiveMessageDelegate;
 
 /**
@@ -160,7 +160,7 @@
  * @param ;
  */
 - (void)setClientOnlineWithClientId:(NSString *)clientId
-                            success:(void (^)(BOOL completion, NSString *agentName, NSString *agentType, NSArray *receivedMessages))success
+                            success:(void (^)(BOOL completion, NSString *agentName, NSString *agentType, NSArray *receivedMessages, NSError *error))success
              receiveMessageDelegate:(id<MQServiceToViewInterfaceDelegate>)receiveMessageDelegate;
 
 /**
@@ -187,6 +187,8 @@
  *  点击了某消息
  *
  *  @param messageId 消息id
+ #pragma mark xlp - .m文件已经注释 17/7/25
+
  */
 + (void)didTapMessageWithMessageId:(NSString *)messageId;
 
@@ -401,7 +403,7 @@
 /**
  获取当前企业的配置信息
  */
-+ (void)getEnterpriseConfigInfoComplete:(void(^)(MQEnterprise *, NSError *))action;
++ (void)getEnterpriseConfigInfoWithCache:(BOOL)isLoadCache complete:(void(^)(MQEnterprise *, NSError *))action;
 
 /**
  在准备显示聊天界面是调用

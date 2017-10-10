@@ -8,6 +8,7 @@
 
 #import "NABankCardsController.h"
 #import "NABankCardCell.h"
+#import "NAAuthenticationModel.h"
 
 static NSString * const kBankCardCell = @"bankCardCell";
 static NSString * const kBankCardCellName = @"NABankCardCell";
@@ -110,8 +111,8 @@ static NSString * const kBankCardCellName = @"NABankCardCell";
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"确定要删除此张银行卡吗" message:nil preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NABankCardModel *cardModel = [NABankCardModel yy_modelWithJSON:self.bankCardArr[indexPath.row]];
-        [self requestForDeleteCard:cardModel];
+        
+        [self requestForDeleteCard:indexPath];
     }];
     [alert addAction:cancelAction];
     [alert addAction:okAction];
@@ -144,12 +145,20 @@ static NSString * const kBankCardCellName = @"NABankCardCell";
     }];
 }
 
-- (void)requestForDeleteCard:(NABankCardModel *)cardModel {
+- (void)requestForDeleteCard:(NSIndexPath *)indexPath {
+    NABankCardModel *cardModel = [NABankCardModel yy_modelWithJSON:self.bankCardArr[indexPath.row]];
     NAAPIModel *model = [NAURLCenter deleteBankCardConfigWithCardId:cardModel.cardid];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
+        
+        [weakSelf.bankCardArr removeObjectAtIndex:indexPath.row];
+        [weakSelf.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        if (weakSelf.bankCardArr.count <= 0 && ![weakSelf isNoBankCardViewOn]) {
+            [weakSelf.view addSubview:weakSelf.noBankCardView];
+        }
+        [SVProgressHUD showSuccessWithStatus:@"删除成功"];
         
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         
@@ -160,7 +169,11 @@ static NSString * const kBankCardCellName = @"NABankCardCell";
 
 #pragma mark - <Events>
 - (void)onAddBankCardClicked:(id)sender {
-    
+    if ([NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateNot || [NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateOverdue) {
+        [SVProgressHUD showErrorWithStatus:@"请先进行身份认证"];
+    } else {
+        
+    }
 }
 
 - (void)onCellLongPressed:(UILongPressGestureRecognizer *)longPressGes {

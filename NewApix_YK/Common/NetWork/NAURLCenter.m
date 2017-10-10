@@ -310,6 +310,8 @@
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"banks", @"detail"] param:param rightCode:nil];
 }
 
+//+ (NAAPIModel *)addBankCardConfigWith
+
 /**
  苹果内购VIP会员后 后台验证接口
  

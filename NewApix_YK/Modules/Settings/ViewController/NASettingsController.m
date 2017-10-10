@@ -8,6 +8,7 @@
 
 #import "NASettingsController.h"
 #import <Masonry.h>
+#import <AESCrypt.h>
 #import "NAAuthenticationModel.h"
 
 @interface NASettingsController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
@@ -24,7 +25,7 @@
 // 个人设置的数据
 @property (nonatomic, strong) NSData *avatarData;
 @property (nonatomic, assign) BOOL isAddressExist;
-@property (nonatomic, assign) BOOL isIdCardAuthentication;
+//@property (nonatomic, assign) BOOL isIdCardAuthentication;
 @property (nonatomic, copy) NSString *idCardNumber;
 @property (nonatomic, copy) NSString *bankCardNumber;
 
@@ -182,7 +183,8 @@
 
 // 解析认证状态
 - (void)analysisAuthentication:(NSDictionary *)returnValue {
-    NAAuthenticationModel *model = [NAAuthenticationModel yy_modelWithJSON:returnValue[@"data"]];
+    NAAuthenticationModel *model = [NAAuthenticationModel sharedModel];
+    [model yy_modelSetWithJSON:returnValue[@"data"]];
     
     NSArray *reset_data = returnValue[@"reset_data"];
     NSArray *update_prompt = returnValue[@"update_prompt"];
@@ -360,9 +362,13 @@
             [self setTableViewCell:cell withTitle:@"昵称" detailTitle:self.userInfoModel.nick_name showRightArrow:YES];
         } else if (indexPath.row == 2) {
             [self setTableViewCell:cell withTitle:@"实名认证" detailTitle:@"" showRightArrow:YES];
-            if (!self.isIdCardAuthentication) {
+            if ([NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateNot || [NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateOverdue) {
                 cell.detailTextLabel.text = @"点击完成身份认证";
                 cell.detailTextLabel.textColor = kColorLightBlue;
+            }
+            else {
+                NSString *idNumber = [AESCrypt decrypt:self.userInfoModel.id_number password:kAESKey];
+                cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.userInfoModel.name, idNumber];
             }
         } else if (indexPath.row == 3) {
             [self setTableViewCell:cell withTitle:@"银行卡管理" detailTitle:@"" showRightArrow:YES];
