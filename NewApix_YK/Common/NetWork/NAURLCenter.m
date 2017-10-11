@@ -7,6 +7,7 @@
 //
 
 #import "NAURLCenter.h"
+#import <AESCrypt.h>
 
 @implementation NAURLCenter
 
@@ -118,21 +119,21 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_infos", @"trust_score"] param:param rightCode:nil];
 }
 
-/** 获取验证码接口-注册 */
+/** 获取验证码接口 - 注册 */
 + (NAAPIModel *)getSmsConfigForRegisterWithPhoneNumber:(NSString *)phoneNumber {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"phone_number"] = phoneNumber;
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"users", @"register", @"first_send"] param:param rightCode:@"0"];
 }
 
-/** 获取验证码接口-修改密码 */
+/** 获取验证码接口 - 修改密码 添加银行卡 */
 + (NAAPIModel *)getSmsConfigForResetPasswordWithPhoneNumber:(NSString *)phoneNumber {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"phone_number"] = phoneNumber;
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"users", @"register", @"sendSmsCode"] param:param rightCode:@"0"];
 }
 
-/** 获取验证码接口-手机登录 */
+/** 获取验证码接口 - 手机登录 */
 + (NAAPIModel *)getSmsConfigForPhoneLoginWithPhoneNumber:(NSString *)phoneNumber {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"phone_number"] = phoneNumber;
@@ -310,7 +311,30 @@
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"banks", @"detail"] param:param rightCode:nil];
 }
 
-//+ (NAAPIModel *)addBankCardConfigWith
+/** 添加银行卡接口 */
++ (NAAPIModel *)addBankCardConfigWithModel:(NABankCardModel *)model {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"origin"] = @"0";
+    param[@"name"] = [NAUserTool getIdName];
+    param[@"idnumber"] = [NAUserTool getIdNumber];
+    param[@"cardno"] = [AESCrypt encrypt:model.cardNumber password:kAESKey];
+    param[@"bank_name"] = model.bank;
+    param[@"phone"] = model.cardPhone;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"banks", @"add"] param:param rightCode:nil];
+}
+
+/** 验证绑定银行卡接口 */
++ (NAAPIModel *)validateBankCardConfigWithSmsCode:(NSString *)smsCode phone:(NSString *)phoneNumber cardNumber:(NSString *)cardNumber {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"origin"] = @"0";
+    param[@"cardno"] = cardNumber;
+    param[@"sms_code"] = smsCode;
+    param[@"phone_number"] = phoneNumber;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"banks", @"validate"] param:param rightCode:@"0"];
+}
+
 
 /**
  苹果内购VIP会员后 后台验证接口

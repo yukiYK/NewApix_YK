@@ -19,7 +19,6 @@
                 <outlet property="nameTextField" destination="JjV-WA-W8h" id="iGb-CT-S2L"/>
                 <outlet property="nextStepBtn" destination="vP3-CB-zn7" id="9ig-II-G8e"/>
                 <outlet property="phoneNumberTextField" destination="slb-md-QGV" id="mEP-AF-rx1"/>
-                <outlet property="tipsLabel" destination="rW5-1f-t59" id="3hg-HS-py6"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -35,7 +34,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2NV-1r-pTW">
-                                    <rect key="frame" x="29" y="55" width="317" height="124"/>
+                                    <rect key="frame" x="29" y="50" width="317" height="124"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="身份证号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m20-OZ-cfd">
                                             <rect key="frame" x="19" y="71" width="70" height="37"/>
@@ -113,14 +112,8 @@
                                         <constraint firstAttribute="trailing" secondItem="b7o-MJ-nBG" secondAttribute="trailing" constant="21" id="uVZ-Wk-bdH"/>
                                     </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请绑定持卡人本人的银行卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rW5-1f-t59">
-                                    <rect key="frame" x="48" y="29" width="184" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                    <color key="textColor" red="0.95686274509803915" green="0.95686274509803915" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pb6-8R-7Uw">
-                                    <rect key="frame" x="29" y="199" width="317" height="188"/>
+                                    <rect key="frame" x="29" y="194" width="317" height="188"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入银行卡预留号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="slb-md-QGV">
                                             <rect key="frame" x="97" y="140" width="200" height="30"/>
@@ -128,7 +121,7 @@
                                                 <constraint firstAttribute="height" constant="30" id="feL-Lm-Em8"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJb-Hs-TMm">
                                             <rect key="frame" x="19" y="122" width="278" height="2"/>
@@ -185,7 +178,7 @@
                                                 <constraint firstAttribute="height" constant="30" id="jvA-Rb-Uy0"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sks-wm-dCH">
                                             <rect key="frame" x="19" y="59" width="278" height="2"/>
@@ -227,7 +220,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vP3-CB-zn7">
-                                    <rect key="frame" x="29" y="407" width="317" height="44"/>
+                                    <rect key="frame" x="29" y="402" width="317" height="44"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="44" id="31f-3D-bIH"/>
                                     </constraints>
@@ -240,19 +233,16 @@
                                     </connections>
                                 </button>
                             </subviews>
-                            <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstItem="pb6-8R-7Uw" firstAttribute="top" secondItem="2NV-1r-pTW" secondAttribute="bottom" constant="20" id="2Cu-Gi-MKP"/>
                                 <constraint firstItem="vP3-CB-zn7" firstAttribute="leading" secondItem="2NV-1r-pTW" secondAttribute="leading" id="53O-3N-QwR"/>
-                                <constraint firstItem="2NV-1r-pTW" firstAttribute="top" secondItem="rW5-1f-t59" secondAttribute="bottom" constant="8" id="BET-TS-lYs"/>
-                                <constraint firstItem="rW5-1f-t59" firstAttribute="top" secondItem="5wx-Uq-11r" secondAttribute="top" constant="29" id="RMR-kx-658"/>
                                 <constraint firstItem="vP3-CB-zn7" firstAttribute="top" secondItem="pb6-8R-7Uw" secondAttribute="bottom" constant="20" id="T7b-Ny-ct3"/>
                                 <constraint firstItem="pb6-8R-7Uw" firstAttribute="leading" secondItem="2NV-1r-pTW" secondAttribute="leading" id="bYy-8o-H6U"/>
                                 <constraint firstItem="pb6-8R-7Uw" firstAttribute="trailing" secondItem="2NV-1r-pTW" secondAttribute="trailing" id="biL-Jq-WSe"/>
                                 <constraint firstAttribute="trailing" secondItem="2NV-1r-pTW" secondAttribute="trailing" constant="29" id="hQJ-5c-IXm"/>
                                 <constraint firstItem="2NV-1r-pTW" firstAttribute="leading" secondItem="5wx-Uq-11r" secondAttribute="leading" constant="29" id="n1Z-aO-RIy"/>
                                 <constraint firstItem="vP3-CB-zn7" firstAttribute="trailing" secondItem="2NV-1r-pTW" secondAttribute="trailing" id="qab-WE-xZr"/>
-                                <constraint firstItem="rW5-1f-t59" firstAttribute="leading" secondItem="5wx-Uq-11r" secondAttribute="leading" constant="48" id="yfe-gt-qa8"/>
+                                <constraint firstItem="2NV-1r-pTW" firstAttribute="top" secondItem="5wx-Uq-11r" secondAttribute="top" constant="50" id="r2x-KE-owh"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -266,7 +256,7 @@
                     </constraints>
                 </scrollView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="OVu-UZ-fav" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="9BF-Ln-K4z"/>
                 <constraint firstItem="OVu-UZ-fav" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="pqR-e7-v5P"/>

@@ -42,14 +42,16 @@ static NSString * const kNotificationNetChange = @"kNotificationNetChange";
 static NSString * const kUserDefaultsOnOff = @"kUserDefaultsOnOff";       // 审核开关
 static NSString * const kUserDefaultsUserStatus = @"kUserDefaultsUserStatus"; // 用户状态
 static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";       // token
+// 用户信息
 static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵称
 static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
 static NSString * const kUserDefaultsIdName = @"kUserDefaultsIdName";     // 真实姓名
 static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber"; // 身份证号
 static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 用户手机号
+static NSString * const kUserDefaultsTrustScore = @"kUserDefaultsTrustScore";// 信用分数
+
 static NSString * const kUserDefaultsLoginPhone = @"kUserDefaultsLoginPhone"; // 登录页保存的账号
 static NSString * const kUserDefaultsUniqueId = @"kUserDefaultsUniqueId";   //unique_id
-static NSString * const kUserDefaultsTrustScore = @"kUserDefaultsTrustScore";// 信用分数
 static NSString * const kUserDefaultsLocation = @"kUserDefaultsLocation";    // 位置
 static NSString * const kUserDefaultsDeviceId = @"kUserDefaultsDeviceId";    // deviceID
 static NSString * const kUserDefaultsSystemVersion = @"kUserDefaultsSystemVersion";    // 系统版本

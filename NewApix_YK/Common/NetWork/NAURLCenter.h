@@ -10,6 +10,7 @@
 #import "NAAPIModel.h"
 #import "NAAddressModel.h"
 #import "NAUserInfoModel.h"
+#import "NABankCardModel.h"
 
 typedef NS_ENUM(NSInteger, NARequestURLType) {
     NARequestURLTypeAPI,
@@ -55,11 +56,11 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
                               imgSmsKey:(NSString *)imgSmsKey;
 /** 用户信用分数接口 */
 + (NAAPIModel *)trustScoreConfig;
-/** 获取验证码接口-注册 */
+/** 获取验证码接口 - 注册 */
 + (NAAPIModel *)getSmsConfigForRegisterWithPhoneNumber:(NSString *)phoneNumber;
-/** 获取验证码接口-修改密码 */
+/** 获取验证码接口 - 修改密码 添加银行卡 */
 + (NAAPIModel *)getSmsConfigForResetPasswordWithPhoneNumber:(NSString *)phoneNumber;
-/** 获取验证码接口-手机登录 */
+/** 获取验证码接口 - 手机登录 */
 + (NAAPIModel *)getSmsConfigForPhoneLoginWithPhoneNumber:(NSString *)phoneNumber;
 /** 获取图片验证码接口 */
 + (NAAPIModel *)getImgSmsConfig;
@@ -107,6 +108,11 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NAAPIModel *)bankCardsConfig;
 /** 删除银行卡接口 */
 + (NAAPIModel *)deleteBankCardConfigWithCardId:(NSString *)cardId;
+/** 添加银行卡接口 */
++ (NAAPIModel *)addBankCardConfigWithModel:(NABankCardModel *)model;
+/** 验证绑定银行卡接口 */
++ (NAAPIModel *)validateBankCardConfigWithSmsCode:(NSString *)smsCode phone:(NSString *)phoneNumber cardNumber:(NSString *)cardNumber;
+
 
 /**
  苹果内购VIP会员后 后台验证接口

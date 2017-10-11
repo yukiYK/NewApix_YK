@@ -102,7 +102,7 @@
     dispatch_resume(_timer);
 }
 
-#pragma mark - <NetRequest>
+#pragma mark - <Net Request>
 - (void)requestForGetSms {
     NAAPIModel *model = [NAURLCenter getSmsConfigForRegisterWithPhoneNumber:self.phoneTextField.text];
     
@@ -115,11 +115,9 @@
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         if ([code isEqualToString:@"-3"]) {
             [SVProgressHUD showErrorWithStatus:@"该手机号已经注册过了"];
-        }
-        else {
+        } else {
             [SVProgressHUD showErrorWithStatus:@"获取验证码失败"];
         }
-        
     } failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
     }];

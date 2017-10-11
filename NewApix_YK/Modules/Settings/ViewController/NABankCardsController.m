@@ -65,6 +65,10 @@ static NSString * const kBankCardCellName = @"NABankCardCell";
     self.view.backgroundColor = kColorHeaderGray;
     [self setupNavigation];
     [self setupTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
     [self requestForBankCards];
 }
 
@@ -172,7 +176,7 @@ static NSString * const kBankCardCellName = @"NABankCardCell";
     if ([NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateNot || [NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateOverdue) {
         [SVProgressHUD showErrorWithStatus:@"请先进行身份认证"];
     } else {
-        
+        [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter addBankCardController] tranformStyle:NATransformStylePush needLogin:NO];
     }
 }
 

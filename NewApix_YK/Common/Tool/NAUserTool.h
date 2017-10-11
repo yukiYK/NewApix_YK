@@ -26,7 +26,7 @@
 + (NSString *)getIdName;
 + (void)saveIdName:(NSString *)idName;
 
-/** 身份证号 */
+/** 身份证号 AES编码后的 */
 + (NSString *)getIdNumber;
 + (void)saveIdNumber:(NSString *)idNumber;
 

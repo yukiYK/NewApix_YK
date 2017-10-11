@@ -48,17 +48,17 @@ NSString * const kMineCell = @"mineCell";
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = kColorHeaderGray;
     
-    
     [self setupTableView];
+    [self requestForLoanList];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupNavigationBar];
     
-    [self loadUserInfo];
-    [self loadVipInfo];
-    [self loadOrderInfo];
+    [self requestForUserInfo];
+    [self requestForVipInfo];
+    [self requestForOrderInfo];
 }
 
 #pragma mark - <Private Method>
@@ -86,7 +86,8 @@ NSString * const kMineCell = @"mineCell";
     self.tableView = tableView;
 }
 
-- (void)loadUserInfo {
+#pragma mark - <Net Request>
+- (void)requestForUserInfo {
     
     NAAPIModel *model = [NAURLCenter mineUserInfoConfig];
     
@@ -97,13 +98,11 @@ NSString * const kMineCell = @"mineCell";
         NSLog(@"%@", returnValue);
         
         if ([returnValue[@"code"] integerValue] == -1) {
-        }
-        else if ([returnValue[@"apix_login_code"] integerValue] == -1) {
+        } else if ([returnValue[@"apix_login_code"] integerValue] == -1) {
             [NAUserTool removeAllUserDefaults];
             [SVProgressHUD showErrorWithStatus:@"您的账号已在别处登录，请重新登录"];
 //            [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter loginController] tranformStyle:NATransformStylePush needLogin:NO];
-        }
-        else {
+        } else {
             NAUserInfoModel *model = [NAUserInfoModel yy_modelWithJSON:returnValue[@"data"]];
             self.userModel = model;
             self.mineHeaderView.userInfo = model;
@@ -116,7 +115,7 @@ NSString * const kMineCell = @"mineCell";
     }];
 }
 
-- (void)loadVipInfo {
+- (void)requestForVipInfo {
     NAAPIModel *model = [NAURLCenter mineVipInfoConfig];
     
     WeakSelf
@@ -131,7 +130,7 @@ NSString * const kMineCell = @"mineCell";
     }];
 }
 
-- (void)loadOrderInfo {
+- (void)requestForOrderInfo {
     
     NAAPIModel *model = [NAURLCenter mineOrderInfoConfig];
     
@@ -147,7 +146,7 @@ NSString * const kMineCell = @"mineCell";
     }];
 }
 
-- (void)loadLoanList {
+- (void)requestForLoanList {
     NAAPIModel *model = [NAURLCenter mineLoanListConfig];
     
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

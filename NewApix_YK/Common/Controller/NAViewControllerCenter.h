@@ -151,6 +151,13 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 + (UIViewController *)bankCardsController;
 
 /**
+ 添加银行卡页
+
+ @return NAAddCardController
+ */
++ (UIViewController *)addBankCardController;
+
+/**
  第三方贷款web页 等等
 
  @param cardModel 数据model，如果没有传nil

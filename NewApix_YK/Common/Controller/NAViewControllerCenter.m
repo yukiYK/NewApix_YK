@@ -24,6 +24,7 @@
 #import "NAAboutUsController.h"
 #import "NACommonQuestionsController.h"
 #import "NABankCardsController.h"
+#import "NAAddCardController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -180,6 +181,15 @@
  */
 + (UIViewController *)bankCardsController {
     return [[NABankCardsController alloc] init];
+}
+
+/**
+ 添加银行卡页
+ 
+ @return NAAddCardController
+ */
++ (UIViewController *)addBankCardController {
+    return [[NAAddCardController alloc] initWithNibName:@"NAAddCardController" bundle:nil];
 }
 
 // 第三方贷款web页 等等

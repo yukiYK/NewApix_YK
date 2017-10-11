@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NewApix_YK/Common/NetWork/NAURLCenter.m"
-            timestampString = "529237140.564174"
+            filePath = "NewApix_YK/Modules/Settings/ViewController/NANewPhoneController.m"
+            timestampString = "528461543.08638"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "274"
-            endingLineNumber = "274"
-            landmarkName = "+setNewPhoneConfigWithPhone:smsCode:"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "-requestForLogout"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NewApix_YK/Modules/Settings/ViewController/NANewPhoneController.m"
-            timestampString = "528461543.08638"
+            filePath = "NewApix_YK/Modules/Settings/ViewController/NAAddCardController.m"
+            timestampString = "529411043.792421"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "122"
-            endingLineNumber = "122"
-            landmarkName = "-requestForLogout"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "-requestForAddBankCard"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
