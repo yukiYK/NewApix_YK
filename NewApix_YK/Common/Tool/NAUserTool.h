@@ -50,6 +50,11 @@
 + (NSString *)getEquipmentType;
 + (void)saveEquipmentType:(NSString *)equipmentType;
 
+/** 性别 男 女 */
++ (NSString *)getSex;
++ (void)saveSex:(NSString *)sex;
+
+
 /** 清除跟用户相关的userDefaults */
 + (void)removeAllUserDefaults;
 

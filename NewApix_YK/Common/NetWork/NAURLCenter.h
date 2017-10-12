@@ -12,10 +12,6 @@
 #import "NAUserInfoModel.h"
 #import "NABankCardModel.h"
 
-typedef NS_ENUM(NSInteger, NARequestURLType) {
-    NARequestURLTypeAPI,
-    NARequestURLTypeH5
-};
 
 /** 接口管理类 获取各个接口的配置 */
 @interface NAURLCenter : NSObject
@@ -30,7 +26,7 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
 + (NSString *)urlWithType:(NARequestURLType)urlType pathArray:(NSArray *)pathArray;
 
 
-#pragma mark - <---------------------所有的API--------------------->
+#pragma mark - <---------------------所有美信的API接口--------------------->
 /** 审核开关接口 */
 + (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin;
 
@@ -123,6 +119,10 @@ typedef NS_ENUM(NSInteger, NARequestURLType) {
  @return 内购会员后验证接口的NAAPIModel
  */
 + (NAAPIModel *)buyVipVerifyConfigWithReceipt:(NSString *)receipt isSandBox:(BOOL)isSandBox imageId:(NSString *)imageId;
+
+#pragma mark - <--------------------所有APIX的API接口------------------->
+/** 身份证认证接口 */
++ (NAAPIModel *)idCardAuthenticationConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType;
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */

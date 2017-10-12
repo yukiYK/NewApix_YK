@@ -28,6 +28,8 @@
         case NARequestURLTypeH5:
             urlString = SERVER_ADDRESS_H5;
             break;
+        case NARequestURLTypeAPIX:
+            urlString = SERVER_ADDRESS_APIX;
         default:
             break;
     }
@@ -56,19 +58,33 @@
     return parmaeterStr;
 }
 
+// 生成美信api接口的model
 + (NAAPIModel *)apiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param rightCode:(NSString *)rightCode {
     NAAPIModel *model = [[NAAPIModel alloc] init];
     model.requestType = type;
     model.pathArr = pathArr;
     model.param = param;
     model.rightCode = rightCode;
+    model.requestUrlType = NARequestURLTypeAPI;
+    
+    return model;
+}
+
+// 生成APIX api接口的model
++ (NAAPIModel *)apixApiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param {
+    NAAPIModel *model = [[NAAPIModel alloc] init];
+    model.requestType = type;
+    model.pathArr = pathArr;
+    model.param = param;
+    model.rightCode = nil;
+    model.requestUrlType = NARequestURLTypeAPIX;
     
     return model;
 }
 
 
 
-#pragma mark - <--------------------所有的API接口------------------->
+#pragma mark - <--------------------所有美信的API接口------------------->
 /** 审核开关接口 */
 + (NAAPIModel *)onOrOffConfigWithName:(NSString *)name origin:(NSString *)origin {
     
@@ -352,6 +368,20 @@
     param[@"apix_token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"ios", @"add"] param:param rightCode:@"0"];
 }
+
+
+
+#pragma mark - <--------------------所有APIX的API接口------------------->
+/** 身份证认证接口 */
++ (NAAPIModel *)idCardAuthenticationConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType {
+    
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"cmd"] = @"idcard_front";
+    param[@"pictype"] = picType;
+    param[@"pic"] = picDataStr;
+    return [self apixApiModelWithType:NAHTTPRequestTypePost pathArr:@[@"apixlab", @"idcardrecog", @"idcardimage"] param:param];
+}
+
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */

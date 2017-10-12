@@ -80,4 +80,27 @@
     return compressedImage;
 }
 
++ (BOOL)imageHasAlpha:(UIImage *)image {
+    CGImageAlphaInfo alpha = CGImageGetAlphaInfo(image.CGImage);
+    return (alpha == kCGImageAlphaFirst ||
+            alpha == kCGImageAlphaLast ||
+            alpha == kCGImageAlphaPremultipliedFirst ||
+            alpha == kCGImageAlphaPremultipliedLast);
+}
+
+/** 获取图片的类型 png jpeg */
+- (NSString *)imageType {
+    if ([UIImage imageHasAlpha:self]) return @"png";
+ 
+    return @"jpeg";
+}
+/** 将image转换成base64的字符串 */
+- (NSString *)imageDataStr {
+    NSData *imageData = nil;
+    if ([UIImage imageHasAlpha:self]) imageData = UIImagePNGRepresentation(self);
+    else imageData = UIImageJPEGRepresentation(self, 1.0);
+    
+    return [imageData base64EncodedStringWithOptions:0];
+}
+
 @end

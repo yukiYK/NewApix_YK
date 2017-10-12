@@ -22,4 +22,13 @@
 /** 压缩图片 */
 - (UIImage *)imageCompresstoMaxFileSize:(NSInteger)maxFileSize;
 
+
+
+
+
+/** 获取图片的类型 png jpeg */
+- (NSString *)imageType;
+/** 将image转换成base64的字符串 */
+- (NSString *)imageDataStr;
+
 @end

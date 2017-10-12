@@ -72,11 +72,20 @@
 + (void)saveSystemVersion:(NSString *)systemVersion {
     [[NSUserDefaults standardUserDefaults] setObject:systemVersion forKey:kUserDefaultsSystemVersion];
 }
+
 + (NSString *)getEquipmentType {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsEquipmentType];
 }
 + (void)saveEquipmentType:(NSString *)equipmentType {
     [[NSUserDefaults standardUserDefaults] setObject:equipmentType forKey:kUserDefaultsEquipmentType];
+}
+
+/** 性别 */
++ (NSString *)getSex {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsSex];
+}
++ (void)saveSex:(NSString *)sex {
+    [[NSUserDefaults standardUserDefaults] setObject:sex forKey:kUserDefaultsSex];
 }
 
 /** 清除跟用户相关的userDefaults */
@@ -89,6 +98,7 @@
     [defaults removeObjectForKey:kUserDefaultsIdNumber];
     [defaults removeObjectForKey:kUserDefaultsPhone];
     [defaults removeObjectForKey:kUserDefaultsTrustScore];
+    [defaults removeObjectForKey:kUserDefaultsSex];
 }
 
 @end

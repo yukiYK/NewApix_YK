@@ -61,7 +61,7 @@
                 errorCodeBlock:(ErrorCodeBlock)errorBlock
                   failureBlock:(FailureBlock)failureBlock {
     
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeAPI pathArray:apiModel.pathArr];
+    NSString *urlStr = [NAURLCenter urlWithType:apiModel.requestUrlType pathArray:apiModel.pathArr];
     if (apiModel.requestType == NAHTTPRequestTypeGet) {
         
         [self GET:urlStr parameters:apiModel.param progress:^(NSProgress * _Nonnull downloadProgress) {

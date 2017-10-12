@@ -31,7 +31,6 @@
 		4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381691F384F71008BC8FD /* NABannerView.m */; };
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
-		4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */; };
 		4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850511F7E3618000C2AD5 /* NAAddressModel.m */; };
 		4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850531F7E3723000C2AD5 /* NAAddressController.m */; };
 		4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850521F7E3723000C2AD5 /* NASettingsController.m */; };
@@ -43,6 +42,9 @@
 		4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */; };
 		4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */; };
 		4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */; };
+		4A8B10331F8F17DA00498F9D /* NAAuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8B102F1F8F16BE00498F9D /* NAAuthenticationModel.m */; };
+		4A8B10371F8F486A00498F9D /* NAIDAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */; };
+		4A8B10381F8F486A00498F9D /* NAIDAuthenticationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */; };
 		4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */; };
 		4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */; };
 		4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18CC1F41ADBC00B5459A /* NACommunityCell.m */; };
@@ -160,8 +162,6 @@
 		4A7315431F3D604B00044FE6 /* NACommonWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommonWebController.m; sourceTree = "<group>"; };
 		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
 		4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+NAExtension.m"; sourceTree = "<group>"; };
-		4A7580BC1F7B91D5008EAA5C /* NAAuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationModel.h; sourceTree = "<group>"; };
-		4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationModel.m; sourceTree = "<group>"; };
 		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
 		4A7850501F7E3618000C2AD5 /* NAAddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAddressModel.h; sourceTree = "<group>"; };
 		4A7850511F7E3618000C2AD5 /* NAAddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAddressModel.m; sourceTree = "<group>"; };
@@ -181,6 +181,11 @@
 		4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NANewPhoneController.xib; sourceTree = "<group>"; };
 		4A7F95291F7A5123003D7FB6 /* UINavigationController+NAStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NAStatusBar.h"; sourceTree = "<group>"; };
 		4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NAStatusBar.m"; sourceTree = "<group>"; };
+		4A8B102F1F8F16BE00498F9D /* NAAuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationModel.m; sourceTree = "<group>"; };
+		4A8B10301F8F16BE00498F9D /* NAAuthenticationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationModel.h; sourceTree = "<group>"; };
+		4A8B10341F8F486A00498F9D /* NAIDAuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDAuthenticationController.h; sourceTree = "<group>"; };
+		4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDAuthenticationController.m; sourceTree = "<group>"; };
+		4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAIDAuthenticationController.xib; sourceTree = "<group>"; };
 		4A8F18C61F41AD7800B5459A /* NAEssenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAEssenceCell.h; sourceTree = "<group>"; };
 		4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAEssenceCell.m; sourceTree = "<group>"; };
 		4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAEssenceCell.xib; sourceTree = "<group>"; };
@@ -378,6 +383,7 @@
 		4A037D591F28AF1B00F38AC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4A8B10281F8F15EA00498F9D /* Authentication */,
 				4A7850471F7E358F000C2AD5 /* Settings */,
 				4A037D5D1F28B1ED00F38AC0 /* LoginRegister */,
 				4A037D611F28B1ED00F38AC0 /* MainPage */,
@@ -619,6 +625,42 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		4A8B10281F8F15EA00498F9D /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				4A8B102B1F8F162400498F9D /* Model */,
+				4A8B10291F8F162400498F9D /* View */,
+				4A8B102A1F8F162400498F9D /* ViewController */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		4A8B10291F8F162400498F9D /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4A8B102A1F8F162400498F9D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4A8B10341F8F486A00498F9D /* NAIDAuthenticationController.h */,
+				4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */,
+				4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4A8B102B1F8F162400498F9D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4A8B10301F8F16BE00498F9D /* NAAuthenticationModel.h */,
+				4A8B102F1F8F16BE00498F9D /* NAAuthenticationModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4AAEEDA01F4C272D00055CF1 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -691,8 +733,6 @@
 		4AFCA9471F346C3500351B04 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4A7580BC1F7B91D5008EAA5C /* NAAuthenticationModel.h */,
-				4A7580BD1F7B91D5008EAA5C /* NAAuthenticationModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -889,6 +929,7 @@
 				4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */,
 				4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */,
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
+				4A8B10381F8F486A00498F9D /* NAIDAuthenticationController.xib in Resources */,
 				4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */,
 				4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */,
 				4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */,
@@ -974,6 +1015,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A8B10331F8F17DA00498F9D /* NAAuthenticationModel.m in Sources */,
 				4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */,
 				4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */,
 				4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */,
@@ -1000,6 +1042,7 @@
 				4AAEEDA71F4C272D00055CF1 /* NANavigationController.m in Sources */,
 				4AFCA9661F346C3500351B04 /* NACommon.m in Sources */,
 				4AF3927B1F46D44500EF7A3B /* NACommunityModel.m in Sources */,
+				4A8B10371F8F486A00498F9D /* NAIDAuthenticationController.m in Sources */,
 				4AFCA9611F346C3500351B04 /* NABaseViewController.m in Sources */,
 				4A59ACEB1F5FDD1300F3172B /* UIView+NAScreenshot.m in Sources */,
 				4A09599D1F8B59B7008164B6 /* NABankCardCell.m in Sources */,
@@ -1027,7 +1070,6 @@
 				5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
-				4A7580BE1F7B91D5008EAA5C /* NAAuthenticationModel.m in Sources */,
 				4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,

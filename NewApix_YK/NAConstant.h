@@ -49,6 +49,7 @@ static NSString * const kUserDefaultsIdName = @"kUserDefaultsIdName";     // 真
 static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber"; // 身份证号
 static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 用户手机号
 static NSString * const kUserDefaultsTrustScore = @"kUserDefaultsTrustScore";// 信用分数
+static NSString * const kUserDefaultsSex = @"kUserDefaultsSex";    // 性别
 
 static NSString * const kUserDefaultsLoginPhone = @"kUserDefaultsLoginPhone"; // 登录页保存的账号
 static NSString * const kUserDefaultsUniqueId = @"kUserDefaultsUniqueId";   //unique_id
@@ -56,6 +57,7 @@ static NSString * const kUserDefaultsLocation = @"kUserDefaultsLocation";    // 
 static NSString * const kUserDefaultsDeviceId = @"kUserDefaultsDeviceId";    // deviceID
 static NSString * const kUserDefaultsSystemVersion = @"kUserDefaultsSystemVersion";    // 系统版本
 static NSString * const kUserDefaultsEquipmentType = @"kUserDefaultsEquipmentType";    // 设备类型
+
 // --------------------------------------各种认证状态-----------------------------------------------
 /** 身份认证 */
 static NSString * const kUserDefaultsAuthenticationIDCard = @"kUserDefaultsAuthenticationIDCard";

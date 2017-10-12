@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, NARequestURLType) {
+    NARequestURLTypeAPI,   // 美信后台接口
+    NARequestURLTypeH5,    // 美信web
+    NARequestURLTypeAPIX    // apix接口
+};
+
 typedef NS_ENUM(NSInteger, NAHTTPRequestType) {
     NAHTTPRequestTypeGet,
     NAHTTPRequestTypePost
@@ -15,6 +21,7 @@ typedef NS_ENUM(NSInteger, NAHTTPRequestType) {
 
 @interface NAAPIModel : NSObject
 
+@property (nonatomic, assign) NARequestURLType requestUrlType;
 @property (nonatomic, assign) NAHTTPRequestType requestType;
 @property (nonatomic, strong) NSArray *pathArr;
 @property (nonatomic, strong) NSMutableDictionary *param;
