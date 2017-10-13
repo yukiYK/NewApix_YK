@@ -66,6 +66,7 @@
 
 
 - (IBAction)onCheckBtnClicked:(id)sender {
+    []
 }
 
 
@@ -74,7 +75,11 @@
     UIImage *newImage = [image imageCompresstoMaxFileSize:1024 * 1024 * 2];
     NAAPIModel *model = [NAURLCenter idCardAuthenticationConfigWithPicDataStr:[newImage imageDataStr] picType:[newImage imageType]];
     
-    
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+    } errorCodeBlock:nil failureBlock:^(NSError *error) {
+        [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
+    }];
 }
 
 
