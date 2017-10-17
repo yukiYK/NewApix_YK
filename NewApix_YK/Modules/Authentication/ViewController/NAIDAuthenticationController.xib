@@ -65,7 +65,7 @@
                         <constraint firstAttribute="height" constant="160" id="9l9-Ba-Fh5"/>
                         <constraint firstAttribute="width" constant="240" id="gNQ-z4-7Pe"/>
                     </constraints>
-                    <state key="normal" image="ID_photo"/>
+                    <state key="normal" backgroundImage="ID_photo"/>
                     <connections>
                         <action selector="onIdCardBtnClicked:" destination="-1" eventType="touchUpInside" id="p07-wk-qT4"/>
                     </connections>

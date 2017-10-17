@@ -10,6 +10,7 @@
 #import <Masonry.h>
 #import <AESCrypt.h>
 #import "NAAuthenticationModel.h"
+#import "NATabbarController.h"
 
 @interface NASettingsController () <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -18,14 +19,13 @@
 
 // 一些固定数据
 @property (nonatomic, strong) NSArray *dataArray2;
-@property (nonatomic, strong) NSArray *jobsArray;
-@property (nonatomic, strong) NSArray *masterArray;
-@property (nonatomic, strong) NSArray *marriageArray;
+//@property (nonatomic, strong) NSArray *jobsArray;
+//@property (nonatomic, strong) NSArray *masterArray;
+//@property (nonatomic, strong) NSArray *marriageArray;
 
 // 个人设置的数据
 @property (nonatomic, strong) NSData *avatarData;
 @property (nonatomic, assign) BOOL isAddressExist;
-//@property (nonatomic, assign) BOOL isIdCardAuthentication;
 @property (nonatomic, copy) NSString *idCardNumber;
 @property (nonatomic, copy) NSString *bankCardNumber;
 
@@ -40,26 +40,26 @@
     return _dataArray2;
 }
 
-- (NSArray *)jobsArray {
-    if (!_jobsArray) {
-        _jobsArray = [NSArray arrayWithObjects:@"上班族", @"学生", @"自由工作者", @"企业主", nil];
-    }
-    return _jobsArray;
-}
-
-- (NSArray *)masterArray {
-    if (!_masterArray) {
-        _masterArray = [NSArray arrayWithObjects:@"硕士及以上", @"本科", @"专科", @"高中及以下", nil];
-    }
-    return _masterArray;
-}
-
-- (NSArray *)marriageArray {
-    if (!_marriageArray) {
-        _marriageArray = [NSArray arrayWithObjects:@"未婚", @"已婚且无子女", @"已婚且有子女", @"离异", @"丧偶", nil];
-    }
-    return _marriageArray;
-}
+//- (NSArray *)jobsArray {
+//    if (!_jobsArray) {
+//        _jobsArray = [NSArray arrayWithObjects:@"上班族", @"学生", @"自由工作者", @"企业主", nil];
+//    }
+//    return _jobsArray;
+//}
+//
+//- (NSArray *)masterArray {
+//    if (!_masterArray) {
+//        _masterArray = [NSArray arrayWithObjects:@"硕士及以上", @"本科", @"专科", @"高中及以下", nil];
+//    }
+//    return _masterArray;
+//}
+//
+//- (NSArray *)marriageArray {
+//    if (!_marriageArray) {
+//        _marriageArray = [NSArray arrayWithObjects:@"未婚", @"已婚且无子女", @"已婚且有子女", @"离异", @"丧偶", nil];
+//    }
+//    return _marriageArray;
+//}
 
 #pragma mark - <Life Cycle>
 - (void)viewDidLoad {
@@ -67,10 +67,9 @@
     // Do any additional setup after loading the view.
     self.view.backgroundColor = kColorHeaderGray;
     
-    
     [self setupNavigation];
     [self setupTableView];
-    [self requestForAuthentication];
+    [self requestForAuthenticationStatus];
 }
 
 #pragma mark - <Private Method>
@@ -96,13 +95,6 @@
     tableView.tableHeaderView = [self tableHeaderView];
     tableView.tableFooterView = [self tableFooterView];
     [self.view addSubview:tableView];
-    
-//    [tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-//        make.left.equalTo(self.view.mas_left);
-//        make.right.equalTo(self.view.mas_right);
-//        make.top.equalTo(self.view.mas_top);
-//        make.bottom.equalTo(self.view.mas_bottom);
-//    }];
     self.tableView = tableView;
 }
 
@@ -181,56 +173,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-// 解析认证状态
-- (void)analysisAuthentication:(NSDictionary *)returnValue {
-    NAAuthenticationModel *model = [NAAuthenticationModel sharedModel];
-    [model yy_modelSetWithJSON:returnValue[@"data"]];
-    
-    NSArray *reset_data = returnValue[@"reset_data"];
-    NSArray *update_prompt = returnValue[@"update_prompt"];
-    NSArray *propertyArray = [NAAuthenticationModel getAllProperties];
-    if (reset_data.count > 0) {
-        [reset_data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSDictionary *dict = obj;
-            [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-                if ([key isEqualToString:@"carrier"]) {
-                    model.isp = NAAuthenticationStateOverdue;
-                }
-                else if ([key isEqualToString:@"identity"]) {
-                    model.idcard = NAAuthenticationStateOverdue;
-                }
-                else if ([propertyArray containsObject:key]) {
-                    id propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"2"];
-                    [model setValue:propertyValue forKey:key];
-                }
-            }];
-        }];
-    }
-    if (update_prompt.count > 0) {
-        [update_prompt enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            NSDictionary *dict = obj;
-            for (NSString *key in dict.allKeys) {
-                NSString *value = [NSString stringWithFormat:@"%@", [dict objectForKey:key]];
-                
-                id propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"4"];
-                if ([value integerValue] == 1)
-                    propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"3"];
-                
-                if ([key isEqualToString:@"carrier"]) {
-                    [model setValue:propertyValue forKey:@"isp"];
-                }
-                else if ([key isEqualToString:@"identity"]) {
-                    [model setValue:propertyValue forKey:@"idcard"];
-                }
-                else if ([propertyArray containsObject:key]) {
-                    id propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"3"];
-                    [model setValue:propertyValue forKey:key];
-                }
-            }
-        }];
-    }
-}
-
 - (void)pickPhotoFromAlbum {
     UIImagePickerController *pickerC = [[UIImagePickerController alloc] init];
     pickerC.delegate = self;
@@ -249,7 +191,14 @@
 
 #pragma mark - <Events>
 - (void)onExitBtnClicked:(UIButton *)button {
-    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"确定要退出登录" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *isCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *isOK = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self requestForLogout];
+    }];
+    [alertController addAction:isCancel];
+    [alertController addAction:isOK];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void)onSaveBtnClicked:(UIButton *)button {
@@ -272,11 +221,11 @@
 }
 
 #pragma mark - <Net Request>
-- (void)requestForAuthentication {
-    NAAPIModel *model = [NAURLCenter authenticationConfig];
+- (void)requestForAuthenticationStatus {
+    NAAPIModel *model = [NAURLCenter authenticationStatusConfig];
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
-        [self analysisAuthentication:returnValue];
+        [NAAuthenticationModel analysisAuthentication:returnValue];
         [self.tableView reloadData];
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         
@@ -326,6 +275,26 @@
     } errorCodeBlock:^(NSString *code, NSString *msg) {
     } failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络错误，保存失败"];
+    }];
+}
+
+- (void)requestForLogout {
+    NAAPIModel *model = [NAURLCenter logoutConfig];
+    
+    NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
+    [manager setRequestSerializerForPost];
+    [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        [NAUserTool removeAllUserDefaults];
+        NATabbarController *apixTabVC = [[NATabbarController alloc] init];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(500 * NSEC_PER_MSEC)), dispatch_get_main_queue(), ^{
+            [UIApplication sharedApplication].keyWindow.rootViewController = apixTabVC;
+        });
+    } errorCodeBlock:^(NSString *code, NSString *msg) {
+        
+    } failureBlock:^(NSError *error) {
+        
     }];
 }
 
@@ -406,42 +375,40 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 1) {    // 昵称
             [self showChangeNickAlert];
-        } else if (indexPath.row == 2) { // 实名认证
-            
-        } else if (indexPath.row == 3) { // 银行卡管理
+        } else if (indexPath.row == 2) {
+            NAAuthenticationModel *authenticationModel = [NAAuthenticationModel sharedModel];
+            if (authenticationModel.idcard == NAAuthenticationStateAlready || authenticationModel.idcard == NAAuthenticationStateAlreadyUpdate) return;
             [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter bankCardsController]
+                                           toViewController:[NAViewControllerCenter idAuthenticationController]
                                               tranformStyle:NATransformStylePush
-                                                  needLogin:NO];
-        } else if (indexPath.row == 4) {  // 收货地址
+                                                  needLogin:YES];
+        } else {
+            UIViewController *toVC;
+            if (indexPath.row == 3) { // 银行卡管理
+                toVC = [NAViewControllerCenter bankCardsController];
+            } else if (indexPath.row == 4) {  // 收货地址
+                toVC = [NAViewControllerCenter addressController];
+            }
             [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter addressController]
+                                           toViewController:toVC
                                               tranformStyle:NATransformStylePush
                                                   needLogin:YES];
         }
-    }
-    else if (indexPath.section == 1) {
+    } else if (indexPath.section == 1) {
+        UIViewController *toVC;
         if (indexPath.row == 0) {  // 修改手机号
-            [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter changePhoneController]
-                                              tranformStyle:NATransformStylePush
-                                                  needLogin:NO];
+            toVC = [NAViewControllerCenter changePhoneController];
         } else if (indexPath.row == 1) {  // 修改登录密码
-            [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter changePasswordController]
-                                              tranformStyle:NATransformStylePush
-                                                  needLogin:NO];
+            toVC = [NAViewControllerCenter changePasswordController];
         } else if (indexPath.row == 2) {  // 常见问题
-            [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter commonQuestionsController]
-                                              tranformStyle:NATransformStylePush
-                                                  needLogin:NO];
+            toVC = [NAViewControllerCenter commonQuestionsController];
         } else if (indexPath.row == 3) {  // 关于我们
-            [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter aboutUsController]
-                                              tranformStyle:NATransformStylePush
-                                                  needLogin:NO];
+            toVC = [NAViewControllerCenter aboutUsController];
         }
+        [NAViewControllerCenter transformViewController:self
+                                       toViewController:toVC
+                                          tranformStyle:NATransformStylePush
+                                              needLogin:NO];
     }
 }
 

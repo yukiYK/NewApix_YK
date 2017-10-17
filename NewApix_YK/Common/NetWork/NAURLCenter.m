@@ -260,8 +260,8 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"share", @"user"] param:param rightCode:@"0"];
 }
 
-/** 用户认证状态接口 */
-+ (NAAPIModel *)authenticationConfig {
+/** 获取用户认证状态接口 */
++ (NAAPIModel *)authenticationStatusConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_credit", @"step"] param:param rightCode:@"0"];
@@ -351,6 +351,39 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"banks", @"validate"] param:param rightCode:@"0"];
 }
 
+/** 身份认证接口 */
++ (NAAPIModel *)idCardAuthenticationConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"origin"] = @"0";
+    param[@"user_name"] = [NAUserTool getIdName];
+    param[@"id_number"] = [NAUserTool getIdNumber];
+    param[@"nation"] = [NAUserTool getIdNation];
+    param[@"detailed_address"] = [NAUserTool getIdDetailedAddress];
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"users", @"idcard_identity"] param:param rightCode:@"0"];
+}
+
+/** 脸部识别接口 */
++ (NAAPIModel *)faceIdentityConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"origin"] = @"0";
+    param[@"user_name"] = [NAUserTool getIdName];
+    param[@"id_number"] = [NAUserTool getIdNumber];
+    param[@"nation"] = [NAUserTool getIdNation];
+    param[@"detailed_address"] = [NAUserTool getIdDetailedAddress];
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"users", @"face_identity"] param:param rightCode:nil];
+}
+
+/** 用户认证完成接口 */
++ (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"step"] = step;
+    param[@"token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_credit", @"save"] param:param rightCode:nil];
+}
+
 
 /**
  苹果内购VIP会员后 后台验证接口
@@ -371,9 +404,10 @@
 
 
 
+
 #pragma mark - <--------------------所有APIX的API接口------------------->
-/** 身份证认证接口 */
-+ (NAAPIModel *)idCardAuthenticationConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType {
+/** 身份证识别接口 */
++ (NAAPIModel *)idCardRecognitionConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType {
     
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"cmd"] = @"idcard_front";

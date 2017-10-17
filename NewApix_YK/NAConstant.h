@@ -10,14 +10,6 @@
 #ifndef NAConstant_h
 #define NAConstant_h
 
-/** 认证状态 */
-typedef NS_ENUM(NSInteger, NAAuthenticationState) {
-    NAAuthenticationStateNot = 0,     // 未认证
-    NAAuthenticationStateAlready,     // 已认证
-    NAAuthenticationStateOverdue,     // 已过期
-    NAAuthenticationStateCanUpdate,   // 可更新
-    NAAuthenticationStateAlreadyUpdate// 已更新
-};
 
 // --------------------- 一些常量 -------------
 // 对密码进行AES加密的key
@@ -45,8 +37,10 @@ static NSString * const kUserDefaultsToken = @"kUserDefaultsToken";       // tok
 // 用户信息
 static NSString * const kUserDefaultsNick = @"kUserDefaultsNick";         // 昵称
 static NSString * const kUserDefaultsAvatar = @"kUserDefaultsAvatar";     // 头像地址
-static NSString * const kUserDefaultsIdName = @"kUserDefaultsIdName";     // 真实姓名
+static NSString * const kUserDefaultsIdName = @"kUserDefaultsIdName";     // 身份证上的姓名
 static NSString * const kUserDefaultsIdNumber = @"kUserDefaultsIdNumber"; // 身份证号
+static NSString * const kUserDefaultsIdNation = @"kUserDefaultsIdNation";   // 身份证上的国籍
+static NSString * const kUserDefaultsIdDetailedAddress = @"kUserDefaultsIdDetailedAddress";// 身份证上的详细地址
 static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 用户手机号
 static NSString * const kUserDefaultsTrustScore = @"kUserDefaultsTrustScore";// 信用分数
 static NSString * const kUserDefaultsSex = @"kUserDefaultsSex";    // 性别

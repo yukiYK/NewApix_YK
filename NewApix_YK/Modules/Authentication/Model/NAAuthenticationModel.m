@@ -35,6 +35,51 @@
     return resultArr;
 }
 
+/** 解析用户的认证状态 */
++ (void)analysisAuthentication:(NSDictionary *)returnValue {
+    NAAuthenticationModel *model = [self sharedModel];
+    [model yy_modelSetWithJSON:returnValue[@"data"]];
+    
+    NSArray *reset_data = returnValue[@"reset_data"];
+    NSArray *update_prompt = returnValue[@"update_prompt"];
+    NSArray *propertyArray = [self getAllProperties];
+    if (reset_data.count > 0) {
+        [reset_data enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSDictionary *dict = obj;
+            [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                if ([key isEqualToString:@"carrier"]) {
+                    model.isp = NAAuthenticationStateOverdue;
+                } else if ([key isEqualToString:@"identity"]) {
+                    model.idcard = NAAuthenticationStateOverdue;
+                } else if ([propertyArray containsObject:key]) {
+                    id propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"2"];
+                    [model setValue:propertyValue forKey:key];
+                }
+            }];
+        }];
+    }
+    if (update_prompt.count > 0) {
+        [update_prompt enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSDictionary *dict = obj;
+            for (NSString *key in dict.allKeys) {
+                NSString *value = [NSString stringWithFormat:@"%@", [dict objectForKey:key]];
+                
+                id propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"4"];
+                if ([value integerValue] == 1)
+                    propertyValue = [[[NSNumberFormatter alloc] init] numberFromString:@"3"];
+                
+                if ([key isEqualToString:@"carrier"]) {
+                    [model setValue:propertyValue forKey:@"isp"];
+                } else if ([key isEqualToString:@"identity"]) {
+                    [model setValue:propertyValue forKey:@"idcard"];
+                } else if ([propertyArray containsObject:key]) {
+                    [model setValue:propertyValue forKey:key];
+                }
+            }
+        }];
+    }
+}
+
 
 ///** 运营商 */
 //- (void)setIsp:(NAAuthenticationState)isp {

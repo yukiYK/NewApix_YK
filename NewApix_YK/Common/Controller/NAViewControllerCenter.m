@@ -25,6 +25,9 @@
 #import "NACommonQuestionsController.h"
 #import "NABankCardsController.h"
 #import "NAAddCardController.h"
+#import "NAIDAuthenticationController.h"
+#import "NAIDUserFaceController.h"
+#import "NAIDFaceCameraController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -191,6 +194,37 @@
 + (UIViewController *)addBankCardController {
     return [[NAAddCardController alloc] initWithNibName:@"NAAddCardController" bundle:nil];
 }
+
+/**
+ 身份认证页
+ 
+ @return NAIDAuthenticationController
+ */
++ (UIViewController *)idAuthenticationController {
+    return [[NAIDAuthenticationController alloc] initWithNibName:@"NAIDAuthenticationController" bundle:nil];
+}
+
+
+/**
+ 脸部识别页
+ 
+ @return NAIDUserFaceController
+ */
++ (UIViewController *)idUserFaceController {
+    return [[NAIDUserFaceController alloc] initWithNibName:@"NAIDUserFaceController" bundle:nil];
+}
+
+
+/**
+ 脸部识别相机页
+ 
+ @return NAIDFaceCameraController
+ */
++ (UIViewController *)idFaceCameraController {
+    return [[NAIDFaceCameraController alloc] initWithNibName:@"NAIDFaceCameraController" bundle:nil];
+}
+
+
 
 // 第三方贷款web页 等等
 + (UIViewController *)commonWebControllerWithCardModel:(NAMainCardModel *)cardModel isShowShareBtn:(BOOL)isShowShareBtn {

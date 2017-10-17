@@ -45,6 +45,22 @@
     [[NSUserDefaults standardUserDefaults] setObject:idNumber forKey:kUserDefaultsIdNumber];
 }
 
+/** 身份证上的国籍 */
++ (NSString *)getIdNation {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsIdNation];
+}
++ (void)saveIdNation:(NSString *)idNation {
+    [[NSUserDefaults standardUserDefaults] setObject:idNation forKey:kUserDefaultsIdNation];
+}
+
+/** 身份证上的地址 */
++ (NSString *)getIdDetailedAddress {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsIdDetailedAddress];
+}
++ (void)saveIdDetailedAddress:(NSString *)idAddress {
+    [[NSUserDefaults standardUserDefaults] setObject:idAddress forKey:kUserDefaultsIdDetailedAddress];
+}
+
 + (NSString *)getTrustScore {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsTrustScore];
 }

@@ -41,6 +41,10 @@
 		4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850621F7E4017000C2AD5 /* NAChangePhoneController.xib */; };
 		4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */; };
 		4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */; };
+		4A7E03421F94A19300939486 /* NAIDUserFaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E03401F94A19300939486 /* NAIDUserFaceController.m */; };
+		4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7E03411F94A19300939486 /* NAIDUserFaceController.xib */; };
+		4A7E03471F94BC8D00939486 /* NAIDFaceCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E03451F94BC8D00939486 /* NAIDFaceCameraController.m */; };
+		4A7E03481F94BC8D00939486 /* NAIDFaceCameraController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7E03461F94BC8D00939486 /* NAIDFaceCameraController.xib */; };
 		4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */; };
 		4A8B10331F8F17DA00498F9D /* NAAuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8B102F1F8F16BE00498F9D /* NAAuthenticationModel.m */; };
 		4A8B10371F8F486A00498F9D /* NAIDAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */; };
@@ -179,6 +183,12 @@
 		4A7850651F7E4FB5000C2AD5 /* NANewPhoneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NANewPhoneController.h; sourceTree = "<group>"; };
 		4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NANewPhoneController.m; sourceTree = "<group>"; };
 		4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NANewPhoneController.xib; sourceTree = "<group>"; };
+		4A7E033F1F94A19300939486 /* NAIDUserFaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDUserFaceController.h; sourceTree = "<group>"; };
+		4A7E03401F94A19300939486 /* NAIDUserFaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDUserFaceController.m; sourceTree = "<group>"; };
+		4A7E03411F94A19300939486 /* NAIDUserFaceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAIDUserFaceController.xib; sourceTree = "<group>"; };
+		4A7E03441F94BC8D00939486 /* NAIDFaceCameraController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDFaceCameraController.h; sourceTree = "<group>"; };
+		4A7E03451F94BC8D00939486 /* NAIDFaceCameraController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDFaceCameraController.m; sourceTree = "<group>"; };
+		4A7E03461F94BC8D00939486 /* NAIDFaceCameraController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAIDFaceCameraController.xib; sourceTree = "<group>"; };
 		4A7F95291F7A5123003D7FB6 /* UINavigationController+NAStatusBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+NAStatusBar.h"; sourceTree = "<group>"; };
 		4A7F952A1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+NAStatusBar.m"; sourceTree = "<group>"; };
 		4A8B102F1F8F16BE00498F9D /* NAAuthenticationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationModel.m; sourceTree = "<group>"; };
@@ -648,6 +658,12 @@
 				4A8B10341F8F486A00498F9D /* NAIDAuthenticationController.h */,
 				4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */,
 				4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */,
+				4A7E033F1F94A19300939486 /* NAIDUserFaceController.h */,
+				4A7E03401F94A19300939486 /* NAIDUserFaceController.m */,
+				4A7E03411F94A19300939486 /* NAIDUserFaceController.xib */,
+				4A7E03441F94BC8D00939486 /* NAIDFaceCameraController.h */,
+				4A7E03451F94BC8D00939486 /* NAIDFaceCameraController.m */,
+				4A7E03461F94BC8D00939486 /* NAIDFaceCameraController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -934,9 +950,11 @@
 				4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */,
 				4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */,
 				4AC6CA491F2F248500A9308F /* NALoginController.xib in Resources */,
+				4A7E03481F94BC8D00939486 /* NAIDFaceCameraController.xib in Resources */,
 				4AA684DE1F6671DD0041BB2D /* NAPresentCenterController.xib in Resources */,
 				4A09599E1F8B59B7008164B6 /* NABankCardCell.xib in Resources */,
 				4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */,
+				4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */,
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
 				4A014D9B1F5579E6005D273E /* new.gif in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
@@ -1060,6 +1078,8 @@
 				4AFCA9441F346B3D00351B04 /* main.m in Sources */,
 				4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */,
 				4AFCA9651F346C3500351B04 /* UIView+NAExtension.m in Sources */,
+				4A7E03471F94BC8D00939486 /* NAIDFaceCameraController.m in Sources */,
+				4A7E03421F94A19300939486 /* NAIDUserFaceController.m in Sources */,
 				4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */,
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
 				4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */,

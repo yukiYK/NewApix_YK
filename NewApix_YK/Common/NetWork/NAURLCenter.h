@@ -89,7 +89,7 @@
 /** 分享成功接口 */
 + (NAAPIModel *)shareSuccessConfig;
 /** 用户认证状态接口 */
-+ (NAAPIModel *)authenticationConfig;
++ (NAAPIModel *)authenticationStatusConfig;
 /** 保存个人信息接口 */
 + (NAAPIModel *)updateUserInfoConfigWithModel:(NAUserInfoModel *)model;
 /** 验证旧手机号接口 */
@@ -108,6 +108,12 @@
 + (NAAPIModel *)addBankCardConfigWithModel:(NABankCardModel *)model;
 /** 验证绑定银行卡接口 */
 + (NAAPIModel *)validateBankCardConfigWithSmsCode:(NSString *)smsCode phone:(NSString *)phoneNumber cardNumber:(NSString *)cardNumber;
+/** 身份认证接口 */
++ (NAAPIModel *)idCardAuthenticationConfig;
+/** 脸部识别接口 */
++ (NAAPIModel *)faceIdentityConfig;
+/** 用户认证完成接口 */
++ (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step;
 
 
 /**
@@ -121,8 +127,8 @@
 + (NAAPIModel *)buyVipVerifyConfigWithReceipt:(NSString *)receipt isSandBox:(BOOL)isSandBox imageId:(NSString *)imageId;
 
 #pragma mark - <--------------------所有APIX的API接口------------------->
-/** 身份证认证接口 */
-+ (NAAPIModel *)idCardAuthenticationConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType;
+/** 身份证识别接口 */
++ (NAAPIModel *)idCardRecognitionConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType;
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */

@@ -8,6 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+/** 认证状态 */
+typedef NS_ENUM(NSInteger, NAAuthenticationState) {
+    NAAuthenticationStateNot = 0,     // 未认证
+    NAAuthenticationStateAlready,     // 已认证
+    NAAuthenticationStateOverdue,     // 已过期
+    NAAuthenticationStateCanUpdate,   // 可更新
+    NAAuthenticationStateAlreadyUpdate// 已更新
+};
+
 @interface NAAuthenticationModel : NSObject
 
 /** 运营商 */
@@ -35,8 +44,14 @@
 /** 借贷历史 */
 @property (nonatomic, assign) NAAuthenticationState loan_history;
 
+
+/** 单例 */
 + (instancetype)sharedModel;
 
-+ (NSArray *)getAllProperties;
+/** 获取此类的所有属性 */
+//+ (NSArray *)getAllProperties;
+
+/** 解析用户的认证状态 */
++ (void)analysisAuthentication:(NSDictionary *)returnValue;
 
 @end

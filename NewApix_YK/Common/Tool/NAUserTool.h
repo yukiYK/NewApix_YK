@@ -30,6 +30,14 @@
 + (NSString *)getIdNumber;
 + (void)saveIdNumber:(NSString *)idNumber;
 
+/** 身份证上的国籍 */
++ (NSString *)getIdNation;
++ (void)saveIdNation:(NSString *)idNation;
+
+/** 身份证上的地址 */
++ (NSString *)getIdDetailedAddress;
++ (void)saveIdDetailedAddress:(NSString *)idAddress;
+
 /** 信用分数 */
 + (NSString *)getTrustScore;
 + (void)saveTrustSocre:(NSString *)trustScore;

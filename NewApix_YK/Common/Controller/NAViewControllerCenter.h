@@ -158,6 +158,29 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 + (UIViewController *)addBankCardController;
 
 /**
+ 身份认证页
+
+ @return NAIDAuthenticationController
+ */
++ (UIViewController *)idAuthenticationController;
+
+
+/**
+ 脸部识别页
+
+ @return NAIDUserFaceController
+ */
++ (UIViewController *)idUserFaceController;
+
+
+/**
+ 脸部识别相机页
+
+ @return NAIDFaceCameraController
+ */
++ (UIViewController *)idFaceCameraController;
+
+/**
  第三方贷款web页 等等
 
  @param cardModel 数据model，如果没有传nil
