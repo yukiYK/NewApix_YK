@@ -94,6 +94,21 @@ static NSString * const kShareWechatAppKey = @"wxfa01bd3730538e0c";
 static NSString * const kShareWechatAppSecret = @"";
 
 
+#pragma mark - <认证需要的一些url和key>
+static NSString * const kAuthenticationCallbackUrl = @"http://api.meixinlife.com/user/reset";
+static NSString * const kAuthenticationSuccessUrl = @"https://api.meixinlife.com/api/success";
+static NSString * const kAuthenticationFailedUrl = @"https://api.meixinlife.com/api/failed";
+/** 淘宝认证 */
+static NSString * const kTBUrl = @"http://e.apix.cn/apixanalysis/tb/grant/ele_business/taobao/pages";
+static NSString * const kTBApixKey = @"cf8f4e5a3ff549767044877d387653a0";
+/** 京东认证 */
+static NSString * const kJDUrl = @"http://e.apix.cn/apixanalysis/jd/grant/ele_business/jingdong/jd/page";
+static NSString * const kJDApixKey = @"038d8deabe654a687bbd5279127c2826";
+/** 运营商认证 */
+static NSString * const kServiceUrl = @"http://e.apix.cn/apixanalysis/mobile/yys/phone/carrier/page";
+static NSString * const kServiceApixKey = @"ba287ff6c449411365ea2e0bcaca61b7";
+
+
 
 #pragma mark - <通用数字>
 static CGFloat const kNavBarH = 44.0;

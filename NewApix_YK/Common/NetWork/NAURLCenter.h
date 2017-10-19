@@ -113,7 +113,7 @@
 /** 脸部识别接口 */
 + (NAAPIModel *)faceIdentityConfig;
 /** 用户认证完成接口 */
-+ (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step;
++ (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step token:(NSString *)token;
 
 
 /**
@@ -129,6 +129,12 @@
 #pragma mark - <--------------------所有APIX的API接口------------------->
 /** 身份证识别接口 */
 + (NAAPIModel *)idCardRecognitionConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType;
+/** 淘宝认证获取url接口 */
++ (NAAPIModel *)tbAuthenticationUrlConfig;
+/** 京东认证获取url接口 */
++ (NAAPIModel *)jdAuthenticationUrlConfig;
+/** 运营商认证获取url接口 */
++ (NAAPIModel *)serviceAuthenticationUrlConfig;
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */

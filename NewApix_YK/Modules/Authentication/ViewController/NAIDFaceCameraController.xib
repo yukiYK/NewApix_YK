@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,8 +19,56 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wab-rM-n5S">
+                    <rect key="frame" x="162.5" y="587" width="50" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="Gfp-Hr-R83"/>
+                        <constraint firstAttribute="height" constant="40" id="VkX-Yi-Bdd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="拍照"/>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iG-nS-8q2">
+                    <rect key="frame" x="0.0" y="20" width="62" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="62" id="OER-xc-XgH"/>
+                        <constraint firstAttribute="height" constant="30" id="ddM-cN-oNU"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <state key="normal" title="闪光灯开"/>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.png" translatesAutoresizingMaskIntoConstraints="NO" id="vLf-rG-OD8">
+                    <rect key="frame" x="0.0" y="35" width="375" height="544"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWW-AB-Tpn">
+                    <rect key="frame" x="160" y="20" width="55" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="55" id="FwX-61-cmI"/>
+                        <constraint firstAttribute="height" constant="30" id="m3i-qt-H5T"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="前置"/>
+                </button>
+            </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Wab-rM-n5S" secondAttribute="bottom" constant="40" id="CuC-Bq-q5U"/>
+                <constraint firstItem="rWW-AB-Tpn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JfL-EQ-l7a"/>
+                <constraint firstItem="vLf-rG-OD8" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="OvH-lw-YQk"/>
+                <constraint firstItem="Wab-rM-n5S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pc9-s8-nvN"/>
+                <constraint firstItem="Wab-rM-n5S" firstAttribute="top" secondItem="vLf-rG-OD8" secondAttribute="bottom" constant="8" id="Pmz-F8-Ltg"/>
+                <constraint firstItem="4iG-nS-8q2" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="WU7-x3-3nq"/>
+                <constraint firstItem="rWW-AB-Tpn" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="YpW-UH-03L"/>
+                <constraint firstItem="vLf-rG-OD8" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="15" id="daV-7Y-idj"/>
+                <constraint firstItem="vLf-rG-OD8" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="rDt-fj-RTq"/>
+                <constraint firstItem="4iG-nS-8q2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="wkc-1V-vhX"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
+    <resources>
+        <image name="face.png" width="283" height="362"/>
+    </resources>
 </document>

@@ -33,7 +33,8 @@
 // 是否是线上
 #define SERVER_ONLINE  1
 // apix地址
-#define SERVER_ADDRESS_APIX @"http://a.apix.cn"
+#define SERVER_ADDRESS_APIX_A @"http://a.apix.cn"
+#define SERVER_ADDRESS_APIX_E @"http://e.apix.cn"
 
 #if SERVER_ONLINE
 // 现网环境

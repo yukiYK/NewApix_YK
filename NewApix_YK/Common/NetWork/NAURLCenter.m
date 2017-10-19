@@ -28,8 +28,12 @@
         case NARequestURLTypeH5:
             urlString = SERVER_ADDRESS_H5;
             break;
-        case NARequestURLTypeAPIX:
-            urlString = SERVER_ADDRESS_APIX;
+        case NARequestURLTypeAPIXA:
+            urlString = SERVER_ADDRESS_APIX_A;
+            break;
+        case NARequestURLTypeAPIXE:
+            urlString = SERVER_ADDRESS_APIX_E;
+            break;
         default:
             break;
     }
@@ -71,13 +75,13 @@
 }
 
 // 生成APIX api接口的model
-+ (NAAPIModel *)apixApiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param {
++ (NAAPIModel *)apixApiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param urlType:(NARequestURLType)urlType {
     NAAPIModel *model = [[NAAPIModel alloc] init];
     model.requestType = type;
     model.pathArr = pathArr;
     model.param = param;
     model.rightCode = nil;
-    model.requestUrlType = NARequestURLTypeAPIX;
+    model.requestUrlType = urlType;
     
     return model;
 }
@@ -376,13 +380,14 @@
 }
 
 /** 用户认证完成接口 */
-+ (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step {
++ (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step token:(NSString *)token {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = [NACommon getToken];
     param[@"step"] = step;
-    param[@"token"] = [NACommon getToken];
+    param[@"token"] = token;
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_credit", @"save"] param:param rightCode:nil];
 }
+
 
 
 /**
@@ -413,7 +418,34 @@
     param[@"cmd"] = @"idcard_front";
     param[@"pictype"] = picType;
     param[@"pic"] = picDataStr;
-    return [self apixApiModelWithType:NAHTTPRequestTypePost pathArr:@[@"apixlab", @"idcardrecog", @"idcardimage"] param:param];
+    return [self apixApiModelWithType:NAHTTPRequestTypePost pathArr:@[@"apixlab", @"idcardrecog", @"idcardimage"] param:param urlType:NARequestURLTypeAPIXA];
+}
+
+/** 淘宝认证获取url接口 */
++ (NAAPIModel *)tbAuthenticationUrlConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"callback_url"] = kAuthenticationCallbackUrl;
+    param[@"success_url"] = kAuthenticationSuccessUrl;
+    param[@"failed_url"] = kAuthenticationFailedUrl;
+    return [self apixApiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"apixanalysis", @"tb", @"grant", @"ele_business", @"taobao", @"pages"] param:param urlType:NARequestURLTypeAPIXE];
+}
+
+/** 京东认证获取url接口 */
++ (NAAPIModel *)jdAuthenticationUrlConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"callback_url"] = kAuthenticationCallbackUrl;
+    param[@"success_url"] = kAuthenticationSuccessUrl;
+    param[@"failed_url"] = kAuthenticationFailedUrl;
+    return [self apixApiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"apixanalysis", @"jd", @"grant", @"ele_business", @"jingdong", @"jd", @"page"] param:param urlType:NARequestURLTypeAPIXE];
+}
+
+/** 淘宝认证获取url接口 */
++ (NAAPIModel *)serviceAuthenticationUrlConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"callback_url"] = kAuthenticationCallbackUrl;
+    param[@"success_url"] = kAuthenticationSuccessUrl;
+    param[@"failed_url"] = kAuthenticationFailedUrl;
+    return [self apixApiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"apixanalysis", @"mobile", @"yys", @"phone", @"carrier", @"page"] param:param urlType:NARequestURLTypeAPIXE];
 }
 
 
@@ -455,5 +487,6 @@
     NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"commonquestion"]];
     return urlStr;
 }
+
 
 @end

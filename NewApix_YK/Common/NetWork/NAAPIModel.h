@@ -11,7 +11,8 @@
 typedef NS_ENUM(NSInteger, NARequestURLType) {
     NARequestURLTypeAPI,   // 美信后台接口
     NARequestURLTypeH5,    // 美信web
-    NARequestURLTypeAPIX    // apix接口
+    NARequestURLTypeAPIXA, // apix接口a
+    NARequestURLTypeAPIXE  // apix接口e
 };
 
 typedef NS_ENUM(NSInteger, NAHTTPRequestType) {

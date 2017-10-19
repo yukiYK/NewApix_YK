@@ -62,7 +62,6 @@
 + (NSString *)getToken {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsToken];
 }
-
 + (void)setToken:(NSString *)token {
     [[NSUserDefaults standardUserDefaults] setObject:token forKey:kUserDefaultsToken];
 }
@@ -70,7 +69,6 @@
 + (NSString *)getUniqueId {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsUniqueId];
 }
-
 + (void)setUniqueId:(NSString *)uniqueId {
     [[NSUserDefaults standardUserDefaults] setObject:uniqueId forKey:kUserDefaultsUniqueId];
 }

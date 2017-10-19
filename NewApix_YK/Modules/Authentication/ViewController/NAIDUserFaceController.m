@@ -66,7 +66,7 @@
 
 // 身份认证完成
 - (void)requestForAuthenticationEnd {
-    NAAPIModel *model = [NAURLCenter authenticationSaveConfigWithStep:@"1"];
+    NAAPIModel *model = [NAURLCenter authenticationSaveConfigWithStep:@"1" token:[NACommon getToken]];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

@@ -29,6 +29,7 @@
 #import "NAIDUserFaceController.h"
 #import "NAIDFaceCameraController.h"
 
+
 @implementation NAViewControllerCenter
 // 跳转方法
 + (void)transformViewController:(UIViewController *)fromVC
@@ -204,7 +205,6 @@
     return [[NAIDAuthenticationController alloc] initWithNibName:@"NAIDAuthenticationController" bundle:nil];
 }
 
-
 /**
  脸部识别页
  
@@ -213,7 +213,6 @@
 + (UIViewController *)idUserFaceController {
     return [[NAIDUserFaceController alloc] initWithNibName:@"NAIDUserFaceController" bundle:nil];
 }
-
 
 /**
  脸部识别相机页
@@ -224,6 +223,17 @@
     return [[NAIDFaceCameraController alloc] initWithNibName:@"NAIDFaceCameraController" bundle:nil];
 }
 
+/**
+ 京东，淘宝，运营商认证页
+
+ @param type NAAuthenticationType
+ @return NAAuthenticationWebController
+ */
++ (UIViewController *)authenticationWebController:(NAAuthenticationType)type {
+    NAAuthenticationWebController *vc = [[NAAuthenticationWebController alloc] init];
+    vc.authenticationType = type;
+    return vc;
+}
 
 
 // 第三方贷款web页 等等

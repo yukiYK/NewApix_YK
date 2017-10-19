@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "NAMainCardModel.h"
-
+#import "NAAuthenticationWebController.h"
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -164,7 +164,6 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)idAuthenticationController;
 
-
 /**
  脸部识别页
 
@@ -172,13 +171,21 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)idUserFaceController;
 
-
 /**
  脸部识别相机页
 
  @return NAIDFaceCameraController
  */
 + (UIViewController *)idFaceCameraController;
+
+/**
+ 京东，淘宝，运营商认证页
+ 
+ @param type NAAuthenticationType
+ @return NAAuthenticationWebController
+ */
++ (UIViewController *)authenticationWebController:(NAAuthenticationType)type;
+
 
 /**
  第三方贷款web页 等等
