@@ -30,7 +30,7 @@
 - (void)setupSubviews {
     NSDictionary *infoDic = [[NSBundle mainBundle] infoDictionary];
     NSString *appName = [infoDic objectForKey:@"CFBundleDisplayName"];
-    NSString *appVersion = [infoDic objectForKey:(NSString *)kCFBundleVersionKey];
+    NSString *appVersion = [infoDic objectForKey:@"CFBundleShortVersionString"];
     self.versionLabel.text = [NSString stringWithFormat:@"%@ 版本%@", appName, appVersion];
     
     UITapGestureRecognizer *scoreTapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapScore)];
