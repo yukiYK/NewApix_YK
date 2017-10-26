@@ -25,20 +25,20 @@
     
     NSString *defaultPath = [path stringByAppendingPathComponent:@"default"];
     
-    NSString *wanplusDir = [NSString stringWithFormat:@"%@/wanplus",defaultPath];
+    NSString *meixinDir = [NSString stringWithFormat:@"%@/meixin",defaultPath];
     
     BOOL isDir = NO;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    BOOL existed = [fileManager fileExistsAtPath:wanplusDir isDirectory:&isDir];
+    BOOL existed = [fileManager fileExistsAtPath:meixinDir isDirectory:&isDir];
     
     if (!(isDir == YES && existed == YES)) {
-        [fileManager createDirectoryAtPath:wanplusDir withIntermediateDirectories:YES attributes:nil error:nil];
+        [fileManager createDirectoryAtPath:meixinDir withIntermediateDirectories:YES attributes:nil error:nil];
     }
     
     // 2. 生成绝对路径
-    return [wanplusDir stringByAppendingPathComponent:[self lastPathComponent]];
+    return [meixinDir stringByAppendingPathComponent:[self lastPathComponent]];
 }
 
 - (instancetype)documentPath {

@@ -90,9 +90,8 @@
  
  @return NAPresentCenterController
  */
-+ (UIViewController *)presentCenterControllerWithIsVipForever:(BOOL)isVipForever {
++ (UIViewController *)presentCenterController {
     NAPresentCenterController *presentCenterC = [[NAPresentCenterController alloc] initWithNibName:@"NAPresentCenterController" bundle:nil];
-    presentCenterC.isVipForever = isVipForever;
     return presentCenterC;
 }
 
@@ -130,9 +129,8 @@
  @param isVipForever 是否是终身会员
  @return NASettingsController
  */
-+ (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model isVipForever:(BOOL)isVipForever {
++ (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model {
     NASettingsController *settingsVC = [[NASettingsController alloc] init];
-    settingsVC.isVipForever = isVipForever;
     if (model) settingsVC.userInfoModel = model;
     return settingsVC;
 }
@@ -214,13 +212,18 @@
     return [[NAIDUserFaceController alloc] initWithNibName:@"NAIDUserFaceController" bundle:nil];
 }
 
+
+
 /**
  脸部识别相机页
  
+ @param endBlock 拍照完成block
  @return NAIDFaceCameraController
  */
-+ (UIViewController *)idFaceCameraController {
-    return [[NAIDFaceCameraController alloc] initWithNibName:@"NAIDFaceCameraController" bundle:nil];
++ (UIViewController *)idFaceCameraControllerWithBlock:(CameraDidEndBlock)endBlock {
+    NAIDFaceCameraController *cameraVC = [[NAIDFaceCameraController alloc] initWithNibName:@"NAIDFaceCameraController" bundle:nil];
+    cameraVC.endBlock = endBlock;
+    return cameraVC;
 }
 
 /**

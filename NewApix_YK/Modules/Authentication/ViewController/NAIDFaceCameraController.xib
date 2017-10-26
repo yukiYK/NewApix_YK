@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NAIDFaceCameraController">
             <connections>
+                <outlet property="flashBtn" destination="4iG-nS-8q2" id="ECd-dV-ca9"/>
+                <outlet property="switchBtn" destination="rWW-AB-Tpn" id="Mno-lM-Z22"/>
+                <outlet property="takePhotoBtn" destination="Wab-rM-n5S" id="aLv-bq-OJq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,55 +23,83 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wab-rM-n5S">
-                    <rect key="frame" x="162.5" y="587" width="50" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="50" id="Gfp-Hr-R83"/>
-                        <constraint firstAttribute="height" constant="40" id="VkX-Yi-Bdd"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="拍照"/>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iG-nS-8q2">
-                    <rect key="frame" x="0.0" y="20" width="62" height="30"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="62" id="OER-xc-XgH"/>
-                        <constraint firstAttribute="height" constant="30" id="ddM-cN-oNU"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="闪光灯开"/>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.png" translatesAutoresizingMaskIntoConstraints="NO" id="vLf-rG-OD8">
-                    <rect key="frame" x="0.0" y="35" width="375" height="544"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="camera_face" translatesAutoresizingMaskIntoConstraints="NO" id="vLf-rG-OD8">
+                    <rect key="frame" x="0.0" y="35" width="375" height="516"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWW-AB-Tpn">
-                    <rect key="frame" x="160" y="20" width="55" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wab-rM-n5S">
+                    <rect key="frame" x="137.5" y="559" width="100" height="88"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="55" id="FwX-61-cmI"/>
-                        <constraint firstAttribute="height" constant="30" id="m3i-qt-H5T"/>
+                        <constraint firstAttribute="width" constant="100" id="Gfp-Hr-R83"/>
+                        <constraint firstAttribute="height" constant="88" id="VkX-Yi-Bdd"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <state key="normal" title="前置"/>
+                    <state key="normal" backgroundImage="camera_takephoto"/>
+                    <state key="selected" backgroundImage="camera_takephoto_ed"/>
+                    <connections>
+                        <action selector="onTakePhotoBtnClicked:" destination="-1" eventType="touchUpInside" id="NAH-qq-pEQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4iG-nS-8q2">
+                    <rect key="frame" x="335" y="30" width="40" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="OER-xc-XgH"/>
+                        <constraint firstAttribute="height" constant="50" id="ddM-cN-oNU"/>
+                    </constraints>
+                    <state key="normal" image="camera_flash_off"/>
+                    <state key="selected" image="camera_flash_on"/>
+                    <connections>
+                        <action selector="onFlashBtnClicked:" destination="-1" eventType="touchUpInside" id="jZu-Yz-oKY"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWW-AB-Tpn">
+                    <rect key="frame" x="162.5" y="30" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="FwX-61-cmI"/>
+                        <constraint firstAttribute="height" constant="50" id="m3i-qt-H5T"/>
+                    </constraints>
+                    <state key="normal" image="camera_switch"/>
+                    <connections>
+                        <action selector="onSwitchBtnClicked:" destination="-1" eventType="touchUpInside" id="QJH-Q0-SIQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6p-Hf-6OX">
+                    <rect key="frame" x="0.0" y="30" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="EmT-Nl-H5z"/>
+                        <constraint firstAttribute="height" constant="50" id="G9V-Fn-ykk"/>
+                    </constraints>
+                    <state key="normal" image="camera_close"/>
+                    <connections>
+                        <action selector="onCloseBtnClicked:" destination="-1" eventType="touchUpInside" id="kgr-NW-T09"/>
+                    </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Wab-rM-n5S" secondAttribute="bottom" constant="40" id="CuC-Bq-q5U"/>
+                <constraint firstItem="T6p-Hf-6OX" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="816-Jl-aD3"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="Wab-rM-n5S" secondAttribute="bottom" constant="20" id="CuC-Bq-q5U"/>
+                <constraint firstItem="4iG-nS-8q2" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="DP4-KQ-F8s"/>
                 <constraint firstItem="rWW-AB-Tpn" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="JfL-EQ-l7a"/>
                 <constraint firstItem="vLf-rG-OD8" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="OvH-lw-YQk"/>
                 <constraint firstItem="Wab-rM-n5S" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pc9-s8-nvN"/>
                 <constraint firstItem="Wab-rM-n5S" firstAttribute="top" secondItem="vLf-rG-OD8" secondAttribute="bottom" constant="8" id="Pmz-F8-Ltg"/>
-                <constraint firstItem="4iG-nS-8q2" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="WU7-x3-3nq"/>
-                <constraint firstItem="rWW-AB-Tpn" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="YpW-UH-03L"/>
+                <constraint firstItem="rWW-AB-Tpn" firstAttribute="centerY" secondItem="T6p-Hf-6OX" secondAttribute="centerY" id="W6a-tU-s4y"/>
+                <constraint firstItem="4iG-nS-8q2" firstAttribute="centerY" secondItem="T6p-Hf-6OX" secondAttribute="centerY" id="ZbV-KQ-SML"/>
                 <constraint firstItem="vLf-rG-OD8" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="15" id="daV-7Y-idj"/>
+                <constraint firstItem="T6p-Hf-6OX" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="10" id="lQX-kl-phq"/>
                 <constraint firstItem="vLf-rG-OD8" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="rDt-fj-RTq"/>
-                <constraint firstItem="4iG-nS-8q2" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="wkc-1V-vhX"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="24.5" y="51.5"/>
         </view>
     </objects>
     <resources>
-        <image name="face.png" width="283" height="362"/>
+        <image name="camera_close" width="18" height="18"/>
+        <image name="camera_face" width="283" height="362"/>
+        <image name="camera_flash_off" width="16" height="24"/>
+        <image name="camera_flash_on" width="16" height="24"/>
+        <image name="camera_switch" width="33" height="30"/>
+        <image name="camera_takephoto" width="99" height="88"/>
+        <image name="camera_takephoto_ed" width="99" height="88"/>
     </resources>
 </document>

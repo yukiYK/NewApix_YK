@@ -15,4 +15,9 @@
 
 - (void)setDetailTextColor:(UIColor *)color;
 
+/** 设置右边小图标，不能和小红点同时用 */
+- (void)setRightIcon:(NSString *)rightIcon;
+/** 是否显示右边小红点，不能和右边小图标同时用 */
+- (void)showRedPoint:(BOOL)isShow;
+
 @end

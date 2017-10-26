@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -14,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IUF-im-SEZ">
@@ -30,11 +31,21 @@
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--------" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCF-wj-wG3">
-                        <rect key="frame" x="236.5" y="15" width="45.5" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--------" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCF-wj-wG3">
+                        <rect key="frame" x="216.5" y="12.5" width="45.5" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="lTj-IE-N80"/>
+                            <constraint firstAttribute="width" constant="45.5" id="t1O-og-qCH"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V4T-uI-Rdr">
                         <rect key="frame" x="15" y="10" width="24" height="24"/>
@@ -44,7 +55,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="55f-wl-QLl">
-                        <rect key="frame" x="290" y="19" width="6" height="6"/>
+                        <rect key="frame" x="278" y="19" width="6" height="6"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="6" id="C53-hf-yvU"/>
@@ -64,16 +75,25 @@
                             <constraint firstAttribute="height" constant="13" id="w5F-t7-hnF"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="flower_present" translatesAutoresizingMaskIntoConstraints="NO" id="CIZ-Gn-cx5">
+                        <rect key="frame" x="268" y="14" width="16" height="16"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="16" id="gQW-K7-7b0"/>
+                            <constraint firstAttribute="height" constant="16" id="wg0-lf-W1L"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="6iA-WR-F3r" firstAttribute="leading" secondItem="V4T-uI-Rdr" secondAttribute="trailing" constant="15" id="4MX-oD-9r3"/>
                     <constraint firstItem="V4T-uI-Rdr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="5Sa-ji-ZIp"/>
+                    <constraint firstItem="CIZ-Gn-cx5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8kG-8I-WSE"/>
                     <constraint firstItem="IUF-im-SEZ" firstAttribute="leading" secondItem="6iA-WR-F3r" secondAttribute="leading" id="A6K-fX-gYi"/>
                     <constraint firstItem="NYc-nb-d3Q" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="IH0-ZO-if4"/>
                     <constraint firstAttribute="bottom" secondItem="IUF-im-SEZ" secondAttribute="bottom" id="KGm-1h-Pbt"/>
-                    <constraint firstItem="NYc-nb-d3Q" firstAttribute="leading" secondItem="55f-wl-QLl" secondAttribute="trailing" constant="8" id="LdB-Ck-vCz"/>
+                    <constraint firstItem="NYc-nb-d3Q" firstAttribute="leading" secondItem="55f-wl-QLl" secondAttribute="trailing" constant="20" id="LdB-Ck-vCz"/>
+                    <constraint firstItem="NYc-nb-d3Q" firstAttribute="leading" secondItem="CIZ-Gn-cx5" secondAttribute="trailing" constant="20" id="Okw-b0-mDV"/>
+                    <constraint firstItem="NYc-nb-d3Q" firstAttribute="leading" secondItem="eCF-wj-wG3" secondAttribute="trailing" constant="42" id="YB0-VG-Y6y"/>
                     <constraint firstItem="6iA-WR-F3r" firstAttribute="centerY" secondItem="V4T-uI-Rdr" secondAttribute="centerY" id="iWC-6d-MbO"/>
-                    <constraint firstItem="55f-wl-QLl" firstAttribute="leading" secondItem="eCF-wj-wG3" secondAttribute="trailing" constant="8" id="n11-CC-7nV"/>
                     <constraint firstItem="V4T-uI-Rdr" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qzr-JQ-8qA"/>
                     <constraint firstAttribute="trailing" secondItem="IUF-im-SEZ" secondAttribute="trailing" id="vJ9-CA-K5d"/>
                     <constraint firstItem="eCF-wj-wG3" firstAttribute="centerY" secondItem="V4T-uI-Rdr" secondAttribute="centerY" id="wcp-90-1Il"/>
@@ -85,12 +105,16 @@
                 <outlet property="iconImageView" destination="V4T-uI-Rdr" id="2ay-lB-PfI"/>
                 <outlet property="nextImgView" destination="NYc-nb-d3Q" id="sQv-o1-qoN"/>
                 <outlet property="redPointView" destination="55f-wl-QLl" id="kkE-PX-rBY"/>
+                <outlet property="rightImageView" destination="CIZ-Gn-cx5" id="g9x-T5-Ckx"/>
                 <outlet property="rightLabel" destination="eCF-wj-wG3" id="Ve5-Qy-V69"/>
+                <outlet property="rightLabelTrailingCons" destination="YB0-VG-Y6y" id="akl-9w-JyG"/>
+                <outlet property="rightLabelWidthCons" destination="t1O-og-qCH" id="I9b-B2-I48"/>
                 <outlet property="titleLabel" destination="6iA-WR-F3r" id="vEP-Kd-CZc"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="flower_present" width="16" height="16"/>
         <image name="mine_next" width="7" height="12"/>
     </resources>
 </document>

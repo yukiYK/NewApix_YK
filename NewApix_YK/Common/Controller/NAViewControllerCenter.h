@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "NAMainCardModel.h"
 #import "NAAuthenticationWebController.h"
+#import "NAIDFaceCameraController.h"
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -80,7 +81,7 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 
  @return NAPresentCenterController
  */
-+ (UIViewController *)presentCenterControllerWithIsVipForever:(BOOL)isVipForever;
++ (UIViewController *)presentCenterController;
 
 /**
  礼品领取成功页
@@ -110,7 +111,7 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  @param isVipForever 是否是终身会员
  @return NASettingsController
  */
-+ (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model isVipForever:(BOOL)isVipForever;
++ (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model;
 
 /**
  修改手机号页
@@ -174,9 +175,10 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /**
  脸部识别相机页
 
+ @param endBlock 拍照完成block
  @return NAIDFaceCameraController
  */
-+ (UIViewController *)idFaceCameraController;
++ (UIViewController *)idFaceCameraControllerWithBlock:(CameraDidEndBlock)endBlock;
 
 /**
  京东，淘宝，运营商认证页

@@ -21,8 +21,16 @@ NSString * const kMineCell = @"mineCell";
 @property (nonatomic, strong) NSArray *array;
 // 用户信息
 @property (nonatomic, strong) NAUserInfoModel *userModel;
-// 是否是永久会员
-@property (nonatomic, assign) BOOL isVipForever;
+// 会员状态
+@property (nonatomic, assign) NAUserStatus userStatus;
+/** 会员到期日期 */
+@property (nonatomic, copy) NSString *vipEndDate;
+/** 会员卡图片urlStr */
+@property (nonatomic, copy) NSString *vipSkin;
+
+/** 会员礼品状态 1:已领取 其他:未领取 */
+@property (nonatomic, assign) NSInteger giftStatus;
+
 // 贷款记录数据
 @property (nonatomic, strong) NSArray *loanArray;
 
@@ -48,6 +56,7 @@ NSString * const kMineCell = @"mineCell";
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = kColorHeaderGray;
     
+    self.userStatus = NAUserStatusNormal;
     [self setupTableView];
     [self requestForLoanList];
 }
@@ -57,8 +66,13 @@ NSString * const kMineCell = @"mineCell";
     [self setupNavigationBar];
     
     [self requestForUserInfo];
-    [self requestForVipInfo];
     [self requestForOrderInfo];
+    [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {
+        self.userStatus = userStatus;
+        self.vipEndDate = vipEndDate;
+        self.vipSkin = vipSkin;
+        [self.tableView reloadData];
+    }];
 }
 
 #pragma mark - <Private Method>
@@ -115,20 +129,6 @@ NSString * const kMineCell = @"mineCell";
     }];
 }
 
-- (void)requestForVipInfo {
-    NAAPIModel *model = [NAURLCenter mineVipInfoConfig];
-    
-    WeakSelf
-    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
-        NSLog(@"%@", returnValue);
-        
-        
-    } errorCodeBlock:^(NSString *code, NSString *msg) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
-}
 
 - (void)requestForOrderInfo {
     
@@ -162,7 +162,7 @@ NSString * const kMineCell = @"mineCell";
 
 #pragma mark - <Events>
 - (void)onSettingBtnClicked {
-    UIViewController *settingsVC = [NAViewControllerCenter settingsControllerWithModel:self.userModel isVipForever:self.isVipForever];
+    UIViewController *settingsVC = [NAViewControllerCenter settingsControllerWithModel:self.userModel];
     [NAViewControllerCenter transformViewController:self
                                    toViewController:settingsVC
                                       tranformStyle:NATransformStylePush
@@ -197,6 +197,20 @@ NSString * const kMineCell = @"mineCell";
     NAMineCell *cell = [tableView dequeueReusableCellWithIdentifier:kMineCell forIndexPath:indexPath];
     NAMineModel *model = self.array[indexPath.section][indexPath.row];
     [cell setModel:model];
+    
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) { // 美信会员 
+            
+        } else if (indexPath.row == 1) { // 礼品中心
+            
+        }
+    } else if (indexPath.section == 1) {
+        if (indexPath.row == 1) {
+            
+        } else if (indexPath.row == 2) {
+            
+        }
+    }
     return cell;
 }
 
@@ -214,7 +228,7 @@ NSString * const kMineCell = @"mineCell";
         }
         else if (indexPath.row == 1) {
             [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter presentCenterControllerWithIsVipForever:self.isVipForever]
+                                           toViewController:[NAViewControllerCenter presentCenterController]
                                               tranformStyle:NATransformStylePush
                                                   needLogin:YES];
         }

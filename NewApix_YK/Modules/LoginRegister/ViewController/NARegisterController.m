@@ -160,7 +160,7 @@
         [NACommon setUniqueId:uniqueId];
         
         // 重新获取用户状态
-        [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
+        [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {
             // 获取用户信用分数
             [weakSelf requestForTrustScore];
         }];

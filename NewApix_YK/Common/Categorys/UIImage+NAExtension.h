@@ -19,10 +19,11 @@
 /** 上下拼接两张图片 */
 - (UIImage *)stitchBottomImage:(UIImage *)bottomImage;
 
-/** 压缩图片 */
+/** 压缩图片 大小 200KB 2MB这种 */
 - (UIImage *)imageCompresstoMaxFileSize:(NSInteger)maxFileSize;
 
-
+/** 压缩图片 尺寸 */
+- (UIImage *)imageCompressToSize:(CGSize)size;
 
 
 

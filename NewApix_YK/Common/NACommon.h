@@ -14,10 +14,18 @@ typedef NS_ENUM(NSInteger, NAUserStatus) {
     NAUserStatusLoginError,  // 被别人顶掉
     NAUserStatusNormal,      // 普通用户
     NAUserStatusOverdue,     // 会员过期
-    NAUserStatusVIP          // 金卡会员用户
+    NAUserStatusVIP,         // 金卡会员用户
+    NAUserStatusVIPForever   // 终身金卡会员
 };
 
-typedef void(^LoadCompleteBlock) (NAUserStatus userStatus);
+/**
+ 会员信息接口 完成回调
+
+ @param userStatus 会员状态
+ @param vipEndDate 会员到期日期
+ @param vipSkin 会员卡图片的urlStr
+ */
+typedef void(^LoadCompleteBlock) (NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin);
 
 
 /**
@@ -30,11 +38,19 @@ typedef void(^LoadCompleteBlock) (NAUserStatus userStatus);
 
 #pragma mark - <UserStatus>
 @property (nonatomic, assign) NAUserStatus userStatus;
+
 /** 请求用户状态
  *  注意！！此方法会请求后台获取用户状态，
  *  所以并不会即时更新userStatus, 请在block回调中获取最新userStatus
  */
 + (void)loadUserStatusComplete:(LoadCompleteBlock)block;
+/**
+ 获取会员剩余天数
+ 
+ @param endDateStr yyyy-MM-dd
+ @return 剩余天数
+ */
++ (NSInteger)getVIPRemainingDays:(NSString *)endDateStr;
 
 #pragma mark - <审核版本>
 /** 是否是实际用户看到的版本，否则为审核版 */

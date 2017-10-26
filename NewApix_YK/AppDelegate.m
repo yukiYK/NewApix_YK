@@ -151,6 +151,16 @@
 /** 审核开关 */
 - (void)loadOnOff {
     
+    
+    // 获取用户状态后设置真正的根视图
+    [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {
+        NATabbarController *tabbarC = [[NATabbarController alloc] init];
+        self.window.rootViewController = tabbarC;
+        [self.window makeKeyAndVisible];
+    }];
+    
+    
+    /*
     NAAPIModel *model = [NAURLCenter onOrOffConfigWithName:[NSString stringWithFormat:@"version%@", VERSION] origin:@"1"];
     
     [[NAHTTPSessionManager sharedManager] netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
@@ -161,7 +171,7 @@
             [NACommon setRealVersion:YES];
         }
         // 获取用户状态后设置真正的根视图
-        [NACommon loadUserStatusComplete:^(NAUserStatus userStatus) {
+        [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {
             NATabbarController *tabbarC = [[NATabbarController alloc] init];
             self.window.rootViewController = tabbarC;
             [self.window makeKeyAndVisible];
@@ -171,6 +181,7 @@
     } failureBlock:^(NSError *error) {
         
     }];
+    */
 }
 
 /** 配置各个分享平台 */

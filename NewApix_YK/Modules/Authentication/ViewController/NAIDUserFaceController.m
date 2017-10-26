@@ -8,6 +8,7 @@
 
 #import "NAIDUserFaceController.h"
 #import "NAAuthenticationModel.h"
+#import "NASettingsController.h"
 
 @interface NAIDUserFaceController ()
 
@@ -44,7 +45,6 @@
     NSString *timeString = [NSString stringWithFormat:@"%f", timeInterval];
     NSString *fileName = [NSString stringWithFormat:@"%@idcard_photo.png",timeString];
     
-//    NSData *imageData = UIImageJPEGRepresentation(self.faceData,0.5);
     
     NAAPIModel *model = [NAURLCenter faceIdentityConfig];
     NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeAPI pathArray:model.pathArr];
@@ -72,7 +72,6 @@
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
-        [SVProgressHUD showSuccessWithStatus:@"认证成功，每月可更新认证一次"];
         // 更新用户的认证状态 信誉分
         [weakSelf requestForTrustScore];
         [weakSelf requestForAuthenticationStatus];
@@ -93,19 +92,36 @@
 
 - (void)requestForAuthenticationStatus {
     NAAPIModel *model = [NAURLCenter authenticationStatusConfig];
+    
+    WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         [NAAuthenticationModel analysisAuthentication:returnValue];
+        
+#warning 预留返回 拼信用
+        for (UIViewController *vc in weakSelf.navigationController.viewControllers) {
+            if ([vc isKindOfClass:[NASettingsController class]]) {
+                [weakSelf.navigationController popToViewController:vc animated:YES];
+            }
+        }
+        [SVProgressHUD showSuccessWithStatus:@"认证成功，每月可更新认证一次"];
+        
     } errorCodeBlock:nil failureBlock:nil];
 }
 
 #pragma mark - <Events>
 - (IBAction)onTakePhotoBtnClicked:(id)sender {
-    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter idFaceCameraController] tranformStyle:NATransformStylePush needLogin:NO];
+    UIViewController *toVC = [NAViewControllerCenter idFaceCameraControllerWithBlock:^(UIImage *image) {
+        [self.takePhotoBtn setBackgroundImage:kGetImage(@"ID_face_nice") forState:UIControlStateNormal];
+        self.faceData = UIImageJPEGRepresentation(image, 1);
+        [self.checkBtn setBackgroundImage:kGetImage(@"login_btn") forState:UIControlStateNormal];
+        self.checkBtn.enabled = YES;
+    }];
+    [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePresent needLogin:NO];
 }
 
 - (IBAction)onCheckBtnClicked:(id)sender {
-    
+    [self requestForCheck];
 }
 
 @end

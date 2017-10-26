@@ -62,6 +62,9 @@
 + (NSString *)getSex;
 + (void)saveSex:(NSString *)sex;
 
+/** 用户VIP状态 */
++ (NAUserStatus)getUserStatus;
++ (void)saveUserStatus:(NAUserStatus)userStatus;
 
 /** 清除跟用户相关的userDefaults */
 + (void)removeAllUserDefaults;

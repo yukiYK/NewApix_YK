@@ -12,6 +12,5 @@
 @interface NASettingsController : NABaseViewController
 
 @property (nonatomic, strong) NAUserInfoModel *userInfoModel;
-@property (nonatomic, assign) BOOL isVipForever;
 
 @end

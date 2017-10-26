@@ -30,7 +30,6 @@
 		4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381661F3841D5008BC8FD /* NAMainCardModel.m */; };
 		4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6381691F384F71008BC8FD /* NABannerView.m */; };
 		4A6B14121F98A3A2008CD7FA /* NAAuthenticationWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B14111F98A3A2008CD7FA /* NAAuthenticationWebController.m */; };
-		4A6B14141F98B96E008CD7FA /* face@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4A6B14131F98B96D008CD7FA /* face@2x.png */; };
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
 		4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850511F7E3618000C2AD5 /* NAAddressModel.m */; };
@@ -71,6 +70,7 @@
 		4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */; };
 		4AB108111F7F9DEA00F02864 /* NAAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */; };
 		4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */; };
+		4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
 		4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */; };
 		4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA461F2F248500A9308F /* NALoginController.m */; };
@@ -166,7 +166,6 @@
 		4A6381691F384F71008BC8FD /* NABannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NABannerView.m; sourceTree = "<group>"; };
 		4A6B14101F98A3A2008CD7FA /* NAAuthenticationWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationWebController.h; sourceTree = "<group>"; };
 		4A6B14111F98A3A2008CD7FA /* NAAuthenticationWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationWebController.m; sourceTree = "<group>"; };
-		4A6B14131F98B96D008CD7FA /* face@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "face@2x.png"; sourceTree = "<group>"; };
 		4A7315421F3D604B00044FE6 /* NACommonWebController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommonWebController.h; sourceTree = "<group>"; };
 		4A7315431F3D604B00044FE6 /* NACommonWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommonWebController.m; sourceTree = "<group>"; };
 		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
@@ -235,6 +234,8 @@
 		4AB1080E1F7F9DEA00F02864 /* NAAboutUsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAboutUsController.h; sourceTree = "<group>"; };
 		4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAboutUsController.m; sourceTree = "<group>"; };
 		4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAboutUsController.xib; sourceTree = "<group>"; };
+		4AB73D671FA1C76A0014E29D /* NAIDCameraGuiderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDCameraGuiderView.h; sourceTree = "<group>"; };
+		4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDCameraGuiderView.m; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
 		4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageController.xib; sourceTree = "<group>"; };
@@ -653,6 +654,8 @@
 		4A8B10291F8F162400498F9D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4AB73D671FA1C76A0014E29D /* NAIDCameraGuiderView.h */,
+				4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -669,7 +672,6 @@
 				4A7E03441F94BC8D00939486 /* NAIDFaceCameraController.h */,
 				4A7E03451F94BC8D00939486 /* NAIDFaceCameraController.m */,
 				4A7E03461F94BC8D00939486 /* NAIDFaceCameraController.xib */,
-				4A6B14131F98B96D008CD7FA /* face@2x.png */,
 				4A6B14101F98A3A2008CD7FA /* NAAuthenticationWebController.h */,
 				4A6B14111F98A3A2008CD7FA /* NAAuthenticationWebController.m */,
 			);
@@ -966,7 +968,6 @@
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
 				4A014D9B1F5579E6005D273E /* new.gif in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
-				4A6B14141F98B96E008CD7FA /* face@2x.png in Resources */,
 				4A78505F1F7E3FC3000C2AD5 /* NAChangePasswordController.xib in Resources */,
 				4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */,
 				4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */,
@@ -1101,6 +1102,7 @@
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */,
+				4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
 				4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */,

@@ -334,8 +334,7 @@
             if ([NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateNot || [NAAuthenticationModel sharedModel].idcard == NAAuthenticationStateOverdue) {
                 cell.detailTextLabel.text = @"点击完成身份认证";
                 cell.detailTextLabel.textColor = kColorLightBlue;
-            }
-            else {
+            } else {
                 NSString *idNumber = [AESCrypt decrypt:self.userInfoModel.id_number password:kAESKey];
                 cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ %@", self.userInfoModel.name, idNumber];
             }
@@ -343,7 +342,7 @@
             [self setTableViewCell:cell withTitle:@"银行卡管理" detailTitle:@"" showRightArrow:YES];
         } else if (indexPath.row == 4) {
             [self setTableViewCell:cell withTitle:@"收货地址" detailTitle:@"" showRightArrow:YES];
-            if (!self.isAddressExist && self.isVipForever) {
+            if (!self.isAddressExist && [NAUserTool getUserStatus] == NAUserStatusVIPForever) {
                 
                 UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth * 10/11 + 1, cell.contentView.bounds.size.height/2 - 3, 6, 6)];
                 redView.layer.masksToBounds = YES;
