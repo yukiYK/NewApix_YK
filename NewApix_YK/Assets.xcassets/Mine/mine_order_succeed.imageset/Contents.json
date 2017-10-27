@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "mine_loan_back.png",
+      "filename" : "mine_order_succeed.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mine_loan_back@2x.png",
+      "filename" : "mine_order_succeed@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "mine_loan_back@3x.png",
+      "filename" : "mine_order_succeed@3x.png",
       "scale" : "3x"
     }
   ],

@@ -112,6 +112,14 @@
     [[NSUserDefaults standardUserDefaults] setInteger:userStatus forKey:kUserDefaultsUserStatus];
 }
 
+/** 红包个数 */
++ (NSInteger)getRedPacketCount {
+    return [[NSUserDefaults standardUserDefaults] integerForKey:kUserDefaultsRedPacketCount];
+}
++ (void)saveRedPacketCount:(NSInteger)count {
+    [[NSUserDefaults standardUserDefaults] setInteger:count forKey:kUserDefaultsRedPacketCount];
+}
+
 /** 清除跟用户相关的userDefaults */
 + (void)removeAllUserDefaults {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

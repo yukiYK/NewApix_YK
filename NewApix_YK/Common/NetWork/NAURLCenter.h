@@ -72,6 +72,8 @@
 + (NAAPIModel *)mineUserInfoConfig;
 /** 用户vip信息接口 */
 + (NAAPIModel *)mineVipInfoConfig;
+/** 用户红包接口 */
++ (NAAPIModel *)redPacketConfig;
 /** 用户订单信息接口 */
 + (NAAPIModel *)mineOrderInfoConfig;
 /** 用户贷款记录接口 */

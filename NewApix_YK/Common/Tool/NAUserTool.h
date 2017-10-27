@@ -66,6 +66,10 @@
 + (NAUserStatus)getUserStatus;
 + (void)saveUserStatus:(NAUserStatus)userStatus;
 
+/** 红包个数 */
++ (NSInteger)getRedPacketCount;
++ (void)saveRedPacketCount:(NSInteger)count;
+
 /** 清除跟用户相关的userDefaults */
 + (void)removeAllUserDefaults;
 

@@ -9,12 +9,12 @@
 #import <AFNetworking/AFNetworking.h>
 #import "NAURLCenter.h"
 
-typedef void(^ReturnValueBlock)(NSDictionary *returnValue);
-typedef void(^ProgressBlock)(NSProgress *uploadProgress);
-typedef void(^ErrorCodeBlock)(NSString *code, NSString *msg);
-typedef void(^FailureBlock)(NSError *error);
-typedef void(^ConstructingBodyBlock)(id<AFMultipartFormData> formData);
-typedef void(^NetWorkBlock)(BOOL netConnetState);
+typedef void (^ReturnValueBlock)(NSDictionary *returnValue);
+typedef void (^ProgressBlock)(NSProgress *uploadProgress);
+typedef void (^ErrorCodeBlock)(NSString *code, NSString *msg);
+typedef void (^FailureBlock)(NSError *error);
+typedef void (^ConstructingBodyBlock)(id<AFMultipartFormData> formData);
+typedef void (^NetWorkBlock)(BOOL netConnetState);
 
 
 @interface NAHTTPSessionManager : AFHTTPSessionManager

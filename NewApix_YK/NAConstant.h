@@ -51,6 +51,7 @@ static NSString * const kUserDefaultsLocation = @"kUserDefaultsLocation";    // 
 static NSString * const kUserDefaultsDeviceId = @"kUserDefaultsDeviceId";    // deviceID
 static NSString * const kUserDefaultsSystemVersion = @"kUserDefaultsSystemVersion";    // 系统版本
 static NSString * const kUserDefaultsEquipmentType = @"kUserDefaultsEquipmentType";    // 设备类型
+static NSString * const kUserDefaultsRedPacketCount = @"kUserDefaultsRedPacketCount";    // 红包个数
 
 // --------------------------------------各种认证状态-----------------------------------------------
 /** 身份认证 */

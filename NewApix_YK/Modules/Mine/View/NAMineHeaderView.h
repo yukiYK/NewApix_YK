@@ -10,7 +10,9 @@
 #import "NAMineOrderModel.h"
 #import "NAUserInfoModel.h"
 
-typedef void (^OrderBtnsActionBlock) (NSInteger btnTag);
+typedef void (^OrderBtnsActionBlock)(NSInteger btnTag);
+typedef void (^VIPImageTapBlock)(void);
+typedef void (^SettingsBlock)(void);
 
 @interface NAMineHeaderView : UIView
 
@@ -18,25 +20,26 @@ typedef void (^OrderBtnsActionBlock) (NSInteger btnTag);
 @property (nonatomic, strong) NAUserInfoModel *userInfo;
 
 /** 初始化方法 */
-- (instancetype)initWithUserStatus:(NAUserStatus)userStatus;
+- (instancetype)initWithUserStatus:(NAUserStatus)userStatus settingsBlock:(SettingsBlock)settingsBlock orderBlock:(OrderBtnsActionBlock)orderBlock;
 
 
 /**
  设置订单信息
 
  @param orderModel 订单model
- @param actionBlock 点击事件
+ @param orderBlock 点击事件
  */
-- (void)setOrderModel:(NAMineOrderModel *)orderModel actionBlock:(OrderBtnsActionBlock)actionBlock;
+- (void)setOrderModel:(NAMineOrderModel *)orderModel orderBlock:(OrderBtnsActionBlock)orderBlock;
 
 
 /**
  设置vip相关信息
 
- @param isVip 是否是VIP
+ @param userStatus 会员状态
  @param endDate VIP截止日期  不是VIP的话传nil即可
  @param vipCardUrl 金卡会员图片地址
+ @param vipImageBlock 会员卡片点击事件
  */
-- (void)setIsVip:(BOOL)isVip endDate:(NSString *)endDate vipCardUrl:(NSString *)vipCardUrl;
+- (void)setUserStatus:(NAUserStatus)userStatus endDate:(NSString *)endDate vipCardUrl:(NSString *)vipCardUrl vipImageBlock:(VIPImageTapBlock)vipImageBlock;
 
 @end

@@ -77,11 +77,12 @@
 
 - (void)setupWebView {
     
-    if ([NACommon isRealVersion]) {
-        self.nvgUrl = [NAURLCenter vipiOSH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
-    } else {
-        self.nvgUrl = [NAURLCenter vipH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
-    }
+//    if ([NACommon isRealVersion]) {
+//        self.nvgUrl = [NAURLCenter vipiOSH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
+//    } else {
+//        self.nvgUrl = [NAURLCenter vipH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
+//    }
+    self.nvgUrl = [NAURLCenter vipH5UrlWithIsFromGiftCenter:self.isFromGiftCenter];
     self.nvgUrl = [self.nvgUrl stringByReplacingOccurrencesOfString:@" " withString:@""];
     NSURL *url = [NSURL URLWithString:self.nvgUrl];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];

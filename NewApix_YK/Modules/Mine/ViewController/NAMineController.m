@@ -10,18 +10,23 @@
 #import "NAMineCell.h"
 #import "NAMineHeaderView.h"
 #import "NAUserInfoModel.h"
+#import "NAMineWalletModel.h"
 
 NSString * const kMineCell = @"mineCell";
 
 @interface NAMineController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NAMineCell *feedbackCell;
 @property (nonatomic, strong) NAMineHeaderView *mineHeaderView;
 // tableView数据array
 @property (nonatomic, strong) NSArray *array;
-// 用户信息
+/** 用户信息 */
 @property (nonatomic, strong) NAUserInfoModel *userModel;
-// 会员状态
+/** 钱包信息 */
+@property (nonatomic, strong) NAMineWalletModel *walletModel;
+@property (nonatomic, assign) BOOL isNewRedPacket;
+/** 会员状态 */
 @property (nonatomic, assign) NAUserStatus userStatus;
 /** 会员到期日期 */
 @property (nonatomic, copy) NSString *vipEndDate;
@@ -31,7 +36,7 @@ NSString * const kMineCell = @"mineCell";
 /** 会员礼品状态 1:已领取 其他:未领取 */
 @property (nonatomic, assign) NSInteger giftStatus;
 
-// 贷款记录数据
+/** 贷款记录数据 */
 @property (nonatomic, strong) NSArray *loanArray;
 
 @end
@@ -59,6 +64,7 @@ NSString * const kMineCell = @"mineCell";
     self.userStatus = NAUserStatusNormal;
     [self setupTableView];
     [self requestForLoanList];
+    [self requestForRedPacket];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,11 +73,16 @@ NSString * const kMineCell = @"mineCell";
     
     [self requestForUserInfo];
     [self requestForOrderInfo];
+    [self requestForGiftStatus];
     [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {
         self.userStatus = userStatus;
         self.vipEndDate = vipEndDate;
         self.vipSkin = vipSkin;
         [self.tableView reloadData];
+        WeakSelf
+        [self.mineHeaderView setUserStatus:userStatus endDate:vipEndDate vipCardUrl:vipSkin vipImageBlock:^{
+            [weakSelf onVIPClicked];
+        }];
     }];
 }
 
@@ -94,7 +105,12 @@ NSString * const kMineCell = @"mineCell";
     tableView.delegate = self;
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.mineHeaderView = [[NAMineHeaderView alloc] initWithUserStatus:[NACommon sharedCommon].userStatus];
+    WeakSelf
+    self.mineHeaderView = [[NAMineHeaderView alloc] initWithUserStatus:[NACommon sharedCommon].userStatus settingsBlock:^{
+        [weakSelf onSettingBtnClicked];
+    } orderBlock:^(NSInteger btnTag) {
+        [weakSelf onOrderClicked:0];
+    }];
     tableView.tableHeaderView = self.mineHeaderView;
     [self.view addSubview:tableView];
     self.tableView = tableView;
@@ -121,14 +137,38 @@ NSString * const kMineCell = @"mineCell";
             self.userModel = model;
             self.mineHeaderView.userInfo = model;
         }
-        
-    } errorCodeBlock:^(NSString *code, NSString *msg) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    } errorCodeBlock:nil failureBlock:nil];
 }
 
+- (void)requestForRedPacket {
+    NAAPIModel *model = [NAURLCenter redPacketConfig];
+    
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        weakSelf.walletModel = [NAMineWalletModel yy_modelWithJSON:returnValue];
+        
+        NSInteger count = weakSelf.walletModel.transaction.count;
+        if (count > [NAUserTool getRedPacketCount]) self.isNewRedPacket = YES;
+        
+        [NAUserTool saveRedPacketCount:count];
+        
+        [weakSelf.tableView reloadData];
+    } errorCodeBlock:nil failureBlock:nil];
+}
+
+- (void)requestForGiftStatus {
+    NAAPIModel *model = [NAURLCenter vipPresentConfig];
+    
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        NSString *code = [NSString stringWithFormat:@"%@", returnValue[@"code"]];
+        weakSelf.giftStatus = [code integerValue];
+        
+        [weakSelf.tableView reloadData];
+    } errorCodeBlock:nil failureBlock:nil];
+}
 
 - (void)requestForOrderInfo {
     
@@ -137,36 +177,52 @@ NSString * const kMineCell = @"mineCell";
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
+        NSArray *countArr = returnValue[@"counts"];
         
+        NAMineOrderModel *orderModel = [NAMineOrderModel yy_modelWithJSON:countArr[0]];
+        NSInteger paid = [orderModel.paid integerValue];
+        NSInteger success = [orderModel.success integerValue];
+        NSInteger refound = [orderModel.refound integerValue];
+        NSInteger all = paid + success + refound;
+        orderModel.transactions = [NSString stringWithFormat:@"%ld", all];
         
-    } errorCodeBlock:^(NSString *code, NSString *msg) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+        [weakSelf.mineHeaderView setOrderModel:orderModel orderBlock:^(NSInteger btnTag) {
+            // TODO 跳转订单列表页
+            [weakSelf onOrderClicked:btnTag];
+        }];
+    } errorCodeBlock:nil failureBlock:nil];
 }
 
 - (void)requestForLoanList {
     NAAPIModel *model = [NAURLCenter mineLoanListConfig];
     
-    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
-        NSLog(@"%@", returnValue);
+    [self.netManager GET:[NAURLCenter urlWithType:model.requestUrlType pathArray:model.pathArr] parameters:model.param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSLog(@"%@", responseObject);
         
-        
-    } errorCodeBlock:^(NSString *code, NSString *msg) {
-        
-    } failureBlock:^(NSError *error) {
-        
-    }];
+    } failure:nil];
 }
 
 #pragma mark - <Events>
+// 跳转到 设置页
 - (void)onSettingBtnClicked {
     UIViewController *settingsVC = [NAViewControllerCenter settingsControllerWithModel:self.userModel];
     [NAViewControllerCenter transformViewController:self
                                    toViewController:settingsVC
                                       tranformStyle:NATransformStylePush
                                           needLogin:YES];
+}
+
+// 跳转到 订单列表页
+- (void)onOrderClicked:(NSInteger)btnTag {
+    
+}
+
+// 跳转到 美信会员
+- (void)onVIPClicked {
+    [NAViewControllerCenter transformViewController:self
+                                   toViewController:[NAViewControllerCenter meixinVIPControllerWithIsFromGiftCenter:NO]
+                                      tranformStyle:NATransformStylePush
+                                          needLogin:NO];
 }
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
@@ -196,21 +252,47 @@ NSString * const kMineCell = @"mineCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NAMineCell *cell = [tableView dequeueReusableCellWithIdentifier:kMineCell forIndexPath:indexPath];
     NAMineModel *model = self.array[indexPath.section][indexPath.row];
-    [cell setModel:model];
     
     if (indexPath.section == 0) {
-        if (indexPath.row == 0) { // 美信会员 
-            
+        if (indexPath.row == 0) { // 美信会员
+            UIColor *detailColor = kColorTextYellow;
+            switch (self.userStatus) {
+                case NAUserStatusVIPForever:
+                    model.detail = @"终身会员";
+                    break;
+                case NAUserStatusVIP:
+                    model.detail = [NSString stringWithFormat:@"V会员剩余%ld天", [NACommon getVIPRemainingDays:self.vipEndDate]];
+                    detailColor = kColorTextRed;
+                    break;
+                case NAUserStatusOverdue:
+                    model.detail = @"会员已到期";
+                    break;
+                    
+                default:
+                    model.detail = @"暂未开通会员";
+                    break;
+            }
+            [cell setModel:model];
+            [cell setDetailTextColor:detailColor bgColor:nil];
         } else if (indexPath.row == 1) { // 礼品中心
-            
+            if (self.giftStatus != 1) {
+                model.detail = @"一大波礼物来袭";
+                [cell setModel:model];
+                [cell setDetailTextColor:kColorTextRed bgColor:nil];
+                [cell setRightIcon:@"flower_present"];
+            } else [cell setModel:model];
         }
     } else if (indexPath.section == 1) {
-        if (indexPath.row == 1) {
-            
+        if (indexPath.row == 1 && self.isNewRedPacket) {
+            model.detail = @"【有新的红包请查看】";
+            [cell setModel:model];
+            [cell showRedPoint:YES];
         } else if (indexPath.row == 2) {
-            
-        }
+            [cell setModel:model];
+            self.feedbackCell = cell;
+        } else [cell setModel:model];
     }
+    
     return cell;
 }
 
@@ -221,10 +303,7 @@ NSString * const kMineCell = @"mineCell";
     
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
-            [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter meixinVIPControllerWithIsFromGiftCenter:NO]
-                                              tranformStyle:NATransformStylePush
-                                                  needLogin:NO];
+            [self onVIPClicked];
         }
         else if (indexPath.row == 1) {
             [NAViewControllerCenter transformViewController:self

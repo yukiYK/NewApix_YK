@@ -10,13 +10,14 @@
 
 @interface NAMineOrderModel : NSObject
 
-/** 我的订单 */
+// 订单数量 小红点显示的
+/** 进行中 */
 @property (nonatomic, copy) NSString *paid;
 /** 退款 */
 @property (nonatomic, copy) NSString *refound;
 /** 成功 */
 @property (nonatomic, copy) NSString *success;
-/** 进行中 */
+/** 我的订单 */
 @property (nonatomic, copy) NSString *transactions;
 
 @end

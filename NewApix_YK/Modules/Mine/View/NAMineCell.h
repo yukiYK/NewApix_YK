@@ -13,7 +13,7 @@
 
 @property (nonatomic, strong) NAMineModel *model;
 
-- (void)setDetailTextColor:(UIColor *)color;
+- (void)setDetailTextColor:(UIColor *)color bgColor:(UIColor *)bgColor;
 
 /** 设置右边小图标，不能和小红点同时用 */
 - (void)setRightIcon:(NSString *)rightIcon;

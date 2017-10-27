@@ -9,7 +9,7 @@
 #import "NABaseViewController.h"
 #import "NAAddressModel.h"
 
-typedef void (^ChangeAddressCompleteBlock) (NAAddressModel *model);
+typedef void (^ChangeAddressCompleteBlock)(NAAddressModel *model);
 
 @interface NAAddressController : NABaseViewController
 

@@ -201,6 +201,13 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"time"] param:param rightCode:@"0"];
 }
 
+/** 用户红包接口 */
++ (NAAPIModel *)redPacketConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"red_packet"] param:param rightCode:nil];
+}
+
 /** 用户订单信息接口 */
 + (NAAPIModel *)mineOrderInfoConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];

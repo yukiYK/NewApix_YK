@@ -8,7 +8,7 @@
 
 #import "NABaseViewController.h"
 
-typedef void (^CameraDidEndBlock) (UIImage *image);
+typedef void (^CameraDidEndBlock)(UIImage *image);
 
 @interface NAIDFaceCameraController : NABaseViewController
 

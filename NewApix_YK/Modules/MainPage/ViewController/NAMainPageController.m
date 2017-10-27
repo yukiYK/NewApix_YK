@@ -39,34 +39,19 @@ NSString *const kMainPageCellID = @"mainPageCell";
 #pragma mark - <Lazy Load>
 - (NSArray *)line1BtnTitleArray {
     if (!_line1BtnTitleArray) {
-        if ([NACommon isRealVersion]) {
-            _line1BtnTitleArray = @[@"我要赚钱", @"9块9秒杀", @"无息贷款"];
-        }
-        else {
-            _line1BtnTitleArray = @[@"我要赚钱", @"美信生活", @"福利技能"];
-        }
+        _line1BtnTitleArray = @[@"我要赚钱", @"9块9秒杀", @"无息贷款"];
     }
     return _line1BtnTitleArray;
 }
 - (NSArray *)line1BtnImageArray {
     if (!_line1BtnImageArray) {
-        if ([NACommon isRealVersion]) {
-            _line1BtnImageArray = @[@"main_page_btn_money", @"main_page_btn_9.9", @"main_page_btn_loan"];
-        }
-        else {
-            _line1BtnImageArray = @[@"main_page_btn_money", @"main_page_btn_money", @"main_page_btn_loan"];
-        }
+        _line1BtnImageArray = @[@"main_page_btn_money", @"main_page_btn_9.9", @"main_page_btn_loan"];
     }
     return _line1BtnImageArray;
 }
 - (NSArray *)line2BtnTitleArray {
     if (!_line2BtnTitleArray) {
-        if ([NACommon isRealVersion]) {
-            _line2BtnTitleArray = @[@"特价话费", @"视频会员", @"社区快讯", @"我的钱包"];
-        }
-        else {
-            _line2BtnTitleArray = @[@"征信查询", @"银行卡", @"社区快讯", @"我的钱包"];
-        }
+        _line2BtnTitleArray = @[@"特价话费", @"视频会员", @"社区快讯", @"我的钱包"];
     }
     return _line2BtnTitleArray;
 }

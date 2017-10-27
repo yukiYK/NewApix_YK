@@ -90,19 +90,13 @@
         UINavigationController *vc = self.selectedViewController;
         [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
         return NO;
-    }
-    else if (![NACommon isRealVersion]) {
-        NSLog(@"审核版");
-        return YES;
-    }
-    else if (viewController == self.viewControllers[1] && [NACommon sharedCommon].userStatus != NAUserStatusVIP) {
+    } else if (viewController == self.viewControllers[1] && [NACommon sharedCommon].userStatus != NAUserStatusVIP) {
         
         if (![NACommon getToken]) {
             
             UINavigationController *vc = self.selectedViewController;
             [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
-        }
-        else {
+        } else {
             [self alertViewClick];
         }
         return NO;

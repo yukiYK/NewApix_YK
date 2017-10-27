@@ -25,7 +25,7 @@ typedef NS_ENUM(NSInteger, NAUserStatus) {
  @param vipEndDate 会员到期日期
  @param vipSkin 会员卡图片的urlStr
  */
-typedef void(^LoadCompleteBlock) (NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin);
+typedef void (^LoadCompleteBlock)(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin);
 
 
 /**
