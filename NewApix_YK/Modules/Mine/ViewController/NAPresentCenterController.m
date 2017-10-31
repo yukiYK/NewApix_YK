@@ -72,7 +72,7 @@
     [left addTarget:self action:@selector(onBackClicked) forControlEvents:UIControlEventTouchUpInside];
     [left setImage:kGetImage(kImageBackWhite) forState:UIControlStateNormal];
     [left setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-    UIBarButtonItem *leftBut = [[UIBarButtonItem alloc]initWithCustomView:left];
+    UIBarButtonItem *leftBut = [[UIBarButtonItem alloc] initWithCustomView:left];
     self.navigationItem.leftBarButtonItem = leftBut;
 }
 

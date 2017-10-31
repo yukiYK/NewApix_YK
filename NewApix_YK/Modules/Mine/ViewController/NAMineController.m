@@ -10,7 +10,7 @@
 #import "NAMineCell.h"
 #import "NAMineHeaderView.h"
 #import "NAUserInfoModel.h"
-#import "NAMineWalletModel.h"
+#import "NAWalletModel.h"
 
 NSString * const kMineCell = @"mineCell";
 
@@ -24,7 +24,7 @@ NSString * const kMineCell = @"mineCell";
 /** 用户信息 */
 @property (nonatomic, strong) NAUserInfoModel *userModel;
 /** 钱包信息 */
-@property (nonatomic, strong) NAMineWalletModel *walletModel;
+@property (nonatomic, strong) NAWalletModel *walletModel;
 @property (nonatomic, assign) BOOL isNewRedPacket;
 /** 会员状态 */
 @property (nonatomic, assign) NAUserStatus userStatus;
@@ -146,7 +146,7 @@ NSString * const kMineCell = @"mineCell";
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
-        weakSelf.walletModel = [NAMineWalletModel yy_modelWithJSON:returnValue];
+        weakSelf.walletModel = [NAWalletModel yy_modelWithJSON:returnValue];
         
         NSInteger count = weakSelf.walletModel.transaction.count;
         if (count > [NAUserTool getRedPacketCount]) self.isNewRedPacket = YES;
@@ -198,7 +198,12 @@ NSString * const kMineCell = @"mineCell";
     
     [self.netManager GET:[NAURLCenter urlWithType:model.requestUrlType pathArray:model.pathArr] parameters:model.param progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSLog(@"%@", responseObject);
-        
+        NSString *codeorNot = [NSString stringWithFormat:@"%@",responseObject];
+        if ([codeorNot rangeOfString:@"code"].location != NSNotFound) {
+            self.loanArray = nil;
+        } else {
+            self.loanArray = responseObject;
+        }
     } failure:nil];
 }
 
@@ -292,7 +297,6 @@ NSString * const kMineCell = @"mineCell";
             self.feedbackCell = cell;
         } else [cell setModel:model];
     }
-    
     return cell;
 }
 
@@ -304,24 +308,26 @@ NSString * const kMineCell = @"mineCell";
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             [self onVIPClicked];
-        }
-        else if (indexPath.row == 1) {
+        } else if (indexPath.row == 1) {
             [NAViewControllerCenter transformViewController:self
                                            toViewController:[NAViewControllerCenter presentCenterController]
                                               tranformStyle:NATransformStylePush
                                                   needLogin:YES];
         }
-    }
-    else {
+    } else {
         if (indexPath.row == 0) {
             [NAViewControllerCenter transformViewController:self
-                                           toViewController:[NAViewControllerCenter addressController]
+                                           toViewController:[NAViewControllerCenter loanRecordControllerWithArray:self.loanArray]
                                               tranformStyle:NATransformStylePush
                                                   needLogin:YES];
-        }
-        else if (indexPath.row == 1) {
-        }
-        else if (indexPath.row == 2) {
+        } else if (indexPath.row == 1) {
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter walletControllerWithModel:self.walletModel]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:YES];
+        } else if (indexPath.row == 2) {
+            [self.feedbackCell showRedPoint:NO];
+            // TODO 跳转到用户反馈
         }
     }
 }

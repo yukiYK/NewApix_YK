@@ -36,6 +36,9 @@
 #define kColorHeaderGray [UIColor colorFromString:@"f4f4f4"]
 #define kColorTextYellow [UIColor colorFromString:@"D3B27D"]
 #define kColorTextRed  [UIColor colorFromString:@"ff6766"]
+#define kColorLightPink [UIColor colorFromString:@"f7cac9"]
+#define kColorLightGreen [UIColor colorFromString:@"69c69d"]
+#define kColorBlue [UIColor colorFromString:@"5999ff"]
 
 
 

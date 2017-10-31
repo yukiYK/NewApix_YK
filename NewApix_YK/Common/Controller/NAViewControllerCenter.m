@@ -28,7 +28,8 @@
 #import "NAIDAuthenticationController.h"
 #import "NAIDUserFaceController.h"
 #import "NAIDFaceCameraController.h"
-
+#import "NALoanRecordController.h"
+#import "NAWalletController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -105,6 +106,30 @@
 }
 
 /**
+ 贷款记录页
+
+ @param loanArray 贷款记录数据array
+ @return NALoanRecordController
+ */
++ (UIViewController *)loanRecordControllerWithArray:(NSArray *)loanArray {
+    NALoanRecordController *loanRecordVC = [[NALoanRecordController alloc] init];
+    loanRecordVC.loanArray = loanArray;
+    return loanRecordVC;
+}
+
+/**
+ 钱包页
+ 
+ @param walletModel 钱包数据model
+ @return NAWalletController
+ */
++ (UIViewController *)walletControllerWithModel:(NAWalletModel *)walletModel {
+    NAWalletController *walletVC = [[NAWalletController alloc] initWithNibName:@"NAWalletController" bundle:nil];
+    walletVC.walletModel = walletModel;
+    return walletVC;
+}
+
+/**
  用户地址页
  
  @return NAAddressController;
@@ -126,7 +151,6 @@
  个人设置页
  
  @param model 个人信息model
- @param isVipForever 是否是终身会员
  @return NASettingsController
  */
 + (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model {
@@ -241,11 +265,8 @@
 
 // 第三方贷款web页 等等
 + (UIViewController *)commonWebControllerWithCardModel:(NAMainCardModel *)cardModel isShowShareBtn:(BOOL)isShowShareBtn {
-    
     NACommonWebController *commonWebVC = [[NACommonWebController alloc] init];
-    if (cardModel) {
-        commonWebVC.cardModel = cardModel;
-    }
+    if (cardModel) commonWebVC.cardModel = cardModel;
     commonWebVC.isShowShareBtn = isShowShareBtn;
     return commonWebVC;
 }

@@ -10,6 +10,7 @@
 #import "NAMainCardModel.h"
 #import "NAAuthenticationWebController.h"
 #import "NAIDFaceCameraController.h"
+#import "NAWalletModel.h"
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -91,6 +92,22 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 + (UIViewController *)presentSuccessController;
 
 /**
+ 贷款记录页
+ 
+ @param loanArray 贷款记录数据array
+ @return NALoanRecordController
+ */
++ (UIViewController *)loanRecordControllerWithArray:(NSArray *)loanArray;
+
+/**
+ 钱包页
+
+ @param walletModel 钱包数据model
+ @return NAWalletController
+ */
++ (UIViewController *)walletControllerWithModel:(NAWalletModel *)walletModel;
+
+/**
  用户地址页
 
  @return NAAddressController;
@@ -108,7 +125,6 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  个人设置页
 
  @param model 个人信息model
- @param isVipForever 是否是终身会员
  @return NASettingsController
  */
 + (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model;

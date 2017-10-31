@@ -21,7 +21,6 @@
 		4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837BB1F502120001B065C /* NAForgetPasswordController.xib */; };
 		4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */; };
 		4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */; };
-		4A49FDED1FA3228A00DDDE01 /* NAMineWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A49FDEC1FA3228A00DDDE01 /* NAMineWalletModel.m */; };
 		4A59ACE51F5FD5DC00F3172B /* NACreditReportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */; };
 		4A59ACE81F5FD67F00F3172B /* NAMeixinVIPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACE71F5FD67F00F3172B /* NAMeixinVIPController.m */; };
 		4A59ACEB1F5FDD1300F3172B /* UIView+NAScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACEA1F5FDD1300F3172B /* UIView+NAScreenshot.m */; };
@@ -62,6 +61,12 @@
 		4AA8ADB51F8CADCA00B27223 /* NAAddCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA8ADB31F8CADCA00B27223 /* NAAddCardController.m */; };
 		4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AA8ADB41F8CADCA00B27223 /* NAAddCardController.xib */; };
 		4AA9AF1F1F6B83CC0061AD1F /* NAPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */; };
+		4AAA80FA1FA86DE600F88083 /* NAWalletController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA80F81FA86DE600F88083 /* NAWalletController.m */; };
+		4AAA80FB1FA86DE600F88083 /* NAWalletController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AAA80F91FA86DE600F88083 /* NAWalletController.xib */; };
+		4AAA80FF1FA87C9700F88083 /* NAWalletCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA80FD1FA87C9700F88083 /* NAWalletCell.m */; };
+		4AAA81001FA87C9700F88083 /* NAWalletCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AAA80FE1FA87C9700F88083 /* NAWalletCell.xib */; };
+		4AAA81031FA87CBC00F88083 /* NAWalletModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA81021FA87CBC00F88083 /* NAWalletModel.m */; };
+		4AAA81061FA8853900F88083 /* NAWalletTransationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAA81051FA8853900F88083 /* NAWalletTransationModel.m */; };
 		4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED951F4C083300055CF1 /* NAMineModel.m */; };
 		4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */; };
 		4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEED9E1F4C16DD00055CF1 /* NAURLCenter.m */; };
@@ -82,6 +87,10 @@
 		4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA551F2F24C800A9308F /* NAMineController.m */; };
 		4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */; };
 		4AD52E1F1F8E262300BA9A5A /* bankType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AD52E1E1F8E216300BA9A5A /* bankType.plist */; };
+		4AD966DC1FA7108400E5B43A /* NALoanRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD966DB1FA7108400E5B43A /* NALoanRecordController.m */; };
+		4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD966DE1FA71D9C00E5B43A /* NALoanRecordCell.m */; };
+		4AD966E11FA71D9C00E5B43A /* NALoanRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD966DF1FA71D9C00E5B43A /* NALoanRecordCell.xib */; };
+		4AD966E41FA725F300E5B43A /* NALoanRecordModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD966E31FA725F300E5B43A /* NALoanRecordModel.m */; };
 		4AF392781F46D41200EF7A3B /* NAEssenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF392771F46D41200EF7A3B /* NAEssenceModel.m */; };
 		4AF3927B1F46D44500EF7A3B /* NACommunityModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3927A1F46D44500EF7A3B /* NACommunityModel.m */; };
 		4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AF3927D1F46D52200EF7A3B /* NAAdvertisementCell.m */; };
@@ -150,8 +159,6 @@
 		4A2837BE1F502B47001B065C /* NAPhoneLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPhoneLoginController.h; sourceTree = "<group>"; };
 		4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPhoneLoginController.m; sourceTree = "<group>"; };
 		4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPhoneLoginController.xib; sourceTree = "<group>"; };
-		4A49FDEB1FA3228A00DDDE01 /* NAMineWalletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAMineWalletModel.h; sourceTree = "<group>"; };
-		4A49FDEC1FA3228A00DDDE01 /* NAMineWalletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAMineWalletModel.m; sourceTree = "<group>"; };
 		4A59ACE31F5FD5DC00F3172B /* NACreditReportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACreditReportController.h; sourceTree = "<group>"; };
 		4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACreditReportController.m; sourceTree = "<group>"; };
 		4A59ACE61F5FD67F00F3172B /* NAMeixinVIPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMeixinVIPController.h; sourceTree = "<group>"; };
@@ -220,6 +227,16 @@
 		4AA8ADB41F8CADCA00B27223 /* NAAddCardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAddCardController.xib; sourceTree = "<group>"; };
 		4AA9AF1D1F6B83CC0061AD1F /* NAPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPickerView.h; sourceTree = "<group>"; };
 		4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPickerView.m; sourceTree = "<group>"; };
+		4AAA80F71FA86DE600F88083 /* NAWalletController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAWalletController.h; sourceTree = "<group>"; };
+		4AAA80F81FA86DE600F88083 /* NAWalletController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAWalletController.m; sourceTree = "<group>"; };
+		4AAA80F91FA86DE600F88083 /* NAWalletController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAWalletController.xib; sourceTree = "<group>"; };
+		4AAA80FC1FA87C9700F88083 /* NAWalletCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAWalletCell.h; sourceTree = "<group>"; };
+		4AAA80FD1FA87C9700F88083 /* NAWalletCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAWalletCell.m; sourceTree = "<group>"; };
+		4AAA80FE1FA87C9700F88083 /* NAWalletCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAWalletCell.xib; sourceTree = "<group>"; };
+		4AAA81011FA87CBC00F88083 /* NAWalletModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAWalletModel.h; sourceTree = "<group>"; };
+		4AAA81021FA87CBC00F88083 /* NAWalletModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAWalletModel.m; sourceTree = "<group>"; };
+		4AAA81041FA8853900F88083 /* NAWalletTransationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAWalletTransationModel.h; sourceTree = "<group>"; };
+		4AAA81051FA8853900F88083 /* NAWalletTransationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAWalletTransationModel.m; sourceTree = "<group>"; };
 		4AAEED941F4C083300055CF1 /* NAMineModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMineModel.h; sourceTree = "<group>"; };
 		4AAEED951F4C083300055CF1 /* NAMineModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineModel.m; sourceTree = "<group>"; };
 		4AAEED9A1F4C15AF00055CF1 /* NAAPIModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAAPIModel.h; sourceTree = "<group>"; };
@@ -255,6 +272,13 @@
 		4ACF3CF41F4EBCC80030945B /* NAKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAKeyChain.h; sourceTree = "<group>"; };
 		4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAKeyChain.m; sourceTree = "<group>"; };
 		4AD52E1E1F8E216300BA9A5A /* bankType.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = bankType.plist; sourceTree = "<group>"; };
+		4AD966DA1FA7108400E5B43A /* NALoanRecordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanRecordController.h; sourceTree = "<group>"; };
+		4AD966DB1FA7108400E5B43A /* NALoanRecordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NALoanRecordController.m; sourceTree = "<group>"; };
+		4AD966DD1FA71D9C00E5B43A /* NALoanRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanRecordCell.h; sourceTree = "<group>"; };
+		4AD966DE1FA71D9C00E5B43A /* NALoanRecordCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NALoanRecordCell.m; sourceTree = "<group>"; };
+		4AD966DF1FA71D9C00E5B43A /* NALoanRecordCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NALoanRecordCell.xib; sourceTree = "<group>"; };
+		4AD966E21FA725F300E5B43A /* NALoanRecordModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanRecordModel.h; sourceTree = "<group>"; };
+		4AD966E31FA725F300E5B43A /* NALoanRecordModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NALoanRecordModel.m; sourceTree = "<group>"; };
 		4AF392761F46D41200EF7A3B /* NAEssenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAEssenceModel.h; sourceTree = "<group>"; };
 		4AF392771F46D41200EF7A3B /* NAEssenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAEssenceModel.m; sourceTree = "<group>"; };
 		4AF392791F46D44500EF7A3B /* NACommunityModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACommunityModel.h; sourceTree = "<group>"; };
@@ -549,8 +573,12 @@
 				4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */,
 				4AAEED941F4C083300055CF1 /* NAMineModel.h */,
 				4AAEED951F4C083300055CF1 /* NAMineModel.m */,
-				4A49FDEB1FA3228A00DDDE01 /* NAMineWalletModel.h */,
-				4A49FDEC1FA3228A00DDDE01 /* NAMineWalletModel.m */,
+				4AAA81011FA87CBC00F88083 /* NAWalletModel.h */,
+				4AAA81021FA87CBC00F88083 /* NAWalletModel.m */,
+				4AAA81041FA8853900F88083 /* NAWalletTransationModel.h */,
+				4AAA81051FA8853900F88083 /* NAWalletTransationModel.m */,
+				4AD966E21FA725F300E5B43A /* NALoanRecordModel.h */,
+				4AD966E31FA725F300E5B43A /* NALoanRecordModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -563,6 +591,12 @@
 				4AF392831F46E67F00EF7A3B /* NAMineCell.xib */,
 				4AF392861F46E69600EF7A3B /* NAMineHeaderView.h */,
 				4AF392871F46E69600EF7A3B /* NAMineHeaderView.m */,
+				4AD966DD1FA71D9C00E5B43A /* NALoanRecordCell.h */,
+				4AD966DE1FA71D9C00E5B43A /* NALoanRecordCell.m */,
+				4AD966DF1FA71D9C00E5B43A /* NALoanRecordCell.xib */,
+				4AAA80FC1FA87C9700F88083 /* NAWalletCell.h */,
+				4AAA80FD1FA87C9700F88083 /* NAWalletCell.m */,
+				4AAA80FE1FA87C9700F88083 /* NAWalletCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -580,6 +614,11 @@
 				4AA684E51F667C540041BB2D /* NAPresentSuccessController.h */,
 				4AA684E61F667C540041BB2D /* NAPresentSuccessController.m */,
 				4AA684E71F667C540041BB2D /* NAPresentSuccessController.xib */,
+				4AD966DA1FA7108400E5B43A /* NALoanRecordController.h */,
+				4AD966DB1FA7108400E5B43A /* NALoanRecordController.m */,
+				4AAA80F71FA86DE600F88083 /* NAWalletController.h */,
+				4AAA80F81FA86DE600F88083 /* NAWalletController.m */,
+				4AAA80F91FA86DE600F88083 /* NAWalletController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -967,11 +1006,14 @@
 				4AC6CA491F2F248500A9308F /* NALoginController.xib in Resources */,
 				4A7E03481F94BC8D00939486 /* NAIDFaceCameraController.xib in Resources */,
 				4AA684DE1F6671DD0041BB2D /* NAPresentCenterController.xib in Resources */,
+				4AAA81001FA87C9700F88083 /* NAWalletCell.xib in Resources */,
 				4A09599E1F8B59B7008164B6 /* NABankCardCell.xib in Resources */,
 				4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */,
 				4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */,
+				4AD966E11FA71D9C00E5B43A /* NALoanRecordCell.xib in Resources */,
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
 				4A014D9B1F5579E6005D273E /* new.gif in Resources */,
+				4AAA80FB1FA86DE600F88083 /* NAWalletController.xib in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
 				4A78505F1F7E3FC3000C2AD5 /* NAChangePasswordController.xib in Resources */,
 				4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */,
@@ -1049,8 +1091,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A8B10331F8F17DA00498F9D /* NAAuthenticationModel.m in Sources */,
+				4AAA80FF1FA87C9700F88083 /* NAWalletCell.m in Sources */,
 				4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */,
 				4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */,
+				4AD966DC1FA7108400E5B43A /* NALoanRecordController.m in Sources */,
 				4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */,
 				4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */,
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,
@@ -1064,6 +1108,7 @@
 				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4A0959A11F8B67EC008164B6 /* NABankCardModel.m in Sources */,
+				4AAA80FA1FA86DE600F88083 /* NAWalletController.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
 				4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */,
@@ -1079,6 +1124,7 @@
 				4A8B10371F8F486A00498F9D /* NAIDAuthenticationController.m in Sources */,
 				4AFCA9611F346C3500351B04 /* NABaseViewController.m in Sources */,
 				4A59ACEB1F5FDD1300F3172B /* UIView+NAScreenshot.m in Sources */,
+				4AAA81061FA8853900F88083 /* NAWalletTransationModel.m in Sources */,
 				4A09599D1F8B59B7008164B6 /* NABankCardCell.m in Sources */,
 				4A59ACE51F5FD5DC00F3172B /* NACreditReportController.m in Sources */,
 				4AFCA9621F346C3500351B04 /* NSString+NAExtension.m in Sources */,
@@ -1086,10 +1132,11 @@
 				4A2837BC1F502120001B065C /* NAForgetPasswordController.m in Sources */,
 				4AFCA9631F346C3500351B04 /* UIColor+NAExtension.m in Sources */,
 				4AC6CA521F2F24B800A9308F /* NAMeixinSayController.m in Sources */,
-				4A49FDED1FA3228A00DDDE01 /* NAMineWalletModel.m in Sources */,
 				4AA684DD1F6671DD0041BB2D /* NAPresentCenterController.m in Sources */,
+				4AD966E41FA725F300E5B43A /* NALoanRecordModel.m in Sources */,
 				4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */,
 				4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */,
+				4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */,
 				4A59ACEE1F5FDD4A00F3172B /* UIScrollView+NAScreenshot.m in Sources */,
 				4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */,
 				4AFCA9441F346B3D00351B04 /* main.m in Sources */,
@@ -1098,6 +1145,7 @@
 				4A7E03471F94BC8D00939486 /* NAIDFaceCameraController.m in Sources */,
 				4A7E03421F94A19300939486 /* NAIDUserFaceController.m in Sources */,
 				4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */,
+				4AAA81031FA87CBC00F88083 /* NAWalletModel.m in Sources */,
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
 				4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */,
 				4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */,
