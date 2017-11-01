@@ -108,6 +108,14 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 + (UIViewController *)walletControllerWithModel:(NAWalletModel *)walletModel;
 
 /**
+ 钱包提现页
+ 
+ @param allMoney 钱包总额
+ @return NAEncashmentController
+ */
++ (UIViewController *)encashmentControllerWithAllMoney:(NSString *)allMoney;
+
+/**
  用户地址页
 
  @return NAAddressController;

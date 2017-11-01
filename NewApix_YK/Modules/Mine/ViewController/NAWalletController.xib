@@ -30,8 +30,8 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKp-xp-zKo">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="62.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFe-UI-lnT">
-                            <rect key="frame" x="134" y="10" width="107.5" height="48"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFe-UI-lnT">
+                            <rect key="frame" x="133.5" y="10" width="108.5" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="40"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elB-cY-tdQ">
-                            <rect key="frame" x="246.5" y="19" width="30" height="30"/>
+                            <rect key="frame" x="247" y="19" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="30" id="DAm-3k-7Ns"/>
                                 <constraint firstAttribute="height" constant="30" id="hBt-1u-6xp"/>

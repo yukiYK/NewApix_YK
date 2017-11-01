@@ -23,16 +23,33 @@ static NSString * const kWalletCellName = @"NAWalletCell";
 
 @property (weak, nonatomic) IBOutlet UIButton *encashmentBtn;
 
+@property (nonatomic, strong) UIView *footerView;
 
 @end
-
+//210 216
 @implementation NAWalletController
+- (UIView *)footerView {
+    if (!_footerView) {
+        _footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.tableView.bounds.size.height - 44)];
+        _footerView.backgroundColor = [UIColor whiteColor];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 210, 216)];
+        imageView.center = _footerView.center;
+        imageView.image = kGetImage(@"list_empty");
+        [_footerView addSubview:imageView];
+    }
+    return _footerView;
+}
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self setupSubviews];
+    [self setupTableView];
+    [self resetFooterView];
+    if (self.walletModel) [self setupWalletModel];
+    else [self requestForWallet];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,8 +84,39 @@ static NSString * const kWalletCellName = @"NAWalletCell";
     self.navigationItem.leftBarButtonItem = leftBut;
 }
 
-- (void)setupSubviews {
+- (void)setupTableView {
     [self.tableView registerNib:[UINib nibWithNibName:kWalletCellName bundle:nil] forCellReuseIdentifier:kWalletCellID];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+}
+
+- (void)resetFooterView {
+    if (self.walletModel.transaction.count <= 0)
+        self.tableView.tableFooterView = self.footerView;
+    else self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)setupWalletModel {
+    self.moneyLabel.text = self.walletModel.balance;
+    
+    self.saveMoneyLabel.text = [NSString stringWithFormat:@"帮你省钱:%@元", self.walletModel.advantage];
+    self.incomeLabel.text = self.walletModel.income;
+    self.loanMoneyLabel.text = self.walletModel.loan;
+}
+
+- (void)requestForWallet {
+    NAAPIModel *model = [NAURLCenter redPacketConfig];
+    
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        weakSelf.walletModel = [NAWalletModel yy_modelWithJSON:returnValue];
+        NSInteger count = weakSelf.walletModel.transaction.count;
+        [NAUserTool saveRedPacketCount:count];
+        [weakSelf.tableView reloadData];
+        [weakSelf setupWalletModel];
+        [weakSelf resetFooterView];
+    } errorCodeBlock:nil failureBlock:nil];
 }
 
 #pragma mark - <Events>
@@ -77,11 +125,16 @@ static NSString * const kWalletCellName = @"NAWalletCell";
 }
 
 - (IBAction)onVisibleBtnClicked:(id)sender {
+    self.visibleBtn.selected = !self.visibleBtn.selected;
     
+    self.moneyLabel.text = self.visibleBtn.selected ? @"****" : self.walletModel.balance;
 }
 
 - (IBAction)onEncashmentBtnClicked:(id)sender {
-    
+    [NAViewControllerCenter transformViewController:self
+                                   toViewController:[NAViewControllerCenter encashmentControllerWithAllMoney:self.walletModel.balance]
+                                      tranformStyle:NATransformStylePush
+                                          needLogin:NO];
 }
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>

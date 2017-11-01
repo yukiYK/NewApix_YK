@@ -11,6 +11,8 @@
 		4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A037D211F2851A600F38AC0 /* Assets.xcassets */; };
 		4A037D301F2851A600F38AC0 /* NewApix_YKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A037D2F1F2851A600F38AC0 /* NewApix_YKTests.m */; };
 		4A037D3B1F2851A600F38AC0 /* NewApix_YKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A037D3A1F2851A600F38AC0 /* NewApix_YKUITests.m */; };
+		4A0383A51FA9B57800DA5C72 /* NAEncashmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0383A31FA9B57800DA5C72 /* NAEncashmentController.m */; };
+		4A0383A61FA9B57800DA5C72 /* NAEncashmentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0383A41FA9B57800DA5C72 /* NAEncashmentController.xib */; };
 		4A052F801F7113B8003EE147 /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A052F7F1F7113B8003EE147 /* areaArray.plist */; };
 		4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0959981F8B5988008164B6 /* NABankCardsController.m */; };
 		4A09599D1F8B59B7008164B6 /* NABankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A09599B1F8B59B7008164B6 /* NABankCardCell.m */; };
@@ -143,6 +145,9 @@
 		4A037D361F2851A600F38AC0 /* NewApix_YKUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewApix_YKUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A037D3A1F2851A600F38AC0 /* NewApix_YKUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewApix_YKUITests.m; sourceTree = "<group>"; };
 		4A037D3C1F2851A600F38AC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4A0383A21FA9B57800DA5C72 /* NAEncashmentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAEncashmentController.h; sourceTree = "<group>"; };
+		4A0383A31FA9B57800DA5C72 /* NAEncashmentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAEncashmentController.m; sourceTree = "<group>"; };
+		4A0383A41FA9B57800DA5C72 /* NAEncashmentController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAEncashmentController.xib; sourceTree = "<group>"; };
 		4A052F7F1F7113B8003EE147 /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
 		4A0959971F8B5988008164B6 /* NABankCardsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NABankCardsController.h; sourceTree = "<group>"; };
 		4A0959981F8B5988008164B6 /* NABankCardsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NABankCardsController.m; sourceTree = "<group>"; };
@@ -619,6 +624,9 @@
 				4AAA80F71FA86DE600F88083 /* NAWalletController.h */,
 				4AAA80F81FA86DE600F88083 /* NAWalletController.m */,
 				4AAA80F91FA86DE600F88083 /* NAWalletController.xib */,
+				4A0383A21FA9B57800DA5C72 /* NAEncashmentController.h */,
+				4A0383A31FA9B57800DA5C72 /* NAEncashmentController.m */,
+				4A0383A41FA9B57800DA5C72 /* NAEncashmentController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1001,6 +1009,7 @@
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
 				4A8B10381F8F486A00498F9D /* NAIDAuthenticationController.xib in Resources */,
 				4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */,
+				4A0383A61FA9B57800DA5C72 /* NAEncashmentController.xib in Resources */,
 				4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */,
 				4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */,
 				4AC6CA491F2F248500A9308F /* NALoginController.xib in Resources */,
@@ -1152,6 +1161,7 @@
 				4A78505E1F7E3FC3000C2AD5 /* NAChangePasswordController.m in Sources */,
 				4A2837B81F501B28001B065C /* NANewMainPageController.m in Sources */,
 				4AAEED9C1F4C15AF00055CF1 /* NAAPIModel.m in Sources */,
+				4A0383A51FA9B57800DA5C72 /* NAEncashmentController.m in Sources */,
 				5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,

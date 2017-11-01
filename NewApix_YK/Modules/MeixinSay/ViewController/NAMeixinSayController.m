@@ -15,7 +15,7 @@ NSString * const kEssenceCellID = @"essenceCell";
 NSString * const kCommunityCellName = @"NACommunityCell";
 NSString * const kCommunityCellID = @"communityCell";
 
-@interface NAMeixinSayController () <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+@interface NAMeixinSayController () <UIWebViewDelegate, UIScrollViewDelegate>
 
 /** 头部两个button */
 @property (nonatomic, strong) UIButton *leftBtn;
@@ -23,36 +23,21 @@ NSString * const kCommunityCellID = @"communityCell";
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) UITableView *essenceTableView;
-@property (nonatomic, strong) UITableView *communityTableView;
-
-
-@property (nonatomic, strong) NSMutableArray *essenceDataArray;
-@property (nonatomic, strong) NSMutableArray *communityDataArray;
+@property (nonatomic, strong) UIWebView *essenceWebView;
+@property (nonatomic, strong) UIWebView *communityWebView;
 
 @end
 
 @implementation NAMeixinSayController
 #pragma mark - <Lazy Load>
-- (NSMutableArray *)essenceDataArray {
-    if (!_essenceDataArray) {
-        _essenceDataArray = [NSMutableArray array];
-    }
-    return _essenceDataArray;
-}
-
-- (NSMutableArray *)communityDataArray {
-    if (!_communityDataArray) {
-        _communityDataArray = [NSMutableArray array];
-    }
-    return _communityDataArray;
-}
-
 
 #pragma mark - <Life Cycle>
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self setupNavigation];
+    [self setupSubviews];
 }
 
 - (void)setupNavigation {
@@ -91,83 +76,57 @@ NSString * const kCommunityCellID = @"communityCell";
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
-    UITableView *essenceTableView = [[UITableView alloc] initWithFrame:self.scrollView.bounds];
-    essenceTableView.delegate = self;
-    essenceTableView.dataSource = self;
-    essenceTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [essenceTableView registerNib:[UINib nibWithNibName:kEssenceCellName bundle:nil] forCellReuseIdentifier:kEssenceCellID];
-    essenceTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadEssenceData)];
-    essenceTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreEssenceData)];
-    [scrollView addSubview:essenceTableView];
-    self.essenceTableView = essenceTableView;
+    UIWebView *essenceWebView = [[UIWebView alloc] initWithFrame:self.scrollView.bounds];
+    essenceWebView.delegate = self;
+    NSURL *essenceUrl = [NSURL URLWithString:[NAURLCenter EssenceH5Url]];
+    [essenceWebView loadRequest:[NSURLRequest requestWithURL:essenceUrl]];
+    [scrollView addSubview:essenceWebView];
+    self.essenceWebView = essenceWebView;
     
-    UITableView *communityTableView = [[UITableView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, scrollView.bounds.size.height)];
-    communityTableView.delegate = self;
-    communityTableView.dataSource = self;
-    communityTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [communityTableView registerNib:[UINib nibWithNibName:kCommunityCellName bundle:nil] forCellReuseIdentifier:kCommunityCellID];
-    communityTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadCommunityData)];
-    communityTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreCommunityData)];
-    [scrollView addSubview:communityTableView];
-    self.communityTableView = communityTableView;
+    UIWebView *communityWebView = [[UIWebView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, scrollView.bounds.size.height)];
+    communityWebView.delegate = self;
+    NSURL *communityUrl = [NSURL URLWithString:[NAURLCenter communityH5Url]];
+    [communityWebView loadRequest:[NSURLRequest requestWithURL:communityUrl]];
+    [scrollView addSubview:communityWebView];
+    self.communityWebView = communityWebView;
 }
 
-
-- (void)loadEssenceData {
-    
-}
-
-- (void)loadMoreEssenceData {
-    
-}
-
-- (void)loadCommunityData {
-    
-}
-
-- (void)loadMoreCommunityData {
-    
-}
 
 #pragma mark - <Event>
 - (void)onLeftBtnClicked:(UIButton *)sender {
     if (sender.selected) return;
-    
     sender.selected = YES;
     
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 - (void)onRightBtnClicked:(UIButton *)sender {
-}
-
-#pragma mark - <UITableViewDelegate, UITableViewDataSource>
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (tableView == self.essenceTableView)
-        return self.essenceDataArray.count;
-    return self.communityDataArray.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 44;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (tableView == self.essenceTableView) {
-        NAEssenceCell *essenceCell = [tableView dequeueReusableCellWithIdentifier:kEssenceCellID forIndexPath:indexPath];
-        return essenceCell;
-    }
-    else {
-        NACommunityCell *communityCell = [tableView dequeueReusableCellWithIdentifier:kCommunityCellID forIndexPath:indexPath];
-        return communityCell;
-    }
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (sender.selected) return;
+    sender.selected = YES;
     
+    [self.scrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
 }
+
+#pragma mark - <UIWebViewDelegate>
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    NSString *urlStr = request.URL.absoluteString;
+    if ([urlStr isEqualToString:[NAURLCenter EssenceH5Url]] || [urlStr isEqualToString:[NAURLCenter communityH5Url]])
+        return YES;
+    
+    // TODO
+    
+    return NO;
+}
+
 
 #pragma mark - <UIScrollViewDelegate>
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    if (scrollView != self.scrollView) return;
+    
+    if (scrollView.contentOffset.x == 0)
+        [self.leftBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
+    else if (scrollView.contentOffset.x == kScreenWidth)
+        [self.rightBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 @end

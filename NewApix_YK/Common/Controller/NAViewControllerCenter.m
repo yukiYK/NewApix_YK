@@ -30,6 +30,7 @@
 #import "NAIDFaceCameraController.h"
 #import "NALoanRecordController.h"
 #import "NAWalletController.h"
+#import "NAEncashmentController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -127,6 +128,18 @@
     NAWalletController *walletVC = [[NAWalletController alloc] initWithNibName:@"NAWalletController" bundle:nil];
     walletVC.walletModel = walletModel;
     return walletVC;
+}
+
+/**
+ 钱包提现页
+
+ @param allMoney 钱包总额
+ @return NAEncashmentController
+ */
++ (UIViewController *)encashmentControllerWithAllMoney:(NSString *)allMoney {
+    NAEncashmentController *encashmentVC = [[NAEncashmentController alloc] initWithNibName:@"NAEncashmentController" bundle:nil];
+    encashmentVC.allMoney = allMoney;
+    return encashmentVC;
 }
 
 /**

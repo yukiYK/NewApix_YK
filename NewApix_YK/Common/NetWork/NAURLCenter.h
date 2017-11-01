@@ -74,6 +74,13 @@
 + (NAAPIModel *)mineVipInfoConfig;
 /** 用户红包接口 */
 + (NAAPIModel *)redPacketConfig;
+/**
+ 钱包提现接口
+
+ @param money 提现金额
+ @return NAAPIModel对象
+ */
++ (NAAPIModel *)encashmentConfigWithMoney:(NSString *)money;
 /** 用户订单信息接口 */
 + (NAAPIModel *)mineOrderInfoConfig;
 /** 用户贷款记录接口 */
@@ -96,7 +103,13 @@
 + (NAAPIModel *)updateUserInfoConfigWithModel:(NAUserInfoModel *)model;
 /** 验证旧手机号接口 */
 + (NAAPIModel *)checkOldPhoneConfigWithSmsCode:(NSString *)smsCode;
-/** 设置新手机号接口 */
+/**
+ 设置新手机号接口
+
+ @param phone 手机号
+ @param smsCode 验证码
+ @return NAAPIModel
+ */
 + (NAAPIModel *)setNewPhoneConfigWithPhone:(NSString *)phone smsCode:(NSString *)smsCode;
 /** 退出登录接口 */
 + (NAAPIModel *)logoutConfig;
@@ -147,5 +160,9 @@
 + (NSString *)creditReportH5Url;
 /* 常见问题页 */
 + (NSString *)commonQuestionsH5Url;
+/** 美信说-攻略 */
++ (NSString *)EssenceH5Url;
+/** 美信说-社区 */
++ (NSString *)communityH5Url;
 
 @end

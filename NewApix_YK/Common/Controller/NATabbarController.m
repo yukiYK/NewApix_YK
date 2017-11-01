@@ -90,7 +90,7 @@
         UINavigationController *vc = self.selectedViewController;
         [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
         return NO;
-    } else if (viewController == self.viewControllers[1] && [NACommon sharedCommon].userStatus != NAUserStatusVIP) {
+    } else if (viewController == self.viewControllers[1] && [NACommon sharedCommon].userStatus != NAUserStatusVIP && [NACommon sharedCommon].userStatus != NAUserStatusVIPForever) {
         
         if (![NACommon getToken]) {
             

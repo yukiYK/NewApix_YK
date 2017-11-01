@@ -208,6 +208,15 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"red_packet"] param:param rightCode:nil];
 }
 
+/** 钱包提现接口 */
++ (NAAPIModel *)encashmentConfigWithMoney:(NSString *)money {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"source"] = @"ios";
+    param[@"amount"] = money;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"red_packet", @"transaction", @"withdraw"] param:param rightCode:nil];
+}
+
 /** 用户订单信息接口 */
 + (NAAPIModel *)mineOrderInfoConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -495,5 +504,23 @@
     return urlStr;
 }
 
+/** 美信说-攻略 */
++ (NSString *)EssenceH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    param[@"device"] = @"app";
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
+/** 美信说-社区 */
++ (NSString *)communityH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"device"] = @"app";
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"forum"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
 
 @end
