@@ -87,14 +87,13 @@
 #pragma mark - <UITabBarControllerDelegate>
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
     if (![NACommon getToken] && viewController == self.viewControllers[2]) {
-        UINavigationController *vc = self.selectedViewController;
+        UINavigationController *vc = (UINavigationController *)self.selectedViewController;
         [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
         return NO;
     } else if (viewController == self.viewControllers[1] && [NACommon sharedCommon].userStatus != NAUserStatusVIP && [NACommon sharedCommon].userStatus != NAUserStatusVIPForever) {
         
         if (![NACommon getToken]) {
-            
-            UINavigationController *vc = self.selectedViewController;
+            UINavigationController *vc = (UINavigationController *)self.selectedViewController;
             [vc pushViewController:[NAViewControllerCenter loginController] animated:YES];
         } else {
             [self alertViewClick];

@@ -79,6 +79,7 @@
 		4AB108111F7F9DEA00F02864 /* NAAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */; };
 		4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */; };
 		4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */; };
+		4AB821EC1FAB242F00E0E801 /* NAArticleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
 		4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */; };
 		4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA461F2F248500A9308F /* NALoginController.m */; };
@@ -261,6 +262,8 @@
 		4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAboutUsController.xib; sourceTree = "<group>"; };
 		4AB73D671FA1C76A0014E29D /* NAIDCameraGuiderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDCameraGuiderView.h; sourceTree = "<group>"; };
 		4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDCameraGuiderView.m; sourceTree = "<group>"; };
+		4AB821EA1FAB242F00E0E801 /* NAArticleDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAArticleDetailController.h; sourceTree = "<group>"; };
+		4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAArticleDetailController.m; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
 		4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageController.xib; sourceTree = "<group>"; };
@@ -555,6 +558,8 @@
 			children = (
 				4AC6CA4F1F2F24B800A9308F /* NAMeixinSayController.h */,
 				4AC6CA501F2F24B800A9308F /* NAMeixinSayController.m */,
+				4AB821EA1FAB242F00E0E801 /* NAArticleDetailController.h */,
+				4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1117,6 +1122,7 @@
 				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
 				4A0959A11F8B67EC008164B6 /* NABankCardModel.m in Sources */,
+				4AB821EC1FAB242F00E0E801 /* NAArticleDetailController.m in Sources */,
 				4AAA80FA1FA86DE600F88083 /* NAWalletController.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,

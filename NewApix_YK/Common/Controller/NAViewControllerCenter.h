@@ -18,7 +18,7 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 };
 
 /**
- 工具类，用来获取几乎所有二级以上的viewController
+ 工具类，用来获取几乎所有的viewController
  */
 @interface NAViewControllerCenter : NSObject
 
@@ -68,6 +68,16 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  @return NAPhoneLoginController
  */
 + (UIViewController *)phoneLoginController;
+
+
+/**
+ 文章详情页
+
+ @param articleUrl 文章url
+ @param articleTitle 文章标题
+ @return NAArticleDetailController
+ */
++ (UIViewController *)articleDetailControllerWithUrl:(NSString *)articleUrl title:(NSString *)articleTitle;
 
 
 /**

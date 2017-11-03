@@ -31,6 +31,7 @@
 #import "NALoanRecordController.h"
 #import "NAWalletController.h"
 #import "NAEncashmentController.h"
+#import "NAArticleDetailController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -74,6 +75,20 @@
 // 手机登录页
 + (UIViewController *)phoneLoginController {
     return [[NAPhoneLoginController alloc] initWithNibName:@"NAPhoneLoginController" bundle:nil];
+}
+
+/**
+ 文章详情页
+ 
+ @param articleUrl 文章url
+ @param articleTitle 文章标题
+ @return NAArticleDetailController
+ */
++ (UIViewController *)articleDetailControllerWithUrl:(NSString *)articleUrl title:(NSString *)articleTitle {
+    NAArticleDetailController *articleVC = [[NAArticleDetailController alloc] init];
+    articleVC.articleUrl = articleUrl;
+    articleVC.articleTitle = articleTitle;
+    return articleVC;
 }
 
 /**

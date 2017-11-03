@@ -131,6 +131,7 @@
     [defaults removeObjectForKey:kUserDefaultsPhone];
     [defaults removeObjectForKey:kUserDefaultsTrustScore];
     [defaults removeObjectForKey:kUserDefaultsSex];
+    [self saveUserStatus:NAUserStatusNoLogin];
 }
 
 @end

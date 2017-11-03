@@ -30,7 +30,7 @@
 
 #pragma mark - <不同环境的配置>
 // --------------------- 不同环境的配置 -------------
-// 是否是线上
+// 是否是线上 1.线上 0.测试
 #define SERVER_ONLINE  0
 // apix地址
 #define SERVER_ADDRESS_APIX_A @"http://a.apix.cn"

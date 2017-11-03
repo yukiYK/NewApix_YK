@@ -51,6 +51,17 @@
     // 获取uuid
     [self setupDeviceInfo];
     
+    
+    //设置useragent
+    UIWebView *tempWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    NSString *userAgent = [tempWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    NSString *versionId = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+    NSString *ua = [NSString stringWithFormat:@"version%@\\%@\\%@",versionId,
+                    userAgent,
+                    @"meixin"];
+    NSLog(@"%@",ua);
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : ua, @"User-Agent" : ua}];
+
     // 监听网络状态变化
 //    AFNetworkReachabilityManager
     self.netStatus = [AFNetworkReachabilityManager sharedManager].networkReachabilityStatus;

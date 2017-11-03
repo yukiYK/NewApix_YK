@@ -18,6 +18,7 @@ NSString * const kCommunityCellID = @"communityCell";
 @interface NAMeixinSayController () <UIWebViewDelegate, UIScrollViewDelegate>
 
 /** 头部两个button */
+@property (nonatomic, strong) UIView *headView;
 @property (nonatomic, strong) UIButton *leftBtn;
 @property (nonatomic, strong) UIButton *rightBtn;
 
@@ -36,15 +37,31 @@ NSString * const kCommunityCellID = @"communityCell";
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self setupNavigation];
     [self setupSubviews];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self setupNavigation];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.headView removeFromSuperview];
 }
 
 - (void)setupNavigation {
     
+    [self hideBackBtn];
+    if (self.headView) {
+        [self.navigationController.navigationBar addSubview:self.headView];
+        return;
+    }
+    
     UIView *headView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kNavBarH)];
     headView.backgroundColor = [UIColor clearColor];
     [self.navigationController.navigationBar addSubview:headView];
+    self.headView = headView;
     
     UIButton *leftBtn = [[UIButton alloc] initWithFrame:CGRectMake((kScreenWidth/2 - 60)/2, 0, 60, kNavBarH)];
     [leftBtn setTitle:@"精选" forState:UIControlStateNormal];
@@ -70,23 +87,29 @@ NSString * const kCommunityCellID = @"communityCell";
 - (void)setupSubviews {
     
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kStatusBarH + kNavBarH, kScreenWidth, kScreenHeight - kStatusBarH - kNavBarH - kTabBarH)];
+    scrollView.frame = self.view.bounds;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
+    scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.contentSize = CGSizeMake(kScreenWidth * 2, scrollView.frame.size.height);
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
     
     UIWebView *essenceWebView = [[UIWebView alloc] initWithFrame:self.scrollView.bounds];
+    essenceWebView.backgroundColor = [UIColor whiteColor];
     essenceWebView.delegate = self;
     NSURL *essenceUrl = [NSURL URLWithString:[NAURLCenter EssenceH5Url]];
-    [essenceWebView loadRequest:[NSURLRequest requestWithURL:essenceUrl]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:essenceUrl];
+    [essenceWebView loadRequest:[NSURLProtocol canonicalRequestForRequest:request]];
     [scrollView addSubview:essenceWebView];
     self.essenceWebView = essenceWebView;
     
     UIWebView *communityWebView = [[UIWebView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, scrollView.bounds.size.height)];
+    communityWebView.backgroundColor = [UIColor whiteColor];
     communityWebView.delegate = self;
     NSURL *communityUrl = [NSURL URLWithString:[NAURLCenter communityH5Url]];
-    [communityWebView loadRequest:[NSURLRequest requestWithURL:communityUrl]];
+    NSURLRequest *request2 = [NSURLRequest requestWithURL:communityUrl];
+    [communityWebView loadRequest:request2];
     [scrollView addSubview:communityWebView];
     self.communityWebView = communityWebView;
 }
@@ -96,6 +119,7 @@ NSString * const kCommunityCellID = @"communityCell";
 - (void)onLeftBtnClicked:(UIButton *)sender {
     if (sender.selected) return;
     sender.selected = YES;
+    self.rightBtn.selected = NO;
     
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
@@ -103,6 +127,7 @@ NSString * const kCommunityCellID = @"communityCell";
 - (void)onRightBtnClicked:(UIButton *)sender {
     if (sender.selected) return;
     sender.selected = YES;
+    self.leftBtn.selected = NO;
     
     [self.scrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
 }
@@ -110,12 +135,86 @@ NSString * const kCommunityCellID = @"communityCell";
 #pragma mark - <UIWebViewDelegate>
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString *urlStr = request.URL.absoluteString;
-    if ([urlStr isEqualToString:[NAURLCenter EssenceH5Url]] || [urlStr isEqualToString:[NAURLCenter communityH5Url]])
-        return YES;
+    NSLog(@"urlStr = %@", urlStr);
+    if ([urlStr hasPrefix:@"communityad"]) {
+        NSString *string = urlStr.stringByRemovingPercentEncoding;
+        string = [string substringFromIndex:[string rangeOfString:@"communityad:"].location + @"communityad:".length];
+        NSError *error = nil;
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"%@",object);
+        if([object[@"data"] rangeOfString:@"recommendedL"].location != NSNotFound) {
+            //跳到推荐贷款
+            
+        } else {
+            // 文章
+        }
+        
+        return NO;
+    } else if ([urlStr hasPrefix:@"community"]) {
+        NSString *string = urlStr.stringByRemovingPercentEncoding;
+        string = [string substringFromIndex:[string rangeOfString:@"community:"].location + @"community:".length];
+        NSError *error = nil;
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        [NAViewControllerCenter transformViewController:self
+                                       toViewController:[NAViewControllerCenter articleDetailControllerWithUrl:object[@"url"] title:@"美信说"]
+                                          tranformStyle:NATransformStylePush
+                                              needLogin:NO];
+        
+        
+        return NO;
+    } else if ([urlStr hasPrefix:@"finishrepay"]) {
+        [self.navigationController popViewControllerAnimated:YES];
+        return NO;
+    } else if ([urlStr hasPrefix:@"forum"]) {  //点击社区中的帖子阅读
+        NSString *string = urlStr.stringByRemovingPercentEncoding;
+        string = [string substringFromIndex:[string rangeOfString:@"forum:"].location + @"forum:".length];
+        NSError *error = nil;
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSLog(@"!!!!%@",object);
+        if (([NAUserTool getUserStatus] == NAUserStatusVIPForever || [NAUserTool getUserStatus] == NAUserStatusVIP) || [object[@"grant"] isEqualToString:@"true"]) {
+            // 跳转文章详情
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter articleDetailControllerWithUrl:object[@"data"] title:@"详情"]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:YES];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"围观帖子请出示会员卡哦"];
+        }
+        return NO;
+    } else if ([urlStr hasPrefix:@"post"]) {  //点击了社区中的发帖
+        if ([NAUserTool getUserStatus] == NAUserStatusVIPForever || [NAUserTool getUserStatus] == NAUserStatusVIP) {
+            // 跳转发帖
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"发言请出示会员卡哦"];
+        }
+        return NO;
+    } else if ([urlStr hasPrefix:@"read"]) {  //点击了攻略中的文章
+        //解析数据
+        NSString *string = urlStr.stringByRemovingPercentEncoding;
+        string = [string substringFromIndex:[string rangeOfString:@"read:"].location + @"read:".length];
+        NSError *error = nil;
+        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSString *vipArticle = [NSString stringWithFormat:@"%@",object[@"vipartivle"]];
+        NSLog(@"%@",vipArticle);
+        
+        if (([NAUserTool getUserStatus] == NAUserStatusVIPForever || [NAUserTool getUserStatus] == NAUserStatusVIP) && ([object[@"vipuser"] isEqualToString:@"0"] || [vipArticle isEqualToString:@"1"])) {
+            // 跳转文章详情
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter articleDetailControllerWithUrl:object[@"url"] title:object[@"title"]]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:YES];
+        } else {
+            [SVProgressHUD showErrorWithStatus:@"查看独家攻略需要您出示会员卡哦"];
+        }
+        return NO;
+    }
     
-    // TODO
-    
-    return NO;
+    return YES;
 }
 
 

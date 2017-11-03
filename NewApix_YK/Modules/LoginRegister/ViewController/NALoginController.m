@@ -86,12 +86,11 @@
     NAHTTPSessionManager *manager = [NAHTTPSessionManager manager];
     [manager setRequestSerializerForPost];
     
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/html",@"text/json",@"text/javascript", nil];
     [manager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
         NSDictionary *dataDic = [returnValue objectForKey:@"data"];
-        NSString *token = [dataDic objectForKey:@"token"];
+        NSString *token = [NSString stringWithFormat:@"%@", [dataDic objectForKey:@"token"]];
         NSString *uniqueId = [AESCrypt decrypt:[dataDic objectForKey:@"unique_id"] password:kAESKey];
         [NACommon setToken:token];
         [NACommon setUniqueId:uniqueId];
