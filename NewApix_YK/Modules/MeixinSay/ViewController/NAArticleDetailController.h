@@ -8,8 +8,14 @@
 
 #import "NABaseViewController.h"
 
+typedef NS_ENUM(NSInteger, NAArticleType) {
+    NAArticleTypeEssence,
+    NAArticleTypeCommunity
+};
+
 @interface NAArticleDetailController : NABaseViewController
 
+@property (nonatomic, assign) NAArticleType articleType;
 @property (nonatomic, copy) NSString *articleUrl;
 @property (nonatomic, copy) NSString *articleTitle;
 

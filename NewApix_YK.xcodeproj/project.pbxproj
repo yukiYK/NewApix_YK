@@ -78,6 +78,7 @@
 		4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AAEEDAC1F4C277100055CF1 /* NAUserTool.m */; };
 		4AB108111F7F9DEA00F02864 /* NAAboutUsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */; };
 		4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */; };
+		4AB5C1C71FB04207007A9AA1 /* NAShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5C1C61FB04207007A9AA1 /* NAShareView.m */; };
 		4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */; };
 		4AB821EC1FAB242F00E0E801 /* NAArticleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
@@ -260,6 +261,8 @@
 		4AB1080E1F7F9DEA00F02864 /* NAAboutUsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAboutUsController.h; sourceTree = "<group>"; };
 		4AB1080F1F7F9DEA00F02864 /* NAAboutUsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAboutUsController.m; sourceTree = "<group>"; };
 		4AB108101F7F9DEA00F02864 /* NAAboutUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAboutUsController.xib; sourceTree = "<group>"; };
+		4AB5C1C51FB04207007A9AA1 /* NAShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAShareView.h; sourceTree = "<group>"; };
+		4AB5C1C61FB04207007A9AA1 /* NAShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAShareView.m; sourceTree = "<group>"; };
 		4AB73D671FA1C76A0014E29D /* NAIDCameraGuiderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDCameraGuiderView.h; sourceTree = "<group>"; };
 		4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDCameraGuiderView.m; sourceTree = "<group>"; };
 		4AB821EA1FAB242F00E0E801 /* NAArticleDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAArticleDetailController.h; sourceTree = "<group>"; };
@@ -829,6 +832,8 @@
 				4A6381691F384F71008BC8FD /* NABannerView.m */,
 				4AA9AF1D1F6B83CC0061AD1F /* NAPickerView.h */,
 				4AA9AF1E1F6B83CC0061AD1F /* NAPickerView.m */,
+				4AB5C1C51FB04207007A9AA1 /* NAShareView.h */,
+				4AB5C1C61FB04207007A9AA1 /* NAShareView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1109,6 +1114,7 @@
 				4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */,
 				4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */,
 				4AD966DC1FA7108400E5B43A /* NALoanRecordController.m in Sources */,
+				4AB5C1C71FB04207007A9AA1 /* NAShareView.m in Sources */,
 				4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */,
 				4A7F952B1F7A5123003D7FB6 /* UINavigationController+NAStatusBar.m in Sources */,
 				4AAEED961F4C083300055CF1 /* NAMineModel.m in Sources */,

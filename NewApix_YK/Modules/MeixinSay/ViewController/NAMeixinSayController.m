@@ -45,8 +45,8 @@ NSString * const kCommunityCellID = @"communityCell";
     [self setupNavigation];
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self.headView removeFromSuperview];
 }
 
@@ -114,6 +114,14 @@ NSString * const kCommunityCellID = @"communityCell";
     self.communityWebView = communityWebView;
 }
 
+- (NSDictionary *)getObjectWithUrlString:(NSString *)urlString RangeString:(NSString *)rangeString {
+    NSString *string = urlString.stringByRemovingPercentEncoding;
+    string = [string substringFromIndex:[string rangeOfString:rangeString].location + rangeString.length];
+    NSError *error = nil;
+    NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+}
+
 
 #pragma mark - <Event>
 - (void)onLeftBtnClicked:(UIButton *)sender {
@@ -137,11 +145,8 @@ NSString * const kCommunityCellID = @"communityCell";
     NSString *urlStr = request.URL.absoluteString;
     NSLog(@"urlStr = %@", urlStr);
     if ([urlStr hasPrefix:@"communityad"]) {
-        NSString *string = urlStr.stringByRemovingPercentEncoding;
-        string = [string substringFromIndex:[string rangeOfString:@"communityad:"].location + @"communityad:".length];
-        NSError *error = nil;
-        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        
+        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"communityad:"];
         NSLog(@"%@",object);
         if([object[@"data"] rangeOfString:@"recommendedL"].location != NSNotFound) {
             //跳到推荐贷款
@@ -152,11 +157,7 @@ NSString * const kCommunityCellID = @"communityCell";
         
         return NO;
     } else if ([urlStr hasPrefix:@"community"]) {
-        NSString *string = urlStr.stringByRemovingPercentEncoding;
-        string = [string substringFromIndex:[string rangeOfString:@"community:"].location + @"community:".length];
-        NSError *error = nil;
-        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"community:"];
         
         [NAViewControllerCenter transformViewController:self
                                        toViewController:[NAViewControllerCenter articleDetailControllerWithUrl:object[@"url"] title:@"美信说"]
@@ -169,11 +170,7 @@ NSString * const kCommunityCellID = @"communityCell";
         [self.navigationController popViewControllerAnimated:YES];
         return NO;
     } else if ([urlStr hasPrefix:@"forum"]) {  //点击社区中的帖子阅读
-        NSString *string = urlStr.stringByRemovingPercentEncoding;
-        string = [string substringFromIndex:[string rangeOfString:@"forum:"].location + @"forum:".length];
-        NSError *error = nil;
-        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"forum:"];
         NSLog(@"!!!!%@",object);
         if (([NAUserTool getUserStatus] == NAUserStatusVIPForever || [NAUserTool getUserStatus] == NAUserStatusVIP) || [object[@"grant"] isEqualToString:@"true"]) {
             // 跳转文章详情
@@ -194,11 +191,7 @@ NSString * const kCommunityCellID = @"communityCell";
         return NO;
     } else if ([urlStr hasPrefix:@"read"]) {  //点击了攻略中的文章
         //解析数据
-        NSString *string = urlStr.stringByRemovingPercentEncoding;
-        string = [string substringFromIndex:[string rangeOfString:@"read:"].location + @"read:".length];
-        NSError *error = nil;
-        NSData *data = [string dataUsingEncoding:NSUTF8StringEncoding];
-        NSDictionary *object = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"read:"];
         NSString *vipArticle = [NSString stringWithFormat:@"%@",object[@"vipartivle"]];
         NSLog(@"%@",vipArticle);
         

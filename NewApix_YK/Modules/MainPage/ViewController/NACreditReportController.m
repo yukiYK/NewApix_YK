@@ -11,21 +11,38 @@
 #import "UIScrollView+NAScreenshot.h"
 #import "UIImage+NAExtension.h"
 #import <UMSocialCore/UMSocialCore.h>
+#import "NAShareView.h"
 
 @interface NACreditReportController () <UIWebViewDelegate>
 
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, copy) NSString *urlStr;
 
-@property (nonatomic, strong) UIView *backview;
-@property (nonatomic, strong) UIView *myBlackView;
 
-@property (nonatomic, strong) UIImage *shareImage;
+@property (nonatomic, strong) NAShareView *shareView;
+
 @property (nonatomic, strong) UMSocialMessageObject *msgObjc;
 
 @end
 
 @implementation NACreditReportController
+#pragma mark - <Lazy Load>
+- (UMSocialMessageObject *)msgObjc {
+    if (!_msgObjc) {
+        _msgObjc = [UMSocialMessageObject messageObject];
+        _msgObjc.text = @"信用体检报告";
+        
+        UMShareImageObject *shareImageObjc = [[UMShareImageObject alloc] init];
+        
+        UIImage *image = [self getSaveImage];
+        CGFloat height = kScreenWidth * image.size.height/image.size.width;
+        shareImageObjc.shareImage = image;
+        shareImageObjc.thumbImage = [self imageWithImage:image scaledToSize:CGSizeMake(kScreenWidth/4, height/4)];
+        _msgObjc.shareObject = shareImageObjc;
+    }
+    return _msgObjc;
+}
+
 #pragma mark - <Life Cycle>
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -41,11 +58,10 @@
     //    self.title = @"信用体检报告";
     self.navigationController.interactivePopGestureRecognizer.enabled = YES;
     
-    
     UIButton *left = [UIButton buttonWithType:UIButtonTypeCustom];
-    [left setFrame:CGRectMake(-20, 0, 35, 35)];
+    [left setFrame:CGRectMake(0, 0, 20, 30)];
     [left addTarget:self action:@selector(onBackClicked) forControlEvents:UIControlEventTouchUpInside];
-    [left setImage:[UIImage imageNamed:@"backbtn"] forState:UIControlStateNormal];
+    [left setImage:kGetImage(kImageBackWhite) forState:UIControlStateNormal];
     [left setTitle:@"" forState:UIControlStateNormal];
     [left setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
@@ -72,7 +88,7 @@
     [self.view addSubview:webView];
     self.webView = webView;
     
-    UIImageView *tipsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"share_ moments"]];
+    UIImageView *tipsImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"share_moments"]];
     tipsImageView.frame = CGRectMake(kScreenWidth - 20 - 80, 54, 80, 22);
     [self.view addSubview:tipsImageView];
     
@@ -101,14 +117,7 @@
 //        [self popAlartWithtitle:@"微信分享到朋友圈失败"];
 //    }];
 //}
-- (void)shareToWechatMoment {
-    
-    
-    [[UMSocialManager defaultManager] shareToPlatform:UMSocialPlatformType_WechatTimeLine messageObject:self.msgObjc currentViewController:self completion:^(id result, NSError *error) {
-        [SVProgressHUD showSuccessWithStatus:@"分享成功"];
-        [self requestForShareSuccess];
-    }];
-}
+
 
 - (UIImage *)getSaveImage {
     // 数据图片
@@ -151,32 +160,52 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-
 //点击分享
 - (void)onShareBtnClicked:(UIButton *)button {
-    [self shareToWechatMoment];
+    if (!self.shareView) {
+        WeakSelf
+        self.shareView = [[NAShareView alloc] initWithActionBlock:^(NSInteger index) {
+            // @"微信", @"朋友圈", @"QQ", @"QQ空间"
+            UMSocialPlatformType platform = UMSocialPlatformType_WechatTimeLine;
+            switch (index) {
+                case 0:
+                    platform = UMSocialPlatformType_WechatSession;
+                    break;
+                case 1:
+                    platform = UMSocialPlatformType_WechatTimeLine;
+                    break;
+                case 2:
+                    platform = UMSocialPlatformType_QQ;
+                    break;
+                case 3:
+                    platform = UMSocialPlatformType_Qzone;
+                    break;
+                    
+                default:
+                    break;
+            }
+            [[UMSocialManager defaultManager] shareToPlatform:platform messageObject:weakSelf.msgObjc currentViewController:weakSelf completion:^(id result, NSError *error) {
+                if (error) return;
+                [SVProgressHUD showSuccessWithStatus:@"分享成功"];
+                [weakSelf requestForShareSuccess];
+                [weakSelf.shareView hide];
+            }];
+        }];
+    }
+    [self.shareView show];
 }
 
 
 #pragma mark - <Net Request>
 //分享调用后台接口
 - (void)requestForShareSuccess {
-    if (![NACommon getToken]) {
-        return;
-    }else{
-//        NSDictionary *dict = @{
-//                               @"apix_token":[NACommon getToken]
-//                               };
-//        AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-//        NSString *httpStr = [NSString stringWithFormat:@"%@/api/share/user",APIXHOST];
-//        
-//        [manager GET:httpStr parameters:dict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//            NSLog(@"%@",responseObject);
-//            //code =0 成功  、 -1 失败，已转发过一次
-//        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//            NSLog(@"%@",error);
-//        }];
-    }
+    if (![NACommon getToken]) return;
+    
+    NAAPIModel *model = [NAURLCenter shareSuccessConfig];
+    
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+    } errorCodeBlock:nil failureBlock:nil];
 }
 
 

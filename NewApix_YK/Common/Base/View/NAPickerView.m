@@ -249,19 +249,18 @@ static CGFloat const kAnimationDuration = 0.3;
         case NAPickerViewStyleLinkageColumn: {
             if (component == 0) {
                 title = self.dataArr[row][self.resultKeyArr[0]];
-            }
-            else {
+            } else {
                 NSMutableArray *itemArr = [NSMutableArray arrayWithArray:self.dataArr];
-                for (int i=0;i<component;i++) {
+                for (int i=0; i<component; i++) {
                     NSInteger lastSelected = [pickerView selectedRowInComponent:i];
                     NSString *nextKey = self.nextKeyArr[i];
-                    if (lastSelected>itemArr.count-1) lastSelected = itemArr.count-1;
+                    if (lastSelected > itemArr.count-1) lastSelected = itemArr.count-1;
                     NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
                     [itemArr removeAllObjects];
                     [itemArr addObjectsFromArray:nextArr];
                 }
                 NSString *resultKey = self.resultKeyArr[component];
-                NSInteger row1 = row>itemArr.count-1?0:row;
+                NSInteger row1 = row > itemArr.count - 1 ? 0 : row;
                 title = itemArr[row1][resultKey];
             }
         }
@@ -314,12 +313,12 @@ static CGFloat const kAnimationDuration = 0.3;
     
     // 否则联动后面所有的列
     NSMutableArray *itemArr = [NSMutableArray arrayWithArray:self.dataArr];
-    for (int i=0;i<self.nextKeyArr.count;i++) {
-        NSInteger lastSelected = i<=component?[pickerView selectedRowInComponent:i]:0;
+    for (int i=0; i<self.nextKeyArr.count; i++) {
+        NSInteger lastSelected = i <= component ? [pickerView selectedRowInComponent:i] : 0;
         NSString *nextKey = self.nextKeyArr[i];
-        if (lastSelected>itemArr.count-1) lastSelected = itemArr.count-1;
+        if (lastSelected > itemArr.count - 1) lastSelected = itemArr.count - 1;
         NSArray *nextArr = [NSArray arrayWithArray:itemArr[lastSelected][nextKey]];
-        if (i>=component) {
+        if (i >= component) {
             // 更新后面所有列的rowCount
             [self.rowArray replaceObjectAtIndex:i+1 withObject:@(nextArr.count)];
 
