@@ -8,7 +8,7 @@
 
 #import "NAShareView.h"
 
-static CGFloat kShareMainViewH = 290;
+static CGFloat kShareMainViewH = 270;
 
 @interface NAShareView ()
 
@@ -51,7 +51,7 @@ static CGFloat kShareMainViewH = 290;
     [self.mainView addSubview:tiplabel];
     
     UIButton *cancelBtn = [[UIButton alloc]init];
-    cancelBtn.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height+290, [UIScreen mainScreen].bounds.size.width, 50);
+    cancelBtn.frame = CGRectMake(0, kShareMainViewH - 44, kScreenWidth, 44);
     [cancelBtn setBackgroundColor:[UIColor whiteColor]];
     [cancelBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [cancelBtn setTitle:@"取消" forState:UIControlStateNormal];
@@ -65,7 +65,7 @@ static CGFloat kShareMainViewH = 290;
     CGFloat yMargin = 42;
     CGFloat width = (kScreenWidth - 2 * leftMargin - 2 * xMargin) / 3;
     NSArray *titleArr = @[@"微信", @"朋友圈", @"QQ", @"QQ空间"];
-    NSArray *iconArr = @[@"weixin", @"quan", @"qq", @"qzone"];
+    NSArray *iconArr = @[@"share_wechat", @"share_moment", @"share_qq", @"share_qzone"];
     for (int i=0; i<titleArr.count; i++) {
         int col = i%3;
         int row = i/3;
@@ -108,7 +108,36 @@ static CGFloat kShareMainViewH = 290;
 
 
 - (void)onShareItemClicked:(UIButton *)button {
-    if (self.actionBlock) self.actionBlock(button.tag - 100);
+    UMSocialPlatformType platform = UMSocialPlatformType_WechatSession;
+    NSString *platName = @"微信";
+    NSInteger index = button.tag - 100;
+    switch (index) {
+        case 0:
+            platform = UMSocialPlatformType_WechatSession;
+            platName = @"微信";
+            break;
+        case 1:
+            platform = UMSocialPlatformType_WechatTimeLine;
+            platName = @"微信";
+            break;
+        case 2:
+            platform = UMSocialPlatformType_QQ;
+            platName = @"QQ";
+            break;
+        case 3:
+            platform = UMSocialPlatformType_Qzone;
+            platName = @"QQ";
+            break;
+            
+        default:
+            break;
+    }
+    
+    if (![[UMSocialManager defaultManager] isInstall:platform]) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"未安装%@,分享失败", platName]];
+        return;
+    }
+    if (self.actionBlock) self.actionBlock(platform);
 }
 
 @end

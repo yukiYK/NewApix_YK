@@ -45,8 +45,9 @@ static NSString * const kUserDefaultsPhone = @"kUserDefaultsPhone";       // 用
 static NSString * const kUserDefaultsTrustScore = @"kUserDefaultsTrustScore";// 信用分数
 static NSString * const kUserDefaultsSex = @"kUserDefaultsSex";    // 性别
 
-static NSString * const kUserDefaultsLoginPhone = @"kUserDefaultsLoginPhone"; // 登录页保存的账号
-static NSString * const kUserDefaultsUniqueId = @"kUserDefaultsUniqueId";   //unique_id
+//static NSString * const kUserDefaultsLoginPhone = @"kUserDefaultsLoginPhone"; // 登录页保存的账号
+static NSString * const kUserDefaultsPassword = @"kUserDefaultsPassword";  // 密码
+static NSString * const kUserDefaultsUniqueId = @"kUserDefaultsUniqueId";   // unique_id
 static NSString * const kUserDefaultsLocation = @"kUserDefaultsLocation";    // 位置
 static NSString * const kUserDefaultsDeviceId = @"kUserDefaultsDeviceId";    // deviceID
 static NSString * const kUserDefaultsSystemVersion = @"kUserDefaultsSystemVersion";    // 系统版本
@@ -89,10 +90,10 @@ static NSString * const kKeyChainUuid = @"kKeyChainUuid";    // uuid
 static NSString * const kUMAppKey = @"5784cbb2e0f55ac55e000978";
 static NSString * const kUMChannelID = @"App Store";
 static NSString * const kMQAppKey = @"20b7d9bb2cbd59f895433bbbfd366a3d";
-static NSString * const kUMShareAppKey = @"";
+//static NSString * const kUMShareAppKey = @"";
 static NSString * const kShareQQAppKey = @"1105485759";
 static NSString * const kShareWechatAppKey = @"wxfa01bd3730538e0c";
-static NSString * const kShareWechatAppSecret = @"";
+static NSString * const kShareWechatAppSecret = nil;
 
 
 #pragma mark - <认证需要的一些url和key>

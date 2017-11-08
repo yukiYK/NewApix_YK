@@ -15,8 +15,12 @@
 + (void)saveNick:(NSString *)nick;
 
 /** 手机号 */
-+ (NSString *)getPhoneNunber;
++ (NSString *)getPhoneNumber;
 + (void)savePhoneNumber:(NSString *)phoneNumber;
+
+/** 密码 */
++ (NSString *)getPassword;
++ (void)savePassword:(NSString *)password;
 
 /** 头像地址 */
 + (NSString *)getAvatar;

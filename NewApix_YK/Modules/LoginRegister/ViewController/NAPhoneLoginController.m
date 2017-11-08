@@ -8,7 +8,7 @@
 
 #import "NAPhoneLoginController.h"
 #import "NATabbarController.h"
-#import <AESCrypt.h>
+#import "AESCrypt.h"
 
 @interface NAPhoneLoginController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
@@ -91,6 +91,7 @@
         NSString *uniqueId = [AESCrypt decrypt:[dataDic objectForKey:@"unique_id"] password:kAESKey];
         [NACommon setToken:token];
         [NACommon setUniqueId:uniqueId];
+        [NAUserTool savePhoneNumber:self.phoneTextField.text];
         
         // 重新获取用户状态
         [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {

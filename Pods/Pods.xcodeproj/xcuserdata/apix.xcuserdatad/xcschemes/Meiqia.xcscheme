@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0910"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AD87D611A18CCB842021E4C154C9CD19"
-               BuildableName = "libMeiqia.a"
+               BlueprintIdentifier = "1A6A33B9B0024B6BE796D824B8F96E54"
+               BuildableName = "Meiqia.framework"
                BlueprintName = "Meiqia"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -47,8 +47,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AD87D611A18CCB842021E4C154C9CD19"
-            BuildableName = "libMeiqia.a"
+            BlueprintIdentifier = "1A6A33B9B0024B6BE796D824B8F96E54"
+            BuildableName = "Meiqia.framework"
             BlueprintName = "Meiqia"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

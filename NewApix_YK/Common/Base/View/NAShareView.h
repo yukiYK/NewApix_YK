@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <UMSocialCore/UMSocialCore.h>
 
 /**
  按钮点击事件
 
- @param index 按钮index 0开始 依次 是微信、朋友圈、QQ、QQ空间
+ @param sharePlatform 分享平台
  */
-typedef void(^NAShareActionBlock) (NSInteger index);
+typedef void(^NAShareActionBlock) (UMSocialPlatformType sharePlatform);
 
 @interface NAShareView : UIView
 

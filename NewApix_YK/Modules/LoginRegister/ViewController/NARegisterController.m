@@ -7,7 +7,7 @@
 //
 
 #import "NARegisterController.h"
-#import <AESCrypt.h>
+#import "AESCrypt.h"
 #import "NATabbarController.h"
 
 @interface NARegisterController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
@@ -158,6 +158,8 @@
         NSString *uniqueId = [dataDic objectForKey:@"unique_id"];
         [NACommon setToken:token];
         [NACommon setUniqueId:uniqueId];
+        [NAUserTool savePhoneNumber:self.phoneTextField.text];
+        [NAUserTool savePassword:self.passwordTextField.text];
         
         // 重新获取用户状态
         [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {

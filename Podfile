@@ -1,5 +1,6 @@
 # Uncomment the next line to define a global platform for your project
-platform :ios, '9.0'
+platform :ios, '10.0'
+use_frameworks!
 inhibit_all_warnings!
 
 target 'NewApix_YK' do
@@ -11,15 +12,17 @@ pod 'UMengAnalytics-NO-IDFA'
 pod 'AFNetworking'
 pod 'AESCrypt'
 pod 'MBProgressHUD'
-pod 'Meiqia'
+pod 'Meiqia' :inhibit_warnings => true
 pod 'OpenShare'
 pod 'Masonry'
 pod 'SDWebImage/GIF'
 pod 'SVProgressHUD'
 pod 'YYModel'
 pod 'MJRefresh'
-pod 'UMengUShare/Social/WeChat'
-pod 'UMengUShare/Social/QQ'
-pod 'UMengUShare/Social/Sina'
+pod 'WordPress-iOS-Editor'
+pod 'CocoaLumberjack'
+pod 'UMengUShare/Social/WeChat' :inhibit_warnings => true
+pod 'UMengUShare/Social/QQ' :inhibit_warnings => true
+pod 'UMengUShare/Social/Sina' :inhibit_warnings => true
 pod 'IQKeyboardManager'
 end

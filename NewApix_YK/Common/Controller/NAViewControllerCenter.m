@@ -32,6 +32,7 @@
 #import "NAWalletController.h"
 #import "NAEncashmentController.h"
 #import "NAArticleDetailController.h"
+#import "NAMakeMoneyController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -77,6 +78,11 @@
     return [[NAPhoneLoginController alloc] initWithNibName:@"NAPhoneLoginController" bundle:nil];
 }
 
+/** 我要赚钱页 */
++ (UIViewController *)makeMoneyController {
+    return [[NAMakeMoneyController alloc] init];
+}
+
 /**
  文章详情页
  
@@ -89,6 +95,24 @@
     articleVC.articleUrl = articleUrl;
     articleVC.articleTitle = articleTitle;
     return articleVC;
+}
+
+/**
+ 编辑页 - 发帖、评论、回复评论
+
+ @param editorType 编辑类型
+ @param floor 回复楼层 回复类型专属
+ @param nick 回复别人的昵称 回复类型专属
+ @param commentID 评论id
+ @return NAEditorController
+ */
++ (UIViewController *)editorControllerWithType:(NAEditorType)editorType floor:(NSString *)floor nick:(NSString *)nick commentID:(NSString *)commentID {
+    NAEditorController *editorVC = [[NAEditorController alloc] init];
+    editorVC.editorType = editorType;
+    editorVC.floorStr = floor;
+    editorVC.nickName = nick;
+    editorVC.commentIDStr = commentID;
+    return editorVC;
 }
 
 /**

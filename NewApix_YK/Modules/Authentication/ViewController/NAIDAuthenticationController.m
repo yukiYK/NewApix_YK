@@ -7,7 +7,7 @@
 //
 
 #import "NAIDAuthenticationController.h"
-#import <AESCrypt.h>
+#import "AESCrypt.h"
 #import "NSString+NAExtension.h"
 
 static NSString * const idImageName = @"idImage.png";

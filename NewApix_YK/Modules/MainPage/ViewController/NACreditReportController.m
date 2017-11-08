@@ -164,27 +164,8 @@
 - (void)onShareBtnClicked:(UIButton *)button {
     if (!self.shareView) {
         WeakSelf
-        self.shareView = [[NAShareView alloc] initWithActionBlock:^(NSInteger index) {
-            // @"微信", @"朋友圈", @"QQ", @"QQ空间"
-            UMSocialPlatformType platform = UMSocialPlatformType_WechatTimeLine;
-            switch (index) {
-                case 0:
-                    platform = UMSocialPlatformType_WechatSession;
-                    break;
-                case 1:
-                    platform = UMSocialPlatformType_WechatTimeLine;
-                    break;
-                case 2:
-                    platform = UMSocialPlatformType_QQ;
-                    break;
-                case 3:
-                    platform = UMSocialPlatformType_Qzone;
-                    break;
-                    
-                default:
-                    break;
-            }
-            [[UMSocialManager defaultManager] shareToPlatform:platform messageObject:weakSelf.msgObjc currentViewController:weakSelf completion:^(id result, NSError *error) {
+        self.shareView = [[NAShareView alloc] initWithActionBlock:^(UMSocialPlatformType sharePlatform) {
+            [[UMSocialManager defaultManager] shareToPlatform:sharePlatform messageObject:weakSelf.msgObjc currentViewController:weakSelf completion:^(id result, NSError *error) {
                 if (error) return;
                 [SVProgressHUD showSuccessWithStatus:@"分享成功"];
                 [weakSelf requestForShareSuccess];

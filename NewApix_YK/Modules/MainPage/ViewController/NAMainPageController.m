@@ -12,7 +12,7 @@
 #import "NAMainPageCell.h"
 #import "NAViewControllerCenter.h"
 #import "NSAttributedString+NAExtension.h"
-#import <FLAnimatedImage.h>
+#import "FLAnimatedImage.h"
 
 NSString *const kMainPageCellName = @"NAMainPageCell";
 NSString *const kMainPageCellID = @"mainPageCell";
@@ -373,32 +373,34 @@ NSString *const kMainPageCellID = @"mainPageCell";
 #pragma mark - <Event>
 /** banner下方button点击事件 */
 - (void)onMainBtnClicked:(UIButton *)button {
+    UIViewController *toVC = nil;
     switch (button.tag - 100) {
-        case 1: {
-        }
+        case 1:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 2: {
-        }
+        case 2:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 3: {
-        }
+        case 3:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 4: {
-        }
+        case 4:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 5: {
-        }
+        case 5:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 6: {
-        }
+        case 6:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 7: {
-        }
+        case 7:
+            toVC = [NAViewControllerCenter makeMoneyController];
             break;
             
         default:
             break;
     }
+    [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
 }
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>

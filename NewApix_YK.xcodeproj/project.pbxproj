@@ -23,6 +23,7 @@
 		4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837BB1F502120001B065C /* NAForgetPasswordController.xib */; };
 		4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */; };
 		4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */; };
+		4A483DED1FB1AE1500C4D12B /* NAEditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A483DEC1FB1AE1500C4D12B /* NAEditorController.m */; };
 		4A59ACE51F5FD5DC00F3172B /* NACreditReportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */; };
 		4A59ACE81F5FD67F00F3172B /* NAMeixinVIPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACE71F5FD67F00F3172B /* NAMeixinVIPController.m */; };
 		4A59ACEB1F5FDD1300F3172B /* UIView+NAScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACEA1F5FDD1300F3172B /* UIView+NAScreenshot.m */; };
@@ -52,6 +53,7 @@
 		4A8B10331F8F17DA00498F9D /* NAAuthenticationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8B102F1F8F16BE00498F9D /* NAAuthenticationModel.m */; };
 		4A8B10371F8F486A00498F9D /* NAIDAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */; };
 		4A8B10381F8F486A00498F9D /* NAIDAuthenticationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */; };
+		4A8DD0AB1FB2FD1200BB523C /* NAMakeMoneyController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8DD0AA1FB2FD1200BB523C /* NAMakeMoneyController.m */; };
 		4A8F18C91F41AD7800B5459A /* NAEssenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */; };
 		4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */; };
 		4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A8F18CC1F41ADBC00B5459A /* NACommunityCell.m */; };
@@ -115,7 +117,7 @@
 		4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28D71F4AC70700964EBC /* NAMineOrderModel.m */; };
 		4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */; };
 		5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659670C1F861FFA007B686E /* NACommonQuestionsController.m */; };
-		AD1A4A1E9100EDF0E93DECC4 /* libPods-NewApix_YK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */; };
+		BB19932E8B1471E3159E7CF0 /* Pods_NewApix_YK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745A9A35C79DC28186BC417 /* Pods_NewApix_YK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +168,8 @@
 		4A2837BE1F502B47001B065C /* NAPhoneLoginController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAPhoneLoginController.h; sourceTree = "<group>"; };
 		4A2837BF1F502B47001B065C /* NAPhoneLoginController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAPhoneLoginController.m; sourceTree = "<group>"; };
 		4A2837C01F502B47001B065C /* NAPhoneLoginController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAPhoneLoginController.xib; sourceTree = "<group>"; };
+		4A483DEB1FB1AE1500C4D12B /* NAEditorController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAEditorController.h; sourceTree = "<group>"; };
+		4A483DEC1FB1AE1500C4D12B /* NAEditorController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAEditorController.m; sourceTree = "<group>"; };
 		4A59ACE31F5FD5DC00F3172B /* NACreditReportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACreditReportController.h; sourceTree = "<group>"; };
 		4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACreditReportController.m; sourceTree = "<group>"; };
 		4A59ACE61F5FD67F00F3172B /* NAMeixinVIPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMeixinVIPController.h; sourceTree = "<group>"; };
@@ -217,6 +221,8 @@
 		4A8B10341F8F486A00498F9D /* NAIDAuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDAuthenticationController.h; sourceTree = "<group>"; };
 		4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDAuthenticationController.m; sourceTree = "<group>"; };
 		4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAIDAuthenticationController.xib; sourceTree = "<group>"; };
+		4A8DD0A91FB2FD1200BB523C /* NAMakeMoneyController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAMakeMoneyController.h; sourceTree = "<group>"; };
+		4A8DD0AA1FB2FD1200BB523C /* NAMakeMoneyController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAMakeMoneyController.m; sourceTree = "<group>"; };
 		4A8F18C61F41AD7800B5459A /* NAEssenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAEssenceCell.h; sourceTree = "<group>"; };
 		4A8F18C71F41AD7800B5459A /* NAEssenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAEssenceCell.m; sourceTree = "<group>"; };
 		4A8F18C81F41AD7800B5459A /* NAEssenceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAEssenceCell.xib; sourceTree = "<group>"; };
@@ -329,7 +335,7 @@
 		4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAUserInfoModel.m; sourceTree = "<group>"; };
 		5659670B1F861FFA007B686E /* NACommonQuestionsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NACommonQuestionsController.h; sourceTree = "<group>"; };
 		5659670C1F861FFA007B686E /* NACommonQuestionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NACommonQuestionsController.m; sourceTree = "<group>"; };
-		74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NewApix_YK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E745A9A35C79DC28186BC417 /* Pods_NewApix_YK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewApix_YK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,7 +343,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AD1A4A1E9100EDF0E93DECC4 /* libPods-NewApix_YK.a in Frameworks */,
+				BB19932E8B1471E3159E7CF0 /* Pods_NewApix_YK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +367,7 @@
 		3671D3BD2EF7804FF9A25697 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				74069947806DD1A74BF89138 /* libPods-NewApix_YK.a */,
+				E745A9A35C79DC28186BC417 /* Pods_NewApix_YK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -563,6 +569,8 @@
 				4AC6CA501F2F24B800A9308F /* NAMeixinSayController.m */,
 				4AB821EA1FAB242F00E0E801 /* NAArticleDetailController.h */,
 				4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */,
+				4A483DEB1FB1AE1500C4D12B /* NAEditorController.h */,
+				4A483DEC1FB1AE1500C4D12B /* NAEditorController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -788,6 +796,8 @@
 				4A2837B71F501B28001B065C /* NANewMainPageController.m */,
 				4A59ACE31F5FD5DC00F3172B /* NACreditReportController.h */,
 				4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */,
+				4A8DD0A91FB2FD1200BB523C /* NAMakeMoneyController.h */,
+				4A8DD0AA1FB2FD1200BB523C /* NAMakeMoneyController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1134,6 +1144,7 @@
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
 				4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */,
 				4AF392841F46E67F00EF7A3B /* NAMineCell.m in Sources */,
+				4A8DD0AB1FB2FD1200BB523C /* NAMakeMoneyController.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
 				4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */,
 				4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */,
@@ -1180,6 +1191,7 @@
 				4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */,
 				4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
+				4A483DED1FB1AE1500C4D12B /* NAEditorController.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
 				4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */,
 				4AA8ADB51F8CADCA00B27223 /* NAAddCardController.m in Sources */,
@@ -1331,11 +1343,12 @@
 				DEVELOPMENT_TEAM = QE4G9JLJ85;
 				GCC_PREFIX_HEADER = NewApix_YK/NA.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/NewApix_YK/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heige.meixinlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/FLAnimatedImage/FLAnimatedImage";
 			};
 			name = Debug;
 		};
@@ -1348,11 +1361,12 @@
 				DEVELOPMENT_TEAM = QE4G9JLJ85;
 				GCC_PREFIX_HEADER = NewApix_YK/NA.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/NewApix_YK/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.heige.meixinlife;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "$(inherited) $(SRCROOT)/FLAnimatedImage/FLAnimatedImage";
 			};
 			name = Release;
 		};

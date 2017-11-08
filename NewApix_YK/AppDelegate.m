@@ -139,11 +139,9 @@
     [[UMSocialManager defaultManager] openLog:YES];
     
     /* 设置友盟appkey */
-    [[UMSocialManager defaultManager] setUmSocialAppkey:kUMShareAppKey];
+    [[UMSocialManager defaultManager] setUmSocialAppkey:kUMAppKey];
     
     [self configUSharePlatforms];
-    
-    // 初始化友盟推送
 }
 
 /** 初始化美洽 */

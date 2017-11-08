@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0910"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "145AEF5D389AC7C8D13D48D764A6426D"
-               BuildableName = "libAESCrypt.a"
+               BlueprintIdentifier = "8A340458AFB350BC7E9D69C9EAA7F457"
+               BuildableName = "AESCrypt.framework"
                BlueprintName = "AESCrypt"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -47,8 +47,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "145AEF5D389AC7C8D13D48D764A6426D"
-            BuildableName = "libAESCrypt.a"
+            BlueprintIdentifier = "8A340458AFB350BC7E9D69C9EAA7F457"
+            BuildableName = "AESCrypt.framework"
             BlueprintName = "AESCrypt"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

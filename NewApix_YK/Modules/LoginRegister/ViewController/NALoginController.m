@@ -8,7 +8,7 @@
 
 #import "NALoginController.h"
 #import "NATabbarController.h"
-#import <AESCrypt.h>
+#import "AESCrypt.h"
 
 @interface NALoginController () <UITextFieldDelegate, UIGestureRecognizerDelegate>
 
@@ -57,9 +57,8 @@
     [self.phoneTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     [self.passwordTextField addTarget:self action:@selector(textFieldValueChanged:) forControlEvents:UIControlEventEditingChanged];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    self.phoneTextField.text = [defaults objectForKey:kUserDefaultsIdNumber];
-    self.passwordTextField.text = [NAKeyChain loadKeyChainWithKey:kKeyChainPassword];
+    self.phoneTextField.text = [NAUserTool getPhoneNumber];
+    self.passwordTextField.text = [NAUserTool getPassword];//[NAKeyChain loadKeyChainWithKey:kKeyChainPassword];
     
     [self checkLoginEnable];
 }
@@ -94,6 +93,8 @@
         NSString *uniqueId = [AESCrypt decrypt:[dataDic objectForKey:@"unique_id"] password:kAESKey];
         [NACommon setToken:token];
         [NACommon setUniqueId:uniqueId];
+        [NAUserTool savePhoneNumber:self.phoneTextField.text];
+        [NAUserTool savePassword:self.passwordTextField.text];
         
         // 重新获取用户状态
         [NACommon loadUserStatusComplete:^(NAUserStatus userStatus, NSString *vipEndDate, NSString *vipSkin) {

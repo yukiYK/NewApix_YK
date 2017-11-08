@@ -11,6 +11,7 @@
 #import "NAAuthenticationWebController.h"
 #import "NAIDFaceCameraController.h"
 #import "NAWalletModel.h"
+#import "NAEditorController.h"
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -21,7 +22,6 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  工具类，用来获取几乎所有的viewController
  */
 @interface NAViewControllerCenter : NSObject
-
 
 
 /**
@@ -39,35 +39,20 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 
 
 #pragma mark - <各个页面>
-/**
- 登录页
-
- @return NALoginController
- */
+/** 登录页 */
 + (UIViewController *)loginController;
 
-/**
- 注册页
- 
- @return NALoginController
- */
+/** 注册页 */
 + (UIViewController *)registerController;
 
-
-/**
- 忘记密码页
-
- @return NAForgetPasswordController
- */
+/** 忘记密码页 */
 + (UIViewController *)forgetPasswordController;
 
-
-/**
- 手机登录页
-
- @return NAPhoneLoginController
- */
+/** 手机登录页 */
 + (UIViewController *)phoneLoginController;
+
+/** 我要赚钱页 */
++ (UIViewController *)makeMoneyController;
 
 
 /**
@@ -79,26 +64,29 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)articleDetailControllerWithUrl:(NSString *)articleUrl title:(NSString *)articleTitle;
 
+/**
+ 编辑页 - 发帖、评论、回复评论
+ 
+ @param editorType 编辑类型
+ @param floor 回复楼层 回复类型专属
+ @param nick 回复别人的昵称 回复类型专属
+ @param commentID 评论id
+ @return NAEditorController
+ */
++ (UIViewController *)editorControllerWithType:(NAEditorType)editorType floor:(NSString *)floor nick:(NSString *)nick commentID:(NSString *)commentID;
 
 /**
  美信会员页
 
+ @param isFromGiftCenter 是否来自礼品中心
  @return NAMeixinVIPController
  */
 + (UIViewController *)meixinVIPControllerWithIsFromGiftCenter:(BOOL)isFromGiftCenter;
 
-/**
- 礼品中心页
-
- @return NAPresentCenterController
- */
+/** 礼品中心页 */
 + (UIViewController *)presentCenterController;
 
-/**
- 礼品领取成功页
-
- @return NAPresentSuccessController
- */
+/** 礼品领取成功页 */
 + (UIViewController *)presentSuccessController;
 
 /**
@@ -125,18 +113,10 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)encashmentControllerWithAllMoney:(NSString *)allMoney;
 
-/**
- 用户地址页
-
- @return NAAddressController;
- */
+/** 用户地址页 */
 + (UIViewController *)addressController;
 
-/**
- 信用体检页
-
- @return NACreditReportController
- */
+/** 信用体检页 */
 + (UIViewController *)creditReportController;
 
 /**
@@ -147,63 +127,31 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
  */
 + (UIViewController *)settingsControllerWithModel:(NAUserInfoModel *)model;
 
-/**
- 修改手机号页
-
- @return NAChangePhoneController
- */
+/** 修改手机号页 */
 + (UIViewController *)changePhoneController;
 
 /** 设置新手机号页 */
 + (UIViewController *)newPhoneController;
 
-/**
- 修改密码页
-
- @return NAChangePasswordController
- */
+/** 修改密码页 */
 + (UIViewController *)changePasswordController;
 
-/**
- 关于我们页
- 
- @return NAAboutUsController
- */
+/** 关于我们页 */
 + (UIViewController *)aboutUsController;
 
-/**
- 常见问题页
- 
- @return NACommonQuestionsController
- */
+/** 常见问题页 */
 + (UIViewController *)commonQuestionsController;
 
-/**
- 银行卡管理页
- 
- @return NABankCardsController
- */
+/** 银行卡管理页 */
 + (UIViewController *)bankCardsController;
 
-/**
- 添加银行卡页
-
- @return NAAddCardController
- */
+/** 添加银行卡页 */
 + (UIViewController *)addBankCardController;
 
-/**
- 身份认证页
-
- @return NAIDAuthenticationController
- */
+/** 身份认证页 */
 + (UIViewController *)idAuthenticationController;
 
-/**
- 脸部识别页
-
- @return NAIDUserFaceController
- */
+/** 脸部识别页 */
 + (UIViewController *)idUserFaceController;
 
 /**

@@ -153,6 +153,10 @@ NSString * const kCommunityCellID = @"communityCell";
             
         } else {
             // 文章
+            [NAViewControllerCenter transformViewController:self
+                                           toViewController:[NAViewControllerCenter articleDetailControllerWithUrl:object[@"data"] title:object[@"title"]]
+                                              tranformStyle:NATransformStylePush
+                                                  needLogin:NO];
         }
         
         return NO;
@@ -185,6 +189,8 @@ NSString * const kCommunityCellID = @"communityCell";
     } else if ([urlStr hasPrefix:@"post"]) {  //点击了社区中的发帖
         if ([NAUserTool getUserStatus] == NAUserStatusVIPForever || [NAUserTool getUserStatus] == NAUserStatusVIP) {
             // 跳转发帖
+            UIViewController *toVC = [NAViewControllerCenter editorControllerWithType:NAEditorTypePost floor:@"" nick:@"" commentID:@""];
+            [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
         } else {
             [SVProgressHUD showErrorWithStatus:@"发言请出示会员卡哦"];
         }

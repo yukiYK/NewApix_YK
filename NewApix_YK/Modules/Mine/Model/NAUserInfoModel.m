@@ -43,7 +43,7 @@
     [NAUserTool savePhoneNumber:phone_number];
 }
 - (NSString *)phone_number {
-    return [NAUserTool getPhoneNunber];
+    return [NAUserTool getPhoneNumber];
 }
 
 @end

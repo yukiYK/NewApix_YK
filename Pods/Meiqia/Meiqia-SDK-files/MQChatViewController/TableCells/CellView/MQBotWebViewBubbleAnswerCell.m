@@ -104,6 +104,7 @@
     UIView *evaluateView = [self evaluateRelatedView];
     [[self.itemsView viewWithTag:evaluateView.tag] removeFromSuperview];
     [self.itemsView addSubview:evaluateView];
+    
     [evaluateView align:(ViewAlignmentTopLeft) relativeToPoint:CGPointMake(8, self.contentWebView.viewBottomEdge + SPACE_INTERNAL_VERTICAL)];
     
     CGFloat bubbleHeight = MAX(self.avatarImageView.viewHeight, evaluateView.viewBottomEdge);

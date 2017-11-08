@@ -141,7 +141,7 @@
  */
 + (NAAPIModel *)buyVipVerifyConfigWithReceipt:(NSString *)receipt isSandBox:(BOOL)isSandBox imageId:(NSString *)imageId;
 
-#pragma mark - <--------------------所有APIX的API接口------------------->
+#pragma mark - <--------------------所有其他的API接口------------------->
 /** 身份证识别接口 */
 + (NAAPIModel *)idCardRecognitionConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType;
 /** 淘宝认证获取url接口 */
@@ -150,6 +150,16 @@
 + (NAAPIModel *)jdAuthenticationUrlConfig;
 /** 运营商认证获取url接口 */
 + (NAAPIModel *)serviceAuthenticationUrlConfig;
+/** 发帖接口 */
++ (NAAPIModel *)postArticleConfigWithTitle:(NSString *)title body:(NSString *)body;
+/**
+ 评论、回复接口
+ 
+ @param body 内容
+ @param commentID 评论id
+ @return NAAPIModel
+ */
++ (NAAPIModel *)commentConfigWithBody:(NSString *)body commentID:(NSString *)commentID;
 
 #pragma mark - <---------------------所有的H5--------------------->
 /** 使用支付宝支付的美信会员页 */
@@ -164,5 +174,7 @@
 + (NSString *)EssenceH5Url;
 /** 美信说-社区 */
 + (NSString *)communityH5Url;
+/** 我要赚钱页 */
++ (NSString *)makeMoneyH5Url;
 
 @end

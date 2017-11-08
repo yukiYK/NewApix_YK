@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MJRefresh.h>
+#import "MJRefresh.h"
 
 typedef NS_ENUM(NSInteger, NAUserStatus) {
     NAUserStatusNoLogin,     // 未登录

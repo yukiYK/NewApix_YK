@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0900"
+   LastUpgradeVersion = "0910"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B5E289E0A32AE19BC4BE45CA79E10436"
-               BuildableName = "libOpenShare.a"
+               BlueprintIdentifier = "AA08CB82B97ED490DF842AD1ED12826F"
+               BuildableName = "OpenShare.framework"
                BlueprintName = "OpenShare"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -47,8 +47,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B5E289E0A32AE19BC4BE45CA79E10436"
-            BuildableName = "libOpenShare.a"
+            BlueprintIdentifier = "AA08CB82B97ED490DF842AD1ED12826F"
+            BuildableName = "OpenShare.framework"
             BlueprintName = "OpenShare"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

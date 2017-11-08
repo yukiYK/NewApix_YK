@@ -17,11 +17,19 @@
     [[NSUserDefaults standardUserDefaults] setObject:nick forKey:kUserDefaultsNick];
 }
 
-+ (NSString *)getPhoneNunber {
++ (NSString *)getPhoneNumber {
     return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsPhone];
 }
 + (void)savePhoneNumber:(NSString *)phoneNumber {
     [[NSUserDefaults standardUserDefaults] setObject:phoneNumber forKey:kUserDefaultsPhone];
+}
+
+/** 密码 */
++ (NSString *)getPassword {
+    return [[NSUserDefaults standardUserDefaults] objectForKey:kUserDefaultsPassword];
+}
++ (void)savePassword:(NSString *)password {
+    [[NSUserDefaults standardUserDefaults] setObject:password forKey:kUserDefaultsPassword];
 }
 
 + (NSString *)getAvatar {
@@ -128,7 +136,7 @@
     [defaults removeObjectForKey:kUserDefaultsAvatar];
     [defaults removeObjectForKey:kUserDefaultsIdName];
     [defaults removeObjectForKey:kUserDefaultsIdNumber];
-    [defaults removeObjectForKey:kUserDefaultsPhone];
+//    [defaults removeObjectForKey:kUserDefaultsPhone];
     [defaults removeObjectForKey:kUserDefaultsTrustScore];
     [defaults removeObjectForKey:kUserDefaultsSex];
     [self saveUserStatus:NAUserStatusNoLogin];

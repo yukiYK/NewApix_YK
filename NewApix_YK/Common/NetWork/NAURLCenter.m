@@ -7,7 +7,7 @@
 //
 
 #import "NAURLCenter.h"
-#import <AESCrypt.h>
+#import "AESCrypt.h"
 
 @implementation NAURLCenter
 
@@ -33,6 +33,9 @@
             break;
         case NARequestURLTypeAPIXE:
             urlString = SERVER_ADDRESS_APIX_E;
+            break;
+        case NARequestURLTypeCommunity:
+            urlString = SERVER_ADDRESS_COMMUNITY;
             break;
         default:
             break;
@@ -74,7 +77,7 @@
     return model;
 }
 
-// 生成APIX api接口的model
+// 生成其他类型 api接口的model
 + (NAAPIModel *)apixApiModelWithType:(NAHTTPRequestType)type pathArr:(NSArray *)pathArr param:(NSMutableDictionary *)param urlType:(NARequestURLType)urlType {
     NAAPIModel *model = [[NAAPIModel alloc] init];
     model.requestType = type;
@@ -424,9 +427,7 @@
 }
 
 
-
-
-#pragma mark - <--------------------所有APIX的API接口------------------->
+#pragma mark - <--------------------所有其他的API接口------------------->
 /** 身份证识别接口 */
 + (NAAPIModel *)idCardRecognitionConfigWithPicDataStr:(NSString *)picDataStr picType:(NSString *)picType {
     
@@ -462,6 +463,32 @@
     param[@"success_url"] = kAuthenticationSuccessUrl;
     param[@"failed_url"] = kAuthenticationFailedUrl;
     return [self apixApiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"apixanalysis", @"mobile", @"yys", @"phone", @"carrier", @"page"] param:param urlType:NARequestURLTypeAPIXE];
+}
+
+/** 发帖接口 */
++ (NAAPIModel *)postArticleConfigWithTitle:(NSString *)title body:(NSString *)body {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"name"] = [NAUserTool getPhoneNumber];
+    param[@"topic[body]"] = body;
+    param[@"topic[title]"] = title;
+    param[@"topic[node_id]"] = @"28";
+    return [self apixApiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"bbs_create_topic"] param:param urlType:NARequestURLTypeCommunity];
+}
+
+
+/**
+ 评论、回复接口
+
+ @param body 内容
+ @param commentID 评论id
+ @return NAAPIModel
+ */
++ (NAAPIModel *)commentConfigWithBody:(NSString *)body commentID:(NSString *)commentID {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"name"] = [NAUserTool getPhoneNumber];
+    param[@"reply[body]"] = body;
+    param[@"id"] = commentID;
+    return [self apixApiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"bbs_create"] param:param urlType:NARequestURLTypeCommunity];
 }
 
 
@@ -519,6 +546,15 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"device"] = @"app";
     NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"forum"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
+/** 我要赚钱页 */
++ (NSString *)makeMoneyH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"make_money"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }

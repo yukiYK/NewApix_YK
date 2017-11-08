@@ -13,14 +13,14 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 
-#import <SVProgressHUD.h>
+#import "SVProgressHUD.h"
 #import <YYModel/YYModel.h>
 #import "NAHTTPSessionManager.h"
 #import "UIView+NAExtension.h"
 #import "NSString+NAExtension.h"
 #import "UIColor+NAExtension.h"
 #import "UIImage+NAExtension.h"
-#import <UIImageView+WebCache.h>
+#import "UIImageView+WebCache.h"
 #import "NACommon.h"
 #import "UMMobClick/MobClick.h"
 #import "NAConstant.h"
@@ -35,6 +35,7 @@
 // apix地址
 #define SERVER_ADDRESS_APIX_A @"http://a.apix.cn"
 #define SERVER_ADDRESS_APIX_E @"http://e.apix.cn"
+#define SERVER_ADDRESS_COMMUNITY @"http://community.meixinlife.com"
 
 #if SERVER_ONLINE
 // 现网环境
