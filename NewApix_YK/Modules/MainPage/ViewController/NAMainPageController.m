@@ -188,7 +188,6 @@ NSString *const kMainPageCellID = @"mainPageCell";
         [button addTarget:self action:@selector(onMainBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
         [btnBgView addSubview:button];
     }
-    
     return headerView;
 }
 

@@ -83,6 +83,12 @@
 		4AB5C1C71FB04207007A9AA1 /* NAShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5C1C61FB04207007A9AA1 /* NAShareView.m */; };
 		4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */; };
 		4AB821EC1FAB242F00E0E801 /* NAArticleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */; };
+		4AC37D5F1FB4394B00FB980C /* NAGoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */; };
+		4AC37D671FB4398800FB980C /* NAGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D661FB4398800FB980C /* NAGoodsModel.m */; };
+		4AC37D6B1FB43EF400FB980C /* NAGoodListBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D691FB43EF400FB980C /* NAGoodListBigCell.m */; };
+		4AC37D6C1FB43EF400FB980C /* NAGoodListBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC37D6A1FB43EF400FB980C /* NAGoodListBigCell.xib */; };
+		4AC37D701FB43F0F00FB980C /* NAGoodsListSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */; };
+		4AC37D711FB43F0F00FB980C /* NAGoodsListSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC37D6F1FB43F0F00FB980C /* NAGoodsListSmallCell.xib */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
 		4AC6CA441F2F23D500A9308F /* NAMainPageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */; };
 		4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA461F2F248500A9308F /* NALoginController.m */; };
@@ -273,6 +279,16 @@
 		4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDCameraGuiderView.m; sourceTree = "<group>"; };
 		4AB821EA1FAB242F00E0E801 /* NAArticleDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAArticleDetailController.h; sourceTree = "<group>"; };
 		4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAArticleDetailController.m; sourceTree = "<group>"; };
+		4AC37D5D1FB4394B00FB980C /* NAGoodsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListController.h; sourceTree = "<group>"; };
+		4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListController.m; sourceTree = "<group>"; };
+		4AC37D651FB4398800FB980C /* NAGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsModel.h; sourceTree = "<group>"; };
+		4AC37D661FB4398800FB980C /* NAGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsModel.m; sourceTree = "<group>"; };
+		4AC37D681FB43EF400FB980C /* NAGoodListBigCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodListBigCell.h; sourceTree = "<group>"; };
+		4AC37D691FB43EF400FB980C /* NAGoodListBigCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodListBigCell.m; sourceTree = "<group>"; };
+		4AC37D6A1FB43EF400FB980C /* NAGoodListBigCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodListBigCell.xib; sourceTree = "<group>"; };
+		4AC37D6D1FB43F0F00FB980C /* NAGoodsListSmallCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListSmallCell.h; sourceTree = "<group>"; };
+		4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListSmallCell.m; sourceTree = "<group>"; };
+		4AC37D6F1FB43F0F00FB980C /* NAGoodsListSmallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodsListSmallCell.xib; sourceTree = "<group>"; };
 		4AC6CA401F2F23D500A9308F /* NAMainPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMainPageController.h; sourceTree = "<group>"; };
 		4AC6CA411F2F23D500A9308F /* NAMainPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMainPageController.m; sourceTree = "<group>"; };
 		4AC6CA421F2F23D500A9308F /* NAMainPageController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NAMainPageController.xib; sourceTree = "<group>"; };
@@ -443,6 +459,7 @@
 		4A037D591F28AF1B00F38AC0 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4AC37D591FB4354400FB980C /* Business */,
 				4A8B10281F8F15EA00498F9D /* Authentication */,
 				4A7850471F7E358F000C2AD5 /* Settings */,
 				4A037D5D1F28B1ED00F38AC0 /* LoginRegister */,
@@ -786,6 +803,47 @@
 			path = Lib;
 			sourceTree = "<group>";
 		};
+		4AC37D591FB4354400FB980C /* Business */ = {
+			isa = PBXGroup;
+			children = (
+				4AC37D5A1FB4354400FB980C /* Controller */,
+				4AC37D5B1FB4354400FB980C /* Model */,
+				4AC37D5C1FB4354400FB980C /* View */,
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		4AC37D5A1FB4354400FB980C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4AC37D5D1FB4394B00FB980C /* NAGoodsListController.h */,
+				4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AC37D5B1FB4354400FB980C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4AC37D651FB4398800FB980C /* NAGoodsModel.h */,
+				4AC37D661FB4398800FB980C /* NAGoodsModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4AC37D5C1FB4354400FB980C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4AC37D681FB43EF400FB980C /* NAGoodListBigCell.h */,
+				4AC37D691FB43EF400FB980C /* NAGoodListBigCell.m */,
+				4AC37D6A1FB43EF400FB980C /* NAGoodListBigCell.xib */,
+				4AC37D6D1FB43F0F00FB980C /* NAGoodsListSmallCell.h */,
+				4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */,
+				4AC37D6F1FB43F0F00FB980C /* NAGoodsListSmallCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4AC6CA3F1F2F23BB00A9308F /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1026,8 +1084,10 @@
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
 				4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */,
 				4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */,
+				4AC37D711FB43F0F00FB980C /* NAGoodsListSmallCell.xib in Resources */,
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
 				4A8B10381F8F486A00498F9D /* NAIDAuthenticationController.xib in Resources */,
+				4AC37D6C1FB43EF400FB980C /* NAGoodListBigCell.xib in Resources */,
 				4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */,
 				4A0383A61FA9B57800DA5C72 /* NAEncashmentController.xib in Resources */,
 				4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */,
@@ -1156,6 +1216,8 @@
 				4A8B10371F8F486A00498F9D /* NAIDAuthenticationController.m in Sources */,
 				4AFCA9611F346C3500351B04 /* NABaseViewController.m in Sources */,
 				4A59ACEB1F5FDD1300F3172B /* UIView+NAScreenshot.m in Sources */,
+				4AC37D701FB43F0F00FB980C /* NAGoodsListSmallCell.m in Sources */,
+				4AC37D671FB4398800FB980C /* NAGoodsModel.m in Sources */,
 				4AAA81061FA8853900F88083 /* NAWalletTransationModel.m in Sources */,
 				4A09599D1F8B59B7008164B6 /* NABankCardCell.m in Sources */,
 				4A59ACE51F5FD5DC00F3172B /* NACreditReportController.m in Sources */,
@@ -1169,8 +1231,10 @@
 				4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */,
 				4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */,
 				4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */,
+				4AC37D6B1FB43EF400FB980C /* NAGoodListBigCell.m in Sources */,
 				4A59ACEE1F5FDD4A00F3172B /* UIScrollView+NAScreenshot.m in Sources */,
 				4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */,
+				4AC37D5F1FB4394B00FB980C /* NAGoodsListController.m in Sources */,
 				4AFCA9441F346B3D00351B04 /* main.m in Sources */,
 				4A6381671F3841D5008BC8FD /* NAMainCardModel.m in Sources */,
 				4AFCA9651F346C3500351B04 /* UIView+NAExtension.m in Sources */,
