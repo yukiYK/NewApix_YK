@@ -1,14 +1,14 @@
 //
-//  NAGoodListBigCell.m
+//  NAGoodsListBigCell.m
 //  NewApix_YK
 //
-//  Created by APiX on 2017/11/9.
+//  Created by APiX on 2017/11/10.
 //  Copyright © 2017年 APiX. All rights reserved.
 //
 
-#import "NAGoodListBigCell.h"
+#import "NAGoodsListBigCell.h"
 
-@interface NAGoodListBigCell ()
+@interface NAGoodsListBigCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImageView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
@@ -20,8 +20,7 @@
 @end
 
 //188+124
-
-@implementation NAGoodListBigCell
+@implementation NAGoodsListBigCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];

@@ -33,6 +33,7 @@
 #import "NAEncashmentController.h"
 #import "NAArticleDetailController.h"
 #import "NAMakeMoneyController.h"
+#import "NAGoodsListController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -77,10 +78,15 @@
 + (UIViewController *)phoneLoginController {
     return [[NAPhoneLoginController alloc] initWithNibName:@"NAPhoneLoginController" bundle:nil];
 }
-
 /** 我要赚钱页 */
 + (UIViewController *)makeMoneyController {
     return [[NAMakeMoneyController alloc] init];
+}
+/** 9快9秒杀 商品列表页 */
++ (UIViewController *)goodsListControllerWithBannerArr:(NSArray *)bannerArr {
+    NAGoodsListController *goodsListVC = [[NAGoodsListController alloc] init];
+    goodsListVC.bannerDataArray = bannerArr;
+    return goodsListVC;
 }
 
 /**

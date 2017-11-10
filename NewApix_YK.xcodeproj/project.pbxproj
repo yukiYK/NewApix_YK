@@ -45,6 +45,12 @@
 		4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850621F7E4017000C2AD5 /* NAChangePhoneController.xib */; };
 		4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */; };
 		4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */; };
+		4A7D16B31FB59A2D00112341 /* NAGoodsListTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D16B11FB59A2D00112341 /* NAGoodsListTitleCell.m */; };
+		4A7D16B41FB59A2D00112341 /* NAGoodsListTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D16B21FB59A2D00112341 /* NAGoodsListTitleCell.xib */; };
+		4A7D16B81FB59F8400112341 /* NAGoodsListBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D16B61FB59F8400112341 /* NAGoodsListBigCell.m */; };
+		4A7D16B91FB59F8400112341 /* NAGoodsListBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7D16B71FB59F8400112341 /* NAGoodsListBigCell.xib */; };
+		4A7D16BC1FB5A1C400112341 /* NAGoodsListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7D16BB1FB5A1C400112341 /* NAGoodsListModel.m */; };
+		4A7D16BD1FB5BCAA00112341 /* NAGoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */; };
 		4A7E03421F94A19300939486 /* NAIDUserFaceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E03401F94A19300939486 /* NAIDUserFaceController.m */; };
 		4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A7E03411F94A19300939486 /* NAIDUserFaceController.xib */; };
 		4A7E03471F94BC8D00939486 /* NAIDFaceCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7E03451F94BC8D00939486 /* NAIDFaceCameraController.m */; };
@@ -85,8 +91,6 @@
 		4AB821EC1FAB242F00E0E801 /* NAArticleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */; };
 		4AC37D5F1FB4394B00FB980C /* NAGoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */; };
 		4AC37D671FB4398800FB980C /* NAGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D661FB4398800FB980C /* NAGoodsModel.m */; };
-		4AC37D6B1FB43EF400FB980C /* NAGoodListBigCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D691FB43EF400FB980C /* NAGoodListBigCell.m */; };
-		4AC37D6C1FB43EF400FB980C /* NAGoodListBigCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC37D6A1FB43EF400FB980C /* NAGoodListBigCell.xib */; };
 		4AC37D701FB43F0F00FB980C /* NAGoodsListSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */; };
 		4AC37D711FB43F0F00FB980C /* NAGoodsListSmallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AC37D6F1FB43F0F00FB980C /* NAGoodsListSmallCell.xib */; };
 		4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA411F2F23D500A9308F /* NAMainPageController.m */; };
@@ -214,6 +218,14 @@
 		4A7850651F7E4FB5000C2AD5 /* NANewPhoneController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NANewPhoneController.h; sourceTree = "<group>"; };
 		4A7850661F7E4FB5000C2AD5 /* NANewPhoneController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NANewPhoneController.m; sourceTree = "<group>"; };
 		4A7850671F7E4FB5000C2AD5 /* NANewPhoneController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NANewPhoneController.xib; sourceTree = "<group>"; };
+		4A7D16B01FB59A2D00112341 /* NAGoodsListTitleCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListTitleCell.h; sourceTree = "<group>"; };
+		4A7D16B11FB59A2D00112341 /* NAGoodsListTitleCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListTitleCell.m; sourceTree = "<group>"; };
+		4A7D16B21FB59A2D00112341 /* NAGoodsListTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodsListTitleCell.xib; sourceTree = "<group>"; };
+		4A7D16B51FB59F8400112341 /* NAGoodsListBigCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListBigCell.h; sourceTree = "<group>"; };
+		4A7D16B61FB59F8400112341 /* NAGoodsListBigCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListBigCell.m; sourceTree = "<group>"; };
+		4A7D16B71FB59F8400112341 /* NAGoodsListBigCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodsListBigCell.xib; sourceTree = "<group>"; };
+		4A7D16BA1FB5A1C400112341 /* NAGoodsListModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListModel.h; sourceTree = "<group>"; };
+		4A7D16BB1FB5A1C400112341 /* NAGoodsListModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListModel.m; sourceTree = "<group>"; };
 		4A7E033F1F94A19300939486 /* NAIDUserFaceController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAIDUserFaceController.h; sourceTree = "<group>"; };
 		4A7E03401F94A19300939486 /* NAIDUserFaceController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDUserFaceController.m; sourceTree = "<group>"; };
 		4A7E03411F94A19300939486 /* NAIDUserFaceController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAIDUserFaceController.xib; sourceTree = "<group>"; };
@@ -283,9 +295,6 @@
 		4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListController.m; sourceTree = "<group>"; };
 		4AC37D651FB4398800FB980C /* NAGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsModel.h; sourceTree = "<group>"; };
 		4AC37D661FB4398800FB980C /* NAGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsModel.m; sourceTree = "<group>"; };
-		4AC37D681FB43EF400FB980C /* NAGoodListBigCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodListBigCell.h; sourceTree = "<group>"; };
-		4AC37D691FB43EF400FB980C /* NAGoodListBigCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodListBigCell.m; sourceTree = "<group>"; };
-		4AC37D6A1FB43EF400FB980C /* NAGoodListBigCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodListBigCell.xib; sourceTree = "<group>"; };
 		4AC37D6D1FB43F0F00FB980C /* NAGoodsListSmallCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListSmallCell.h; sourceTree = "<group>"; };
 		4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListSmallCell.m; sourceTree = "<group>"; };
 		4AC37D6F1FB43F0F00FB980C /* NAGoodsListSmallCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodsListSmallCell.xib; sourceTree = "<group>"; };
@@ -827,6 +836,8 @@
 			children = (
 				4AC37D651FB4398800FB980C /* NAGoodsModel.h */,
 				4AC37D661FB4398800FB980C /* NAGoodsModel.m */,
+				4A7D16BA1FB5A1C400112341 /* NAGoodsListModel.h */,
+				4A7D16BB1FB5A1C400112341 /* NAGoodsListModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -834,12 +845,15 @@
 		4AC37D5C1FB4354400FB980C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				4AC37D681FB43EF400FB980C /* NAGoodListBigCell.h */,
-				4AC37D691FB43EF400FB980C /* NAGoodListBigCell.m */,
-				4AC37D6A1FB43EF400FB980C /* NAGoodListBigCell.xib */,
 				4AC37D6D1FB43F0F00FB980C /* NAGoodsListSmallCell.h */,
 				4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */,
 				4AC37D6F1FB43F0F00FB980C /* NAGoodsListSmallCell.xib */,
+				4A7D16B01FB59A2D00112341 /* NAGoodsListTitleCell.h */,
+				4A7D16B11FB59A2D00112341 /* NAGoodsListTitleCell.m */,
+				4A7D16B21FB59A2D00112341 /* NAGoodsListTitleCell.xib */,
+				4A7D16B51FB59F8400112341 /* NAGoodsListBigCell.h */,
+				4A7D16B61FB59F8400112341 /* NAGoodsListBigCell.m */,
+				4A7D16B71FB59F8400112341 /* NAGoodsListBigCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1079,6 +1093,7 @@
 				4A78505A1F7E3785000C2AD5 /* NAAddressController.xib in Resources */,
 				4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */,
 				4A052F801F7113B8003EE147 /* areaArray.plist in Resources */,
+				4A7D16B91FB59F8400112341 /* NAGoodsListBigCell.xib in Resources */,
 				4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */,
 				4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */,
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
@@ -1087,7 +1102,6 @@
 				4AC37D711FB43F0F00FB980C /* NAGoodsListSmallCell.xib in Resources */,
 				4AC6CA4E1F2F249C00A9308F /* NARegisterController.xib in Resources */,
 				4A8B10381F8F486A00498F9D /* NAIDAuthenticationController.xib in Resources */,
-				4AC37D6C1FB43EF400FB980C /* NAGoodListBigCell.xib in Resources */,
 				4A6381641F38414D008BC8FD /* NAMainPageCell.xib in Resources */,
 				4A0383A61FA9B57800DA5C72 /* NAEncashmentController.xib in Resources */,
 				4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */,
@@ -1096,6 +1110,7 @@
 				4A7E03481F94BC8D00939486 /* NAIDFaceCameraController.xib in Resources */,
 				4AA684DE1F6671DD0041BB2D /* NAPresentCenterController.xib in Resources */,
 				4AAA81001FA87C9700F88083 /* NAWalletCell.xib in Resources */,
+				4A7D16B41FB59A2D00112341 /* NAGoodsListTitleCell.xib in Resources */,
 				4A09599E1F8B59B7008164B6 /* NABankCardCell.xib in Resources */,
 				4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */,
 				4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */,
@@ -1207,6 +1222,7 @@
 				4A8DD0AB1FB2FD1200BB523C /* NAMakeMoneyController.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
 				4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */,
+				4A7D16B81FB59F8400112341 /* NAGoodsListBigCell.m in Sources */,
 				4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */,
 				4AF392781F46D41200EF7A3B /* NAEssenceModel.m in Sources */,
 				4AAEEDA71F4C272D00055CF1 /* NANavigationController.m in Sources */,
@@ -1231,7 +1247,7 @@
 				4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */,
 				4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */,
 				4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */,
-				4AC37D6B1FB43EF400FB980C /* NAGoodListBigCell.m in Sources */,
+				4A7D16BC1FB5A1C400112341 /* NAGoodsListModel.m in Sources */,
 				4A59ACEE1F5FDD4A00F3172B /* UIScrollView+NAScreenshot.m in Sources */,
 				4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */,
 				4AC37D5F1FB4394B00FB980C /* NAGoodsListController.m in Sources */,
@@ -1253,6 +1269,7 @@
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */,
+				4A7D16B31FB59A2D00112341 /* NAGoodsListTitleCell.m in Sources */,
 				4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4A483DED1FB1AE1500C4D12B /* NAEditorController.m in Sources */,
@@ -1269,6 +1286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A037D301F2851A600F38AC0 /* NewApix_YKTests.m in Sources */,
+				4A7D16BD1FB5BCAA00112341 /* NAGoodsListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

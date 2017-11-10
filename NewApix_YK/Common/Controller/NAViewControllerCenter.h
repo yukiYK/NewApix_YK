@@ -54,6 +54,8 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /** 我要赚钱页 */
 + (UIViewController *)makeMoneyController;
 
+/** 9快9秒杀 商品列表页 */
++ (UIViewController *)goodsListControllerWithBannerArr:(NSArray *)bannerArr;
 
 /**
  文章详情页

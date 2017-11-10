@@ -188,6 +188,13 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"cards"] param:param rightCode:@"0"];
 }
 
+/** 9块9秒杀 商品列表接口 */
++ (NAAPIModel *)goodsListConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"windows"] param:param rightCode:nil];
+}
+
 #pragma mark - <User>
 /** 用户基本信息接口 昵称 头像等 */
 + (NAAPIModel *)mineUserInfoConfig {
