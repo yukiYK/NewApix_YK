@@ -96,8 +96,7 @@
         imageView.image = [kGetImage(kImageDefault) cutImageAdaptImageViewSize:imageView.bounds.size];
         [self.scrollView addSubview:imageView];
         self.scrollView.contentSize = self.bounds.size;
-    }
-    else {
+    } else {
         [self updateSubviews];
     }
     
@@ -108,6 +107,13 @@
     pageControl.numberOfPages = self.cardArray.count;
     pageControl.currentPage = 0;
 //    [pageControl addTarget:self action:@selector(onPageControlClicked:) forControlEvents:UIControlEventValueChanged];
+    
+    if (self.cardArray.count <= 1) {
+        pageControl.hidden = YES;
+    } else {
+        CGSize pageControlSize = [pageControl sizeForNumberOfPages:pageControl.numberOfPages];
+        pageControl.frame = CGRectMake((self.bounds.size.width - pageControlSize.width)/2, self.bounds.size.height - pageControlSize.height, pageControlSize.width, pageControlSize.height);
+    }
     [self addSubview:pageControl];
     self.pageControl = pageControl;
 }
@@ -121,16 +127,14 @@
     
     // 添加新subviews
     CGFloat cardWidth = self.bounds.size.width;
-    for (int i=0;i<self.cardArray.count + 2;i++) {
+    for (int i=0; i<self.cardArray.count + 2; i++) {
         
         NAMainCardModel *cardModel = nil;
         if (i == 0) {
             cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray.lastObject];
-        }
-        else if (i == self.cardArray.count + 1) {
+        } else if (i == self.cardArray.count + 1) {
             cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray.firstObject];
-        }
-        else {
+        } else {
             cardModel = [NAMainCardModel yy_modelWithJSON:self.cardArray[i-1]];
         }
         
@@ -147,11 +151,11 @@
     self.scrollView.contentSize = CGSizeMake(cardWidth * (self.cardArray.count + 2), self.bounds.size.height);
     self.scrollView.contentOffset = CGPointMake(cardWidth, 0);
     
-    // pageControl
+    if (!self.pageControl) return;
     if (self.cardArray.count <= 1) {
         self.pageControl.hidden = YES;
-    }
-    else {
+    } else {
+        self.pageControl.hidden = NO;
         self.pageControl.numberOfPages = self.cardArray.count;
         self.pageControl.currentPage = 0;
         CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:self.pageControl.numberOfPages];
@@ -164,8 +168,7 @@
     CGFloat scrollWidth = self.bounds.size.width;
     if (self.scrollView.contentOffset.x > scrollWidth * self.cardArray.count * 1.1) {
         [self.scrollView setContentOffset:CGPointMake(scrollWidth, 0)];
-    }
-    else if (self.scrollView.contentOffset.x < scrollWidth * 0.9) {
+    } else if (self.scrollView.contentOffset.x < scrollWidth * 0.9) {
         [self.scrollView setContentOffset:CGPointMake(scrollWidth * self.cardArray.count, 0)];
     }
     

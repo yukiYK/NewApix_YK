@@ -36,6 +36,7 @@
 #define SERVER_ADDRESS_APIX_A @"http://a.apix.cn"
 #define SERVER_ADDRESS_APIX_E @"http://e.apix.cn"
 #define SERVER_ADDRESS_COMMUNITY @"http://community.meixinlife.com"
+#define SERVER_ADDRESS_PHONE @"http://123.56.44.58:80"
 
 #if SERVER_ONLINE
 // 现网环境

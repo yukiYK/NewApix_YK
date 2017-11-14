@@ -35,6 +35,9 @@
 		4A6B14121F98A3A2008CD7FA /* NAAuthenticationWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A6B14111F98A3A2008CD7FA /* NAAuthenticationWebController.m */; };
 		4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315431F3D604B00044FE6 /* NACommonWebController.m */; };
 		4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */; };
+		4A75C0161FB98AB000D35F0A /* NAPhonePayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A75C0141FB98AB000D35F0A /* NAPhonePayController.m */; };
+		4A75C0171FB98AB000D35F0A /* NAPhonePayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A75C0151FB98AB000D35F0A /* NAPhonePayController.xib */; };
+		4A75C01A1FB9A98D00D35F0A /* NAGoodsPriceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A75C0191FB9A98D00D35F0A /* NAGoodsPriceModel.m */; };
 		4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850511F7E3618000C2AD5 /* NAAddressModel.m */; };
 		4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850531F7E3723000C2AD5 /* NAAddressController.m */; };
 		4A7850591F7E3764000C2AD5 /* NASettingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A7850521F7E3723000C2AD5 /* NASettingsController.m */; };
@@ -89,6 +92,8 @@
 		4AB5C1C71FB04207007A9AA1 /* NAShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB5C1C61FB04207007A9AA1 /* NAShareView.m */; };
 		4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */; };
 		4AB821EC1FAB242F00E0E801 /* NAArticleDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */; };
+		4AC18DDD1FBAF6D200C6324B /* NAConfirmOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC18DDC1FBAF6D200C6324B /* NAConfirmOrderModel.m */; };
+		4AC18DE01FBAFF0200C6324B /* NAConfirmOrderController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC18DDF1FBAFF0200C6324B /* NAConfirmOrderController.m */; };
 		4AC37D5F1FB4394B00FB980C /* NAGoodsListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */; };
 		4AC37D671FB4398800FB980C /* NAGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D661FB4398800FB980C /* NAGoodsModel.m */; };
 		4AC37D701FB43F0F00FB980C /* NAGoodsListSmallCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC37D6E1FB43F0F00FB980C /* NAGoodsListSmallCell.m */; };
@@ -201,6 +206,11 @@
 		4A7315431F3D604B00044FE6 /* NACommonWebController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACommonWebController.m; sourceTree = "<group>"; };
 		4A7315451F3D969800044FE6 /* NSAttributedString+NAExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+NAExtension.h"; sourceTree = "<group>"; };
 		4A7315461F3D969800044FE6 /* NSAttributedString+NAExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+NAExtension.m"; sourceTree = "<group>"; };
+		4A75C0131FB98AB000D35F0A /* NAPhonePayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAPhonePayController.h; sourceTree = "<group>"; };
+		4A75C0141FB98AB000D35F0A /* NAPhonePayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAPhonePayController.m; sourceTree = "<group>"; };
+		4A75C0151FB98AB000D35F0A /* NAPhonePayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAPhonePayController.xib; sourceTree = "<group>"; };
+		4A75C0181FB9A98D00D35F0A /* NAGoodsPriceModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsPriceModel.h; sourceTree = "<group>"; };
+		4A75C0191FB9A98D00D35F0A /* NAGoodsPriceModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsPriceModel.m; sourceTree = "<group>"; };
 		4A7707401F39CC4900CEDDF8 /* NAConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAConstant.h; sourceTree = "<group>"; };
 		4A7850501F7E3618000C2AD5 /* NAAddressModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAddressModel.h; sourceTree = "<group>"; };
 		4A7850511F7E3618000C2AD5 /* NAAddressModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAddressModel.m; sourceTree = "<group>"; };
@@ -291,6 +301,10 @@
 		4AB73D681FA1C76A0014E29D /* NAIDCameraGuiderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAIDCameraGuiderView.m; sourceTree = "<group>"; };
 		4AB821EA1FAB242F00E0E801 /* NAArticleDetailController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAArticleDetailController.h; sourceTree = "<group>"; };
 		4AB821EB1FAB242F00E0E801 /* NAArticleDetailController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAArticleDetailController.m; sourceTree = "<group>"; };
+		4AC18DDB1FBAF6D200C6324B /* NAConfirmOrderModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAConfirmOrderModel.h; sourceTree = "<group>"; };
+		4AC18DDC1FBAF6D200C6324B /* NAConfirmOrderModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAConfirmOrderModel.m; sourceTree = "<group>"; };
+		4AC18DDE1FBAFF0200C6324B /* NAConfirmOrderController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAConfirmOrderController.h; sourceTree = "<group>"; };
+		4AC18DDF1FBAFF0200C6324B /* NAConfirmOrderController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAConfirmOrderController.m; sourceTree = "<group>"; };
 		4AC37D5D1FB4394B00FB980C /* NAGoodsListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsListController.h; sourceTree = "<group>"; };
 		4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsListController.m; sourceTree = "<group>"; };
 		4AC37D651FB4398800FB980C /* NAGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsModel.h; sourceTree = "<group>"; };
@@ -827,6 +841,11 @@
 			children = (
 				4AC37D5D1FB4394B00FB980C /* NAGoodsListController.h */,
 				4AC37D5E1FB4394B00FB980C /* NAGoodsListController.m */,
+				4A75C0131FB98AB000D35F0A /* NAPhonePayController.h */,
+				4A75C0141FB98AB000D35F0A /* NAPhonePayController.m */,
+				4A75C0151FB98AB000D35F0A /* NAPhonePayController.xib */,
+				4AC18DDE1FBAFF0200C6324B /* NAConfirmOrderController.h */,
+				4AC18DDF1FBAFF0200C6324B /* NAConfirmOrderController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -838,6 +857,10 @@
 				4AC37D661FB4398800FB980C /* NAGoodsModel.m */,
 				4A7D16BA1FB5A1C400112341 /* NAGoodsListModel.h */,
 				4A7D16BB1FB5A1C400112341 /* NAGoodsListModel.m */,
+				4A75C0181FB9A98D00D35F0A /* NAGoodsPriceModel.h */,
+				4A75C0191FB9A98D00D35F0A /* NAGoodsPriceModel.m */,
+				4AC18DDB1FBAF6D200C6324B /* NAConfirmOrderModel.h */,
+				4AC18DDC1FBAF6D200C6324B /* NAConfirmOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1111,6 +1134,7 @@
 				4AA684DE1F6671DD0041BB2D /* NAPresentCenterController.xib in Resources */,
 				4AAA81001FA87C9700F88083 /* NAWalletCell.xib in Resources */,
 				4A7D16B41FB59A2D00112341 /* NAGoodsListTitleCell.xib in Resources */,
+				4A75C0171FB98AB000D35F0A /* NAPhonePayController.xib in Resources */,
 				4A09599E1F8B59B7008164B6 /* NABankCardCell.xib in Resources */,
 				4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */,
 				4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */,
@@ -1217,12 +1241,14 @@
 				4AAA80FA1FA86DE600F88083 /* NAWalletController.m in Sources */,
 				4AFF28D81F4AC70700964EBC /* NAMineOrderModel.m in Sources */,
 				4AFCA9421F346B3D00351B04 /* AppDelegate.m in Sources */,
+				4AC18DDD1FBAF6D200C6324B /* NAConfirmOrderModel.m in Sources */,
 				4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */,
 				4AF392841F46E67F00EF7A3B /* NAMineCell.m in Sources */,
 				4A8DD0AB1FB2FD1200BB523C /* NAMakeMoneyController.m in Sources */,
 				4AFCA9691F346C3500351B04 /* NAHTTPSessionManager.m in Sources */,
 				4A7850681F7E4FB5000C2AD5 /* NANewPhoneController.m in Sources */,
 				4A7D16B81FB59F8400112341 /* NAGoodsListBigCell.m in Sources */,
+				4A75C0161FB98AB000D35F0A /* NAPhonePayController.m in Sources */,
 				4A8F18CE1F41ADBC00B5459A /* NACommunityCell.m in Sources */,
 				4AF392781F46D41200EF7A3B /* NAEssenceModel.m in Sources */,
 				4AAEEDA71F4C272D00055CF1 /* NANavigationController.m in Sources */,
@@ -1270,9 +1296,11 @@
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */,
 				4A7D16B31FB59A2D00112341 /* NAGoodsListTitleCell.m in Sources */,
+				4A75C01A1FB9A98D00D35F0A /* NAGoodsPriceModel.m in Sources */,
 				4AB73D691FA1C76A0014E29D /* NAIDCameraGuiderView.m in Sources */,
 				4AAEEDAD1F4C277100055CF1 /* NAUserTool.m in Sources */,
 				4A483DED1FB1AE1500C4D12B /* NAEditorController.m in Sources */,
+				4AC18DE01FBAFF0200C6324B /* NAConfirmOrderController.m in Sources */,
 				4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */,
 				4AC6CA431F2F23D500A9308F /* NAMainPageController.m in Sources */,
 				4AA8ADB51F8CADCA00B27223 /* NAAddCardController.m in Sources */,

@@ -57,6 +57,9 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /** 9快9秒杀 商品列表页 */
 + (UIViewController *)goodsListControllerWithBannerArr:(NSArray *)bannerArr;
 
+/** 手机充值页 */
++ (UIViewController *)phonePayController;
+
 /**
  文章详情页
 

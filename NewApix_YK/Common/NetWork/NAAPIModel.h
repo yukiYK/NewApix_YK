@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSInteger, NARequestURLType) {
-    NARequestURLTypeAPI,     // 美信后台接口
-    NARequestURLTypeH5,      // 美信web
-    NARequestURLTypeAPIXA,   // apix接口a
-    NARequestURLTypeAPIXE,   // apix接口e
-    NARequestURLTypeCommunity// 发帖、评论、回复
+    NARequestURLTypeAPI,      // 美信后台接口地址
+    NARequestURLTypeH5,       // 美信web
+    NARequestURLTypeAPIXA,    // apix接口a
+    NARequestURLTypeAPIXE,    // apix接口e
+    NARequestURLTypeCommunity,// 发帖、评论、回复
+    NARequestURLTypePhone     // 查询号码归属地接口地址
 };
 
 typedef NS_ENUM(NSInteger, NAHTTPRequestType) {

@@ -34,6 +34,7 @@
 #import "NAArticleDetailController.h"
 #import "NAMakeMoneyController.h"
 #import "NAGoodsListController.h"
+#import "NAPhonePayController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -87,6 +88,10 @@
     NAGoodsListController *goodsListVC = [[NAGoodsListController alloc] init];
     goodsListVC.bannerDataArray = bannerArr;
     return goodsListVC;
+}
+/** 手机充值页 */
++ (UIViewController *)phonePayController {
+    return [[NAPhonePayController alloc] initWithNibName:@"NAPhonePayController" bundle:nil];
 }
 
 /**

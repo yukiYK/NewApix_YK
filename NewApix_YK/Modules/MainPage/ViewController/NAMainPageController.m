@@ -378,7 +378,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
             toVC = [NAViewControllerCenter makeMoneyController];
             break;
         case 2:
-            toVC = [NAViewControllerCenter makeMoneyController];
+            toVC = [NAViewControllerCenter goodsListControllerWithBannerArr:self.bannerDataArray];
             break;
         case 3:
             toVC = [NAViewControllerCenter makeMoneyController];

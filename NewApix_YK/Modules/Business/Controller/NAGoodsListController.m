@@ -51,6 +51,12 @@ static NSString * const kGoodsListHeaderViewID = @"goodsListHeaderView";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupNavigation];
+    [self.bannerView startAnimation];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+    [super viewDidDisappear:animated];
+    [self.bannerView stopAnimation];
 }
 
 - (void)setupNavigation {
@@ -66,7 +72,7 @@ static NSString * const kGoodsListHeaderViewID = @"goodsListHeaderView";
     collectionLayout.minimumInteritemSpacing = kCommonMargin;
     collectionLayout.sectionInset = UIEdgeInsetsMake(0, kCommonMargin, kCommonMargin, kCommonMargin);
     
-    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_bannerView.frame), kScreenWidth, self.view.height - self.bannerView.height) collectionViewLayout:collectionLayout];
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, self.view.height - kStatusBarH - kNavBarH) collectionViewLayout:collectionLayout];
     collectionView.backgroundColor = [UIColor whiteColor];
     [collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:kGoodsListHeaderViewID];
     [collectionView registerNib:[UINib nibWithNibName:kGoodsListBigCellName bundle:nil] forCellWithReuseIdentifier:kGoodsListBigCellID];
@@ -98,7 +104,7 @@ static NSString * const kGoodsListHeaderViewID = @"goodsListHeaderView";
 
 #pragma mark - <UICollectionViewDelegate, UICollectionViewDataSource>
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.goodsListTitleArr.count;
+    return self.goodsListTitleArr.count * 2;
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
@@ -113,7 +119,7 @@ static NSString * const kGoodsListHeaderViewID = @"goodsListHeaderView";
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     NSInteger section = indexPath.section;
     if (section == 0 || section % 2 == 0) {
-        NAGoodsListTitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kGoodsListBigCellID forIndexPath:indexPath];
+        NAGoodsListTitleCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kGoodsListTitleCellID forIndexPath:indexPath];
         NAGoodsListModel *goodsListmodel = [NAGoodsListModel yy_modelWithJSON:self.allGoodsArr[section/2]];
         cell.title = goodsListmodel.name;
         return cell;
@@ -149,14 +155,21 @@ static NSString * const kGoodsListHeaderViewID = @"goodsListHeaderView";
     return headView;
 }
 
+// 设置section头视图的参考大小
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section {
+    if (section == 0)
+        return CGSizeMake(kScreenWidth, kScreenWidth/2);
+    return CGSizeZero;
+}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter phonePayController] tranformStyle:NATransformStylePush needLogin:NO];
 }
 
 #pragma mark - <UICollectionViewDelegateFlowLayout>
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0 || indexPath.section % 2 == 0)
-        return CGSizeMake(kScreenWidth, 45);
+        return CGSizeMake(kScreenWidth - 30, 45);
     
     NAGoodsListModel *goodsListmodel = [NAGoodsListModel yy_modelWithJSON:self.allGoodsArr[(indexPath.section - 1)/2]];
     if (goodsListmodel.window_type == 2) {

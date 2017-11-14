@@ -13,7 +13,6 @@ typedef void(^BannerClickedBlock) (NAMainCardModel *cardModel);
 @interface NABannerView : UIView
 
 
-
 /**
  初始化方法 默认开启Animation自动切换，需要关闭请手动调用stopAnimation
 

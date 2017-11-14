@@ -11,7 +11,7 @@
 #import "NAAddressModel.h"
 #import "NAUserInfoModel.h"
 #import "NABankCardModel.h"
-
+#import "NAConfirmOrderModel.h"
 
 /** 接口管理类 获取各个接口的配置 */
 @interface NAURLCenter : NSObject
@@ -68,6 +68,8 @@
 + (NAAPIModel *)mainPageCardConfigWithVersion:(NSString *)version;
 /** 9块9秒杀 商品列表接口 */
 + (NAAPIModel *)goodsListConfig;
+/** 商品详情接口 */
++ (NAAPIModel *)goodsDetailConfigWithProductID:(NSString *)productID;
 
 // ---------------------------------会员中心----------------------------
 /** 用户基本信息接口 昵称 头像等 */
@@ -163,7 +165,12 @@
  */
 + (NAAPIModel *)commentConfigWithBody:(NSString *)body commentID:(NSString *)commentID;
 
+/** 获取号码归属地接口 */
++ (NAAPIModel *)phoneAddressConfigWithPhoneNumber:(NSString *)phoneNumber;
+
 #pragma mark - <---------------------所有的H5--------------------->
+/** 确认订单页 */
++ (NSString *)confirmOrderH5UrlWithModel:(NAConfirmOrderModel *)orderModel;
 /** 使用支付宝支付的美信会员页 */
 + (NSString *)vipH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter;
 /* 使用apple内购的美信会员页 */

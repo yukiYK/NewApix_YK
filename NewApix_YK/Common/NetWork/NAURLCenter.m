@@ -37,6 +37,9 @@
         case NARequestURLTypeCommunity:
             urlString = SERVER_ADDRESS_COMMUNITY;
             break;
+        case NARequestURLTypePhone:
+            urlString = SERVER_ADDRESS_PHONE;
+            break;
         default:
             break;
     }
@@ -193,6 +196,14 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"windows"] param:param rightCode:nil];
+}
+
+/** 商品详情接口 */
++ (NAAPIModel *)goodsDetailConfigWithProductID:(NSString *)productID {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    param[@"parent_product_id"] = productID;
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"detail"] param:param rightCode:nil];
 }
 
 #pragma mark - <User>
@@ -498,8 +509,31 @@
     return [self apixApiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"bbs_create"] param:param urlType:NARequestURLTypeCommunity];
 }
 
+/** 获取号码归属地接口 */
++ (NAAPIModel *)phoneAddressConfigWithPhoneNumber:(NSString *)phoneNumber {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"phone"] = phoneNumber;
+    return [self apixApiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"life", @"phone"] param:param urlType:NARequestURLTypePhone];
+}
+
 
 #pragma mark - <---------------------所有的H5--------------------->
+/** 确认订单页 */
++ (NSString *)confirmOrderH5UrlWithModel:(NAConfirmOrderModel *)orderModel {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    param[@"ptypeId"] = orderModel.ptypeId;
+    param[@"ptype"] = orderModel.ptype;
+    param[@"title"] = orderModel.title;
+    param[@"img"] = orderModel.img;
+    param[@"money"] = orderModel.money;
+    param[@"orderType"] = orderModel.orderType;
+    if (orderModel.phone_num) param[@"phone_num"] = orderModel.phone_num;
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"confirmOrder"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
 /** 使用支付宝支付的美信会员页 */
 + (NSString *)vipH5UrlWithIsFromGiftCenter:(BOOL)isFromGiftCenter {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
@@ -508,7 +542,7 @@
     param[@"device"] = @"app";
     if (isFromGiftCenter) param[@"source"] = @"giftcenter";
     else param[@"source"] = @"my";
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy"]];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
@@ -518,7 +552,7 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = [NACommon getToken];
     if (isFromGiftCenter) param[@"source"] = @"giftcenter";
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy_ios"]];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy", @"vipBuy_ios"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
@@ -527,15 +561,14 @@
 + (NSString *)creditReportH5Url {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = [NACommon getToken];
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"creditexam"]];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"creditexam"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
 /* 常见问题页 */
 + (NSString *)commonQuestionsH5Url {
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"commonquestion"]];
-    return urlStr;
+    return [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"commonquestion"]];
 }
 
 /** 美信说-攻略 */
@@ -543,7 +576,7 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = [NACommon getToken];
     param[@"device"] = @"app";
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy"]];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"strategy"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
@@ -552,7 +585,7 @@
 + (NSString *)communityH5Url {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"device"] = @"app";
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"forum"]];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"forum"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
@@ -561,7 +594,7 @@
 + (NSString *)makeMoneyH5Url {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = [NACommon getToken];
-    NSString *urlStr = [NAURLCenter urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"make_money"]];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"make_money"]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }

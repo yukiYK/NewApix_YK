@@ -20,5 +20,13 @@
 @property (nonatomic, copy) NSString *price;
 /** vip价 */
 @property (nonatomic, copy) NSString *vip_price;
+/** 商品id */
+@property (nonatomic, copy) NSString *id;
+/** 商品类型 1.话费 2.视频卡 3.实物 */
+@property (nonatomic, assign) NSInteger order_type;
+/** 产品规格 颜色 尺寸分类 */
+@property (nonatomic, copy) NSString *main_feature_title;
+/** 详情 */
+@property (nonatomic, copy) NSString *secondary_feature_title;
 
 @end
