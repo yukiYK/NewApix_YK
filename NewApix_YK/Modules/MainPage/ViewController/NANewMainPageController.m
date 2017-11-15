@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    UIWebView *webView = [[UIWebView alloc] init];
     webView.backgroundColor = [UIColor whiteColor];
     webView.delegate = self;
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/webapp/tourindex?source=newindex", SERVER_ADDRESS_H5]];
@@ -28,6 +28,12 @@
     self.urlStr = url.absoluteString;
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
     [self.view addSubview:webView];
+    [webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

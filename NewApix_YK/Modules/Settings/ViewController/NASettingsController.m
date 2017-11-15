@@ -7,7 +7,6 @@
 //
 
 #import "NASettingsController.h"
-#import "Masonry.h"
 #import "AESCrypt.h"
 #import "NAAuthenticationModel.h"
 #import "NATabbarController.h"
@@ -87,7 +86,7 @@
 }
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    UITableView *tableView = [[UITableView alloc] init];
     tableView.backgroundColor = kColorHeaderGray;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     tableView.delegate = self;
@@ -96,6 +95,12 @@
     tableView.tableFooterView = [self tableFooterView];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
 }
 
 - (UIView *)tableHeaderView {
@@ -316,9 +321,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"settingsCell"];
-    if (!cell) {
+    if (!cell)
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:@"settingsCell"];
-    }
     cell.detailTextLabel.font = [UIFont systemFontOfSize:14];
     cell.detailTextLabel.textColor = kColorTextLightGray;
     cell.textLabel.font = [UIFont systemFontOfSize:14];

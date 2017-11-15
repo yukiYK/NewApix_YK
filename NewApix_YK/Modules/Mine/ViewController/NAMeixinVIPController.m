@@ -8,7 +8,6 @@
 
 #import "NAMeixinVIPController.h"
 #import <StoreKit/StoreKit.h>
-#import "Masonry.h"
 #import "NATabbarController.h"
 
 @interface NAMeixinVIPController () <UIWebViewDelegate, UIGestureRecognizerDelegate, SKProductsRequestDelegate, SKPaymentTransactionObserver>

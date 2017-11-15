@@ -86,7 +86,7 @@ NSString * const kCommunityCellID = @"communityCell";
 
 - (void)setupSubviews {
     
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kStatusBarH + kNavBarH, kScreenWidth, kScreenHeight - kStatusBarH - kNavBarH - kTabBarH)];
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
     scrollView.frame = self.view.bounds;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
@@ -94,6 +94,12 @@ NSString * const kCommunityCellID = @"communityCell";
     scrollView.contentSize = CGSizeMake(kScreenWidth * 2, scrollView.frame.size.height);
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
+    [self.scrollView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
     
     UIWebView *essenceWebView = [[UIWebView alloc] initWithFrame:self.scrollView.bounds];
     essenceWebView.backgroundColor = [UIColor whiteColor];
@@ -104,7 +110,7 @@ NSString * const kCommunityCellID = @"communityCell";
     [scrollView addSubview:essenceWebView];
     self.essenceWebView = essenceWebView;
     
-    UIWebView *communityWebView = [[UIWebView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, scrollView.bounds.size.height)];
+    UIWebView *communityWebView = [[UIWebView alloc] initWithFrame:CGRectMake(kScreenWidth, 0, kScreenWidth, self.scrollView.bounds.size.height)];
     communityWebView.backgroundColor = [UIColor whiteColor];
     communityWebView.delegate = self;
     NSURL *communityUrl = [NSURL URLWithString:[NAURLCenter communityH5Url]];

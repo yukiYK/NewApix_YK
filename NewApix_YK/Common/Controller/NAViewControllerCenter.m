@@ -35,6 +35,7 @@
 #import "NAMakeMoneyController.h"
 #import "NAGoodsListController.h"
 #import "NAPhonePayController.h"
+#import "NAConfirmOrderController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -92,6 +93,12 @@
 /** 手机充值页 */
 + (UIViewController *)phonePayController {
     return [[NAPhonePayController alloc] initWithNibName:@"NAPhonePayController" bundle:nil];
+}
+/** 确认订单页 */
++ (UIViewController *)confirmOrderControllerWithModel:(NAConfirmOrderModel *)orderModel {
+    NAConfirmOrderController *confirmOrderVC = [[NAConfirmOrderController alloc] init];
+    confirmOrderVC.orderModel = orderModel;
+    return confirmOrderVC;
 }
 
 /**

@@ -80,13 +80,19 @@ static NSString * const kBankCardCellName = @"NABankCardCell";
 }
 
 - (void)setupTableView {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    UITableView *tableView = [[UITableView alloc] init];
     tableView.delegate = self;
     tableView.dataSource = self;
     [tableView registerNib:[UINib nibWithNibName:kBankCardCellName bundle:nil] forCellReuseIdentifier:kBankCardCell];
     tableView.tableFooterView = [self footerView];
     [self.view addSubview:tableView];
     self.tableView = tableView;
+    [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
 }
 
 - (UIView *)footerView {

@@ -12,6 +12,7 @@
 #import "NAIDFaceCameraController.h"
 #import "NAWalletModel.h"
 #import "NAEditorController.h"
+#import "NAConfirmOrderModel.h"
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -59,6 +60,9 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 
 /** 手机充值页 */
 + (UIViewController *)phonePayController;
+
+/** 确认订单页 */
++ (UIViewController *)confirmOrderControllerWithModel:(NAConfirmOrderModel *)orderModel;
 
 /**
  文章详情页

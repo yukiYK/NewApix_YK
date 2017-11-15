@@ -42,11 +42,17 @@
 }
 
 - (void)setupWebView {
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    UIWebView *webView = [[UIWebView alloc] init];
     webView.backgroundColor = [UIColor whiteColor];
     webView.delegate = self;
     [self.view addSubview:webView];
     self.webView = webView;
+    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view.mas_top);
+        make.left.equalTo(self.view.mas_left);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
     
     NSURL *url = [NSURL URLWithString:[NAURLCenter makeMoneyH5Url]];
     [self.webView loadRequest:[NSURLRequest requestWithURL:url]];

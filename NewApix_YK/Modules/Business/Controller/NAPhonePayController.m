@@ -111,7 +111,9 @@
     model.orderType = @"1";
     model.phone_num = self.phoneTextField.text;
     
-    
+    [NAViewControllerCenter transformViewController:self
+                                   toViewController:[NAViewControllerCenter confirmOrderControllerWithModel:model]
+                                      tranformStyle:NATransformStylePush needLogin:YES];
 }
 
 - (BOOL)isPhoneNumber:(NSString *)phoneNumber {
