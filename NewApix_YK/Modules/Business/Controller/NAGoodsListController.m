@@ -163,7 +163,19 @@ static NSString * const kGoodsListHeaderViewID = @"goodsListHeaderView";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter phonePayController] tranformStyle:NATransformStylePush needLogin:NO];
+    
+    if (indexPath.section == 0 || indexPath.section % 2 == 0)
+        return;
+    
+    NAGoodsListModel *goodsListmodel = [NAGoodsListModel yy_modelWithJSON:self.allGoodsArr[(indexPath.section - 1)/2]];
+    NAGoodsModel *goodsModel = [NAGoodsModel yy_modelWithJSON:goodsListmodel.products[indexPath.item]];
+    UIViewController *toVC = nil;
+    if (goodsModel.order_type == 1) {
+        toVC = [NAViewControllerCenter phonePayController];
+    } else {
+        toVC = [NAViewControllerCenter goodsDetailControllerWithModel:goodsModel];
+    }
+    [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:NO];
 }
 
 #pragma mark - <UICollectionViewDelegateFlowLayout>

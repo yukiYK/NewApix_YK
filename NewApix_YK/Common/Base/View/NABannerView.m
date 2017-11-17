@@ -183,6 +183,7 @@
 
 #pragma mark - <事件>
 - (void)bannerScroll {
+    if (self.cardArray.count <= 0) return;
     
     CGFloat scrollWidth = self.bounds.size.width;
     [self.scrollView setContentOffset:CGPointMake((self.pageControl.currentPage + 2) * scrollWidth, 0) animated:YES];

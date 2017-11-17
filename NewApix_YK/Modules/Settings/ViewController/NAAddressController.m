@@ -86,8 +86,7 @@
     if (self.phoneTextField.text.length > 0 && self.nameTextField.text.length > 0 && self.addressTextField.text.length > 0 && self.detailAddressTextField.text.length > 0) {
         self.saveButton.enabled = YES;
         [self.saveButton setBackgroundColor:[UIColor colorFromString:@"89ABE3"]];
-    }
-    else {
+    } else {
         self.saveButton.enabled = NO;
         [self.saveButton setBackgroundColor:[UIColor colorFromString:@"C4C4C4"]];
     }
@@ -103,8 +102,7 @@
         NSArray *addressArr = [NSArray arrayWithArray:returnValue[@"address"]];
         if (addressArr.count <= 0) {
             weakSelf.addressModel.id = nil;
-        }
-        else {
+        } else {
             NAAddressModel *model = [NAAddressModel yy_modelWithJSON:addressArr[0]];
             [weakSelf resetSubviewsWith:model];
         }
@@ -150,8 +148,7 @@
     for (int i=0;i<resultArr.count;i++) {
         if (i != resultArr.count - 1) {
             addressStr = [addressStr stringByAppendingString:[NSString stringWithFormat:@"%@、", resultArr[i]]];
-        }
-        else {
+        } else {
             addressStr = [addressStr stringByAppendingString:[NSString stringWithFormat:@"%@", resultArr[i]]];
         }
     }

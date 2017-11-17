@@ -7,7 +7,7 @@
 //
 
 #import "NAPhonePayController.h"
-#import "NAGoodsPriceModel.h"
+#import "NAGoodsChildModel.h"
 #import "NAConfirmOrderModel.h"
 
 @interface NAPhonePayController ()
@@ -24,7 +24,7 @@
 @property (nonatomic, strong) UIButton *selectPriceBtn;
 
 /** 会员等级 */
-@property (nonatomic, strong) NSMutableArray *vipGrade;
+@property (nonatomic, strong) NSArray *vipGradeArr;
 /** 价格数组 */
 @property (nonatomic, strong) NSArray *priceArr;
 @property (nonatomic, strong) NSDictionary *parentsDic;
@@ -32,11 +32,6 @@
 @end
 
 @implementation NAPhonePayController
-- (NSMutableArray *)vipGrade {
-    if (!_vipGrade)
-        _vipGrade = [NSMutableArray array];
-    return _vipGrade;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +50,7 @@
 - (void)setupPriceButtons:(NSArray *)priceArr {
     for (int i=0; i<priceArr.count; i++) {
         NSDictionary *dic = priceArr[i];
-        NAGoodsPriceModel *priceModel = [NAGoodsPriceModel yy_modelWithJSON:dic];
+        NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:dic];
         
         NSInteger x = i % 3;
         NSInteger y = i / 3;
@@ -76,7 +71,7 @@
         priceLabel.font = [UIFont systemFontOfSize:18];
         priceLabel.textColor = kColorBlue;
         priceLabel.textAlignment = NSTextAlignmentCenter;
-        priceLabel.text = [NSString stringWithFormat:@"%@元", priceModel.default_price];
+        priceLabel.text = [NSString stringWithFormat:@"%@元", childModel.default_price];
         priceLabel.tag = 11;
         [button addSubview:priceLabel];
         
@@ -84,9 +79,9 @@
         vipPriceLabel.font = [UIFont systemFontOfSize:10];
         vipPriceLabel.textColor = [UIColor colorFromString:@"96bbff"];
         vipPriceLabel.textAlignment = NSTextAlignmentCenter;
-        if (self.vipGrade.count > 0)
-            vipPriceLabel.text = [NSString stringWithFormat:@"会员价%@元", priceModel.second_class_cost];
-        else vipPriceLabel.text = [NSString stringWithFormat:@"%@元", priceModel.second_class_cost];
+        if (self.vipGradeArr.count > 0)
+            vipPriceLabel.text = [NSString stringWithFormat:@"会员价%@元", childModel.second_class_cost];
+        else vipPriceLabel.text = [NSString stringWithFormat:@"%@元", childModel.second_class_cost];
         vipPriceLabel.tag = 12;
         [button addSubview:vipPriceLabel];
         
@@ -101,13 +96,13 @@
     }
     
     // TODO 跳转订单页
-    NAGoodsPriceModel *priceModel = [NAGoodsPriceModel yy_modelWithJSON:self.priceArr[self.selectPriceBtn.tag - 100]];
+    NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:self.priceArr[self.selectPriceBtn.tag - 100]];
     NAConfirmOrderModel *model = [[NAConfirmOrderModel alloc] init];
-    model.ptypeId = priceModel.id;
-    model.ptype = priceModel.main_feature;
+    model.ptypeId = childModel.id;
+    model.ptype = childModel.main_feature;
     model.title = self.parentsDic[@"attraction"];
     model.img = self.parentsDic[@"img"];
-    model.money = priceModel.second_class_cost;
+    model.money = childModel.second_class_cost;
     model.orderType = @"1";
     model.phone_num = self.phoneTextField.text;
     
@@ -132,7 +127,7 @@
         
         weakSelf.priceArr = returnValue[@"child_products"] ? returnValue[@"child_products"] : [NSArray array];
         weakSelf.parentsDic = returnValue[@"parent_product"];
-        [weakSelf.vipGrade addObjectsFromArray:returnValue[@"member_class"]];
+        weakSelf.vipGradeArr = returnValue[@"member_class"];
         [weakSelf setupPriceButtons:weakSelf.priceArr];
         
     } errorCodeBlock:nil failureBlock:nil];
@@ -171,7 +166,7 @@
 - (IBAction)onBuyBtnClicked:(id)sender {
     if (!self.selectPriceBtn) return;
     
-    if (self.vipGrade.count > 0 && [self.vipGrade[0] integerValue] == 2) {
+    if (self.vipGradeArr.count > 0 && [self.vipGradeArr[0] integerValue] == 2) {
         [self buySoon];
     } else
         [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter meixinVIPControllerWithIsFromGiftCenter:NO] tranformStyle:NATransformStylePush needLogin:YES];
@@ -202,8 +197,8 @@
     }
     self.selectPriceBtn = button;
     
-    NAGoodsPriceModel *priceModel = [NAGoodsPriceModel yy_modelWithJSON:self.priceArr[index]];
-    self.buyPriceLabel.text = [NSString stringWithFormat:@"%@元", priceModel.second_class_cost];
+    NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:self.priceArr[index]];
+    self.buyPriceLabel.text = [NSString stringWithFormat:@"%@元", childModel.second_class_cost];
 }
 
 @end

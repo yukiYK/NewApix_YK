@@ -143,8 +143,7 @@
         self.nameLabel.text = [NSString stringWithFormat:@"领奖人：%@", model.receiver];
         self.phoneLabel.text = [NSString stringWithFormat:@"联系电话：%@", model.receiver_phone];
         self.addressLabel.text = [NSString stringWithFormat:@"详细地址：%@%@%@%@",model.province, model.city, model.district, model.address];
-    }
-    else {
+    } else {
         self.detailInfoView.hidden = YES;
     }
 }
@@ -164,11 +163,10 @@
             NAAddressModel *addressModel = [NAAddressModel yy_modelWithJSON:dic];
             
             [weakSelf resetInfoViewWithAddress:addressModel];
-            self.addressModel = addressModel;
-        }
-        else {
+            weakSelf.addressModel = addressModel;
+        } else {
             [weakSelf resetInfoViewWithAddress:nil];
-            self.addressModel = nil;
+            weakSelf.addressModel = nil;
         }
     } errorCodeBlock:^(NSString *code, NSString *msg) {
         NSLog(@"code = %@", code);
@@ -207,11 +205,9 @@
         
         if ([code isEqualToString:@"2"]) {
             [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter presentSuccessController] tranformStyle:NATransformStylePush needLogin:NO];
-        }
-        else if ([code isEqualToString:@"1"]) {
+        } else if ([code isEqualToString:@"1"]) {
             [SVProgressHUD showErrorWithStatus:@"已经领取过了"];
-        }
-        else if ([code isEqualToString:@"-1"] || [code isEqualToString:@"-2"]) {
+        } else if ([code isEqualToString:@"-1"] || [code isEqualToString:@"-2"]) {
             UIAlertController *alertC = [UIAlertController alertControllerWithTitle:@"领取失败" message:@"只有终身会员才有领取权限哦~" preferredStyle:UIAlertControllerStyleAlert];
             UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
             UIAlertAction *buyVipAction = [UIAlertAction actionWithTitle:@"去开通" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -221,8 +217,7 @@
             [alertC addAction:cancelAction];
             [alertC addAction:buyVipAction];
             [weakSelf presentViewController:alertC animated:YES completion:nil];
-        }
-        else {
+        } else {
             [SVProgressHUD showErrorWithStatus:@"领取失败"];
         }
     } errorCodeBlock:^(NSString *code, NSString *msg) {
@@ -242,8 +237,7 @@
     
     if (!_addressModel) {
         [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter addressController] tranformStyle:NATransformStylePush needLogin:NO];
-    }
-    else {
+    } else {
         [self requestForReceivePresent];
     }
 }

@@ -36,6 +36,7 @@
 #import "NAGoodsListController.h"
 #import "NAPhonePayController.h"
 #import "NAConfirmOrderController.h"
+#import "NAGoodsDetailController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -100,6 +101,13 @@
     confirmOrderVC.orderModel = orderModel;
     return confirmOrderVC;
 }
+/** 商品详情页 */
++ (UIViewController *)goodsDetailControllerWithModel:(NAGoodsModel *)goodsModel {
+    NAGoodsDetailController *goodsDetailVC = [[NAGoodsDetailController alloc] initWithNibName:@"NAGoodsDetailController" bundle:nil];
+    goodsDetailVC.goodsModel = goodsModel;
+    return goodsDetailVC;
+}
+
 
 /**
  文章详情页

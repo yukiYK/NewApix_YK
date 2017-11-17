@@ -41,9 +41,18 @@
                                 <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right" translatesAutoresizingMaskIntoConstraints="NO" id="HIx-Bd-2JD">
+                                <rect key="frame" x="295" y="10.5" width="9" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="9.5" id="VZw-6Y-GMr"/>
+                                    <constraint firstAttribute="height" constant="17" id="c1A-IY-BcG"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="HIx-Bd-2JD" secondAttribute="trailing" constant="16" id="LbB-C6-UJ0"/>
+                            <constraint firstItem="HIx-Bd-2JD" firstAttribute="centerY" secondItem="dvA-s1-LEA" secondAttribute="centerY" id="O22-iv-58S"/>
                             <constraint firstItem="Nno-hm-Jgz" firstAttribute="leading" secondItem="dvA-s1-LEA" secondAttribute="leading" constant="15" id="PSb-8C-SXe"/>
                             <constraint firstItem="Nno-hm-Jgz" firstAttribute="centerY" secondItem="dvA-s1-LEA" secondAttribute="centerY" id="cgk-K2-zMe"/>
                             <constraint firstItem="udt-ZV-mZU" firstAttribute="centerY" secondItem="dvA-s1-LEA" secondAttribute="centerY" id="nFI-7p-VJO"/>
@@ -72,4 +81,7 @@
             <point key="canvasLocation" x="25" y="54"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="arrow_right" width="9" height="17"/>
+    </resources>
 </document>
