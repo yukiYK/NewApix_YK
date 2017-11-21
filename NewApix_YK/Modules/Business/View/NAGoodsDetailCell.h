@@ -10,6 +10,6 @@
 
 @interface NAGoodsDetailCell : UITableViewCell
 
-- (void)setTitle:(NSString *)title content:(NSString *)content;
+- (void)setTitle:(NSString *)title content:(NSString *)content showArrow:(BOOL)isShow;
 
 @end

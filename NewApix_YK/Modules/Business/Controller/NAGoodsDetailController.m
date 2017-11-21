@@ -14,6 +14,7 @@
 #import "NAGoodsChildModel.h"
 #import "NAAddressModel.h"
 #import "NAShareView.h"
+#import "NAGoodsFeatureView.h"
 #import <UMSocialCore/UMSocialCore.h>
 
 static NSString * const kGoodsDetailCellName = @"NAGoodsDetailCell";
@@ -30,22 +31,24 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 @property (nonatomic, strong) NAGoodsInformationView *informationView;
 @property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) NAShareView *shareView;
+/** 弹出的选择规格view */
+@property (nonatomic, strong) NAGoodsFeatureView *featureView;
 
 @property (nonatomic, copy) NSString *html;
 
-//@property (nonatomic, strong) NSArray *bannerDataArray;
 /** 会员等级 */
 @property (nonatomic, strong) NSArray *vipGradeArr;
 @property (nonatomic, strong) NSArray *productTagsArr;
 /** 子商品数组 内部NAGoodsChildModel */
 @property (nonatomic, strong) NSArray *childrenArr;
+/** 商品图片url数组 也就是banner */
+@property (nonatomic, strong) NSArray *imgArr;
 /** 当前选中的子商品 */
 @property (nonatomic, strong) NAGoodsChildModel *childModel;
 /** 地址信息 */
 @property (nonatomic, strong) NAAddressModel *addressModel;
 
-/** 分享出去的图片url */
-@property (nonatomic, copy) NSString *shareImg;
+
 /** 是否选择了商品规格 */
 @property (nonatomic, assign) BOOL isChoseChild;
 
@@ -91,7 +94,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     [shareBtn addTarget:self action:@selector(onShareBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [shareBtn setImage:kGetImage(@"share_icon_black") forState:UIControlStateNormal];
     UIBarButtonItem *shareBarBtn = [[UIBarButtonItem alloc] initWithCustomView:shareBtn];
-    self.navigationItem.leftBarButtonItem = shareBarBtn;
+    self.navigationItem.rightBarButtonItem = shareBarBtn;
 }
 
 - (void)setupTableView {
@@ -124,10 +127,19 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     return headerView;
 }
 
-- (void)resetHeaderView:(NSArray *)imgsArr {
-    [self.bannerView setupWithCardArray:imgsArr clickBlock:nil];
+- (void)resetSubviews {
+    [self.bannerView setupWithCardArray:self.imgArr clickBlock:nil];
+    if (!self.isChoseChild) {
+        NAGoodsChildModel *childModel = [[NAGoodsChildModel alloc] init];
+        childModel.price = self.goodsModel.price;
+        childModel.second_class_cost = self.goodsModel.vip_price;
+        self.childModel = childModel;
+    }
     [self.informationView setGoodsModel:self.goodsModel childModel:self.childModel tags:self.productTagsArr];
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, kScreenWidth + self.informationView.height);
+    
+    self.vipPriceLabel.text = [NSString stringWithFormat:@"%@元", self.childModel.second_class_cost];
+    [self.tableView reloadData];
 }
 
 - (UIView *)tableFooterView {
@@ -135,6 +147,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     footerLabel.textAlignment = NSTextAlignmentCenter;
     footerLabel.backgroundColor = kColorGraySeperator;
     footerLabel.font = [UIFont systemFontOfSize:13];
+    footerLabel.text = @"继续拖动，查看图文详情";
     return footerLabel;
 }
 
@@ -149,13 +162,11 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
         weakSelf.vipGradeArr = returnValue[@"member_class"];
         weakSelf.productTagsArr = returnValue[@"product_tags"];
         weakSelf.childrenArr = returnValue[@"child_products"];
-        NSArray *imgArr = returnValue[@"product_imgs"];
-        if (imgArr.count > 0) {
-            [weakSelf.bannerView setupWithCardArray:imgArr clickBlock:nil];
-            weakSelf.shareImg = [NSString stringWithFormat:@"%@", imgArr[0][@"url"]];
+        weakSelf.imgArr = returnValue[@"product_imgs"];
+        if (weakSelf.imgArr.count > 0) {
+            [weakSelf.bannerView setupWithCardArray:weakSelf.imgArr clickBlock:nil];
         }
-        [weakSelf resetHeaderView:imgArr];
-        [weakSelf.tableView reloadData];
+        [weakSelf resetSubviews];
     } errorCodeBlock:nil failureBlock:nil];
 }
 
@@ -177,16 +188,19 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 
 #pragma mark - <Events>
 - (void)onShareBtnClicked:(id)sender {
+    if (self.childrenArr.count <=0 || self.imgArr.count <= 0) return;
+    
     if (!self.shareView) {
         WeakSelf
         UMSocialMessageObject *msgObjc = [UMSocialMessageObject messageObject];
         msgObjc.text = @"信用体检报告";
         
         UMShareWebpageObject *shareWebpageObjc = [[UMShareWebpageObject alloc] init];
-        shareWebpageObjc.webpageUrl = @"";
-        shareWebpageObjc.title = @"";
-        shareWebpageObjc.descr = @"";
-        shareWebpageObjc.thumbImage = self.shareImg;
+        shareWebpageObjc.webpageUrl = [NAURLCenter sharedGoodsDetailH5UrlWithGoodsID:self.goodsModel.id];
+        shareWebpageObjc.title = self.goodsModel.title;
+        NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:self.childrenArr[0]];
+        shareWebpageObjc.descr = [NSString stringWithFormat:@"%@只要%@元", self.goodsModel.title, childModel.second_class_cost];
+        shareWebpageObjc.thumbImage = [NSString stringWithFormat:@"%@", self.imgArr[0][@"url"]];
         msgObjc.shareObject = shareWebpageObjc;
         
         self.shareView = [[NAShareView alloc] initWithActionBlock:^(UMSocialPlatformType sharePlatform) {
@@ -217,14 +231,48 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     NAGoodsDetailCell *cell = [tableView dequeueReusableCellWithIdentifier:kGoodsDetailCellID forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    if (indexPath.row == 0) {
+        NSString *content = @"";
+        if (self.childModel.main_feature.length > 0 && self.childModel.secondary_feature.length > 0) {
+            content = [NSString stringWithFormat:@"%@ %@", self.childModel.main_feature, self.childModel.secondary_feature];
+        } else if (self.childModel.main_feature.length > 0 && self.childModel.secondary_feature.length <= 0) {
+            content = [NSString stringWithFormat:@"%@", self.childModel.main_feature];
+        }
+        [cell setTitle:@"选择" content:content showArrow:YES];
+        
+    } else if (indexPath.row == 1) {
+        [cell setTitle:@"数量" content:@"1" showArrow:NO];
+    } else if (indexPath.row == 2) {
+        [cell setTitle:@"送至" content:self.addressModel.address showArrow:YES];
+    }
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row == 0) {
+        if (!self.featureView) {
+            self.featureView = [[NAGoodsFeatureView alloc] initWithTitle1:self.goodsModel.main_feature_title title2:self.goodsModel.secondary_feature_title childArr:self.childrenArr];
+            WeakSelf
+            self.featureView.block = ^(NAGoodsChildModel *childModel) {
+                weakSelf.childModel = childModel;
+                [weakSelf resetSubviews];
+            };
+        }
+        [self.featureView show];
+        
+    } else if (indexPath.row == 2) {
+        
+    }
 }
 
 #pragma mark - <UIScrollViewDelegate>
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (scrollView == self.tableView) {
+        
+    } else if (scrollView == self.webView.scrollView) {
+        
+    }
+}
 
 
 @end

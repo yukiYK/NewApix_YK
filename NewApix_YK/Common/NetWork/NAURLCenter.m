@@ -599,4 +599,9 @@
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
+/** 分享出去的商品详情页 */
++ (NSString *)sharedGoodsDetailH5UrlWithGoodsID:(NSString *)goodsID {
+    return [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"shopDetail", goodsID]];
+}
+
 @end

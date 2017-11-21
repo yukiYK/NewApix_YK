@@ -28,6 +28,7 @@
 		4A4D8AC81FBC2D7B00E4B828 /* NAGoodsDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4D8AC61FBC2D7B00E4B828 /* NAGoodsDetailController.xib */; };
 		4A4D8ACC1FBC451B00E4B828 /* NAGoodsDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4D8ACA1FBC451B00E4B828 /* NAGoodsDetailCell.m */; };
 		4A4D8ACD1FBC451B00E4B828 /* NAGoodsDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A4D8ACB1FBC451B00E4B828 /* NAGoodsDetailCell.xib */; };
+		4A53FE861FC2CFE300366207 /* NAGoodsFeatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A53FE851FC2CFE300366207 /* NAGoodsFeatureView.m */; };
 		4A59ACE51F5FD5DC00F3172B /* NACreditReportController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */; };
 		4A59ACE81F5FD67F00F3172B /* NAMeixinVIPController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACE71F5FD67F00F3172B /* NAMeixinVIPController.m */; };
 		4A59ACEB1F5FDD1300F3172B /* UIView+NAScreenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A59ACEA1F5FDD1300F3172B /* UIView+NAScreenshot.m */; };
@@ -197,6 +198,8 @@
 		4A4D8AC91FBC451B00E4B828 /* NAGoodsDetailCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsDetailCell.h; sourceTree = "<group>"; };
 		4A4D8ACA1FBC451B00E4B828 /* NAGoodsDetailCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsDetailCell.m; sourceTree = "<group>"; };
 		4A4D8ACB1FBC451B00E4B828 /* NAGoodsDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAGoodsDetailCell.xib; sourceTree = "<group>"; };
+		4A53FE841FC2CFE300366207 /* NAGoodsFeatureView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAGoodsFeatureView.h; sourceTree = "<group>"; };
+		4A53FE851FC2CFE300366207 /* NAGoodsFeatureView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAGoodsFeatureView.m; sourceTree = "<group>"; };
 		4A59ACE31F5FD5DC00F3172B /* NACreditReportController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NACreditReportController.h; sourceTree = "<group>"; };
 		4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NACreditReportController.m; sourceTree = "<group>"; };
 		4A59ACE61F5FD67F00F3172B /* NAMeixinVIPController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAMeixinVIPController.h; sourceTree = "<group>"; };
@@ -901,6 +904,8 @@
 				4AAD606D1FBDA7C1002D7002 /* NAGoodsInformationView.h */,
 				4AAD606E1FBDA7C1002D7002 /* NAGoodsInformationView.m */,
 				4AAD60701FBDA801002D7002 /* NAGoodsInformationView.xib */,
+				4A53FE841FC2CFE300366207 /* NAGoodsFeatureView.h */,
+				4A53FE851FC2CFE300366207 /* NAGoodsFeatureView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1246,6 +1251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A8B10331F8F17DA00498F9D /* NAAuthenticationModel.m in Sources */,
+				4A53FE861FC2CFE300366207 /* NAGoodsFeatureView.m in Sources */,
 				4AAA80FF1FA87C9700F88083 /* NAWalletCell.m in Sources */,
 				4A7850571F7E3764000C2AD5 /* NAAddressModel.m in Sources */,
 				4A7850581F7E3764000C2AD5 /* NAAddressController.m in Sources */,

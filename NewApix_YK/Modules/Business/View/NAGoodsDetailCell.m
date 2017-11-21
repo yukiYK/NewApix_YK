@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *arrowImageView;
 
 
 @end
@@ -23,9 +24,10 @@
     // Initialization code
 }
 
-- (void)setTitle:(NSString *)title content:(NSString *)content {
+- (void)setTitle:(NSString *)title content:(NSString *)content showArrow:(BOOL)isShow {
     self.titleLabel.text = title;
     self.contentLabel.text = content;
+    self.arrowImageView.hidden = !isShow;
 }
 
 @end

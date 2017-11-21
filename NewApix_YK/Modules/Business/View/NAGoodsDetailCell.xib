@@ -75,6 +75,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="arrowImageView" destination="HIx-Bd-2JD" id="svv-w4-Qtk"/>
                 <outlet property="contentLabel" destination="udt-ZV-mZU" id="wos-uR-pQH"/>
                 <outlet property="titleLabel" destination="Nno-hm-Jgz" id="WVq-zU-5fs"/>
             </connections>

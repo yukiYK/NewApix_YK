@@ -185,5 +185,7 @@
 + (NSString *)communityH5Url;
 /** 我要赚钱页 */
 + (NSString *)makeMoneyH5Url;
+/** 分享出去的商品详情页 */
++ (NSString *)sharedGoodsDetailH5UrlWithGoodsID:(NSString *)goodsID;
 
 @end
