@@ -14,6 +14,7 @@
 #import "NAEditorController.h"
 #import "NAConfirmOrderModel.h"
 #import "NAGoodsModel.h"
+#import "NAAddressController.h"
 
 typedef NS_ENUM(NSInteger, NATransformStyle) {
     NATransformStylePush,
@@ -127,7 +128,7 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 + (UIViewController *)encashmentControllerWithAllMoney:(NSString *)allMoney;
 
 /** 用户地址页 */
-+ (UIViewController *)addressController;
++ (UIViewController *)addressControllerWithCompleteBlock:(ChangeAddressCompleteBlock)completeBlock;
 
 /** 信用体检页 */
 + (UIViewController *)creditReportController;

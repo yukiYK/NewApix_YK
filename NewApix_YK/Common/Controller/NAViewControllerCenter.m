@@ -15,7 +15,6 @@
 #import "NAMeixinVIPController.h"
 #import "NAPresentCenterController.h"
 #import "NAPresentSuccessController.h"
-#import "NAAddressController.h"
 #import "NACreditReportController.h"
 #import "NASettingsController.h"
 #import "NAChangePhoneController.h"
@@ -212,8 +211,10 @@
  
  @return NAAddressController;
  */
-+ (UIViewController *)addressController {
-    return [[NAAddressController alloc] initWithNibName:@"NAAddressController" bundle:nil];
++ (UIViewController *)addressControllerWithCompleteBlock:(ChangeAddressCompleteBlock)completeBlock {
+    NAAddressController *addressVC = [[NAAddressController alloc] initWithNibName:@"NAAddressController" bundle:nil];
+    addressVC.completeBlock = completeBlock;
+    return addressVC;
 }
 
 /**

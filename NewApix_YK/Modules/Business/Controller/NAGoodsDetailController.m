@@ -188,7 +188,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 
 #pragma mark - <Events>
 - (void)onShareBtnClicked:(id)sender {
-    if (self.childrenArr.count <=0 || self.imgArr.count <= 0) return;
+    if (self.childrenArr.count <=0) return;
     
     if (!self.shareView) {
         WeakSelf
@@ -200,7 +200,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
         shareWebpageObjc.title = self.goodsModel.title;
         NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:self.childrenArr[0]];
         shareWebpageObjc.descr = [NSString stringWithFormat:@"%@只要%@元", self.goodsModel.title, childModel.second_class_cost];
-        shareWebpageObjc.thumbImage = [NSString stringWithFormat:@"%@", self.imgArr[0][@"url"]];
+        shareWebpageObjc.thumbImage = self.imgArr.count > 0 ? [NSString stringWithFormat:@"%@", self.imgArr[0][@"url"]] : nil;
         msgObjc.shareObject = shareWebpageObjc;
         
         self.shareView = [[NAShareView alloc] initWithActionBlock:^(UMSocialPlatformType sharePlatform) {
@@ -219,8 +219,8 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (self.goodsModel.order_type == 3)
-        return 4;
-    return 3;
+        return 3;
+    return 2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -255,13 +255,19 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
             WeakSelf
             self.featureView.block = ^(NAGoodsChildModel *childModel) {
                 weakSelf.childModel = childModel;
+                weakSelf.isChoseChild = YES;
                 [weakSelf resetSubviews];
             };
         }
         [self.featureView show];
         
     } else if (indexPath.row == 2) {
-        
+        UIViewController *toVC = [NAViewControllerCenter addressControllerWithCompleteBlock:^(NAAddressModel *model) {
+            self.addressModel = model;
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:2 inSection:0];
+            [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+        }];
+        [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
     }
 }
 

@@ -390,7 +390,7 @@
             if (indexPath.row == 3) { // 银行卡管理
                 toVC = [NAViewControllerCenter bankCardsController];
             } else if (indexPath.row == 4) {  // 收货地址
-                toVC = [NAViewControllerCenter addressController];
+                toVC = [NAViewControllerCenter addressControllerWithCompleteBlock:nil];
             }
             [NAViewControllerCenter transformViewController:self
                                            toViewController:toVC

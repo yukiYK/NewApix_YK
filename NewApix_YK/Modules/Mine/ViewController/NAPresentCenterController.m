@@ -236,14 +236,14 @@
 - (IBAction)onReceivePresentBtnClicked:(id)sender {
     
     if (!_addressModel) {
-        [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter addressController] tranformStyle:NATransformStylePush needLogin:NO];
+        [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter addressControllerWithCompleteBlock:nil] tranformStyle:NATransformStylePush needLogin:NO];
     } else {
         [self requestForReceivePresent];
     }
 }
 
 - (void)onChangeAddressBtnClicked:(UIButton *)button {
-    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter addressController] tranformStyle:NATransformStylePush needLogin:NO];
+    [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter addressControllerWithCompleteBlock:nil] tranformStyle:NATransformStylePush needLogin:NO];
 }
 
 @end

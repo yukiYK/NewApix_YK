@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NewApix_YK/Modules/Business/Controller/NAGoodsDetailController.m"
-            timestampString = "532946505.251611"
+            timestampString = "533016478.145503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "-onShareBtnClicked:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
