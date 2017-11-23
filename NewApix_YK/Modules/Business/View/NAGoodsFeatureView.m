@@ -11,12 +11,16 @@
 
 @interface NAGoodsFeatureView ()
 
-@property (nonatomic, strong) UIScrollView *mainView;
+@property (nonatomic, strong) UIView *mainView;
+@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UILabel *titleLabel2;
 
 @property (nonatomic, strong) UIButton *selectedBtn1;
 @property (nonatomic, strong) UIButton *selectedBtn2;
 
 @property (nonatomic, strong) NSArray *childArr;
+
+@property (nonatomic, strong) NAGoodsChildModel *childModel;
 
 @end
 
@@ -38,6 +42,7 @@ static CGFloat const kButtonMargin = 20;
         self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
         self.backgroundColor = [UIColor clearColor];
         self.childArr = childArr;
+        self.childModel = [NAGoodsChildModel yy_modelWithJSON:childArr[0]];
         
         [self setupSubviewsWithTitle1:title1 title2:title2 childArr:childArr];
     }
@@ -53,63 +58,71 @@ static CGFloat const kButtonMargin = 20;
     UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
     [bgView addGestureRecognizer:tapGes];
     
-    UIScrollView *mainView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight * 0.4 - 44)];
+    
+    UIView *mainView = [[UIView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight * 0.4)];
     mainView.backgroundColor = [UIColor whiteColor];
     [self addSubview:mainView];
     self.mainView = mainView;
     
+    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight * 0.4 - 44)];
+    scrollView.backgroundColor = [UIColor whiteColor];
+    [mainView addSubview:scrollView];
+    self.scrollView = scrollView;
+    
     // 解析数据
     NSMutableArray *featureArr1 = [NSMutableArray array];
     NSMutableArray *featureArr2 = [NSMutableArray array];
+    NAGoodsChildModel *childModel1 = [NAGoodsChildModel yy_modelWithJSON:childArr[0]];
     for (NSDictionary *dic in childArr) {
         NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:dic];
         if (childModel.main_feature.length > 0 && ![featureArr1 containsObject:childModel.main_feature]) {
             [featureArr1 addObject:childModel.main_feature];
         }
-        if (childModel.secondary_feature.length > 0 && ![featureArr2 containsObject:childModel.secondary_feature]) {
+        if (childModel.secondary_feature.length > 0 && ![featureArr2 containsObject:childModel.secondary_feature] && [childModel.main_feature isEqualToString:childModel1.main_feature]) {
             [featureArr2 addObject:childModel.secondary_feature];
         }
     }
     
     UILabel *titleLabel1 = [[UILabel alloc] initWithFrame:CGRectMake(kButtonMargin, kButtonMargin, kScreenWidth - kButtonMargin * 2, 20)];
     titleLabel1.font = [UIFont systemFontOfSize:15];
-    titleLabel1.text = title1;
-    [mainView addSubview:titleLabel1];
+    titleLabel1.text = title1.length > 0 ? title1 : @"商品规格";
+    [scrollView addSubview:titleLabel1];
     
     CGFloat buttonX = kButtonMargin;
     CGFloat buttonY = CGRectGetMaxY(titleLabel1.frame) + kButtonMargin;
     for (int i=0; i<featureArr1.count; i++) {
         UIButton *button = [self buttonWithFrame:CGRectMake(buttonX, buttonY, 0, kButtonHeight) title:featureArr1[i]];
         button.tag = 200 + i;
-        [mainView addSubview:button];
+        [scrollView addSubview:button];
         
         buttonX = button.x + button.width + kCommonMargin * 2;
         buttonY = button.y;
     }
-    mainView.contentSize = CGSizeMake(kScreenWidth, buttonY + kButtonHeight + kButtonMargin);
+    scrollView.contentSize = CGSizeMake(kScreenWidth, buttonY + kButtonHeight + kButtonMargin);
     
     
     if (title2.length > 0) {
         UIView *line = [[UIView alloc] initWithFrame:CGRectMake(0, buttonY + kButtonHeight + 12, kScreenWidth, 1)];
         line.backgroundColor = [UIColor lightGrayColor];
-        [mainView addSubview:line];
+        [scrollView addSubview:line];
         
         UILabel *titleLabel2 = [[UILabel alloc] initWithFrame:CGRectMake(kButtonMargin, line.y + kButtonMargin, kScreenWidth - kButtonMargin * 2, 20)];
         titleLabel2.font = [UIFont systemFontOfSize:15];
         titleLabel2.text = title2;
-        [mainView addSubview:titleLabel2];
+        [scrollView addSubview:titleLabel2];
+        self.titleLabel2 = titleLabel2;
         
         CGFloat buttonX2 = kButtonMargin;
         CGFloat buttonY2 = CGRectGetMaxY(titleLabel2.frame) + kButtonMargin;
         for (int i=0; i<featureArr2.count; i++) {
             UIButton *button = [self buttonWithFrame:CGRectMake(buttonX2, buttonY2, 0, kButtonHeight) title:featureArr2[i]];
             button.tag = 300 + i;
-            [mainView addSubview:button];
+            [scrollView addSubview:button];
             
             buttonX2 = button.x + button.width + kCommonMargin * 2;
             buttonY2 = button.y;
         }
-        mainView.contentSize = CGSizeMake(kScreenWidth, buttonY2 + kButtonHeight + kButtonMargin);
+        scrollView.contentSize = CGSizeMake(kScreenWidth, buttonY2 + kButtonHeight + kButtonMargin);
     }
     
     
@@ -120,8 +133,6 @@ static CGFloat const kButtonMargin = 20;
     [confirmBtn setTitle:@"确定" forState:UIControlStateNormal];
     [confirmBtn addTarget:self action:@selector(onConfirmBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
     [mainView addSubview:confirmBtn];
-    
-    
 }
 
 - (UIButton *)buttonWithFrame:(CGRect)frame title:(NSString *)title {
@@ -149,6 +160,25 @@ static CGFloat const kButtonMargin = 20;
     return button;
 }
 
+- (void)resetTitle2View:(NSArray *)arr2 {
+    for (UIView *view in self.scrollView.subviews) {
+        if (view.tag >= 300) [view removeFromSuperview];
+    }
+    
+    CGFloat buttonX2 = kButtonMargin;
+    CGFloat buttonY2 = CGRectGetMaxY(self.titleLabel2.frame) + kButtonMargin;
+    for (int i=0; i<arr2.count; i++) {
+        UIButton *button = [self buttonWithFrame:CGRectMake(buttonX2, buttonY2, 0, kButtonHeight) title:arr2[i]];
+        button.tag = 300 + i;
+        [self.scrollView addSubview:button];
+        
+        buttonX2 = button.x + button.width + kCommonMargin * 2;
+        buttonY2 = button.y;
+    }
+    self.scrollView.contentSize = CGSizeMake(kScreenWidth, buttonY2 + kButtonHeight + kButtonMargin);
+}
+
+#pragma mark - <Events>
 - (void)onBtnClicked:(UIButton *)button {
     if (button.selected) return;
     
@@ -159,6 +189,16 @@ static CGFloat const kButtonMargin = 20;
         }
         self.selectedBtn1 = button;
         
+        if (self.titleLabel2) {
+            NSMutableArray *arr2 = [NSMutableArray array];
+            for (NSDictionary *dic in self.childArr) {
+                NAGoodsChildModel *childModel = [NAGoodsChildModel yy_modelWithJSON:dic];
+                if ([[button titleForState:UIControlStateNormal] isEqualToString:childModel.main_feature]) {
+                    [arr2 addObject:childModel.secondary_feature];
+                }
+            }
+            [self resetTitle2View:arr2];
+        }
     } else if (button.tag >= 300) {
         if (self.selectedBtn2) {
             self.selectedBtn2.selected = NO;

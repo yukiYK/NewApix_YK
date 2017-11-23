@@ -13,6 +13,8 @@
 #import "NAViewControllerCenter.h"
 #import "NSAttributedString+NAExtension.h"
 #import "FLAnimatedImage.h"
+#import "NAWalletModel.h"
+#import "NATabbarController.h"
 
 NSString *const kMainPageCellName = @"NAMainPageCell";
 NSString *const kMainPageCellID = @"mainPageCell";
@@ -32,6 +34,8 @@ NSString *const kMainPageCellID = @"mainPageCell";
 @property (nonatomic, strong) NSMutableArray *bannerDataArray;
 /** 商品列表页banner */
 @property (nonatomic, strong) NSMutableArray *storeBannerArray;
+
+@property (nonatomic, strong) NAWalletModel *walletModel;
 
 @end
 
@@ -90,7 +94,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
     self.navigationController.navigationBarHidden = YES;
     
     [self setupTableView];
-    [self loadData];
+    [self requestForData];
     [self addNotifications];
 }
 
@@ -98,6 +102,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
     [super viewWillAppear:animated];
     [self.bannerView startAnimation];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -118,7 +123,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
     self.mainTableView.tableFooterView = [[NACommon sharedCommon] createNoMoreDataFooterView];
     
     // 上下拉刷新控件
-    self.mainTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(loadData)];
+    self.mainTableView.mj_header = [[NACommon sharedCommon] createMJRefreshGifHeaderWithTarget:self action:@selector(requestForData)];
 //    self.mainTableView.mj_footer = [[NACommon sharedCommon] createMJRefreshAutoGifFooterWithTarget:self action:@selector(loadMoreData)];
 }
 
@@ -200,7 +205,8 @@ NSString *const kMainPageCellID = @"mainPageCell";
     NSLog(@"现在有网了！");
 }
 
-- (void)loadData {
+#pragma mark - <Net Request>
+- (void)requestForData {
     
     NAAPIModel *model = [NAURLCenter mainPageCardConfigWithVersion:[NSString stringWithFormat:@"%@", VERSION]];
     
@@ -244,10 +250,25 @@ NSString *const kMainPageCellID = @"mainPageCell";
     }];
 }
 
+- (void)requestForWallet {
+    NAAPIModel *model = [NAURLCenter walletConfig];
+    
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        weakSelf.walletModel = [NAWalletModel yy_modelWithJSON:returnValue];
+        
+        NSInteger count = weakSelf.walletModel.transaction.count;
+        [NAUserTool saveRedPacketCount:count];
+        
+    } errorCodeBlock:nil failureBlock:nil];
+}
+
 // 上拉加载更多
 //- (void)loadMoreData {
 //}
 
+#pragma mark - <Transform>
 /** 根据cardModel进行页面跳转 */
 - (void)transformControlerWithModel:(NAMainCardModel *)model {
     
@@ -372,8 +393,16 @@ NSString *const kMainPageCellID = @"mainPageCell";
 #pragma mark - <Event>
 /** banner下方button点击事件 */
 - (void)onMainBtnClicked:(UIButton *)button {
+    NSInteger index = button.tag - 100;
+    if (index == 6) {
+        NATabbarController *tabbar = (NATabbarController *)[UIApplication sharedApplication].keyWindow.rootViewController;
+        [tabbar setSelectedIndex:1];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotificationCommunity object:nil];
+        return;
+    }
+    
     UIViewController *toVC = nil;
-    switch (button.tag - 100) {
+    switch (index) {
         case 1:
             toVC = [NAViewControllerCenter makeMoneyController];
             break;
@@ -384,16 +413,13 @@ NSString *const kMainPageCellID = @"mainPageCell";
             toVC = [NAViewControllerCenter makeMoneyController];
             break;
         case 4:
-            toVC = [NAViewControllerCenter makeMoneyController];
+            toVC = [NAViewControllerCenter phonePayController];
             break;
         case 5:
             toVC = [NAViewControllerCenter makeMoneyController];
             break;
-        case 6:
-            toVC = [NAViewControllerCenter makeMoneyController];
-            break;
         case 7:
-            toVC = [NAViewControllerCenter makeMoneyController];
+            toVC = [NAViewControllerCenter walletControllerWithModel:self.walletModel];
             break;
             
         default:

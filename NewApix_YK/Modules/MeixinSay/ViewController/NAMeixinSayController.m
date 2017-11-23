@@ -38,6 +38,8 @@ NSString * const kCommunityCellID = @"communityCell";
     // Do any additional setup after loading the view from its nib.
     
     [self setupSubviews];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeToCommunity) name:kNotificationCommunity object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -144,6 +146,10 @@ NSString * const kCommunityCellID = @"communityCell";
     self.leftBtn.selected = NO;
     
     [self.scrollView setContentOffset:CGPointMake(kScreenWidth, 0) animated:YES];
+}
+
+- (void)changeToCommunity {
+    [self.rightBtn sendActionsForControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - <UIWebViewDelegate>

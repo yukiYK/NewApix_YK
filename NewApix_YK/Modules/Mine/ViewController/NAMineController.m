@@ -64,7 +64,7 @@ NSString * const kMineCell = @"mineCell";
     self.userStatus = NAUserStatusNormal;
     [self setupTableView];
     [self requestForLoanList];
-    [self requestForRedPacket];
+    [self requestForWallet];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -140,8 +140,8 @@ NSString * const kMineCell = @"mineCell";
     } errorCodeBlock:nil failureBlock:nil];
 }
 
-- (void)requestForRedPacket {
-    NAAPIModel *model = [NAURLCenter redPacketConfig];
+- (void)requestForWallet {
+    NAAPIModel *model = [NAURLCenter walletConfig];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

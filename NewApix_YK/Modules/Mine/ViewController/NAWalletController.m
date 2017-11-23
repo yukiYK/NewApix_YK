@@ -104,7 +104,7 @@ static NSString * const kWalletCellName = @"NAWalletCell";
 }
 
 - (void)requestForWallet {
-    NAAPIModel *model = [NAURLCenter redPacketConfig];
+    NAAPIModel *model = [NAURLCenter walletConfig];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

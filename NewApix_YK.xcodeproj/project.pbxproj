@@ -7,13 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A014D9B1F5579E6005D273E /* new.gif in Resources */ = {isa = PBXBuildFile; fileRef = 4A014D9A1F5579E6005D273E /* new.gif */; };
 		4A037D221F2851A600F38AC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A037D211F2851A600F38AC0 /* Assets.xcassets */; };
 		4A037D301F2851A600F38AC0 /* NewApix_YKTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A037D2F1F2851A600F38AC0 /* NewApix_YKTests.m */; };
 		4A037D3B1F2851A600F38AC0 /* NewApix_YKUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A037D3A1F2851A600F38AC0 /* NewApix_YKUITests.m */; };
 		4A0383A51FA9B57800DA5C72 /* NAEncashmentController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0383A31FA9B57800DA5C72 /* NAEncashmentController.m */; };
 		4A0383A61FA9B57800DA5C72 /* NAEncashmentController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A0383A41FA9B57800DA5C72 /* NAEncashmentController.xib */; };
-		4A052F801F7113B8003EE147 /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4A052F7F1F7113B8003EE147 /* areaArray.plist */; };
 		4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0959981F8B5988008164B6 /* NABankCardsController.m */; };
 		4A09599D1F8B59B7008164B6 /* NABankCardCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A09599B1F8B59B7008164B6 /* NABankCardCell.m */; };
 		4A09599E1F8B59B7008164B6 /* NABankCardCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A09599C1F8B59B7008164B6 /* NABankCardCell.xib */; };
@@ -114,7 +112,6 @@
 		4AC6CA521F2F24B800A9308F /* NAMeixinSayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA501F2F24B800A9308F /* NAMeixinSayController.m */; };
 		4AC6CA571F2F24C800A9308F /* NAMineController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AC6CA551F2F24C800A9308F /* NAMineController.m */; };
 		4ACF3CF61F4EBCC80030945B /* NAKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */; };
-		4AD52E1F1F8E262300BA9A5A /* bankType.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AD52E1E1F8E216300BA9A5A /* bankType.plist */; };
 		4AD966DC1FA7108400E5B43A /* NALoanRecordController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD966DB1FA7108400E5B43A /* NALoanRecordController.m */; };
 		4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD966DE1FA71D9C00E5B43A /* NALoanRecordCell.m */; };
 		4AD966E11FA71D9C00E5B43A /* NALoanRecordCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4AD966DF1FA71D9C00E5B43A /* NALoanRecordCell.xib */; };
@@ -140,6 +137,10 @@
 		4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFF28DA1F4AC8C000964EBC /* NAUserInfoModel.m */; };
 		5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5659670C1F861FFA007B686E /* NACommonQuestionsController.m */; };
 		BB19932E8B1471E3159E7CF0 /* Pods_NewApix_YK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E745A9A35C79DC28186BC417 /* Pods_NewApix_YK.framework */; };
+		E82BB9C31FC589A3000E8EDB /* bankType.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C01FC589A3000E8EDB /* bankType.plist */; };
+		E82BB9C41FC589A3000E8EDB /* new.gif in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C11FC589A3000E8EDB /* new.gif */; };
+		E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C21FC589A3000E8EDB /* areaArray.plist */; };
+		E88102801FC6D80A00978FFB /* NAVideoVIPListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,7 +163,6 @@
 /* Begin PBXFileReference section */
 		05C3BF30EBFE337F90B3DCC6 /* Pods-NewApix_YK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewApix_YK.release.xcconfig"; path = "Pods/Target Support Files/Pods-NewApix_YK/Pods-NewApix_YK.release.xcconfig"; sourceTree = "<group>"; };
 		3978FFBCAEE36D97F2E3E500 /* Pods-NewApix_YK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewApix_YK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NewApix_YK/Pods-NewApix_YK.debug.xcconfig"; sourceTree = "<group>"; };
-		4A014D9A1F5579E6005D273E /* new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = new.gif; sourceTree = "<group>"; };
 		4A037D121F2851A600F38AC0 /* NewApix_YK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewApix_YK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4A037D211F2851A600F38AC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A037D2B1F2851A600F38AC0 /* NewApix_YKTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewApix_YKTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -174,7 +174,6 @@
 		4A0383A21FA9B57800DA5C72 /* NAEncashmentController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAEncashmentController.h; sourceTree = "<group>"; };
 		4A0383A31FA9B57800DA5C72 /* NAEncashmentController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAEncashmentController.m; sourceTree = "<group>"; };
 		4A0383A41FA9B57800DA5C72 /* NAEncashmentController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAEncashmentController.xib; sourceTree = "<group>"; };
-		4A052F7F1F7113B8003EE147 /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
 		4A0959971F8B5988008164B6 /* NABankCardsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NABankCardsController.h; sourceTree = "<group>"; };
 		4A0959981F8B5988008164B6 /* NABankCardsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NABankCardsController.m; sourceTree = "<group>"; };
 		4A09599A1F8B59B7008164B6 /* NABankCardCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NABankCardCell.h; sourceTree = "<group>"; };
@@ -345,7 +344,6 @@
 		4AC6CA551F2F24C800A9308F /* NAMineController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAMineController.m; sourceTree = "<group>"; };
 		4ACF3CF41F4EBCC80030945B /* NAKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NAKeyChain.h; sourceTree = "<group>"; };
 		4ACF3CF51F4EBCC80030945B /* NAKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NAKeyChain.m; sourceTree = "<group>"; };
-		4AD52E1E1F8E216300BA9A5A /* bankType.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = bankType.plist; sourceTree = "<group>"; };
 		4AD966DA1FA7108400E5B43A /* NALoanRecordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanRecordController.h; sourceTree = "<group>"; };
 		4AD966DB1FA7108400E5B43A /* NALoanRecordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NALoanRecordController.m; sourceTree = "<group>"; };
 		4AD966DD1FA71D9C00E5B43A /* NALoanRecordCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanRecordCell.h; sourceTree = "<group>"; };
@@ -393,6 +391,11 @@
 		5659670B1F861FFA007B686E /* NACommonQuestionsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NACommonQuestionsController.h; sourceTree = "<group>"; };
 		5659670C1F861FFA007B686E /* NACommonQuestionsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NACommonQuestionsController.m; sourceTree = "<group>"; };
 		E745A9A35C79DC28186BC417 /* Pods_NewApix_YK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewApix_YK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E82BB9C01FC589A3000E8EDB /* bankType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bankType.plist; sourceTree = "<group>"; };
+		E82BB9C11FC589A3000E8EDB /* new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = new.gif; sourceTree = "<group>"; };
+		E82BB9C21FC589A3000E8EDB /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
+		E881027E1FC6D80A00978FFB /* NAVideoVIPListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListController.h; sourceTree = "<group>"; };
+		E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,16 +432,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4A014D991F5579E6005D273E /* source */ = {
-			isa = PBXGroup;
-			children = (
-				4AD52E1E1F8E216300BA9A5A /* bankType.plist */,
-				4A052F7F1F7113B8003EE147 /* areaArray.plist */,
-				4A014D9A1F5579E6005D273E /* new.gif */,
-			);
-			path = source;
-			sourceTree = "<group>";
-		};
 		4A037D091F2851A600F38AC0 = {
 			isa = PBXGroup;
 			children = (
@@ -471,7 +464,7 @@
 				4AFCA9411F346B3D00351B04 /* NA.pch */,
 				4A7707401F39CC4900CEDDF8 /* NAConstant.h */,
 				4A037D211F2851A600F38AC0 /* Assets.xcassets */,
-				4A014D991F5579E6005D273E /* source */,
+				E82BB9BF1FC589A3000E8EDB /* Source */,
 				4A037D591F28AF1B00F38AC0 /* Modules */,
 				4AFCA9451F346C3500351B04 /* Common */,
 				4AAEEDAF1F4C306F00055CF1 /* Lib */,
@@ -922,6 +915,8 @@
 				4A59ACE41F5FD5DC00F3172B /* NACreditReportController.m */,
 				4A8DD0A91FB2FD1200BB523C /* NAMakeMoneyController.h */,
 				4A8DD0AA1FB2FD1200BB523C /* NAMakeMoneyController.m */,
+				E881027E1FC6D80A00978FFB /* NAVideoVIPListController.h */,
+				E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1017,6 +1012,16 @@
 				4AAEED9B1F4C15AF00055CF1 /* NAAPIModel.m */,
 			);
 			path = NetWork;
+			sourceTree = "<group>";
+		};
+		E82BB9BF1FC589A3000E8EDB /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E82BB9C01FC589A3000E8EDB /* bankType.plist */,
+				E82BB9C11FC589A3000E8EDB /* new.gif */,
+				E82BB9C21FC589A3000E8EDB /* areaArray.plist */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		EB7DB27A2F01D8981D8B8F54 /* Pods */ = {
@@ -1141,13 +1146,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AD52E1F1F8E262300BA9A5A /* bankType.plist in Resources */,
+				E82BB9C31FC589A3000E8EDB /* bankType.plist in Resources */,
 				4A78505A1F7E3785000C2AD5 /* NAAddressController.xib in Resources */,
 				4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */,
-				4A052F801F7113B8003EE147 /* areaArray.plist in Resources */,
 				4A7D16B91FB59F8400112341 /* NAGoodsListBigCell.xib in Resources */,
 				4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */,
 				4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */,
+				E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */,
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
 				4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */,
 				4AA684E91F667C540041BB2D /* NAPresentSuccessController.xib in Resources */,
@@ -1172,10 +1177,10 @@
 				4AD966E11FA71D9C00E5B43A /* NALoanRecordCell.xib in Resources */,
 				4A4D8ACD1FBC451B00E4B828 /* NAGoodsDetailCell.xib in Resources */,
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
-				4A014D9B1F5579E6005D273E /* new.gif in Resources */,
 				4AAA80FB1FA86DE600F88083 /* NAWalletController.xib in Resources */,
 				4AF392801F46D52200EF7A3B /* NAAdvertisementCell.xib in Resources */,
 				4A78505F1F7E3FC3000C2AD5 /* NAChangePasswordController.xib in Resources */,
+				E82BB9C41FC589A3000E8EDB /* new.gif in Resources */,
 				4AB108121F7F9DEA00F02864 /* NAAboutUsController.xib in Resources */,
 				4A8F18CA1F41AD7800B5459A /* NAEssenceCell.xib in Resources */,
 			);
@@ -1298,6 +1303,7 @@
 				4A09599D1F8B59B7008164B6 /* NABankCardCell.m in Sources */,
 				4A59ACE51F5FD5DC00F3172B /* NACreditReportController.m in Sources */,
 				4AFCA9621F346C3500351B04 /* NSString+NAExtension.m in Sources */,
+				E88102801FC6D80A00978FFB /* NAVideoVIPListController.m in Sources */,
 				4A59ACE81F5FD67F00F3172B /* NAMeixinVIPController.m in Sources */,
 				4A2837BC1F502120001B065C /* NAForgetPasswordController.m in Sources */,
 				4AFCA9631F346C3500351B04 /* UIColor+NAExtension.m in Sources */,

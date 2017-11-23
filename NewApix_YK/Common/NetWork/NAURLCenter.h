@@ -76,8 +76,8 @@
 + (NAAPIModel *)mineUserInfoConfig;
 /** 用户vip信息接口 */
 + (NAAPIModel *)mineVipInfoConfig;
-/** 用户红包接口 */
-+ (NAAPIModel *)redPacketConfig;
+/** 用户钱包接口 */
++ (NAAPIModel *)walletConfig;
 /**
  钱包提现接口
 

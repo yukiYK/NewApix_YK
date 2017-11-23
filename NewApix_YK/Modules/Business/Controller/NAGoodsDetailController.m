@@ -69,6 +69,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     // Do any additional setup after loading the view from its nib.
     
     [self setupTableView];
+    [self resetSubviews];
     [self requestForGoodsDetail];
     [self requestForAddress];
 }
@@ -80,6 +81,9 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setShadowImage:[UIImage imageWithColor:[UIColor colorFromString:@"f2f2f2"]]];
+    self.navigationController.navigationBar.translucent = NO;
 }
 
 - (void)setupNavigation {
@@ -101,6 +105,11 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     [self.tableView registerNib:[UINib nibWithNibName:kGoodsDetailCellName bundle:nil] forCellReuseIdentifier:kGoodsDetailCellID];
     self.tableView.tableHeaderView = [self tableHeaderView];
     self.tableView.tableFooterView = [self tableFooterView];
+    
+    UITapGestureRecognizer *tap1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBuyClicked)];
+    [self.buyView addGestureRecognizer:tap1];
+    UITapGestureRecognizer *tap2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onBuyClicked)];
+    [self.vipBuyView addGestureRecognizer:tap2];
 }
 
 - (void)setupWebView {
@@ -130,10 +139,14 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 - (void)resetSubviews {
     [self.bannerView setupWithCardArray:self.imgArr clickBlock:nil];
     if (!self.isChoseChild) {
-        NAGoodsChildModel *childModel = [[NAGoodsChildModel alloc] init];
-        childModel.price = self.goodsModel.price;
-        childModel.second_class_cost = self.goodsModel.vip_price;
-        self.childModel = childModel;
+        if (self.childrenArr.count > 0) {
+            self.childModel = [NAGoodsChildModel yy_modelWithJSON:self.childrenArr[0]];
+        } else {
+            NAGoodsChildModel *childModel = [[NAGoodsChildModel alloc] init];
+            childModel.price = self.goodsModel.price;
+            childModel.second_class_cost = self.goodsModel.vip_price;
+            self.childModel = childModel;
+        }
     }
     [self.informationView setGoodsModel:self.goodsModel childModel:self.childModel tags:self.productTagsArr];
     self.headerView.frame = CGRectMake(0, 0, kScreenWidth, kScreenWidth + self.informationView.height);
@@ -213,6 +226,24 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
         }];
     }
     [self.shareView show];
+}
+
+- (void)onBuyClicked {
+    if (self.goodsModel.secondary_feature_title && ![self.goodsModel.secondary_feature_title isEqualToString:@""] && self.childModel.secondary_feature.length <= 0) {
+        [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"请先选择%@", self.goodsModel.secondary_feature_title]];
+    } else if (!self.addressModel && self.goodsModel.order_type == 3) {
+        [SVProgressHUD showErrorWithStatus:@"请先选择收货地址"];
+    } else {
+        NAConfirmOrderModel *model = [[NAConfirmOrderModel alloc] init];
+        model.ptypeId = self.childModel.id;
+        model.ptype = self.childModel.main_feature;
+        model.title = self.goodsModel.attraction;
+        model.img = self.goodsModel.img;
+        model.money = self.childModel.second_class_cost;
+        model.orderType = [NSString stringWithFormat:@"%ld", self.goodsModel.order_type];
+        UIViewController *toVC = [NAViewControllerCenter confirmOrderControllerWithModel:model];
+        [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
+    }
 }
 
 

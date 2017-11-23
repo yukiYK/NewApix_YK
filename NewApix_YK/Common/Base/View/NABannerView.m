@@ -84,6 +84,7 @@
     
     // scrollView
     UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:self.bounds];
+    scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.pagingEnabled = YES;
     scrollView.delegate = self;
     [self addSubview:scrollView];

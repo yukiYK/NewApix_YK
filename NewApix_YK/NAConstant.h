@@ -25,7 +25,7 @@ static NSString * const kImageBackBlack = @"back_black";
 
 #pragma mark - <NotificationName>
 static NSString * const kNotificationNetChange = @"kNotificationNetChange";
-//static NSString * const kNotificationNetChange = @"defaultImage";
+static NSString * const kNotificationCommunity = @"kNotificationCommunity";
 //static NSString * const kNotificationNetChange = @"defaultImage";
 //static NSString * const kNotificationNetChange = @"defaultImage";
 //static NSString * const kNotificationNetChange = @"defaultImage";

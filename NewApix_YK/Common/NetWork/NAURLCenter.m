@@ -222,8 +222,8 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"vip", @"time"] param:param rightCode:@"0"];
 }
 
-/** 用户红包接口 */
-+ (NAAPIModel *)redPacketConfig {
+/** 用户钱包接口 */
++ (NAAPIModel *)walletConfig {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"apix_token"] = [NACommon getToken];
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"red_packet"] param:param rightCode:nil];
