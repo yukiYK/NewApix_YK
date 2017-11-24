@@ -206,6 +206,13 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"detail"] param:param rightCode:nil];
 }
 
+/** 视频会员列表接口 */
++ (NAAPIModel *)videoVIPListConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"video_card"] param:param rightCode:nil];
+}
+
 #pragma mark - <User>
 /** 用户基本信息接口 昵称 头像等 */
 + (NAAPIModel *)mineUserInfoConfig {

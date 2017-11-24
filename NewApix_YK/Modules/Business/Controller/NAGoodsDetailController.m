@@ -34,7 +34,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 /** 弹出的选择规格view */
 @property (nonatomic, strong) NAGoodsFeatureView *featureView;
 
-@property (nonatomic, copy) NSString *html;
+@property (nonatomic, copy) NSString *goodsHtml;
 
 /** 会员等级 */
 @property (nonatomic, strong) NSArray *vipGradeArr;
@@ -58,8 +58,9 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 #pragma mark - <Lazy Load>
 - (WKWebView *)webView {
     if (!_webView) {
-        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight - 49)];
+        _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, self.view.height, kScreenWidth, self.view.height - 49 - kStatusBarH)];
         _webView.scrollView.delegate = self;
+        [self.view addSubview:_webView];
     }
     return _webView;
 }
@@ -175,6 +176,7 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
         weakSelf.vipGradeArr = returnValue[@"member_class"];
         weakSelf.productTagsArr = returnValue[@"product_tags"];
         weakSelf.childrenArr = returnValue[@"child_products"];
+        weakSelf.goodsHtml = [NSString stringWithFormat:@"%@", returnValue[@"product_detail"][@"detail"]];
         weakSelf.imgArr = returnValue[@"product_imgs"];
         if (weakSelf.imgArr.count > 0) {
             [weakSelf.bannerView setupWithCardArray:weakSelf.imgArr clickBlock:nil];
@@ -220,7 +222,6 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
             [[UMSocialManager defaultManager] shareToPlatform:sharePlatform messageObject:msgObjc currentViewController:weakSelf completion:^(id result, NSError *error) {
                 if (error) return;
                 [SVProgressHUD showSuccessWithStatus:@"分享成功"];
-//                [weakSelf requestForShareSuccess];
                 [weakSelf.shareView hide];
             }];
         }];
@@ -246,6 +247,33 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
     }
 }
 
+- (void)gotoWebView {
+    
+    NSRange range = [self.goodsHtml rangeOfString:@"<p>"];
+    if (range.location != NSNotFound) {
+        NSMutableString *wholeHtml = [NSMutableString string];
+        [wholeHtml appendString:@"<html><head><style></style></head>"];
+        //使html中的图片自动适应屏幕宽度
+        [wholeHtml appendString:@"<style>img{width:100%;height:auto;}</style>"];
+        [wholeHtml appendString:@"<body style=\"font-size:24px\">"];
+        [wholeHtml appendString:self.goodsHtml];
+        [wholeHtml appendString:@"</body></html>"];
+        
+        [self.webView loadHTMLString:wholeHtml baseURL:[NSURL fileURLWithPath:[[NSBundle mainBundle] bundlePath]]];
+    }
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.frame = CGRectMake(0, -self.view.height, self.tableView.width, self.tableView.height);
+        self.webView.frame = CGRectMake(0, kStatusBarH, self.webView.width, self.webView.height);
+    }];
+}
+
+- (void)backToTableView {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.frame = CGRectMake(0, 0, self.tableView.width, self.tableView.height);
+        self.webView.frame = CGRectMake(0, self.view.height, self.webView.width, self.webView.height);
+    }];
+}
 
 #pragma mark - <UITableViewDelegate, UITableViewDataSource>
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -303,11 +331,13 @@ static NSString * const kGoodsDetailCellID = @"goodsDetailCell";
 }
 
 #pragma mark - <UIScrollViewDelegate>
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (scrollView == self.tableView) {
-        
-    } else if (scrollView == self.webView.scrollView) {
-        
+        CGFloat number = self.tableView.contentSize.height - self.tableView.height > 0 ? self.tableView.contentSize.height - self.tableView.height : 0;
+        if (scrollView.contentOffset.y - number > 40)
+            [self gotoWebView];
+    } else if (scrollView == self.webView.scrollView && scrollView.contentOffset.y < -60) {
+        [self backToTableView];
     }
 }
 

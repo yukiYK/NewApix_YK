@@ -416,7 +416,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
             toVC = [NAViewControllerCenter phonePayController];
             break;
         case 5:
-            toVC = [NAViewControllerCenter makeMoneyController];
+            toVC = [NAViewControllerCenter videoVIPListController];
             break;
         case 7:
             toVC = [NAViewControllerCenter walletControllerWithModel:self.walletModel];

@@ -69,6 +69,9 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /** 商品详情页 */
 + (UIViewController *)goodsDetailControllerWithModel:(NAGoodsModel *)goodsModel;
 
+/** 视频会员页 */
++ (UIViewController *)videoVIPListController;
+
 /**
  文章详情页
 

@@ -70,6 +70,8 @@
 + (NAAPIModel *)goodsListConfig;
 /** 商品详情接口 */
 + (NAAPIModel *)goodsDetailConfigWithProductID:(NSString *)productID;
+/** 视频会员列表接口 */
++ (NAAPIModel *)videoVIPListConfig;
 
 // ---------------------------------会员中心----------------------------
 /** 用户基本信息接口 昵称 头像等 */

@@ -141,6 +141,8 @@
 		E82BB9C41FC589A3000E8EDB /* new.gif in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C11FC589A3000E8EDB /* new.gif */; };
 		E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C21FC589A3000E8EDB /* areaArray.plist */; };
 		E88102801FC6D80A00978FFB /* NAVideoVIPListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */; };
+		E88C92061FC7F91300E1F725 /* NAVideoVIPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */; };
+		E88C92071FC7F91300E1F725 /* NAVideoVIPListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -396,6 +398,9 @@
 		E82BB9C21FC589A3000E8EDB /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
 		E881027E1FC6D80A00978FFB /* NAVideoVIPListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListController.h; sourceTree = "<group>"; };
 		E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListController.m; sourceTree = "<group>"; };
+		E88C92031FC7F91300E1F725 /* NAVideoVIPListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListCell.h; sourceTree = "<group>"; };
+		E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListCell.m; sourceTree = "<group>"; };
+		E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAVideoVIPListCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -572,6 +577,9 @@
 				4A6381601F38414D008BC8FD /* NAMainPageCell.h */,
 				4A6381611F38414D008BC8FD /* NAMainPageCell.m */,
 				4A6381621F38414D008BC8FD /* NAMainPageCell.xib */,
+				E88C92031FC7F91300E1F725 /* NAVideoVIPListCell.h */,
+				E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */,
+				E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1150,6 +1158,7 @@
 				4A78505A1F7E3785000C2AD5 /* NAAddressController.xib in Resources */,
 				4A2837C21F502B47001B065C /* NAPhoneLoginController.xib in Resources */,
 				4A7D16B91FB59F8400112341 /* NAGoodsListBigCell.xib in Resources */,
+				E88C92071FC7F91300E1F725 /* NAVideoVIPListCell.xib in Resources */,
 				4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */,
 				4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */,
 				E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */,
@@ -1313,6 +1322,7 @@
 				4AD966E41FA725F300E5B43A /* NALoanRecordModel.m in Sources */,
 				4A7F2BE01FBED985004585C9 /* NAGoodsChildModel.m in Sources */,
 				4AF3927F1F46D52200EF7A3B /* NAAdvertisementCell.m in Sources */,
+				E88C92061FC7F91300E1F725 /* NAVideoVIPListCell.m in Sources */,
 				4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */,
 				4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */,
 				4A7D16BC1FB5A1C400112341 /* NAGoodsListModel.m in Sources */,

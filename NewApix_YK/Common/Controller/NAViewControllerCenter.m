@@ -36,6 +36,7 @@
 #import "NAPhonePayController.h"
 #import "NAConfirmOrderController.h"
 #import "NAGoodsDetailController.h"
+#import "NAVideoVIPListController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -107,6 +108,10 @@
     return goodsDetailVC;
 }
 
+/** 视频会员页 */
++ (UIViewController *)videoVIPListController {
+    return [[NAVideoVIPListController alloc] init];
+}
 
 /**
  文章详情页
