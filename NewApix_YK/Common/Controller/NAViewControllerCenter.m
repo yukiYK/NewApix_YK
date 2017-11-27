@@ -37,6 +37,8 @@
 #import "NAConfirmOrderController.h"
 #import "NAGoodsDetailController.h"
 #import "NAVideoVIPListController.h"
+#import "NALoanNoInterestController.h"
+#import "NAAuthenticationController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -111,6 +113,16 @@
 /** 视频会员页 */
 + (UIViewController *)videoVIPListController {
     return [[NAVideoVIPListController alloc] init];
+}
+
+/** 无息贷款页 */
++ (UIViewController *)loanNoInterestController {
+    return [[NALoanNoInterestController alloc] init];
+}
+
+/** 拼信用页 */
++ (UIViewController *)authenticationController {
+    return [[NAAuthenticationController alloc] init];
 }
 
 /**

@@ -72,6 +72,12 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /** 视频会员页 */
 + (UIViewController *)videoVIPListController;
 
+/** 无息贷款页 */
++ (UIViewController *)loanNoInterestController;
+
+/** 拼信用页 */
++ (UIViewController *)authenticationController;
+
 /**
  文章详情页
 

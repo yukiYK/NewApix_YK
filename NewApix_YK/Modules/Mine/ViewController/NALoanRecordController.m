@@ -36,6 +36,8 @@ static NSString * const kLoanRecordCellName = @"NALoanRecordCell";
     tableView.dataSource = self;
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [tableView registerNib:[UINib nibWithNibName:kLoanRecordCellName bundle:nil] forCellReuseIdentifier:kLoanRecordCellID];
+    if (!self.loanArray || self.loanArray.count <= 0)
+        tableView.tableFooterView = [self tableFooterView];
     [self.view addSubview:tableView];
     self.tableView = tableView;
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -44,6 +46,24 @@ static NSString * const kLoanRecordCellName = @"NALoanRecordCell";
         make.right.equalTo(self.view.mas_right);
         make.bottom.equalTo(self.view.mas_bottom);
     }];
+}
+
+- (UIView *)tableFooterView {
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, self.tableView.height)];
+    UIImageView *nullImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.47, kScreenHeight * 0.23)];
+    nullImageView.center = footer.center;
+    nullImageView.y -= 50;
+    nullImageView.image = kGetImage(@"loan_record_empty");
+    [footer addSubview:nullImageView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(nullImageView.frame) + 25, kScreenWidth, 20)];
+    label.font = [UIFont systemFontOfSize:18];
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor colorFromString:@"dadada"];
+    label.text = @"暂无记录";
+    [footer addSubview:label];
+    
+    return footer;
 }
 
 - (void)requestForLoanList {
@@ -55,8 +75,10 @@ static NSString * const kLoanRecordCellName = @"NALoanRecordCell";
         NSString *codeorNot = [NSString stringWithFormat:@"%@",responseObject];
         if ([codeorNot rangeOfString:@"code"].location != NSNotFound) {
             weakSelf.loanArray = nil;
+            weakSelf.tableView.tableFooterView = [weakSelf tableFooterView];
         } else {
             weakSelf.loanArray = responseObject;
+            weakSelf.tableView.tableFooterView = [[UIView alloc] init];
             [weakSelf.tableView reloadData];
         }
     } failure:nil];
@@ -77,6 +99,5 @@ static NSString * const kLoanRecordCellName = @"NALoanRecordCell";
     cell.loanModel = loanModel;
     return cell;
 }
-
 
 @end

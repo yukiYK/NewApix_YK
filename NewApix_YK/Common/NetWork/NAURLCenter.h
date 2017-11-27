@@ -72,6 +72,8 @@
 + (NAAPIModel *)goodsDetailConfigWithProductID:(NSString *)productID;
 /** 视频会员列表接口 */
 + (NAAPIModel *)videoVIPListConfig;
+/** 银行卡回调接口 */
++ (NAAPIModel *)banksEchoConfig;
 
 // ---------------------------------会员中心----------------------------
 /** 用户基本信息接口 昵称 头像等 */
@@ -189,5 +191,9 @@
 + (NSString *)makeMoneyH5Url;
 /** 分享出去的商品详情页 */
 + (NSString *)sharedGoodsDetailH5UrlWithGoodsID:(NSString *)goodsID;
+/** 无息贷款页 */
++ (NSString *)loanNoInterestH5Url;
+/** 贷款审核中页面 */
++ (NSString *)loanReviewH5Url;
 
 @end

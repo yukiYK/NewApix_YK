@@ -141,6 +141,8 @@
 		E82BB9C41FC589A3000E8EDB /* new.gif in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C11FC589A3000E8EDB /* new.gif */; };
 		E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C21FC589A3000E8EDB /* areaArray.plist */; };
 		E88102801FC6D80A00978FFB /* NAVideoVIPListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */; };
+		E8851EBF1FCBEF4100B7F812 /* NALoanNoInterestController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8851EBE1FCBEF4100B7F812 /* NALoanNoInterestController.m */; };
+		E8851EC21FCC0D9F00B7F812 /* NAAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8851EC11FCC0D9F00B7F812 /* NAAuthenticationController.m */; };
 		E88C92061FC7F91300E1F725 /* NAVideoVIPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */; };
 		E88C92071FC7F91300E1F725 /* NAVideoVIPListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */; };
 /* End PBXBuildFile section */
@@ -398,6 +400,10 @@
 		E82BB9C21FC589A3000E8EDB /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
 		E881027E1FC6D80A00978FFB /* NAVideoVIPListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListController.h; sourceTree = "<group>"; };
 		E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListController.m; sourceTree = "<group>"; };
+		E8851EBD1FCBEF4100B7F812 /* NALoanNoInterestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanNoInterestController.h; sourceTree = "<group>"; };
+		E8851EBE1FCBEF4100B7F812 /* NALoanNoInterestController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NALoanNoInterestController.m; sourceTree = "<group>"; };
+		E8851EC01FCC0D9F00B7F812 /* NAAuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationController.h; sourceTree = "<group>"; };
+		E8851EC11FCC0D9F00B7F812 /* NAAuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationController.m; sourceTree = "<group>"; };
 		E88C92031FC7F91300E1F725 /* NAVideoVIPListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListCell.h; sourceTree = "<group>"; };
 		E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListCell.m; sourceTree = "<group>"; };
 		E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAVideoVIPListCell.xib; sourceTree = "<group>"; };
@@ -790,6 +796,8 @@
 		4A8B102A1F8F162400498F9D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				E8851EC01FCC0D9F00B7F812 /* NAAuthenticationController.h */,
+				E8851EC11FCC0D9F00B7F812 /* NAAuthenticationController.m */,
 				4A8B10341F8F486A00498F9D /* NAIDAuthenticationController.h */,
 				4A8B10351F8F486A00498F9D /* NAIDAuthenticationController.m */,
 				4A8B10361F8F486A00498F9D /* NAIDAuthenticationController.xib */,
@@ -925,6 +933,8 @@
 				4A8DD0AA1FB2FD1200BB523C /* NAMakeMoneyController.m */,
 				E881027E1FC6D80A00978FFB /* NAVideoVIPListController.h */,
 				E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */,
+				E8851EBD1FCBEF4100B7F812 /* NALoanNoInterestController.h */,
+				E8851EBE1FCBEF4100B7F812 /* NALoanNoInterestController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1280,6 +1290,7 @@
 				4A2837C11F502B47001B065C /* NAPhoneLoginController.m in Sources */,
 				4AC6CA4D1F2F249C00A9308F /* NARegisterController.m in Sources */,
 				4AC6CA481F2F248500A9308F /* NALoginController.m in Sources */,
+				E8851EBF1FCBEF4100B7F812 /* NALoanNoInterestController.m in Sources */,
 				4A7315441F3D604B00044FE6 /* NACommonWebController.m in Sources */,
 				4AAEEDA81F4C272D00055CF1 /* NATabbarController.m in Sources */,
 				4A6381631F38414D008BC8FD /* NAMainPageCell.m in Sources */,
@@ -1337,6 +1348,7 @@
 				4A63816A1F384F71008BC8FD /* NABannerView.m in Sources */,
 				4AAA81031FA87CBC00F88083 /* NAWalletModel.m in Sources */,
 				4AFCA9641F346C3500351B04 /* UIImage+NAExtension.m in Sources */,
+				E8851EC21FCC0D9F00B7F812 /* NAAuthenticationController.m in Sources */,
 				4AAEEDA91F4C272D00055CF1 /* NAViewControllerCenter.m in Sources */,
 				4AFF28DB1F4AC8C000964EBC /* NAUserInfoModel.m in Sources */,
 				4A78505E1F7E3FC3000C2AD5 /* NAChangePasswordController.m in Sources */,

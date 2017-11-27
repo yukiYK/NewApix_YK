@@ -213,6 +213,14 @@
     return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"product", @"video_card"] param:param rightCode:nil];
 }
 
+/** 银行卡回调接口 */
++ (NAAPIModel *)banksEchoConfig {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"origin"] = @"0";
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"banks", @"echo"] param:param rightCode:nil];
+}
+
 #pragma mark - <User>
 /** 用户基本信息接口 昵称 头像等 */
 + (NAAPIModel *)mineUserInfoConfig {
@@ -609,6 +617,25 @@
 /** 分享出去的商品详情页 */
 + (NSString *)sharedGoodsDetailH5UrlWithGoodsID:(NSString *)goodsID {
     return [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"shopDetail", goodsID]];
+}
+
+/** 无息贷款页 */
++ (NSString *)loanNoInterestH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    param[@"device"] = @"app";
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"loannointerest"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
+/** 贷款审核中页面 */
++ (NSString *)loanReviewH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"loanreview"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
 @end

@@ -15,6 +15,7 @@
 #import "FLAnimatedImage.h"
 #import "NAWalletModel.h"
 #import "NATabbarController.h"
+#import <AESCrypt/AESCrypt.h>
 
 NSString *const kMainPageCellName = @"NAMainPageCell";
 NSString *const kMainPageCellID = @"mainPageCell";
@@ -103,6 +104,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
     [self.bannerView startAnimation];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.navigationController.navigationBar.translucent = NO;
+    [self requestForBanksEcho];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -203,6 +205,20 @@ NSString *const kMainPageCellID = @"mainPageCell";
 
 - (void)netChange {
     NSLog(@"现在有网了！");
+    [self requestForData];
+    [self requestForWallet];
+    [self requestForBanksEcho];
+}
+
+- (void)showLoginError {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"您的账号已在别处登录，请您重新登录，如非本人操作，请修改您的密码" message:nil preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter loginController] tranformStyle:NATransformStylePush needLogin:NO];
+    }];
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:true completion:nil];
 }
 
 #pragma mark - <Net Request>
@@ -261,6 +277,30 @@ NSString *const kMainPageCellID = @"mainPageCell";
         NSInteger count = weakSelf.walletModel.transaction.count;
         [NAUserTool saveRedPacketCount:count];
         
+    } errorCodeBlock:nil failureBlock:nil];
+}
+
+- (void)requestForBanksEcho {
+    NAAPIModel *model = [NAURLCenter bankCardsConfig];
+    
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@",returnValue);
+        
+        NSString *loginCode = [NSString stringWithFormat:@"%@", returnValue[@"apix_login_code"]];
+        if ([NACommon getToken] && [loginCode isEqualToString:@"-1"]) {
+            [NACommon setToken:nil];
+            [weakSelf showLoginError];
+        }
+        
+        NSDictionary *dict = returnValue[@"data"] ? returnValue[@"data"] : [NSDictionary dictionary];
+        NSString *code = [NSString stringWithFormat:@"%@", dict[@"code"]];
+        if ([code isEqualToString:@"0"]) {
+            NSString *idName = [NSString stringWithFormat:@"%@", dict[@"name"]];
+            NSString *idNumber = [NSString stringWithFormat:@"%@", dict[@"idnumber"]];
+            [NAUserTool saveIdName:idName];
+            [NAUserTool saveIdNumber:[AESCrypt decrypt:idNumber password:kAESKey]];
+        }
     } errorCodeBlock:nil failureBlock:nil];
 }
 
@@ -410,7 +450,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
             toVC = [NAViewControllerCenter goodsListControllerWithBannerArr:self.bannerDataArray];
             break;
         case 3:
-            toVC = [NAViewControllerCenter makeMoneyController];
+            toVC = [NAViewControllerCenter loanNoInterestController];
             break;
         case 4:
             toVC = [NAViewControllerCenter phonePayController];

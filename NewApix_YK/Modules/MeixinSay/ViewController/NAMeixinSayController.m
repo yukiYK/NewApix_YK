@@ -130,7 +130,6 @@ NSString * const kCommunityCellID = @"communityCell";
     return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
 }
 
-
 #pragma mark - <Event>
 - (void)onLeftBtnClicked:(UIButton *)sender {
     if (sender.selected) return;
