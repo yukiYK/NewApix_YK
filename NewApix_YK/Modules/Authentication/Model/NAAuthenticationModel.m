@@ -80,6 +80,29 @@
     }
 }
 
+/** 根据状态获取字符串 */
++ (NSString *)stringWithAuthenticationState:(NAAuthenticationState)state {
+    NSString *string = @"未认证";
+    switch (state) {
+        case NAAuthenticationStateAlready:
+            string = @"已认证";
+            break;
+        case NAAuthenticationStateOverdue:
+            string = @"已过期";
+            break;
+        case NAAuthenticationStateCanUpdate:
+            string = @"可更新";
+            break;
+        case NAAuthenticationStateAlreadyUpdate:
+            string = @"已更新";
+            break;
+            
+        default:
+            break;
+    }
+    return string;
+}
+
 
 ///** 运营商 */
 //- (void)setIsp:(NAAuthenticationState)isp {

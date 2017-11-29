@@ -54,4 +54,7 @@ typedef NS_ENUM(NSInteger, NAAuthenticationState) {
 /** 解析用户的认证状态 */
 + (void)analysisAuthentication:(NSDictionary *)returnValue;
 
+/** 根据状态获取字符串 */
++ (NSString *)stringWithAuthenticationState:(NAAuthenticationState)state;
+
 @end

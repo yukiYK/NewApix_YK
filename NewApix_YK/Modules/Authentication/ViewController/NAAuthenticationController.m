@@ -8,6 +8,11 @@
 
 #import "NAAuthenticationController.h"
 
+static NSString * const kAuthenticationCellName = @"NAAuthenticationCell";
+static NSString * const kAuthenticationCellID = @"authenticationCell";
+static NSString * const kAuthenticationTitleCellName = @"NAAuthenticationTitleCell";
+static NSString * const kAuthenticationTitleCellID = @"authenticationTitleCell";
+
 @interface NAAuthenticationController ()
 
 @end
@@ -17,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self setupCollectionView];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -25,6 +32,10 @@
 }
 
 - (void)setupNavigation {
+    self.customTitleLabel.text = @"拼信用";
+}
+
+- (void)setupCollectionView {
     
 }
 
