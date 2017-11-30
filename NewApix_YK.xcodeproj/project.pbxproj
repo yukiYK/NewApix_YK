@@ -145,6 +145,8 @@
 		E8851EC21FCC0D9F00B7F812 /* NAAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8851EC11FCC0D9F00B7F812 /* NAAuthenticationController.m */; };
 		E88C92061FC7F91300E1F725 /* NAVideoVIPListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */; };
 		E88C92071FC7F91300E1F725 /* NAVideoVIPListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */; };
+		E8986A061FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8986A041FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.m */; };
+		E8986A071FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8986A051FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.xib */; };
 		E8E7DF6E1FCEA4E600207446 /* NAAuthenticationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E7DF6C1FCEA4E600207446 /* NAAuthenticationCell.m */; };
 		E8E7DF6F1FCEA4E600207446 /* NAAuthenticationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8E7DF6D1FCEA4E600207446 /* NAAuthenticationCell.xib */; };
 		E8E7DF731FCEA53300207446 /* NAAuthenticationTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8E7DF711FCEA53300207446 /* NAAuthenticationTitleCell.m */; };
@@ -411,6 +413,9 @@
 		E88C92031FC7F91300E1F725 /* NAVideoVIPListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListCell.h; sourceTree = "<group>"; };
 		E88C92041FC7F91300E1F725 /* NAVideoVIPListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListCell.m; sourceTree = "<group>"; };
 		E88C92051FC7F91300E1F725 /* NAVideoVIPListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAVideoVIPListCell.xib; sourceTree = "<group>"; };
+		E8986A031FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationFooterCell.h; sourceTree = "<group>"; };
+		E8986A041FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationFooterCell.m; sourceTree = "<group>"; };
+		E8986A051FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAuthenticationFooterCell.xib; sourceTree = "<group>"; };
 		E8E7DF6B1FCEA4E600207446 /* NAAuthenticationCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAAuthenticationCell.h; sourceTree = "<group>"; };
 		E8E7DF6C1FCEA4E600207446 /* NAAuthenticationCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAAuthenticationCell.m; sourceTree = "<group>"; };
 		E8E7DF6D1FCEA4E600207446 /* NAAuthenticationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NAAuthenticationCell.xib; sourceTree = "<group>"; };
@@ -805,6 +810,9 @@
 				E8E7DF701FCEA53300207446 /* NAAuthenticationTitleCell.h */,
 				E8E7DF711FCEA53300207446 /* NAAuthenticationTitleCell.m */,
 				E8E7DF721FCEA53300207446 /* NAAuthenticationTitleCell.xib */,
+				E8986A031FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.h */,
+				E8986A041FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.m */,
+				E8986A051FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1188,6 +1196,7 @@
 				4A7850691F7E4FB5000C2AD5 /* NANewPhoneController.xib in Resources */,
 				4A7850641F7E4017000C2AD5 /* NAChangePhoneController.xib in Resources */,
 				E8E7DF741FCEA53300207446 /* NAAuthenticationTitleCell.xib in Resources */,
+				E8986A071FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.xib in Resources */,
 				E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */,
 				4A8F18CF1F41ADBC00B5459A /* NACommunityCell.xib in Resources */,
 				4AA8ADB61F8CADCA00B27223 /* NAAddCardController.xib in Resources */,
@@ -1378,6 +1387,7 @@
 				4A0383A51FA9B57800DA5C72 /* NAEncashmentController.m in Sources */,
 				5659670D1F861FFA007B686E /* NACommonQuestionsController.m in Sources */,
 				4A7315471F3D969800044FE6 /* NSAttributedString+NAExtension.m in Sources */,
+				E8986A061FCFED5F00F3F3F4 /* NAAuthenticationFooterCell.m in Sources */,
 				4AFCA9601F346C3500351B04 /* NANoNetworkView.m in Sources */,
 				4A0959991F8B5988008164B6 /* NABankCardsController.m in Sources */,
 				4A7D16B31FB59A2D00112341 /* NAGoodsListTitleCell.m in Sources */,

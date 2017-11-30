@@ -20,7 +20,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lAf-90-qdD">
-                        <rect key="frame" x="172.5" y="11.5" width="29" height="18"/>
+                        <rect key="frame" x="15" y="11.5" width="29" height="18"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -30,7 +30,7 @@
             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="lAf-90-qdD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="2Lg-Q0-idC"/>
-                <constraint firstItem="lAf-90-qdD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="zCj-Z1-N6b"/>
+                <constraint firstItem="lAf-90-qdD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="35N-2j-dqE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
             <size key="customSize" width="292" height="50"/>

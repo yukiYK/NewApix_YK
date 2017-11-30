@@ -9,6 +9,7 @@
 #import "NAIDUserFaceController.h"
 #import "NAAuthenticationModel.h"
 #import "NASettingsController.h"
+#import "NAAuthenticationController.h"
 
 @interface NAIDUserFaceController ()
 
@@ -98,9 +99,8 @@
         NSLog(@"%@", returnValue);
         [NAAuthenticationModel analysisAuthentication:returnValue];
         
-#warning 预留返回 拼信用
         for (UIViewController *vc in weakSelf.navigationController.viewControllers) {
-            if ([vc isKindOfClass:[NASettingsController class]]) {
+            if ([vc isKindOfClass:[NASettingsController class]] || [vc isKindOfClass:[NAAuthenticationController class]]) {
                 [weakSelf.navigationController popToViewController:vc animated:YES];
             }
         }

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="authenticationFooterCell" id="gTV-IL-0wX" customClass="NAAuthenticationFooterCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="130"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pa0-CC-rIK">
+                        <rect key="frame" x="0.0" y="35" width="375" height="40"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择收款银行卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="78w-3n-i2s">
+                                <rect key="frame" x="15" y="12" width="100" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mine_next" translatesAutoresizingMaskIntoConstraints="NO" id="AgR-Mm-ezN">
+                                <rect key="frame" x="359" y="12.5" width="8" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="GMW-8f-iwS"/>
+                                    <constraint firstAttribute="width" constant="8" id="PPg-JV-08h"/>
+                                </constraints>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank_cmb" translatesAutoresizingMaskIntoConstraints="NO" id="WZ5-sY-PT2">
+                                <rect key="frame" x="20" y="7.5" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="mvC-w0-N6E"/>
+                                    <constraint firstAttribute="width" constant="25" id="qqC-CF-scH"/>
+                                </constraints>
+                            </imageView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="银行卡" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btV-ne-FAv">
+                                <rect key="frame" x="67" y="11.5" width="43" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="AgR-Mm-ezN" firstAttribute="centerY" secondItem="pa0-CC-rIK" secondAttribute="centerY" id="08O-8j-6zr"/>
+                            <constraint firstItem="WZ5-sY-PT2" firstAttribute="centerY" secondItem="pa0-CC-rIK" secondAttribute="centerY" id="3oo-fZ-dar"/>
+                            <constraint firstItem="78w-3n-i2s" firstAttribute="centerY" secondItem="pa0-CC-rIK" secondAttribute="centerY" id="674-oI-rFF"/>
+                            <constraint firstItem="btV-ne-FAv" firstAttribute="leading" secondItem="WZ5-sY-PT2" secondAttribute="trailing" constant="22" id="Oy7-kL-Brk"/>
+                            <constraint firstItem="78w-3n-i2s" firstAttribute="leading" secondItem="pa0-CC-rIK" secondAttribute="leading" constant="15" id="SIe-d0-Wra"/>
+                            <constraint firstItem="WZ5-sY-PT2" firstAttribute="leading" secondItem="pa0-CC-rIK" secondAttribute="leading" constant="20" id="YdX-yk-jj5"/>
+                            <constraint firstAttribute="height" constant="40" id="iim-fl-I6o"/>
+                            <constraint firstItem="btV-ne-FAv" firstAttribute="centerY" secondItem="pa0-CC-rIK" secondAttribute="centerY" id="wpJ-Yj-zMh"/>
+                            <constraint firstAttribute="trailing" secondItem="AgR-Mm-ezN" secondAttribute="trailing" constant="8" id="xbK-PE-FlT"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lmg-gc-gb2">
+                        <rect key="frame" x="304" y="95" width="56" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="56" id="JgW-xP-v2o"/>
+                            <constraint firstAttribute="height" constant="20" id="NOn-sA-wbQ"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="借款协议">
+                            <color key="titleColor" red="0.52549019607843139" green="0.6588235294117647" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="onProtocolBtnClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="xHb-GV-wej"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q3a-h4-Bmg">
+                        <rect key="frame" x="254" y="95" width="50" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="2hx-Cy-YwS"/>
+                            <constraint firstAttribute="width" constant="50" id="cnw-ai-JKX"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <inset key="imageEdgeInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        <state key="normal" title="同意" image="allow_protocol_gray">
+                            <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <state key="selected" image="allow_protocol"/>
+                        <connections>
+                            <action selector="onAlowBtnClicked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zmr-t2-QlR"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="Lmg-gc-gb2" firstAttribute="leading" secondItem="q3a-h4-Bmg" secondAttribute="trailing" id="5Gy-8z-ydm"/>
+                <constraint firstAttribute="bottom" secondItem="Lmg-gc-gb2" secondAttribute="bottom" constant="15" id="9Ke-mD-5eh"/>
+                <constraint firstItem="pa0-CC-rIK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Gh3-Wh-FPY"/>
+                <constraint firstAttribute="trailing" secondItem="Lmg-gc-gb2" secondAttribute="trailing" constant="15" id="Ocx-U0-JmV"/>
+                <constraint firstItem="pa0-CC-rIK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="35" id="m25-Js-SIe"/>
+                <constraint firstItem="Lmg-gc-gb2" firstAttribute="centerY" secondItem="q3a-h4-Bmg" secondAttribute="centerY" id="oc1-tn-ZjE"/>
+                <constraint firstAttribute="trailing" secondItem="pa0-CC-rIK" secondAttribute="trailing" id="v7g-cp-6QI"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="SEy-5g-ep8"/>
+            <size key="customSize" width="280" height="101"/>
+            <connections>
+                <outlet property="allowBtn" destination="q3a-h4-Bmg" id="yCZ-Ec-LWv"/>
+                <outlet property="bankCardLabel" destination="btV-ne-FAv" id="W83-ee-LHj"/>
+                <outlet property="bankImageView" destination="WZ5-sY-PT2" id="RTQ-2h-1yo"/>
+                <outlet property="chooseBankCardLabel" destination="78w-3n-i2s" id="bVo-Mg-Lnz"/>
+                <outlet property="chooseBankView" destination="pa0-CC-rIK" id="Z34-cY-3MR"/>
+                <outlet property="nextImageView" destination="AgR-Mm-ezN" id="YVv-hd-1yN"/>
+                <outlet property="protocolBtn" destination="Lmg-gc-gb2" id="ngY-lt-5du"/>
+            </connections>
+            <point key="canvasLocation" x="-42.5" y="103"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="allow_protocol" width="13" height="13"/>
+        <image name="allow_protocol_gray" width="13" height="13"/>
+        <image name="bank_cmb" width="32" height="32"/>
+        <image name="mine_next" width="7" height="12"/>
+    </resources>
+</document>
