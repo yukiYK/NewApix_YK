@@ -8,6 +8,9 @@
 
 #import "NAAuthenticationCell.h"
 
+@implementation NAAuthenticationCellModel
+@end
+
 @interface NAAuthenticationCell ()
 
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
@@ -21,11 +24,23 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.layer.masksToBounds = YES;
+    self.layer.borderColor = kColorGraySeperator.CGColor;
+    self.layer.borderWidth = 0.5;
 }
 
 - (void)setCellModel:(NAAuthenticationCellModel *)cellModel {
     _cellModel = cellModel;
     
+    if (!cellModel) {
+        self.imgView.hidden = YES;
+        self.titleLabel.hidden = YES;
+        self.statusLabel.hidden = YES;
+        return;
+    }
+    self.imgView.hidden = NO;
+    self.titleLabel.hidden = NO;
+    self.statusLabel.hidden = NO;
     self.imgView.image = kGetImage([self imgNameWithOriginImgName:cellModel.imgName state:cellModel.state]);
     self.titleLabel.text = cellModel.title;
     self.statusLabel.text = [NAAuthenticationModel stringWithAuthenticationState:cellModel.state];

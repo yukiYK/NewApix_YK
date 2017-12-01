@@ -281,7 +281,7 @@ NSString *const kMainPageCellID = @"mainPageCell";
 }
 
 - (void)requestForBanksEcho {
-    NAAPIModel *model = [NAURLCenter bankCardsConfig];
+    NAAPIModel *model = [NAURLCenter banksEchoConfig];
     
     WeakSelf
     [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {

@@ -195,5 +195,7 @@
 + (NSString *)loanNoInterestH5Url;
 /** 贷款审核中页面 */
 + (NSString *)loanReviewH5Url;
+/** 借款协议页 */
++ (NSString *)loanProtocolH5Url;
 
 @end

@@ -35,7 +35,7 @@
                                     <constraint firstAttribute="width" constant="8" id="PPg-JV-08h"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank_cmb" translatesAutoresizingMaskIntoConstraints="NO" id="WZ5-sY-PT2">
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank_ merchants" translatesAutoresizingMaskIntoConstraints="NO" id="WZ5-sY-PT2">
                                 <rect key="frame" x="20" y="7.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="mvC-w0-N6E"/>
@@ -121,7 +121,7 @@
     <resources>
         <image name="allow_protocol" width="13" height="13"/>
         <image name="allow_protocol_gray" width="13" height="13"/>
-        <image name="bank_cmb" width="32" height="32"/>
+        <image name="bank_ merchants" width="32" height="32"/>
         <image name="mine_next" width="7" height="12"/>
     </resources>
 </document>

@@ -638,4 +638,13 @@
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
+/** 借款协议页 */
++ (NSString *)loanProtocolH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"loanAgreement"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
 @end

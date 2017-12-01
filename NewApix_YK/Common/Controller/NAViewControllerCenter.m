@@ -39,6 +39,7 @@
 #import "NAVideoVIPListController.h"
 #import "NALoanNoInterestController.h"
 #import "NAAuthenticationController.h"
+#import "NALoanProtocolController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -123,6 +124,11 @@
 /** 拼信用页 */
 + (UIViewController *)authenticationController {
     return [[NAAuthenticationController alloc] init];
+}
+
+/** 借款协议页 */
++ (UIViewController *)loanProtocolController {
+    return [[NALoanProtocolController alloc] init];
 }
 
 /**

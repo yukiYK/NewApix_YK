@@ -78,6 +78,9 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /** 拼信用页 */
 + (UIViewController *)authenticationController;
 
+/** 借款协议页 */
++ (UIViewController *)loanProtocolController;
+
 /**
  文章详情页
 
