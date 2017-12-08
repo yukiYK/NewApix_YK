@@ -251,7 +251,12 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.section == 1) {
+        
+        
+    } else if (indexPath.row == 3) {
+        
+    }
 }
 
 

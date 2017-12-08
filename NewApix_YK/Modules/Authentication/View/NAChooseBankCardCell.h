@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NABankCardModel.h"
 
 @interface NAChooseBankCardCell : UITableViewCell
+
+@property (nonatomic, strong) NABankCardModel *cardModel;
 
 @end

@@ -8,6 +8,15 @@
 
 #import "NAChooseBankCardCell.h"
 
+@interface NAChooseBankCardCell ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *bankIcon;
+@property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *bankNumberLabel;
+
+
+@end
+
 @implementation NAChooseBankCardCell
 
 - (void)awakeFromNib {
@@ -15,10 +24,12 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)setCardModel:(NABankCardModel *)cardModel {
+    _cardModel = cardModel;
+    
+    [self.bankIcon sd_setImageWithURL:[NSURL URLWithString:cardModel.img]];
+    self.bankNameLabel.text = cardModel.bank;
+    self.bankNumberLabel.text = [cardModel.cardNumber substringFromIndex:cardModel.cardNumber.length - 4];
 }
 
 @end

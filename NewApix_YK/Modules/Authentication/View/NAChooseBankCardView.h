@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^AddCardBlock) (void);
+
 @interface NAChooseBankCardView : UIView
 
 - (instancetype)initWithBankCardArr:(NSArray *)cardArr;
+
+@property (nonatomic, copy) AddCardBlock addCardBlock;
 
 @end

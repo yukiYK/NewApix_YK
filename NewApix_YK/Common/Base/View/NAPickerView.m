@@ -272,11 +272,8 @@ static CGFloat const kAnimationDuration = 0.3;
 }
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    NSInteger components = 0;
+    NSInteger components = 1;
     switch (self.style) {
-        case NAPickerViewStyleSingleColumn:
-            components = 1;
-            break;
         case NAPickerViewStyleMultipleColumn:
             components = self.dataArr.count;
             break;
