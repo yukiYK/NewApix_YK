@@ -40,6 +40,7 @@
 #import "NALoanNoInterestController.h"
 #import "NAAuthenticationController.h"
 #import "NALoanProtocolController.h"
+#import "NABookAuthenticationController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -129,6 +130,11 @@
 /** 借款协议页 */
 + (UIViewController *)loanProtocolController {
     return [[NALoanProtocolController alloc] init];
+}
+
+/** 通讯录认证页 */
++ (UIViewController *)bookAuthenticationController {
+    return [[NABookAuthenticationController alloc] initWithNibName:@"NABookAuthenticationController" bundle:nil];
 }
 
 /**

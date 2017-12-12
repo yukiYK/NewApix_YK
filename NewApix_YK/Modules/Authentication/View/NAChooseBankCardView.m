@@ -18,6 +18,8 @@ static NSString * const kChooseBankCardCellID = @"chooseBankCardCell";
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray *cardArr;
 
+@property (nonatomic, assign) NSInteger selectedRow;
+
 @end
 
 
@@ -25,6 +27,12 @@ static NSString * const kChooseBankCardCellID = @"chooseBankCardCell";
 
 - (instancetype)initWithBankCardArr:(NSArray *)cardArr {
     if (self = [super init]) {
+        self.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
+        self.backgroundColor = [UIColor clearColor];
+        UITapGestureRecognizer *tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismiss)];
+        [self addGestureRecognizer:tapGes];
+        
+        self.selectedRow = -1;
         self.cardArr = cardArr;
         [self createSubviews];
     }
@@ -32,7 +40,7 @@ static NSString * const kChooseBankCardCellID = @"chooseBankCardCell";
 }
 
 - (void)createSubviews {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.bounds];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kScreenHeight/2)];
     tableView.backgroundColor = [UIColor whiteColor];
     tableView.tableFooterView = [self tableFooterView];
     tableView.dataSource = self;
@@ -44,6 +52,7 @@ static NSString * const kChooseBankCardCellID = @"chooseBankCardCell";
 
 - (UIView *)tableFooterView {
     UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
+    footerView.backgroundColor = [UIColor whiteColor];
     
     UIButton *addBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 60)];
     [addBtn addTarget:self action:@selector(addBankCard) forControlEvents:UIControlEventTouchUpInside];
@@ -66,9 +75,30 @@ static NSString * const kChooseBankCardCellID = @"chooseBankCardCell";
     return footerView;
 }
 
+- (void)resetWithCardArr:(NSArray *)cardArr {
+    self.cardArr = cardArr;
+    [self.tableView reloadData];
+}
+
 - (void)addBankCard {
     if (self.addCardBlock)
         self.addCardBlock();
+    [self dismiss];
+}
+
+- (void)show {
+    [[UIApplication sharedApplication].keyWindow addSubview:self];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.frame = CGRectMake(0, kScreenHeight/2, self.tableView.width, self.tableView.height);
+    }];
+}
+
+- (void)dismiss {
+    [UIView animateWithDuration:0.3 animations:^{
+        self.tableView.frame = CGRectMake(0, kScreenHeight, self.tableView.width, self.tableView.height);
+    } completion:^(BOOL finished) {
+        [self removeFromSuperview];
+    }];
 }
 
 #pragma mark - <UITableViewDataSource, UITableViewDelegate>
@@ -84,8 +114,22 @@ static NSString * const kChooseBankCardCellID = @"chooseBankCardCell";
     NAChooseBankCardCell *cell = [tableView dequeueReusableCellWithIdentifier:kChooseBankCardCellID forIndexPath:indexPath];
     NABankCardModel *model = [NABankCardModel yy_modelWithJSON:self.cardArr[indexPath.row]];
     cell.cardModel = model;
+    if (self.selectedRow == indexPath.row)
+        cell.isChosen = YES;
+    else cell.isChosen = NO;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    self.selectedRow = indexPath.row;
+    [self.tableView reloadData];
+    
+    NABankCardModel *model = [NABankCardModel yy_modelWithJSON:self.cardArr[indexPath.row]];
+    if (self.chooseBlock)
+        self.chooseBlock(model);
+    [self dismiss];
 }
 
 @end

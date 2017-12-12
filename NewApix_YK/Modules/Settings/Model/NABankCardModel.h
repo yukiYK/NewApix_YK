@@ -17,4 +17,9 @@
 @property (nonatomic, copy) NSString *cardNumber;
 @property (nonatomic, copy) NSString *cardPhone;
 
+/** 拼信用页选择银行卡用 */
+@property (nonatomic, copy) NSString *bank_name;
+@property (nonatomic, copy) NSString *cardno;
+@property (nonatomic, copy) NSString *logo;
+
 @end

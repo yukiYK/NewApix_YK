@@ -59,14 +59,14 @@
     } progress:nil returnValueBlock:^(NSDictionary *returnValue) {
         NSLog(@"%@", returnValue);
         
-        [weakSelf requestForAuthenticationEnd];
+        [weakSelf requestForAuthenticationSave];
     } errorCodeBlock:nil failureBlock:^(NSError *error) {
         [SVProgressHUD showErrorWithStatus:@"网络错误，请稍后再试"];
     }];
 }
 
 // 身份认证完成
-- (void)requestForAuthenticationEnd {
+- (void)requestForAuthenticationSave {
     NAAPIModel *model = [NAURLCenter authenticationSaveConfigWithStep:@"1" token:[NACommon getToken]];
     
     WeakSelf

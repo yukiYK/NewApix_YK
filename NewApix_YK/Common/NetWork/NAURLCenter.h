@@ -135,6 +135,8 @@
 + (NAAPIModel *)idCardAuthenticationConfig;
 /** 脸部识别接口 */
 + (NAAPIModel *)faceIdentityConfig;
+/** 通讯录认证接口 */
++ (NAAPIModel *)bookAuthenticationConfigWithPhone:(NSString *)phone linkMenStr:(NSString *)linkMenStr;
 /** 用户认证完成接口 */
 + (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step token:(NSString *)token;
 

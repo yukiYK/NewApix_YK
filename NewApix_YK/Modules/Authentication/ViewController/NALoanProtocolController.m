@@ -10,6 +10,8 @@
 
 @interface NALoanProtocolController ()
 
+@property (nonatomic, strong) UIWebView *webView;
+
 @end
 
 @implementation NALoanProtocolController
@@ -17,6 +19,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.customTitleLabel.text = @"用户借款协议";
+    
+    UIWebView *webView = [[UIWebView alloc] init];
+    webView.backgroundColor = [UIColor whiteColor];
+    [self.view addSubview:webView];
+    self.webView = webView;
+    [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(self.view.mas_left);
+        make.top.equalTo(self.view.mas_top);
+        make.right.equalTo(self.view.mas_right);
+        make.bottom.equalTo(self.view.mas_bottom);
+    }];
+    
+    NSURL *url = [NSURL URLWithString:[NAURLCenter loanProtocolH5Url]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:url]];
 }
 
 - (void)didReceiveMemoryWarning {

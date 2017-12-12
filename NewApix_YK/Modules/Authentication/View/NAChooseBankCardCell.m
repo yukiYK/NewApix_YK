@@ -7,6 +7,7 @@
 //
 
 #import "NAChooseBankCardCell.h"
+#import <AESCrypt/AESCrypt.h>
 
 @interface NAChooseBankCardCell ()
 
@@ -14,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *bankNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bankNumberLabel;
 
+@property (weak, nonatomic) IBOutlet UIImageView *chooseImgView;
 
 @end
 
@@ -27,9 +29,15 @@
 - (void)setCardModel:(NABankCardModel *)cardModel {
     _cardModel = cardModel;
     
-    [self.bankIcon sd_setImageWithURL:[NSURL URLWithString:cardModel.img]];
-    self.bankNameLabel.text = cardModel.bank;
-    self.bankNumberLabel.text = [cardModel.cardNumber substringFromIndex:cardModel.cardNumber.length - 4];
+    [self.bankIcon sd_setImageWithURL:[NSURL URLWithString:cardModel.logo]];
+    self.bankNameLabel.text = cardModel.bank_name;
+    NSString *cardNum = [AESCrypt decrypt:cardModel.cardno password:kAESKey];
+    self.bankNumberLabel.text = [cardNum substringFromIndex:cardNum.length - 4];
+}
+
+- (void)setIsChosen:(BOOL)isChosen {
+    _isChosen = isChosen;
+    self.chooseImgView.image = isChosen ? kGetImage(@"choose_bank") : kGetImage(@"choose_bank_gray");
 }
 
 @end

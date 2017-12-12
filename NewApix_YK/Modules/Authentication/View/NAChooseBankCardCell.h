@@ -13,4 +13,6 @@
 
 @property (nonatomic, strong) NABankCardModel *cardModel;
 
+@property (nonatomic, assign) BOOL isChosen;
+
 @end

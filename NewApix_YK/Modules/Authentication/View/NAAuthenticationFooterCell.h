@@ -20,6 +20,6 @@ typedef void(^ProtocolBlock) (void);
 
 - (void)setBankIcon:(NSString *)bankIcon bankName:(NSString *)bankName;
 
-- (void)isBankChoosed:(BOOL)isChoosed;
+@property (nonatomic, assign) BOOL isBankChosen;
 
 @end

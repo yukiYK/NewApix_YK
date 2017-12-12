@@ -78,6 +78,7 @@
                 <outlet property="bankIcon" destination="3vh-kR-Pny" id="gY0-IN-ZvM"/>
                 <outlet property="bankNameLabel" destination="fcJ-gW-MUd" id="zQl-3m-ywj"/>
                 <outlet property="bankNumberLabel" destination="1X2-et-G32" id="C3Q-CL-1u4"/>
+                <outlet property="chooseImgView" destination="Gv8-7h-Wgb" id="C81-22-dLu"/>
             </connections>
             <point key="canvasLocation" x="-111" y="76"/>
         </tableViewCell>

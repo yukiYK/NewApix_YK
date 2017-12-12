@@ -37,8 +37,8 @@
     self.bankCardLabel.text = bankName;
 }
 
-- (void)isBankChoosed:(BOOL)isChoosed {
-    if (isChoosed) {
+- (void)setIsBankChosen:(BOOL)isBankChosen {
+    if (isBankChosen) {
         self.bankImageView.hidden = NO;
         self.bankCardLabel.hidden = NO;
         self.chooseBankCardLabel.hidden = YES;

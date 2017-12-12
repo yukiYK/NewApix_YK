@@ -41,7 +41,7 @@
 
 - (void)configureApiModel {
     switch (self.authenticationType) {
-        case NAAuthenticationTypeTD: {
+        case NAAuthenticationTypeTB: {
             self.apiModel = [NAURLCenter tbAuthenticationUrlConfig];
         }
             break;
@@ -83,7 +83,7 @@
 }
 
 // ⚠️不是我们自己的token, 是认证平台的token
-- (void)requestForSave:(NSString *)token {
+- (void)requestForAuthenticationSave:(NSString *)token {
     NAAPIModel *model = [NAURLCenter authenticationSaveConfigWithStep:[NSString stringWithFormat:@"%ld", self.authenticationType] token:token];
     
     WeakSelf
@@ -108,7 +108,7 @@
         str = [str substringFromIndex:range.location + range.length + 1];
         NSArray *arr = [str componentsSeparatedByString:@"="];
         if (arr.count > 1) {
-            [self requestForSave:arr[1]];
+            [self requestForAuthenticationSave:arr[1]];
         }
         return NO;
     } else if ([string containsString:kAuthenticationFailedUrl]) {

@@ -11,7 +11,7 @@
 typedef NS_ENUM(NSInteger, NAAuthenticationType) {
     NAAuthenticationTypeService = 3,
     NAAuthenticationTypeJD,
-    NAAuthenticationTypeTD
+    NAAuthenticationTypeTB
 };
 
 @interface NAAuthenticationWebController : NABaseViewController

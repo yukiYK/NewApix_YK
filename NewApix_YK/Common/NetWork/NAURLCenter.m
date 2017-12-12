@@ -431,6 +431,19 @@
     return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"users", @"face_identity"] param:param rightCode:nil];
 }
 
+/** 通讯录认证接口 */
++ (NAAPIModel *)bookAuthenticationConfigWithPhone:(NSString *)phone linkMenStr:(NSString *)linkMenStr {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"user_id"] = @"100999";
+    param[@"name"] = @"小明";
+    param[@"phone"] = phone;
+    param[@"device_id"] = @"100";
+    param[@"host_phone"] = @"iOS";
+    param[@"linkmen"] = linkMenStr;
+    return [self apiModelWithType:NAHTTPRequestTypePost pathArr:@[@"api", @"users", @"contact_identity"] param:param rightCode:nil];
+}
+
 /** 用户认证完成接口 */
 + (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step token:(NSString *)token {
     NSMutableDictionary *param = [NSMutableDictionary dictionary];

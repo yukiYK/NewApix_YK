@@ -145,6 +145,8 @@
 		E82BB9C31FC589A3000E8EDB /* bankType.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C01FC589A3000E8EDB /* bankType.plist */; };
 		E82BB9C41FC589A3000E8EDB /* new.gif in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C11FC589A3000E8EDB /* new.gif */; };
 		E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C21FC589A3000E8EDB /* areaArray.plist */; };
+		E86F7D201FDE998300DDCFFA /* NABookAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E86F7D1E1FDE998300DDCFFA /* NABookAuthenticationController.m */; };
+		E86F7D211FDE998300DDCFFA /* NABookAuthenticationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86F7D1F1FDE998300DDCFFA /* NABookAuthenticationController.xib */; };
 		E88102801FC6D80A00978FFB /* NAVideoVIPListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */; };
 		E8851EBF1FCBEF4100B7F812 /* NALoanNoInterestController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8851EBE1FCBEF4100B7F812 /* NALoanNoInterestController.m */; };
 		E8851EC21FCC0D9F00B7F812 /* NAAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8851EC11FCC0D9F00B7F812 /* NAAuthenticationController.m */; };
@@ -417,6 +419,9 @@
 		E82BB9C01FC589A3000E8EDB /* bankType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bankType.plist; sourceTree = "<group>"; };
 		E82BB9C11FC589A3000E8EDB /* new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = new.gif; sourceTree = "<group>"; };
 		E82BB9C21FC589A3000E8EDB /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
+		E86F7D1D1FDE998300DDCFFA /* NABookAuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NABookAuthenticationController.h; sourceTree = "<group>"; };
+		E86F7D1E1FDE998300DDCFFA /* NABookAuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NABookAuthenticationController.m; sourceTree = "<group>"; };
+		E86F7D1F1FDE998300DDCFFA /* NABookAuthenticationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NABookAuthenticationController.xib; sourceTree = "<group>"; };
 		E881027E1FC6D80A00978FFB /* NAVideoVIPListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NAVideoVIPListController.h; sourceTree = "<group>"; };
 		E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NAVideoVIPListController.m; sourceTree = "<group>"; };
 		E8851EBD1FCBEF4100B7F812 /* NALoanNoInterestController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NALoanNoInterestController.h; sourceTree = "<group>"; };
@@ -854,6 +859,9 @@
 				4A7E03461F94BC8D00939486 /* NAIDFaceCameraController.xib */,
 				4A6B14101F98A3A2008CD7FA /* NAAuthenticationWebController.h */,
 				4A6B14111F98A3A2008CD7FA /* NAAuthenticationWebController.m */,
+				E86F7D1D1FDE998300DDCFFA /* NABookAuthenticationController.h */,
+				E86F7D1E1FDE998300DDCFFA /* NABookAuthenticationController.m */,
+				E86F7D1F1FDE998300DDCFFA /* NABookAuthenticationController.xib */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1242,6 +1250,7 @@
 				4A2837BD1F502120001B065C /* NAForgetPasswordController.xib in Resources */,
 				4A7E03431F94A19300939486 /* NAIDUserFaceController.xib in Resources */,
 				E8E7DF6F1FCEA4E600207446 /* NAAuthenticationCell.xib in Resources */,
+				E86F7D211FDE998300DDCFFA /* NABookAuthenticationController.xib in Resources */,
 				4AD966E11FA71D9C00E5B43A /* NALoanRecordCell.xib in Resources */,
 				4A4D8ACD1FBC451B00E4B828 /* NAGoodsDetailCell.xib in Resources */,
 				4AF392851F46E67F00EF7A3B /* NAMineCell.xib in Resources */,
@@ -1392,6 +1401,7 @@
 				E80B063C1FD1530E006232D0 /* NAChooseBankCardCell.m in Sources */,
 				4A7D16BC1FB5A1C400112341 /* NAGoodsListModel.m in Sources */,
 				4A59ACEE1F5FDD4A00F3172B /* UIScrollView+NAScreenshot.m in Sources */,
+				E86F7D201FDE998300DDCFFA /* NABookAuthenticationController.m in Sources */,
 				4AAEED9F1F4C16DD00055CF1 /* NAURLCenter.m in Sources */,
 				4AC37D5F1FB4394B00FB980C /* NAGoodsListController.m in Sources */,
 				4AFCA9441F346B3D00351B04 /* main.m in Sources */,

@@ -10,6 +10,7 @@
 #import "NAAuthenticationCell.h"
 #import "NAAuthenticationTitleCell.h"
 #import "NAAuthenticationFooterCell.h"
+#import "NAChooseBankCardView.h"
 
 static NSString * const kAuthenticationCellName = @"NAAuthenticationCell";
 static NSString * const kAuthenticationCellID = @"authenticationCell";
@@ -23,15 +24,22 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
 
 @property (nonatomic, strong) UIButton *nextBtn;
 @property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) NAChooseBankCardView *chooseBankCardView;
 
-
+/** 必填项的标题 img 认证状态数组 */
 @property (nonatomic, strong) NSArray *necessaryArr;
 @property (nonatomic, strong) NSArray *necessaryImgArr;
+@property (nonatomic, strong) NSArray *necessaryStateArr;
+/** 重要项的标题 img 认证状态数组 */
 @property (nonatomic, strong) NSArray *importantArr;
 @property (nonatomic, strong) NSArray *importantImgArr;
-@property (nonatomic, strong) NSArray *necessaryStateArr;
 @property (nonatomic, strong) NSArray *importantStateArr;
+/** 银行卡数据数组 */
+@property (nonatomic, strong) NSArray *bankCardArr;
+@property (nonatomic, strong) NABankCardModel *bankCardModel;
+/** 是否通过所有必填项验证 */
 @property (nonatomic, assign) BOOL canNext;
+/** 是否同意协议 */
 @property (nonatomic, assign) BOOL isAllow;
 
 @end
@@ -50,6 +58,9 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupNavigation];
+    
+    [self requestForAuthenticationStatus];
+    [self requestForBankCard];
 }
 
 - (void)setupNavigation {
@@ -121,6 +132,30 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
         weakSelf.necessaryStateArr = @[@(model.idcard), @(model.contact), @(model.isp), @(model.taobao), @(model.jingdong)];
         weakSelf.importantStateArr = @[@(model.report), @(model.loan_history), @(model.information), @(model.housingfund), @(model.credential)];
         [weakSelf.collectionView reloadData];
+        
+    } errorCodeBlock:nil failureBlock:nil];
+}
+
+- (void)requestForBankCard {
+    NAAPIModel *model = [NAURLCenter bankCardsConfig];
+    
+    WeakSelf
+    [self.netManager netRequestWithApiModel:model progress:nil returnValueBlock:^(NSDictionary *returnValue) {
+        NSLog(@"%@", returnValue);
+        
+        weakSelf.bankCardArr = returnValue[@"data"] ? returnValue[@"data"] : [NSArray array];
+        if (!weakSelf.chooseBankCardView) {
+            weakSelf.chooseBankCardView = [[NAChooseBankCardView alloc] initWithBankCardArr:weakSelf.bankCardArr];
+            weakSelf.chooseBankCardView.addCardBlock = ^{
+                [NAViewControllerCenter transformViewController:weakSelf toViewController:[NAViewControllerCenter addBankCardController] tranformStyle:NATransformStylePush needLogin:YES];
+            };
+            weakSelf.chooseBankCardView.chooseBlock = ^(NABankCardModel *cardModel) {
+                weakSelf.bankCardModel = cardModel;
+                [weakSelf.collectionView reloadSections:[NSIndexSet indexSetWithIndex:4]];
+            };
+        } else {
+            [weakSelf.chooseBankCardView resetWithCardArr:weakSelf.bankCardArr];
+        }
         
     } errorCodeBlock:nil failureBlock:nil];
 }
@@ -217,6 +252,12 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
         return cell;
     } else if (indexPath.section == 4) {
         NAAuthenticationFooterCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:kAuthenticationFooterCellID forIndexPath:indexPath];
+        if (self.bankCardModel) {
+            [cell setBankIcon:self.bankCardModel.logo bankName:self.bankCardModel.bank_name];
+            cell.isBankChosen = YES;
+        } else {
+            cell.isBankChosen = NO;
+        }
         
         cell.allowBlock = ^(BOOL isAllow) {
             self.isAllow = isAllow;
@@ -234,7 +275,6 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
                 [SVProgressHUD showErrorWithStatus:@"请先进行身份验证"];
                 return;
             }
-            
             [NAViewControllerCenter transformViewController:self toViewController:[NAViewControllerCenter loanProtocolController] tranformStyle:NATransformStylePush needLogin:NO];
         };
         cell.chooseBankBlock = ^{
@@ -242,7 +282,7 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
                 [SVProgressHUD showErrorWithStatus:@"请先进行身份验证"];
                 return;
             }
-            
+            [self.chooseBankCardView show];
         };
         return cell;
     }
@@ -252,10 +292,52 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 1) {
+        NAAuthenticationState state = [self.necessaryStateArr[indexPath.item] integerValue];
+        if (state == NAAuthenticationStateAlready) {
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@已经授权", self.necessaryArr[indexPath.item]]];
+            return;
+        } else if (state == NAAuthenticationStateAlreadyUpdate) {
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"您已更新认证，请等待下月更新"]];
+            return;
+        }
         
+        UIViewController *toVC = [[UIViewController alloc] init];
+        if (indexPath.item == 0) {
+            toVC = [NAViewControllerCenter idAuthenticationController];
+        } else if (indexPath.item == 1) {
+            toVC = [NAViewControllerCenter bookAuthenticationController];
+        } else if (indexPath.item == 2) {
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeService];
+        } else if (indexPath.item == 3) {
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeTB];
+        } else if (indexPath.item == 4) {
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeJD];
+        }
+        [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
         
     } else if (indexPath.row == 3) {
+        NAAuthenticationState state = [self.importantStateArr[indexPath.item] integerValue];
+        if (state == NAAuthenticationStateAlready) {
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@已经授权", self.importantArr[indexPath.item]]];
+            return;
+        } else if (state == NAAuthenticationStateAlreadyUpdate) {
+            [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"您已更新认证，请等待下月更新"]];
+            return;
+        }
         
+        UIViewController *toVC = [[UIViewController alloc] init];
+        if (indexPath.item == 0) {
+            toVC = [NAViewControllerCenter idAuthenticationController];
+        } else if (indexPath.item == 1) {
+            toVC = [NAViewControllerCenter idAuthenticationController];
+        } else if (indexPath.item == 2) {
+            toVC = [NAViewControllerCenter idAuthenticationController];
+        } else if (indexPath.item == 3) {
+            toVC = [NAViewControllerCenter idAuthenticationController];
+        } else if (indexPath.item == 4) {
+            toVC = [NAViewControllerCenter idAuthenticationController];
+        }
+        [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
     }
 }
 
