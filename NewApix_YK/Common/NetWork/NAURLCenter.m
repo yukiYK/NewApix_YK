@@ -660,4 +660,13 @@
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }
 
+/** 央行征信页 */
++ (NSString *)creditAuthenticationH5Url {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"pbc"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
 @end

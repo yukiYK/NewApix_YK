@@ -84,6 +84,9 @@ typedef NS_ENUM(NSInteger, NATransformStyle) {
 /** 通讯录认证页 */
 + (UIViewController *)bookAuthenticationController;
 
+/** 央行征信认证页 */
++ (UIViewController *)creditAuthenticationController;
+
 /**
  文章详情页
 

@@ -199,5 +199,7 @@
 + (NSString *)loanReviewH5Url;
 /** 借款协议页 */
 + (NSString *)loanProtocolH5Url;
+/** 央行征信页 */
++ (NSString *)creditAuthenticationH5Url;
 
 @end

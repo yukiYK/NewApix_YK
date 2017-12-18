@@ -315,7 +315,7 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
         }
         [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
         
-    } else if (indexPath.row == 3) {
+    } else if (indexPath.section == 3) {
         NAAuthenticationState state = [self.importantStateArr[indexPath.item] integerValue];
         if (state == NAAuthenticationStateAlready) {
             [SVProgressHUD showInfoWithStatus:[NSString stringWithFormat:@"%@已经授权", self.importantArr[indexPath.item]]];
@@ -327,7 +327,7 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
         
         UIViewController *toVC = [[UIViewController alloc] init];
         if (indexPath.item == 0) {
-            toVC = [NAViewControllerCenter idAuthenticationController];
+            toVC = [NAViewControllerCenter creditAuthenticationController];
         } else if (indexPath.item == 1) {
             toVC = [NAViewControllerCenter idAuthenticationController];
         } else if (indexPath.item == 2) {

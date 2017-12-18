@@ -145,6 +145,7 @@
 		E82BB9C31FC589A3000E8EDB /* bankType.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C01FC589A3000E8EDB /* bankType.plist */; };
 		E82BB9C41FC589A3000E8EDB /* new.gif in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C11FC589A3000E8EDB /* new.gif */; };
 		E82BB9C51FC589A3000E8EDB /* areaArray.plist in Resources */ = {isa = PBXBuildFile; fileRef = E82BB9C21FC589A3000E8EDB /* areaArray.plist */; };
+		E84C79EE1FE7BCE900C943B1 /* NACreditAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E84C79ED1FE7BCE900C943B1 /* NACreditAuthenticationController.m */; };
 		E86F7D201FDE998300DDCFFA /* NABookAuthenticationController.m in Sources */ = {isa = PBXBuildFile; fileRef = E86F7D1E1FDE998300DDCFFA /* NABookAuthenticationController.m */; };
 		E86F7D211FDE998300DDCFFA /* NABookAuthenticationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E86F7D1F1FDE998300DDCFFA /* NABookAuthenticationController.xib */; };
 		E88102801FC6D80A00978FFB /* NAVideoVIPListController.m in Sources */ = {isa = PBXBuildFile; fileRef = E881027F1FC6D80A00978FFB /* NAVideoVIPListController.m */; };
@@ -419,6 +420,8 @@
 		E82BB9C01FC589A3000E8EDB /* bankType.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = bankType.plist; sourceTree = "<group>"; };
 		E82BB9C11FC589A3000E8EDB /* new.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = new.gif; sourceTree = "<group>"; };
 		E82BB9C21FC589A3000E8EDB /* areaArray.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = areaArray.plist; sourceTree = "<group>"; };
+		E84C79EC1FE7BCE900C943B1 /* NACreditAuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NACreditAuthenticationController.h; sourceTree = "<group>"; };
+		E84C79ED1FE7BCE900C943B1 /* NACreditAuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NACreditAuthenticationController.m; sourceTree = "<group>"; };
 		E86F7D1D1FDE998300DDCFFA /* NABookAuthenticationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NABookAuthenticationController.h; sourceTree = "<group>"; };
 		E86F7D1E1FDE998300DDCFFA /* NABookAuthenticationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NABookAuthenticationController.m; sourceTree = "<group>"; };
 		E86F7D1F1FDE998300DDCFFA /* NABookAuthenticationController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NABookAuthenticationController.xib; sourceTree = "<group>"; };
@@ -862,6 +865,8 @@
 				E86F7D1D1FDE998300DDCFFA /* NABookAuthenticationController.h */,
 				E86F7D1E1FDE998300DDCFFA /* NABookAuthenticationController.m */,
 				E86F7D1F1FDE998300DDCFFA /* NABookAuthenticationController.xib */,
+				E84C79EC1FE7BCE900C943B1 /* NACreditAuthenticationController.h */,
+				E84C79ED1FE7BCE900C943B1 /* NACreditAuthenticationController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1396,6 +1401,7 @@
 				E88C92061FC7F91300E1F725 /* NAVideoVIPListCell.m in Sources */,
 				4AA684E81F667C540041BB2D /* NAPresentSuccessController.m in Sources */,
 				E8E7DF6E1FCEA4E600207446 /* NAAuthenticationCell.m in Sources */,
+				E84C79EE1FE7BCE900C943B1 /* NACreditAuthenticationController.m in Sources */,
 				E80B06361FD14E39006232D0 /* NAChooseBankCardView.m in Sources */,
 				4AD966E01FA71D9C00E5B43A /* NALoanRecordCell.m in Sources */,
 				E80B063C1FD1530E006232D0 /* NAChooseBankCardCell.m in Sources */,

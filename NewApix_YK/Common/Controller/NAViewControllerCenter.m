@@ -41,6 +41,7 @@
 #import "NAAuthenticationController.h"
 #import "NALoanProtocolController.h"
 #import "NABookAuthenticationController.h"
+#import "NACreditAuthenticationController.h"
 
 @implementation NAViewControllerCenter
 // 跳转方法
@@ -135,6 +136,11 @@
 /** 通讯录认证页 */
 + (UIViewController *)bookAuthenticationController {
     return [[NABookAuthenticationController alloc] initWithNibName:@"NABookAuthenticationController" bundle:nil];
+}
+
+/** 央行征信认证页 */
++ (UIViewController *)creditAuthenticationController {
+    return [[NACreditAuthenticationController alloc] init];
 }
 
 /**
