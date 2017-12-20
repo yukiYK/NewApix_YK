@@ -450,7 +450,19 @@
     param[@"apix_token"] = [NACommon getToken];
     param[@"step"] = step;
     param[@"token"] = token;
-    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_credit", @"save"] param:param rightCode:nil];
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"license_logging"] param:param rightCode:nil];
+}
+
+/** 认证完成后License调用接口 */
++ (NAAPIModel *)authenticationLicenseConfigWith:(NSString *)name {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"apix_token"] = [NACommon getToken];
+    param[@"name"] = name;
+    param[@"user_id"] = [NACommon getUniqueId];
+    param[@"success_failure"] = @"success";
+    param[@"accounts"] = @"ios爬取方式";
+    param[@"remarks"] = @"ios爬取方式";
+    return [self apiModelWithType:NAHTTPRequestTypeGet pathArr:@[@"api", @"user_credit", @"save"] param:param rightCode:@"0"];
 }
 
 
@@ -665,6 +677,28 @@
     NSMutableDictionary *param = [NSMutableDictionary dictionary];
     param[@"token"] = [NACommon getToken];
     NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"pbc"]];
+    NSString *parameterStr =  [self parameterStringWithParam:param];
+    return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
+}
+
+/** 学信网认证页 */
++ (NSString *)schoolAuthenticationH5Url {
+    return [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"degrees"]];
+}
+
+/** 公积金认证页 */
++ (NSString *)houseAuthenticationH5Url {
+    return [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", @"bjfunds"]];
+}
+
+/** 借贷历史认证页 */
++ (NSString *)loanAuthenticationH5Url:(NSInteger)step {
+    NSMutableDictionary *param = [NSMutableDictionary dictionary];
+    param[@"token"] = [NACommon getToken];
+    NSString *path2 = @"chistory";
+    if (step == 2) path2 = @"chistorytwo";
+    else if (step == 3) path2 = @"chistorythree";
+    NSString *urlStr = [self urlWithType:NARequestURLTypeH5 pathArray:@[@"webapp", path2]];
     NSString *parameterStr =  [self parameterStringWithParam:param];
     return [NSString stringWithFormat:@"%@?%@", urlStr, parameterStr];
 }

@@ -228,4 +228,12 @@
     return time / 86400;
 }
 
++ (void)openUrl:(NSString *)url {
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url] options:@{} completionHandler:nil];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
+}
+
 @end

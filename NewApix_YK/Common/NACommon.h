@@ -52,6 +52,8 @@ typedef void (^LoadCompleteBlock)(NAUserStatus userStatus, NSString *vipEndDate,
  */
 + (NSInteger)getVIPRemainingDays:(NSString *)endDateStr;
 
++ (void)openUrl:(NSString *)url;
+
 #pragma mark - <审核版本>
 /** 是否是实际用户看到的版本，否则为审核版 */
 + (BOOL)isRealVersion;

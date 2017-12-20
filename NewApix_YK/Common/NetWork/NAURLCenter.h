@@ -139,6 +139,8 @@
 + (NAAPIModel *)bookAuthenticationConfigWithPhone:(NSString *)phone linkMenStr:(NSString *)linkMenStr;
 /** 用户认证完成接口 */
 + (NAAPIModel *)authenticationSaveConfigWithStep:(NSString *)step token:(NSString *)token;
+/** 认证完成后License调用接口 */
++ (NAAPIModel *)authenticationLicenseConfigWith:(NSString *)name;
 
 
 /**
@@ -199,7 +201,13 @@
 + (NSString *)loanReviewH5Url;
 /** 借款协议页 */
 + (NSString *)loanProtocolH5Url;
-/** 央行征信页 */
+/** 央行征信认证页 */
 + (NSString *)creditAuthenticationH5Url;
+/** 学信网认证页 */
++ (NSString *)schoolAuthenticationH5Url;
+/** 公积金认证页 */
++ (NSString *)houseAuthenticationH5Url;
+/** 借贷历史认证页 */
++ (NSString *)loanAuthenticationH5Url:(NSInteger)step;
 
 @end

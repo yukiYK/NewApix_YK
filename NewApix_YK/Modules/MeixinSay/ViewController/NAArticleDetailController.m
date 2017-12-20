@@ -81,7 +81,7 @@
     }
 }
 
-- (NSDictionary *)getObjectWithUrlString:(NSString *)urlString RangeString:(NSString *)rangeString {
+- (NSDictionary *)getObjectWithUrlString:(NSString *)urlString rangeString:(NSString *)rangeString {
     NSString *string = urlString.stringByRemovingPercentEncoding;
     string = [string substringFromIndex:[string rangeOfString:rangeString].location + rangeString.length];
     NSError *error = nil;
@@ -122,7 +122,7 @@
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     NSString *urlStr = request.URL.absoluteString;
     if ([urlStr hasPrefix:@"as"]) {
-        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"as:"];
+        NSDictionary *object = [self getObjectWithUrlString:urlStr rangeString:@"as:"];
         self.shareUrl = object[@"url"];
         self.shareTitle = object[@"title"];
         self.shareImg = object[@"image"];
@@ -135,12 +135,12 @@
         
         return NO;
     } else if ([urlStr hasPrefix:@"cchongbao"]) {
-        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"cchongbao:"];
+        NSDictionary *object = [self getObjectWithUrlString:urlStr rangeString:@"cchongbao:"];
         // 跳转邀请好友得红包
         
         return NO;
     } else if ([urlStr hasPrefix:@"review"]) {
-        NSDictionary *object = [self getObjectWithUrlString:urlStr RangeString:@"review:"];
+        NSDictionary *object = [self getObjectWithUrlString:urlStr rangeString:@"review:"];
         // 跳转回复页面
         NSString *floor, *nick = @"";
         NSString *commentID = object[@"id"];

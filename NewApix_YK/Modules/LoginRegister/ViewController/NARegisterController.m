@@ -155,7 +155,7 @@
         NSDictionary *dataDic = returnValue[@"data"];
         
         NSString *token = [dataDic objectForKey:@"token"];
-        NSString *uniqueId = [dataDic objectForKey:@"unique_id"];
+        NSString *uniqueId = [AESCrypt decrypt:[dataDic objectForKey:@"unique_id"] password:kAESKey];
         [NACommon setToken:token];
         [NACommon setUniqueId:uniqueId];
         [NAUserTool savePhoneNumber:self.phoneTextField.text];

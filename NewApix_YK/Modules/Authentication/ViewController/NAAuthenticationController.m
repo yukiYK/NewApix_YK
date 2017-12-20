@@ -329,13 +329,13 @@ static NSString * const kAuthenticationHeaderID = @"authenticationHeader";
         if (indexPath.item == 0) {
             toVC = [NAViewControllerCenter creditAuthenticationController];
         } else if (indexPath.item == 1) {
-            toVC = [NAViewControllerCenter idAuthenticationController];
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeLoan];
         } else if (indexPath.item == 2) {
-            toVC = [NAViewControllerCenter idAuthenticationController];
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeHouse];
         } else if (indexPath.item == 3) {
-            toVC = [NAViewControllerCenter idAuthenticationController];
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeHouse];
         } else if (indexPath.item == 4) {
-            toVC = [NAViewControllerCenter idAuthenticationController];
+            toVC = [NAViewControllerCenter authenticationWebController:NAAuthenticationTypeSchool];
         }
         [NAViewControllerCenter transformViewController:self toViewController:toVC tranformStyle:NATransformStylePush needLogin:YES];
     }
